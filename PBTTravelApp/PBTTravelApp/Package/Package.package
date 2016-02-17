@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package dslVersion="1.0.0.0" 
+        Id="a79c699e-339f-4f80-9889-c40afc8aced7" 
+        solutionId="a79c699e-339f-4f80-9889-c40afc8aced7" 
+        xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel" 
+        name="PBTTravelApp"
+        sharePointProductVersion="16.0">
+  <features>
+        <featureReference itemId="b9189084-d79e-45a8-9804-393230460dc1" />
+  </features>
+</package>

@@ -1,0 +1,37 @@
+
+RequesterName	Lourens Marx
+EmployeeID	
+PhoneNumber	
+Project	Sample Project
+CostCenter	Sample Cost Center
+RequestStatus	PendingApproval
+RequestApprover	No presence informationLourens Marx
+RequestApproveDate	
+TripStartDate	2/9/2016 14:00 
+TripEndDate	2/16/2016 14:00 
+TripPurpose	Test
+Notices	
+DestinationsJSON	
+[{"Country":"SA","City":"JHB","Hotel":"","Transport":"","StartDate":"","EndDate":""},{"Country":null,"City":null,"Hotel":null,"Transport":null,"StartDate":null,"EndDate":null}]
+TravelExpensesJSON	
+[{"ExpenseDate":"2016-02-16","Description":"","Category":"","PaymentSource":"","Currency":"","ExchangeRate":"","CurrencyAmount":""},{"ExpenseDate":null,"Description":null,"Category":null,"PaymentSource":null,"Currency":null,"ExchangeRate":null,"CurrencyAmount":null}]
+IsSettlement	No
+SettlementRejectReason	
+SettlementApprover	
+SettlementApproveDate	
+RequestTotalCost	0.00
+SettlementTotalCost	
+SettlementStatus	
+SettlementDestinationsJSON	
+SettlementTravelExpensesJSON	
+SettlementNotices	
+ReimbursementAmount	
+SettlementCreateDate	
+RequestRejectReason	
+Email	lourens.marx@pbtgroup.co.za
+Department	Sample Department
+RequestApproveLinkURL	
+https://pbtgroupza-274e8fa579353d.sharepoint.com/sites/Develop/TravelRequestSystem/Pages/RequestFormView.aspx?requestID=1&SPHostUrl=https%3A%2F%2Fpbtgroupza.sharepoint.com%2Fsites%2FDevelop&SPAppWebUrl=https%3A%2F%2Fpbtgroupza-274e8fa579353d.sharepoint.com%2Fsites%2FDevelop%2FTravelRequestSystem
+SettlementApproveLinkURL	
+IsRequestApproveEmailSent	Yes
+IsSettlementApproveEmailSent

@@ -1,0 +1,16 @@
+Title
+EnumValue
+SettingValue
+Hidden
+LastLicenseCheck
+
+LastLicenseCheck	0	Yes
+AppInitExecuted
+
+AppInitExecuted	true	Yes
+Default currency name
+
+DefaultCurrencyName	R	No
+Organization Name
+
+OrganizationName	PBT Group	No
