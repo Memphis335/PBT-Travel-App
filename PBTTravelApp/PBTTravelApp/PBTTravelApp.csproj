@@ -47,8 +47,13 @@
     <None Include="Pages\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{8411b792-7eeb-4a46-bb56-abc1487542ee}</SharePointProjectItemId>
     </None>
+    <Content Include="ads.xml" />
+    <Content Include="Elements.xml" />
     <Content Include="Pages\Elements.xml" />
     <Content Include="Pages\Default.aspx" />
+    <None Include="SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{6a7e6028-878d-4f7b-8273-1362b049308d}</SharePointProjectItemId>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\jquery-1.9.1.min.map" />

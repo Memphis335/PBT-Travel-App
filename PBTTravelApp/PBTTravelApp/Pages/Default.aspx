@@ -34,6 +34,6 @@
             initializing...
         </p>
     </div>
-    <asp:AdRotator ID="AdRotator1" runat="server" />
+    <asp:AdRotator ID="AdRotator1" runat="server" AdvertisementFile="../ads.xml" Target="_self"/>
 
 </asp:Content>
