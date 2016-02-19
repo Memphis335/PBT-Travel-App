@@ -68,30 +68,6 @@
 
         <div id="mainContainer" style="clear: both;">
 
-            <div id="getStarted" style="margin-top: 20px;">
-                <h2>Get started with Travel Request System</h2>
-
-
-
-                <div class="tilesContainer">
-                    <div onclick="window.location.href='RequestFormCreate.aspx'" class="tileMedium tileAdd">
-                        <div class="tileText">Create new</div>
-                    </div>
-                    <div onclick="window.location.href='ToApproveByMe.aspx'" class="tileMedium tileApprove">
-                        <div class="tileText">Approve</div>
-                    </div>
-                    <div onclick="window.location.href='UserGuide.aspx'" class="tileMedium tileLearn">
-                        <div class="tileText">Learn more</div>
-                    </div>
-                </div>
-
-            </div>
-
-
-            <div style="width: 800px; margin-top: 25px">
-                <div class="jtableContainer" id="PendingRequests"></div>
-            </div>
-
         </div>
 
     </div>

@@ -3,5 +3,15 @@
   <Files>
     <ProjectItemFile Source="Elements.xml" Target="Images\" Type="ElementManifest" />
     <ProjectItemFile Source="AppIcon.png" Target="Images\" Type="ElementFile" />
+    <ProjectItemFile Source="leftarrow.png" Target="Images\" Type="ElementFile" />
+    <ProjectItemFile Source="pbt1.ico" Target="Images\" Type="ElementFile" />
+    <ProjectItemFile Source="logo.png" Target="Images\" Type="ElementFile" />
+    <ProjectItemFile Source="column-desc.png" Target="Images\" Type="ElementFile" />
+    <ProjectItemFile Source="column-sortable.png" Target="Images\" Type="ElementFile" />
+    <ProjectItemFile Source="loading.gif" Target="Images\" Type="ElementFile" />
+    <ProjectItemFile Source="view.png" Target="Images\" Type="ElementFile" />
+    <ProjectItemFile Source="tile-add.png" Target="Images\" Type="ElementFile" />
+    <ProjectItemFile Source="tile-approve.png" Target="Images\" Type="ElementFile" />
+    <ProjectItemFile Source="tile-learn.png" Target="Images\" Type="ElementFile" />
   </Files>
 </ProjectItem>

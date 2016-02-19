@@ -3,5 +3,18 @@
   <Files>
     <ProjectItemFile Source="Elements.xml" Target="Pages\" Type="ElementManifest" />
     <ProjectItemFile Source="Default.aspx" Target="Pages\" Type="ElementFile" />
+    <ProjectItemFile Source="menu.html" Target="Pages\" Type="ElementFile" />
+    <ProjectItemFile Source="Help.aspx" Target="Pages\" Type="ElementFile" />
+    <ProjectItemFile Source="Licenses.aspx" Target="Pages\" Type="ElementFile" />
+    <ProjectItemFile Source="MyRequests.aspx" Target="Pages\" Type="ElementFile" />
+    <ProjectItemFile Source="MySettlements.aspx" Target="Pages\" Type="ElementFile" />
+    <ProjectItemFile Source="ReportsAll.aspx" Target="Pages\" Type="ElementFile" />
+    <ProjectItemFile Source="ReportsRequests.aspx" Target="Pages\" Type="ElementFile" />
+    <ProjectItemFile Source="ReportsRequestsCosts.aspx" Target="Pages\" Type="ElementFile" />
+    <ProjectItemFile Source="ReportsSettlements.aspx" Target="Pages\" Type="ElementFile" />
+    <ProjectItemFile Source="ReportsSettlementsCosts.aspx" Target="Pages\" Type="ElementFile" />
+    <ProjectItemFile Source="RequestFormCreate.aspx" Target="Pages\" Type="ElementFile" />
+    <ProjectItemFile Source="Settings.aspx" Target="Pages\" Type="ElementFile" />
+    <ProjectItemFile Source="ToApproveByMe.aspx" Target="Pages\" Type="ElementFile" />
   </Files>
 </ProjectItem>

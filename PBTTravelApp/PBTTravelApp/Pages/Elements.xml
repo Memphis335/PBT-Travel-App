@@ -2,5 +2,18 @@
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
   <Module Name="Pages">
     <File Path="Pages\Default.aspx" Url="Pages/Default.aspx" ReplaceContent="TRUE" />
+    <File Path="Pages\menu.html" Url="Pages/menu.html" ReplaceContent="TRUE" />
+    <File Path="Pages\Help.aspx" Url="Pages/Help.aspx" ReplaceContent="TRUE" />
+    <File Path="Pages\Licenses.aspx" Url="Pages/Licenses.aspx" ReplaceContent="TRUE" />
+    <File Path="Pages\MyRequests.aspx" Url="Pages/MyRequests.aspx" ReplaceContent="TRUE" />
+    <File Path="Pages\MySettlements.aspx" Url="Pages/MySettlements.aspx" ReplaceContent="TRUE" />
+    <File Path="Pages\ReportsAll.aspx" Url="Pages/ReportsAll.aspx" ReplaceContent="TRUE" />
+    <File Path="Pages\ReportsRequests.aspx" Url="Pages/ReportsRequests.aspx" ReplaceContent="TRUE" />
+    <File Path="Pages\ReportsRequestsCosts.aspx" Url="Pages/ReportsRequestsCosts.aspx" ReplaceContent="TRUE" />
+    <File Path="Pages\ReportsSettlements.aspx" Url="Pages/ReportsSettlements.aspx" ReplaceContent="TRUE" />
+    <File Path="Pages\ReportsSettlementsCosts.aspx" Url="Pages/ReportsSettlementsCosts.aspx" ReplaceContent="TRUE" />
+    <File Path="Pages\RequestFormCreate.aspx" Url="Pages/RequestFormCreate.aspx" ReplaceContent="TRUE" />
+    <File Path="Pages\Settings.aspx" Url="Pages/Settings.aspx" ReplaceContent="TRUE" />
+    <File Path="Pages\ToApproveByMe.aspx" Url="Pages/ToApproveByMe.aspx" ReplaceContent="TRUE" />
   </Module>
 </Elements>

@@ -2,5 +2,15 @@
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
   <Module Name="Images">
     <File Path="Images\AppIcon.png" Url="Images/AppIcon.png" ReplaceContent="TRUE" />
+    <File Path="Images\leftarrow.png" Url="Images/leftarrow.png" ReplaceContent="TRUE" />
+    <File Path="Images\pbt1.ico" Url="Images/pbt1.ico" ReplaceContent="TRUE" />
+    <File Path="Images\logo.png" Url="Images/logo.png" ReplaceContent="TRUE" />
+    <File Path="Images\column-desc.png" Url="Images/column-desc.png" ReplaceContent="TRUE" />
+    <File Path="Images\column-sortable.png" Url="Images/column-sortable.png" ReplaceContent="TRUE" />
+    <File Path="Images\loading.gif" Url="Images/loading.gif" ReplaceContent="TRUE" />
+    <File Path="Images\view.png" Url="Images/view.png" ReplaceContent="TRUE" />
+    <File Path="Images\tile-add.png" Url="Images/tile-add.png" ReplaceContent="TRUE" />
+    <File Path="Images\tile-approve.png" Url="Images/tile-approve.png" ReplaceContent="TRUE" />
+    <File Path="Images\tile-learn.png" Url="Images/tile-learn.png" ReplaceContent="TRUE" />
   </Module>
 </Elements>

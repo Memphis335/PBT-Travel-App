@@ -1,0 +1,81 @@
+<%@ Master Language="C#" %>
+
+<%@ Register TagPrefix="SharePoint" Namespace="Microsoft.SharePoint.WebControls" Assembly="Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
+<%@ Register TagPrefix="Utilities" Namespace="Microsoft.SharePoint.Utilities" Assembly="Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
+<%@ Import Namespace="Microsoft.SharePoint" %>
+<%@ Assembly Name="Microsoft.Web.CommandUI, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
+<%@ Import Namespace="Microsoft.SharePoint.ApplicationPages" %>
+<%@ Register TagPrefix="WebPartPages" Namespace="Microsoft.SharePoint.WebPartPages" Assembly="Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="<%$Resources:wss,language_value%>" xmlns:o="urn:schemas-microsoft-com:office:office" runat="server" dir="<%$Resources:wss,multipages_direction_dir_value%>" __expr-val-dir="ltr">
+
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Expires" content="0" />
+
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/bootstrap-timepicker.min.css" rel="stylesheet" />
+    <link href="../Content/uniform.tp.css" rel="stylesheet" />
+    <link href="../Content/jquery.alerts.css" rel="stylesheet" />
+    <link href="../Content/lato.css" rel="stylesheet" />
+    <link href="../Content/style.default.css" rel="stylesheet" />
+    
+    <!-- Theme -->
+    <link href="../Content/Themes/jquery-ui.css" rel="stylesheet" />
+    <link href="../Content/themes/metro/blue/jtable.css" rel="stylesheet" />
+
+    <link href="../Content/Custom/style.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="../Scripts/jquery-2.2.0.js"></script>
+    <script src="../Scripts/jquery-ui-1.9.2.min.js"></script>
+    <script src="../Scripts/jtable/jquery.jtable.js"></script>
+    
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="../Scripts/bootstrap-timepicker.min.js"></script>
+    <script src="../Scripts/chosen.jquery.min.js"></script>
+    <script src="../Scripts/jquery.cookie.js"></script>
+    <script src="../Scripts/modernizr.min.js"></script>
+    <script src="../Scripts/moment.min.js"></script>
+    <script src="../Scripts/jquery.loadTemplate-1.4.4.min.js"></script>
+    <script src="../Scripts/notify.min.js"></script>
+
+    <!-- Custom Scripts -->
+    <script src="../Scripts/Common.js"></script>
+    <script src="../Scripts/AppInit.js"></script>
+    <script src="../Scripts/Default.js"></script>
+
+    <asp:ContentPlaceHolder ID="divHeader" runat="server"></asp:ContentPlaceHolder>
+
+    <SharePoint:SPShortcutIcon runat="server" IconUrl="../Images/pbt1.ico?rev=42" />
+
+    <title>PBT Travel</title>
+</head>
+<body>
+
+    <!--Header-->
+    <div class="divHeader">
+        <div class="divPreviousSite">
+            <img src="../Images/leftarrow.png" />
+            <a id="previousSiteUrl" href="#" class="previousSiteUrl">Back to the previous site</a>
+        </div>
+        <div class="divUserInfo"><span class="spanUserInfo" id="userWelcomeMsg"></span></div>
+    </div>
+    
+    <div class="containerWrapper">
+        <!--Menu-->
+        <div id="containerLeft" style="float: left; width: 200px; margin-top: 10px;">
+        </div>
+
+        <!--Main Content-->
+        <div id="containerRight" class="containerRight">
+            <div id="topHeader" class="topHeader">
+                <h1>PBT Travel</h1>
+            </div>
+            <asp:ContentPlaceHolder ID="mainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </div>
+</body>
+</html>
