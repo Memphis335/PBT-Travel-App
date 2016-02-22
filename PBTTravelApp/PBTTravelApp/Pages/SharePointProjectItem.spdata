@@ -16,5 +16,7 @@
     <ProjectItemFile Source="RequestFormCreate.aspx" Target="Pages\" Type="ElementFile" />
     <ProjectItemFile Source="Settings.aspx" Target="Pages\" Type="ElementFile" />
     <ProjectItemFile Source="ToApproveByMe.aspx" Target="Pages\" Type="ElementFile" />
+    <ProjectItemFile Source="DictionaryList.aspx" Target="Pages\" Type="ElementFile" />
+    <ProjectItemFile Source="UserRolesList.aspx" Target="Pages\" Type="ElementFile" />
   </Files>
 </ProjectItem>

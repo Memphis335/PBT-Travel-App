@@ -1,13 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
   <Module Name="Scripts">
-    <File Path="Scripts\App.js" Url="Scripts/App.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\AppInit.js" Url="Scripts/AppInit.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Custom\AppInit.js" Url="Scripts/Custom/AppInit.js" ReplaceContent="TRUE" />
     <File Path="Scripts\bootstrap.min.js" Url="Scripts/bootstrap.min.js" ReplaceContent="TRUE" />
     <File Path="Scripts\bootstrap-timepicker.min.js" Url="Scripts/bootstrap-timepicker.min.js" ReplaceContent="TRUE" />
     <File Path="Scripts\chosen.jquery.min.js" Url="Scripts/chosen.jquery.min.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\Common.js" Url="Scripts/Common.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\Default.js" Url="Scripts/Default.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Custom\Common.js" Url="Scripts/Custom/Common.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Custom\Default.js" Url="Scripts/Custom/Default.js" ReplaceContent="TRUE" />
     <File Path="Scripts\elements.js" Url="Scripts/elements.js" ReplaceContent="TRUE" />
     <File Path="Scripts\jquery.autogrow-textarea.js" Url="Scripts/jquery.autogrow-textarea.js" ReplaceContent="TRUE" />
     <File Path="Scripts\jquery.cookie.js" Url="Scripts/jquery.cookie.js" ReplaceContent="TRUE" />
@@ -17,19 +16,19 @@
     <File Path="Scripts\jquery.tagsinput.min.js" Url="Scripts/jquery.tagsinput.min.js" ReplaceContent="TRUE" />
     <File Path="Scripts\jquery.validate.min.js" Url="Scripts/jquery.validate.min.js" ReplaceContent="TRUE" />
     <File Path="Scripts\jquery-ui-1.9.2.min.js" Url="Scripts/jquery-ui-1.9.2.min.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\LicenseInit.js" Url="Scripts/LicenseInit.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Custom\LicenseInit.js" Url="Scripts/Custom/LicenseInit.js" ReplaceContent="TRUE" />
     <File Path="Scripts\modernizr.min.js" Url="Scripts/modernizr.min.js" ReplaceContent="TRUE" />
     <File Path="Scripts\moment.min.js" Url="Scripts/moment.min.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\MyRequests.js" Url="Scripts/MyRequests.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\MySettlements.js" Url="Scripts/MySettlements.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Custom\MyRequests.js" Url="Scripts/Custom/MyRequests.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Custom\MySettlements.js" Url="Scripts/Custom/MySettlements.js" ReplaceContent="TRUE" />
     <File Path="Scripts\notify.min.js" Url="Scripts/notify.min.js" ReplaceContent="TRUE" />
     <File Path="Scripts\numeral.js" Url="Scripts/numeral.js" ReplaceContent="TRUE" />
     <File Path="Scripts\prettify.js" Url="Scripts/prettify.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\ReportsRequests.js" Url="Scripts/ReportsRequests.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\ReportsRequestsCosts.js" Url="Scripts/ReportsRequestsCosts.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\ReportsSettlements.js" Url="Scripts/ReportsSettlements.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\ReportsSettlementsCosts.js" Url="Scripts/ReportsSettlementsCosts.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\RequestFormCreate.js" Url="Scripts/RequestFormCreate.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Custom\ReportsRequests.js" Url="Scripts/Custom/ReportsRequests.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Custom\ReportsRequestsCosts.js" Url="Scripts/Custom/ReportsRequestsCosts.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Custom\ReportsSettlements.js" Url="Scripts/Custom/ReportsSettlements.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Custom\ReportsSettlementsCosts.js" Url="Scripts/Custom/ReportsSettlementsCosts.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Custom\RequestFormCreate.js" Url="Scripts/Custom/RequestFormCreate.js" ReplaceContent="TRUE" />
     <File Path="Scripts\underscore-min.js" Url="Scripts/underscore-min.js" ReplaceContent="TRUE" />
     <File Path="Scripts\jquery-2.2.0.min.map" Url="Scripts/jquery-2.2.0.min.map" ReplaceContent="TRUE" />
     <File Path="Scripts\jquery-2.2.0.min.js" Url="Scripts/jquery-2.2.0.min.js" ReplaceContent="TRUE" />
@@ -121,5 +120,11 @@
     <File Path="Scripts\handsontable\handsontable.js" Url="Scripts/handsontable/handsontable.js" ReplaceContent="TRUE" />
     <File Path="Scripts\handsontable\handsontable.full.min.js" Url="Scripts/handsontable/handsontable.full.min.js" ReplaceContent="TRUE" />
     <File Path="Scripts\handsontable\handsontable.full.js" Url="Scripts/handsontable/handsontable.full.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Custom\Settings.js" Url="Scripts/Custom/Settings.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Custom\Dictionaries.js" Url="Scripts/Custom/Dictionaries.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Custom\UserRoles.js" Url="Scripts/Custom/UserRoles.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\jquery.validationEngine.js" Url="Scripts/jquery.validationEngine.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\jquery.validationEngine-en.js" Url="Scripts/jquery.validationEngine-en.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Custom\ToApproveByMe.js" Url="Scripts/Custom/ToApproveByMe.js" ReplaceContent="TRUE" />
   </Module>
 </Elements>

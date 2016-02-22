@@ -73,26 +73,26 @@ RequestFormCreate = function () {
         return j;
     };
     var d = function (j) {
-            var i;
-            $.ajax({
-                url: appweburl + "/_api/Web/lists/getbytitle('" + j +
-                    "')/items?$select=Title,ID",
-                type: "GET",
-                async: false,
-                headers: {
-                    accept: "application/json;odata=verbose"
-                },
-                dataType: "json",
-                cache: false,
-                success: function (k) {
-                    i = k.d.results;
-                },
-                error: function (thrownError) {
-                    alert(thrownError);
-                }
-            });
-            return i;
-        },
+        var i;
+        $.ajax({
+            url: appweburl + "/_api/Web/lists/getbytitle('" + j +
+                "')/items?$select=Title,ID",
+            type: "GET",
+            async: false,
+            headers: {
+                accept: "application/json;odata=verbose"
+            },
+            dataType: "json",
+            cache: false,
+            success: function (k) {
+                i = k.d.results;
+            },
+            error: function (thrownError) {
+                alert(thrownError);
+            }
+        });
+        return i;
+    },
         c = function () {
             var i;
             $.ajax({
@@ -161,151 +161,18 @@ RequestFormCreate = function () {
                     alert(l);
                 }
             });
-        },
-        f = function () {
-            var o = false;
-            $.ajax({
-                url: appweburl +
-                    "/_api/SP.Utilities.Utility.GetAppLicenseInformation('{2f8e8a46-edec-4284-94cb-513a4f68efcf}')",
-                type: "GET",
-                async: false,
-                headers: {
-                    accept: "application/json;odata=verbose"
-                },
-                dataType: "json",
-                cache: false,
-                success: function (s) {
-                    if (s.d.GetAppLicenseInformation.Items.results
-                        .length > 0) {
-                        var t = s.d.GetAppLicenseInformation.Items
-                            .results[0].RawXMLLicenseToken;
-                        if (t != null && t.length > 0) {
-                            var u = $.parseXML(t);
-                            var q = $(u).find("t");
-                            var r = q.attr("et");
-                            if (r === "Paid") {
-                                o = true;
-                            }
-                        }
-                    }
-                }
-            });
-            if (o === true) {
-                return true;
-            }
-            var p;
-            $.ajax({
-                url: appweburl +
-                    "/_api/Web/lists/getbytitle('Licenses')/items?$select=ID,TrialStartDate,ActivationKey,IsInitialized,IsValid",
-                type: "GET",
-                async: false,
-                cache: false,
-                headers: {
-                    accept: "application/json;odata=verbose"
-                },
-                dataType: "json",
-                success: function (q) {
-                    p = q.d.results[0];
-                },
-                error: function (s, q, r) {
-                    alert(r);
-                }
-            });
-            if (p != null && p.IsValid === false) {
-                $.notify.addStyle("warning", {
-                    html: '<div class="notifyjs-corner" style="right:100px; left: 10px; top: 0px;"><div class="notifyjs-wrapper notifyjs-hidable"><div class="notifyjs-arrow"></div><div class="notifyjs-container"><div class="notifyjs-bootstrap-base notifyjs-bootstrap-warning notifyjsCustom"  style="margin-left:210px;" ><span data-notify-html="title"</span></div></div></div></div>'
-                });
-                $.notify.addStyle("error", {
-                    html: '<div class="notifyjs-corner" style="right:100px; left: 10px; top: 0px;"><div class="notifyjs-wrapper notifyjs-hidable"><div class="notifyjs-arrow"></div><div class="notifyjs-container"><div class="notifyjs-bootstrap-base notifyjs-bootstrap-error notifyjsCustom"  style="margin-left:210px;" ><span data-notify-html="title"</span></div></div></div></div>'
-                });
-                var j = new Date();
-                var n = e();
-                $.ajax({
-                    url: appweburl +
-                        "/_api/Web/lists/getbytitle('Settings')/getItemByStringId('1')",
-                    type: "POST",
-                    async: false,
-                    contentType: "application/json;odata=verbose",
-                    data: JSON.stringify({
-                        __metadata: {
-                            type: "SP.Data.SettingsListItem"
-                        },
-                        Hidden: "true"
-                    }),
-                    headers: {
-                        accept: "application/json;odata=verbose",
-                        "X-RequestDigest": n,
-                        "X-Http-Method": "PATCH",
-                        "IF-MATCH": "*"
-                    },
-                    success: function () {
-                        $.ajax({
-                            url: appweburl +
-                                "/_api/web/lists/getbytitle('Settings')/Items?$select=Modified&$filter=Id eq 1",
-                            type: "GET",
-                            async: false,
-                            cache: false,
-                            headers: {
-                                accept: "application/json;odata=verbose"
-                            },
-                            dataType: "json",
-                            success: function(r) {
-                                if (r.d.results.length >
-                                    0) {
-                                    j = moment(r.d.results[0].Modified);
-                                }
-                            }
-                        });
-                    }
-                });
-                var m = moment(p.TrialStartDate).add(14, "days");
-                var i = moment(m).utc().diff(moment(j).utc());
-                var l = Math.round(moment.duration(i).asDays());
-                if (l > 0) {
-                    var k = (l === 1 ? " day" : " days");
-                    $.notify({
-                        title: "Trial version will expire in  " + l +
-                            k +
-                            ". <a target='_blank' href='http://ivero.net/solutions/TravelRequestSystem/index.html' >Buy</a> a full license and enter <a href='Licenses.aspx' >Activation Key </a> "
-                    }, {
-                        style: "warning",
-                        globalPosition: "top left",
-                        clickToHide: true,
-                        autoHideDelay: 20000
-                    });
-                    o = true;
-                } else {
-                    o = false;
-                    $.notify({
-                        title: "Your trial period has expired. <a target='_blank' href='http://ivero.net/solutions/TravelRequestSystem/index.html' >Buy</a> a full license and enter <a href='Licenses.aspx' >Activation Key </a> "
-                    }, {
-                        style: "error",
-                        globalPosition: "top left",
-                        clickToHide: true,
-                        autoHideDelay: 20000
-                    });
-                }
-            } else {
-                o = true;
-            }
-            return o;
-        };
+        }
+
     return {
         getAllUsers: c,
         getDictionary: d,
-        createRequestForm: b,
-        isValidLicense: f
+        createRequestForm: b
     };
 }();
 $(document).ready(function () {
-    if (RequestFormCreate.isValidLicense() === false) {
-        $("#btnSubmit").attr("disabled", "disabled");
-        $("input, select, textarea").each(function () {
-            var r = $(this);
-            r.prop("disabled", true);
-            r.attr("disabled", "disabled");
-        });
-    }
+    $("#tabs").tabs({
+        event: "mouseover"
+    });
     $("#requestFormCreate").submit(function (q) {
         if ($("#requestFormCreate").valid()) {
             q.preventDefault();
@@ -353,7 +220,8 @@ $(document).ready(function () {
             STRING: {
                 remove: "Delete"
             }
-        })});
+        })
+    });
     var k = RequestFormCreate.getDictionary("DictDepartments");
     var g = $("#ddlDepartment");
     $.each(k, function () {
@@ -381,11 +249,13 @@ $(document).ready(function () {
     var d = new Array();
     var l = RequestFormCreate.getDictionary("DictExpenseCategories");
     $.each(l, function () {
-        d.push(this.Title)});
+        d.push(this.Title)
+    });
     var e = new Array();
     var m = RequestFormCreate.getDictionary("DictPaymentSources");
     $.each(m, function () {
-        e.push(this.Title)});
+        e.push(this.Title)
+    });
     $("#txtTripStartDate").datepicker();
     $("#txtTripEndDate").datepicker();
     $(".chzn-select").chosen({

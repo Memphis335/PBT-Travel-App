@@ -15,5 +15,7 @@
     <File Path="Pages\RequestFormCreate.aspx" Url="Pages/RequestFormCreate.aspx" ReplaceContent="TRUE" />
     <File Path="Pages\Settings.aspx" Url="Pages/Settings.aspx" ReplaceContent="TRUE" />
     <File Path="Pages\ToApproveByMe.aspx" Url="Pages/ToApproveByMe.aspx" ReplaceContent="TRUE" />
+    <File Path="Pages\DictionaryList.aspx" Url="Pages/DictionaryList.aspx" ReplaceContent="TRUE" />
+    <File Path="Pages\UserRolesList.aspx" Url="Pages/UserRolesList.aspx" ReplaceContent="TRUE" />
   </Module>
 </Elements>

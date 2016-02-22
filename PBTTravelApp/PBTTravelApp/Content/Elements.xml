@@ -70,5 +70,9 @@
     <File Path="Content\handsontable\handsontable.full.min.css" Url="Content/handsontable/handsontable.full.min.css" ReplaceContent="TRUE" />
     <File Path="Content\handsontable\handsontable.full.css" Url="Content/handsontable/handsontable.full.css" ReplaceContent="TRUE" />
     <File Path="Content\handsontable\handsontable.css" Url="Content/handsontable/handsontable.css" ReplaceContent="TRUE" />
+    <File Path="Content\validationEngine.jquery.css" Url="Content/validationEngine.jquery.css" ReplaceContent="TRUE" />
+    <File Path="Content\Custom\jtable-Custom.css" Url="Content/Custom/jtable-Custom.css" ReplaceContent="TRUE" />
+    <File Path="Content\bootstrap-responsive.min.css" Url="Content/bootstrap-responsive.min.css" ReplaceContent="TRUE" />
+    <File Path="Content\themes\metro\blue\jquery-ui.css" Url="Content/themes/metro/blue/jquery-ui.css" ReplaceContent="TRUE" />
   </Module>
 </Elements>

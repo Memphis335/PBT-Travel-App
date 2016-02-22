@@ -43,6 +43,115 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-responsive.min.css" />
+    <Content Include="Content\Custom\jtable-Custom.css" />
+    <Content Include="Content\themes\metro\blue\jquery-ui.css" />
+    <Content Include="Content\validationEngine.jquery.css" />
+    <Content Include="Features\Feature2\Feature2.Template.xml">
+      <DependentUpon>Feature2.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\Feature3\Feature3.Template.xml">
+      <DependentUpon>Feature3.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\Feature4\Feature4.Template.xml">
+      <DependentUpon>Feature4.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\Feature5\Feature5.Template.xml">
+      <DependentUpon>Feature5.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\Feature6\Feature6.Template.xml">
+      <DependentUpon>Feature6.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\Feature7\Feature7.Template.xml">
+      <DependentUpon>Feature7.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\Feature8\Feature8.Template.xml">
+      <DependentUpon>Feature8.feature</DependentUpon>
+    </Content>
+    <Content Include="Lists\CustomUserRoles\CustomUserRolesInstance\Elements.xml" />
+    <Content Include="Lists\CustomUserRoles\Elements.xml" />
+    <Content Include="Lists\CustomUserRoles\Schema.xml" />
+    <Content Include="Lists\DictCostCenters\DictCostCentersInstance\Elements.xml" />
+    <Content Include="Lists\DictCostCenters\Elements.xml" />
+    <Content Include="Lists\DictCostCenters\Schema.xml" />
+    <Content Include="Lists\DictDepartments\DictDepartmentsInstance\Elements.xml" />
+    <Content Include="Lists\DictDepartments\Elements.xml" />
+    <Content Include="Lists\DictDepartments\Schema.xml" />
+    <Content Include="Lists\DictExpenseCategories\DictExpenseCategoriesInstance\Elements.xml" />
+    <Content Include="Lists\DictExpenseCategories\Elements.xml" />
+    <Content Include="Lists\DictExpenseCategories\Schema.xml" />
+    <Content Include="Lists\DictPaymentSources\DictPaymentSourcesInstance\Elements.xml" />
+    <Content Include="Lists\DictPaymentSources\Elements.xml" />
+    <Content Include="Lists\DictPaymentSources\Schema.xml" />
+    <Content Include="Lists\DictProjects\DictProjectsInstance\Elements.xml" />
+    <Content Include="Lists\DictProjects\Elements.xml" />
+    <Content Include="Lists\DictProjects\Schema.xml" />
+    <Content Include="Lists\Settings\Elements.xml" />
+    <Content Include="Lists\Settings\Schema.xml" />
+    <Content Include="Lists\Settings\SettingsInstance\Elements.xml" />
+    <None Include="Features\Feature2\Feature2.feature">
+      <FeatureId>{86006914-363c-4a68-b34c-6833cd335d5c}</FeatureId>
+    </None>
+    <None Include="Features\Feature3\Feature3.feature">
+      <FeatureId>{fe2cf3cc-ec9e-463c-8c97-55d4d2a8a1d4}</FeatureId>
+    </None>
+    <None Include="Features\Feature4\Feature4.feature">
+      <FeatureId>{822eb185-8e64-42c6-aa22-5d211cd44f3b}</FeatureId>
+    </None>
+    <None Include="Features\Feature5\Feature5.feature">
+      <FeatureId>{58f32c98-6630-44cc-88d8-4a51957ced3d}</FeatureId>
+    </None>
+    <None Include="Features\Feature6\Feature6.feature">
+      <FeatureId>{e7a13f30-e78a-4610-95e1-834908dceb81}</FeatureId>
+    </None>
+    <None Include="Features\Feature7\Feature7.feature">
+      <FeatureId>{da42155e-68f4-41fe-b5a7-eeea57e49f3a}</FeatureId>
+    </None>
+    <None Include="Features\Feature8\Feature8.feature">
+      <FeatureId>{b138638b-be29-48fe-b425-ed1ca48734d1}</FeatureId>
+    </None>
+    <None Include="Lists\CustomUserRoles\CustomUserRolesInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{fa7bcd7f-051d-4fb6-9ed0-1f78a243f6e1}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\CustomUserRoles\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{9fc8b451-b067-4514-8e24-eb91ae0670f6}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\DictCostCenters\DictCostCentersInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{28218f09-875b-4d8d-bf4a-0dc6bff6db5f}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\DictCostCenters\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{bacc4927-5627-473a-b3ff-4ba56858ee9a}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\DictDepartments\DictDepartmentsInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{95ef8712-a542-47a2-8568-d8fc5c921e68}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\DictDepartments\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{09eb60c8-e14b-4f16-9df8-512fbfea788b}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\DictExpenseCategories\DictExpenseCategoriesInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{d5a41b07-92eb-4249-8bc0-e70713d116e7}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\DictExpenseCategories\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{91d67cd3-432a-45f8-a8cf-16a3ad0f0435}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\DictPaymentSources\DictPaymentSourcesInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{d27a8c0f-358c-4a84-a41f-a3ff2c721a07}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\DictPaymentSources\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{d2d2e16e-0848-48b5-b8e3-369f2c8e9cb2}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\DictProjects\DictProjectsInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{8651b4e5-ac30-4f64-853d-08855e381386}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\DictProjects\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{9fdb59b5-419c-4d1f-b863-219e7c20ad1f}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\TravelRequests\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{eaf8320c-5d07-422f-b1c1-ad3f059ae9db}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\TravelRequests\TravelRequestsInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{26a3c836-618d-40d6-9efc-7429ca2ad3a1}</SharePointProjectItemId>
+    </None>
     <None Include="Master Page\travel.master" />
     <None Include="packages.config" />
     <None Include="Pages\SharePointProjectItem.spdata">
@@ -113,6 +222,10 @@
     <Content Include="Images\tile-approve.png" />
     <Content Include="Images\tile-learn.png" />
     <Content Include="Images\view.png" />
+    <Content Include="Lists\TravelRequests\Elements.xml" />
+    <Content Include="Lists\TravelRequests\Schema.xml" />
+    <Content Include="Lists\TravelRequests\TravelRequestsInstance\Elements.xml" />
+    <Content Include="Pages\DictionaryList.aspx" />
     <Content Include="Pages\Elements.xml" />
     <Content Include="Pages\Default.aspx" />
     <None Include="Scripts\jquery-2.2.0.min.map" />
@@ -127,6 +240,12 @@
     <None Include="Scripts\jtable\themes\lightcolor\red\jtable.less" />
     <None Include="Content\themes\metro\blue\jtable.less" />
     <None Include="Content\themes\metro\jtable_metro_base.less" />
+    <None Include="Lists\Settings\SettingsInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{fdec1b0a-df8a-482f-a704-bd82d1d5b5ea}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\Settings\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{1d657a0b-969a-4860-86bd-cbeeebd93d1c}</SharePointProjectItemId>
+    </None>
     <None Include="SharePointProjectItem.spdata">
       <SharePointProjectItemId>{6a7e6028-878d-4f7b-8273-1362b049308d}</SharePointProjectItemId>
     </None>
@@ -148,15 +267,17 @@
     <Content Include="Pages\RequestFormCreate.aspx" />
     <Content Include="Pages\Settings.aspx" />
     <Content Include="Pages\ToApproveByMe.aspx" />
-    <Content Include="Scripts\AppInit.js" />
+    <Content Include="Pages\UserRolesList.aspx" />
+    <Content Include="Scripts\Custom\AppInit.js" />
     <Content Include="Scripts\bootstrap-timepicker.min.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\chosen.jquery.min.js" />
-    <Content Include="Scripts\Common.js" />
-    <Content Include="Scripts\Default.js" />
+    <Content Include="Scripts\Custom\Common.js" />
+    <Content Include="Scripts\Custom\Default.js" />
+    <Content Include="Scripts\Custom\Dictionaries.js" />
+    <Content Include="Scripts\Custom\ToApproveByMe.js" />
     <Content Include="Scripts\elements.js" />
     <Content Include="Scripts\Elements.xml" />
-    <Content Include="Scripts\App.js" />
     <Content Include="Scripts\handsontable\handsontable.full.js" />
     <Content Include="Scripts\handsontable\handsontable.full.min.js" />
     <Content Include="Scripts\handsontable\handsontable.js" />
@@ -174,6 +295,8 @@
     <Content Include="Scripts\jquery.MultiFile.min.js" />
     <Content Include="Scripts\jquery.tagsinput.min.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validationEngine-en.js" />
+    <Content Include="Scripts\jquery.validationEngine.js" />
     <Content Include="Scripts\jtable\extensions\jquery.jtable.aspnetpagemethods.js" />
     <Content Include="Scripts\jtable\extensions\jquery.jtable.aspnetpagemethods.min.js" />
     <Content Include="Scripts\jtable\external\json2.js" />
@@ -257,20 +380,22 @@
     <Content Include="Content\themes\metro\edit.png" />
     <Content Include="Content\themes\metro\jtable_metro_base.css" />
     <Content Include="Content\themes\metro\jtable_metro_base.min.css" />
-    <Content Include="Scripts\LicenseInit.js" />
+    <Content Include="Scripts\Custom\LicenseInit.js" />
     <Content Include="Scripts\modernizr.min.js" />
     <Content Include="Scripts\moment.min.js" />
-    <Content Include="Scripts\MyRequests.js" />
-    <Content Include="Scripts\MySettlements.js" />
+    <Content Include="Scripts\Custom\MyRequests.js" />
+    <Content Include="Scripts\Custom\MySettlements.js" />
     <Content Include="Scripts\notify.min.js" />
     <Content Include="Scripts\numeral.js" />
     <Content Include="Scripts\prettify.js" />
-    <Content Include="Scripts\ReportsRequests.js" />
-    <Content Include="Scripts\ReportsRequestsCosts.js" />
-    <Content Include="Scripts\ReportsSettlements.js" />
-    <Content Include="Scripts\ReportsSettlementsCosts.js" />
-    <Content Include="Scripts\RequestFormCreate.js" />
+    <Content Include="Scripts\Custom\ReportsRequests.js" />
+    <Content Include="Scripts\Custom\ReportsRequestsCosts.js" />
+    <Content Include="Scripts\Custom\ReportsSettlements.js" />
+    <Content Include="Scripts\Custom\ReportsSettlementsCosts.js" />
+    <Content Include="Scripts\Custom\RequestFormCreate.js" />
+    <Content Include="Scripts\Custom\Settings.js" />
     <Content Include="Scripts\underscore-min.js" />
+    <Content Include="Scripts\Custom\UserRoles.js" />
     <Content Include="Scripts\_references.js" />
   </ItemGroup>
   <ItemGroup>

@@ -71,5 +71,9 @@
     <ProjectItemFile Source="handsontable\handsontable.full.min.css" Target="Content\handsontable\" Type="ElementFile" />
     <ProjectItemFile Source="handsontable\handsontable.full.css" Target="Content\handsontable\" Type="ElementFile" />
     <ProjectItemFile Source="handsontable\handsontable.css" Target="Content\handsontable\" Type="ElementFile" />
+    <ProjectItemFile Source="validationEngine.jquery.css" Target="Content\" Type="ElementFile" />
+    <ProjectItemFile Source="Custom\jtable-Custom.css" Target="Content\Custom\" Type="ElementFile" />
+    <ProjectItemFile Source="bootstrap-responsive.min.css" Target="Content\" Type="ElementFile" />
+    <ProjectItemFile Source="themes\metro\blue\jquery-ui.css" Target="Content\themes\metro\blue\" Type="ElementFile" />
   </Files>
 </ProjectItem>

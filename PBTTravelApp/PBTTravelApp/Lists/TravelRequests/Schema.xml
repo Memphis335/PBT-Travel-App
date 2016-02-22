@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<List xmlns:ows="Microsoft SharePoint" Title="TravelRequests" FolderCreation="FALSE" Direction="$Resources:Direction;" Url="Lists/TravelRequests" BaseType="0" xmlns="http://schemas.microsoft.com/sharepoint/">
+  <MetaData>
+    <ContentTypes>
+      
+      
+    <ContentType ID="0x0100306643106c574d66a81565b8a572079f" Name="ListFieldsContentType"><FieldRefs><FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Name="Title" /><FieldRef ID="{d02113af-7e7c-4d35-9da7-cbd589e7c747}" Name="EmployeeID" /><FieldRef ID="{0f8779b6-601f-4ba5-849a-2c1eef0fd919}" Name="PhoneNumber" /><FieldRef ID="{564090f3-79bb-4551-a5f3-f904b9e07abf}" Name="Project" /><FieldRef ID="{6dc9bb5a-e069-42d5-8c7b-afa4db198983}" Name="CostCenter" /><FieldRef ID="{386a38e6-7a2a-46eb-8177-c54a1085ce29}" Name="RequestStatus" /><FieldRef ID="{8cad7d4b-f652-4d50-85e1-14c1c5525c3f}" Name="RequestApprover" /><FieldRef ID="{79b3e14d-e4d4-4818-aefd-ce6c7ff0374b}" Name="RequestApproveDate" /><FieldRef ID="{81a68464-4ff8-4eeb-b6c5-d85527816870}" Name="TripStartDate" /><FieldRef ID="{5482ae14-e19a-4f00-96dc-3d8b39c8d0a6}" Name="TripEndDate" /><FieldRef ID="{17e8e2e6-04da-48b8-a9b2-7d25a690e23f}" Name="TripPurpose" /><FieldRef ID="{0002b4c7-9d97-473a-8f8f-e01fb9082c5c}" Name="Notices" /><FieldRef ID="{49e22a4b-27da-46fd-bb48-71b2ff85c27e}" Name="DestinationsJSON" /><FieldRef ID="{30592ac8-c5b6-41f5-9b40-ba382a1cc424}" Name="TravelExpensesJSON" /><FieldRef ID="{f43afa2c-a185-4274-90de-e7c237505565}" Name="IsSettlement" /><FieldRef ID="{19f9536d-cb87-4058-8540-08ac255e1e1b}" Name="SettlementRejectReason" /><FieldRef ID="{afd97985-e219-4df2-9645-1e3aa857ea93}" Name="SettlementApprover" /><FieldRef ID="{6d400ac7-fefb-4e96-9a18-dd6942371aa8}" Name="SettlementApproveDate" /><FieldRef ID="{39729cfe-18cc-4532-93a5-7751ec49992c}" Name="RequestTotalCost" /><FieldRef ID="{cdbf9205-5641-4c9a-8172-9f6db830cf81}" Name="SettlementTotalCost" /><FieldRef ID="{d6273f1e-07d4-43ac-8da3-9b9cea14f9a1}" Name="SettlementStatus" /><FieldRef ID="{f744c420-9e4c-4c49-be3f-8cb04fc39d71}" Name="SettlementDestinationsJSON" /><FieldRef ID="{0deb71cc-f797-4e61-9215-dd053513e515}" Name="SettlementTravelExpensesJSON" /><FieldRef ID="{78821ff5-4398-4d33-9c04-97a15d156291}" Name="SettlementNotices" /><FieldRef ID="{43667c7d-7c57-414c-9ffe-d84b99875b43}" Name="ReimbursementAmount" /><FieldRef ID="{df1d9630-7e9b-4aa2-994d-2302a4c1d081}" Name="SettlementCreateDate" /><FieldRef ID="{18b24121-6b25-4dcb-b7a6-221f45050e73}" Name="RequestRejectReason" /><FieldRef ID="{92e76c07-fc51-4359-8904-089184f01c14}" Name="Email" /><FieldRef ID="{d09615d7-e916-4719-b879-7ad81ecd5e5d}" Name="Department1" /><FieldRef ID="{79a78424-8d2d-40d7-93ba-5afde7557106}" Name="RequestApproveLinkURL" /><FieldRef ID="{279754ed-f872-45fc-b91c-855ccc3e8953}" Name="SettlementApproveLinkURL" /><FieldRef ID="{27894e4a-5dbf-442f-ba65-d0a9cc3f40cd}" Name="IsRequestApproveEmailSent" /><FieldRef ID="{df397758-f32b-404d-953d-ca0991c6de03}" Name="IsSettlementApproveEmailSent" /></FieldRefs></ContentType><ContentTypeRef ID="0x01">
+        <Folder TargetName="Item" />
+      </ContentTypeRef><ContentTypeRef ID="0x0120" /></ContentTypes>
+    <Fields>
+      
+    <Field ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Type="Text" Name="Title" DisplayName="RequesterName" Required="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="Title" MaxLength="255" /><Field Name="EmployeeID" ID="{d02113af-7e7c-4d35-9da7-cbd589e7c747}" DisplayName="EmployeeID" Type="Text" /><Field Name="PhoneNumber" ID="{0f8779b6-601f-4ba5-849a-2c1eef0fd919}" DisplayName="PhoneNumber" Type="Text" /><Field Name="Project" ID="{564090f3-79bb-4551-a5f3-f904b9e07abf}" DisplayName="Project" Type="Text" /><Field Name="CostCenter" ID="{6dc9bb5a-e069-42d5-8c7b-afa4db198983}" DisplayName="CostCenter" Type="Text" /><Field Name="RequestStatus" ID="{386a38e6-7a2a-46eb-8177-c54a1085ce29}" DisplayName="RequestStatus" Type="Text" /><Field Name="RequestApprover" ID="{8cad7d4b-f652-4d50-85e1-14c1c5525c3f}" DisplayName="RequestApprover" Type="Text" /><Field Name="RequestApproveDate" ID="{79b3e14d-e4d4-4818-aefd-ce6c7ff0374b}" DisplayName="RequestApproveDate" Type="DateTime" /><Field Name="TripStartDate" ID="{81a68464-4ff8-4eeb-b6c5-d85527816870}" DisplayName="TripStartDate" Type="DateTime" /><Field Name="TripEndDate" ID="{5482ae14-e19a-4f00-96dc-3d8b39c8d0a6}" DisplayName="TripEndDate" Type="DateTime" /><Field Name="TripPurpose" ID="{17e8e2e6-04da-48b8-a9b2-7d25a690e23f}" DisplayName="TripPurpose" Type="Text" /><Field Name="Notices" ID="{0002b4c7-9d97-473a-8f8f-e01fb9082c5c}" DisplayName="Notices" Type="Text" /><Field Name="DestinationsJSON" ID="{49e22a4b-27da-46fd-bb48-71b2ff85c27e}" DisplayName="DestinationsJSON" Type="Note" /><Field Name="TravelExpensesJSON" ID="{30592ac8-c5b6-41f5-9b40-ba382a1cc424}" DisplayName="TravelExpensesJSON" Type="Note" /><Field Name="IsSettlement" ID="{f43afa2c-a185-4274-90de-e7c237505565}" DisplayName="IsSettlement" Type="Boolean" /><Field Name="SettlementRejectReason" ID="{19f9536d-cb87-4058-8540-08ac255e1e1b}" DisplayName="SettlementRejectReason" Type="Text" /><Field Name="SettlementApprover" ID="{afd97985-e219-4df2-9645-1e3aa857ea93}" DisplayName="SettlementApprover" Type="User" List="UserInfo" /><Field Name="SettlementApproveDate" ID="{6d400ac7-fefb-4e96-9a18-dd6942371aa8}" DisplayName="SettlementApproveDate" Type="DateTime" /><Field Name="RequestTotalCost" ID="{39729cfe-18cc-4532-93a5-7751ec49992c}" DisplayName="RequestTotalCost" Type="Text" /><Field Name="SettlementTotalCost" ID="{cdbf9205-5641-4c9a-8172-9f6db830cf81}" DisplayName="SettlementTotalCost" Type="Text" /><Field Name="SettlementStatus" ID="{d6273f1e-07d4-43ac-8da3-9b9cea14f9a1}" DisplayName="SettlementStatus" Type="Text" /><Field Name="SettlementDestinationsJSON" ID="{f744c420-9e4c-4c49-be3f-8cb04fc39d71}" DisplayName="SettlementDestinationsJSON" Type="Note" /><Field Name="SettlementTravelExpensesJSON" ID="{0deb71cc-f797-4e61-9215-dd053513e515}" DisplayName="SettlementTravelExpensesJSON" Type="Note" /><Field Name="SettlementNotices" ID="{78821ff5-4398-4d33-9c04-97a15d156291}" DisplayName="SettlementNotices" Type="Note" /><Field Name="ReimbursementAmount" ID="{43667c7d-7c57-414c-9ffe-d84b99875b43}" DisplayName="ReimbursementAmount" Type="Text" /><Field Name="SettlementCreateDate" ID="{df1d9630-7e9b-4aa2-994d-2302a4c1d081}" DisplayName="SettlementCreateDate" Type="DateTime" /><Field Name="RequestRejectReason" ID="{18b24121-6b25-4dcb-b7a6-221f45050e73}" DisplayName="RequestRejectReason" Type="Note" /><Field Name="Email" ID="{92e76c07-fc51-4359-8904-089184f01c14}" DisplayName="Email" Type="Text" /><Field Name="Department1" ID="{d09615d7-e916-4719-b879-7ad81ecd5e5d}" DisplayName="Department" Type="Text" /><Field Name="RequestApproveLinkURL" ID="{79a78424-8d2d-40d7-93ba-5afde7557106}" DisplayName="RequestApproveLinkURL" Type="Note" /><Field Name="SettlementApproveLinkURL" ID="{279754ed-f872-45fc-b91c-855ccc3e8953}" DisplayName="SettlementApproveLinkURL" Type="Note" /><Field Name="IsRequestApproveEmailSent" ID="{27894e4a-5dbf-442f-ba65-d0a9cc3f40cd}" DisplayName="IsRequestApproveEmailSent" Type="Boolean" /><Field Name="IsSettlementApproveEmailSent" ID="{df397758-f32b-404d-953d-ca0991c6de03}" DisplayName="IsSettlementApproveEmailSent" Type="Boolean" /></Fields>
+    <Views>
+      
+      
+    <View BaseViewID="0" Type="HTML" MobileView="TRUE" TabularView="FALSE">
+        <Toolbar Type="Standard" />
+        <XslLink Default="TRUE">main.xsl</XslLink>
+        <RowLimit Paged="TRUE">30</RowLimit>
+        <ViewFields>
+          
+        <FieldRef Name="LinkTitleNoMenu"></FieldRef></ViewFields>
+        <Query>
+          <OrderBy>
+            
+          <FieldRef Name="Modified" Ascending="FALSE"></FieldRef></OrderBy>
+        </Query>
+        <ParameterBindings>
+          <ParameterBinding Name="AddNewAnnouncement" Location="Resource(wss,addnewitem)" />
+          <ParameterBinding Name="NoAnnouncements" Location="Resource(wss,noXinviewofY_LIST)" />
+          <ParameterBinding Name="NoAnnouncementsHowTo" Location="Resource(wss,noXinviewofY_ONET_HOME)" />
+        </ParameterBindings>
+      </View><View BaseViewID="1" Type="HTML" WebPartZoneID="Main" DisplayName="$Resources:core,objectiv_schema_mwsidcamlidC24;" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" SetupPath="pages\viewpage.aspx" ImageUrl="/_layouts/15/images/generic.png?rev=23" Url="AllItems.aspx">
+        <Toolbar Type="Standard" />
+        <XslLink Default="TRUE">main.xsl</XslLink>
+        <JSLink>clienttemplates.js</JSLink>
+        <RowLimit Paged="TRUE">30</RowLimit>
+        <ViewFields>
+          
+        <FieldRef Name="LinkTitle"></FieldRef><FieldRef Name="EmployeeID" /><FieldRef Name="PhoneNumber" /><FieldRef Name="Project" /><FieldRef Name="CostCenter" /><FieldRef Name="RequestStatus" /><FieldRef Name="RequestApprover" /><FieldRef Name="RequestApproveDate" /><FieldRef Name="TripStartDate" /><FieldRef Name="TripEndDate" /><FieldRef Name="TripPurpose" /><FieldRef Name="Notices" /><FieldRef Name="DestinationsJSON" /><FieldRef Name="TravelExpensesJSON" /><FieldRef Name="IsSettlement" /><FieldRef Name="SettlementRejectReason" /><FieldRef Name="SettlementApprover" /><FieldRef Name="SettlementApproveDate" /><FieldRef Name="RequestTotalCost" /><FieldRef Name="SettlementTotalCost" /><FieldRef Name="SettlementStatus" /><FieldRef Name="SettlementDestinationsJSON" /><FieldRef Name="SettlementTravelExpensesJSON" /><FieldRef Name="SettlementNotices" /><FieldRef Name="ReimbursementAmount" /><FieldRef Name="SettlementCreateDate" /><FieldRef Name="RequestRejectReason" /><FieldRef Name="Email" /><FieldRef Name="Department1" /><FieldRef Name="RequestApproveLinkURL" /><FieldRef Name="SettlementApproveLinkURL" /><FieldRef Name="IsRequestApproveEmailSent" /><FieldRef Name="IsSettlementApproveEmailSent" /></ViewFields>
+        <Query>
+          <OrderBy>
+            
+          <FieldRef Name="ID"></FieldRef></OrderBy>
+        </Query>
+        <ParameterBindings>
+          <ParameterBinding Name="NoAnnouncements" Location="Resource(wss,noXinviewofY_LIST)" />
+          <ParameterBinding Name="NoAnnouncementsHowTo" Location="Resource(wss,noXinviewofY_DEFAULT)" />
+        </ParameterBindings>
+      </View></Views>
+    <Forms>
+      <Form Type="DisplayForm" Url="DispForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+      <Form Type="EditForm" Url="EditForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+      <Form Type="NewForm" Url="NewForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+    </Forms>
+  </MetaData>
+</List>

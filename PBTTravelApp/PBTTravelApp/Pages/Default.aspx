@@ -4,10 +4,14 @@
 
 <%-- The markup and script in the following Content element will be placed in the <head> of the page --%>
 <asp:Content ContentPlaceHolderID="divHeader" runat="server">
+    <script src="../Scripts/Custom/AppInit.js"></script>
+    <script src="../Scripts/Custom/Default.js"></script>
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="mainContent" runat="server">
-
+    <div id="topHeader" class="topHeader">
+            <h1>PBT Travel </h1>
+        </div>
     <!--Main Content-->
     <div id="mainContainer" style="clear: both;">
         <div id="getStarted" style="margin-top: 20px;">
