@@ -7,12 +7,17 @@
     <link href="../Content/jquery.chosen.css" rel="stylesheet" />
     <link href="../Content/jquery.tagsinput.css" rel="stylesheet" />
     <link href="../Content/fullcalendar.css" rel="stylesheet" />
-    
+
     <script src="../Scripts/jquery.validate.min.js"></script>
     <script src="../Scripts/jquery.tagsinput.min.js"></script>
     <script src="../Scripts/jquery.autogrow-textarea.js"></script>
     <script src="../Scripts/chosen.jquery.min.js"></script>
     <script src="../Scripts/jquery.cookie.js"></script>
+
+    <script src="../Scripts/jquery.validationEngine.js"></script>
+    <script src="../Scripts/jquery.validationEngine-en.js"></script>
+    <script src="../Scripts/jquery.validate.min.js"></script>
+
     <script src="../Scripts/Custom/Dictionaries.js"></script>
 </asp:Content>
 

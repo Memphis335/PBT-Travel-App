@@ -1,6 +1,6 @@
 ﻿"use strict";
 $.support.cors = true;
-var commonDateFormat = "yy-mm-dd";
+var commonDateFormat = "dd-mm-yy";
 var commonDateFormat2 = "YYYY-MM-DD";
 var commonDateFormatWithHour = "YYYY-MM-DD HH:mm";
 var sharepointDateFormat = "YYYY-MM-DDTHH:mm:ssZZ";
@@ -40,7 +40,7 @@ function getQueryStringParameter(c) {
     for (var a = 0; a < e.length; a++) {
         var d = e[a].split("=");
         if (d[0] == c) {
-            return d[1]
+            return d[1];
         }
     }
 }
@@ -51,7 +51,7 @@ function addMessage(a, b) {
         className: b + " notifyjsCustom",
         clickToHide: true,
         autoHideDelay: 10000
-    })
+    });
 }
 String.prototype.StripTags = function () {
     return this.replace(/<[^>]+>/ig, "").replace("null", "");
@@ -100,7 +100,7 @@ function openPopupWindow(e, j, i, h, d) {
     var b = parseInt(((window.screen.availHeight - h) / 2) - 50);
     var c = " ,status=no, location=no, scrollbars=yes, resizable=no";
     var g = "width=" + i + ",height=" + h + ",left=" + a + ",top=" + b + c;
-    var f = window.open(e, "travelrequestsystem", g);
+    var f = window.open(e, "pbttravelapp", g);
     f.focus();
     return f;
 }
@@ -138,7 +138,7 @@ $(document).ready(function () {
             CurrentUser.LoginName = a.d.LoginName;
             $.ajax({
                 url: appweburl +
-                    "/_vti_bin/ListData.svc/CustomUserRoles/?$filter=RoleName eq 'Admin' and UserId eq " +
+                    "/_vti_bin/ListData.svc/CustomUserRoles/?$filter=Title eq 'Admin' and UserId eq " +
                     CurrentUser.Id,
                 type: "GET",
                 async: false,
@@ -151,7 +151,7 @@ $(document).ready(function () {
                     if (b.d.results.length > 0) {
                         CurrentUser.IsAdmin =
                             true;
-                    }
+                }
                 }
             });
         },
@@ -189,7 +189,7 @@ $(document).ready(function () {
             SystemSettings.AppInitExecuted = "";
         }
     });
-    $("#userWelcomeMsg").text("Welcome " + CurrentUser.Name);
     $("#containerLeft").loadTemplate("../Pages/menu.html");
+    $("#userWelcomeMsg").text("Welcome " + CurrentUser.Name);
     $("#previousSiteUrl").prop("href", hostweburl);
 });

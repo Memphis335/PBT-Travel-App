@@ -163,8 +163,9 @@ UserRoles = function () {
     };
 }();
 $(document).ready(function () {
-    if (CurrentUser.IsAdmin != false) {
-        location.href = "AccessDenied.aspx";
+    if (CurrentUser.IsAdmin == false) {
+        alert("Access Error!");
+        //location.href = "AccessDenied.aspx";
         return;
     }
     $("#Administrators").jtable({

@@ -13,13 +13,13 @@
     <script src="../Scripts/chosen.jquery.min.js"></script>
 </asp:Content>
 
-<asp:content contentplaceholderid="mainContent" runat="server">
+<asp:Content ContentPlaceHolderID="mainContent" runat="server">
     <div id="containerRight" class="containerRight">
         <div id="topHeader" class="topHeader">
             <h1>Settings </h1>
         </div>
 
-        <div id="mainContainer" style="clear:both;">
+        <div id="mainContainer" style="clear: both;">
 
             <div style="width: 500px; margin-top: 15px">
                 <div class="jtableContainer" id="Settings"></div>
@@ -27,4 +27,4 @@
 
         </div>
     </div>
-</asp:content>
+</asp:Content>

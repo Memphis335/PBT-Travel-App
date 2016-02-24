@@ -109,15 +109,9 @@ $(function () {
                 width: "1%",
                 display: function (a) {
                     if (a.record.IsSettlement == true) {
-                        return
-                        "<button title='View' onclick='location.href=\"SettlementFormView.aspx?requestID=" +
-                        a.record.Id +
-                        "\"' class='jtable-command-button jtable-view-command-button'><span>View</span></button>"
+                        return "<button title='View' onclick='location.href=\"SettlementFormView.aspx?requestID=" + a.record.Id + "\"' class='jtable-command-button jtable-view-command-button'><span>View</span></button>"
                     } else {
-                        return
-                        "<button title='View' onclick='location.href=\"RequestFormView.aspx?requestID=" +
-                        a.record.Id +
-                        "\"' class='jtable-command-button jtable-view-command-button'><span>View</span></button>"
+                        return "<button title='View' onclick='location.href=\"RequestFormView.aspx?requestID=" + a.record.Id + "\"' class='jtable-command-button jtable-view-command-button'><span>View</span></button>"
                     }
                 }
             }

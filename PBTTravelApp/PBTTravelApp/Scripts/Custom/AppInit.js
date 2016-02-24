@@ -12,11 +12,11 @@ AppInit = function () {
                     Accept: "application/json; odata=verbose"
                 },
                 cache: false,
-                success: function(f) {
+                success: function (f) {
                     formDigestValue = f.d.GetContextWebInformation
                         .FormDigestValue;
                 },
-                error: function(f, g, h) {
+                error: function (f, g, h) {
                     alert(h);
                 }
             });
@@ -28,7 +28,7 @@ AppInit = function () {
             $.ajax({
                 url: appweburl +
                     "/_api/Web/lists/getbytitle('CustomUserRoles')/items",
-                contentType: "application/json;" + " odata=verbose",
+                contentType: "application/json;odata=verbose",
                 async: false,
                 type: "POST",
                 data: JSON.stringify({
@@ -87,7 +87,7 @@ AppInit = function () {
                     "x-requestforceauthentication": true,
                     "X-RequestDigest": f
                 }
-            })
+            });
         },
         a = function () {
             var f = e();
@@ -139,15 +139,15 @@ AppInit = function () {
         createDictionaryEntry: b,
         createRoleItemEntry: c,
         assignRoles: a
-    }
+    };
 }();
 $(document).ready(function () {
     if (SystemSettings.AppInitExecuted == "false") {
         AppInit.assignRoles();
         AppInit.createRoleItemEntry(CurrentUser.Id);
-        AppInit.createDictionaryEntry("DictProjects", "Sample Project");
+        AppInit.createDictionaryEntry("DictProjects", "MTN BIB");
         AppInit.createDictionaryEntry("DictDepartments",
-            "Sample Department");
+            "BIB");
         AppInit.createDictionaryEntry("DictCostCenters",
             "Sample Cost Center");
         AppInit.createDictionaryEntry("DictPaymentSources", "Cash");
@@ -165,9 +165,9 @@ $(document).ready(function () {
         AppInit.createSettingsEntry("AppInitExecuted",
             "AppInitExecuted", "true", "true");
         AppInit.createSettingsEntry("Default currency name",
-            "DefaultCurrencyName", "USD", "false");
+            "DefaultCurrencyName", "ZAR", "false");
         AppInit.createSettingsEntry("Organization Name",
-            "OrganizationName", "Sample organization name", "false"
+            "OrganizationName", "PBT Group", "false"
         );
     }
 });

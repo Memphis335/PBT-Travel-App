@@ -2,52 +2,71 @@
 <List xmlns:ows="Microsoft SharePoint" Title="CustomUserRoles" FolderCreation="FALSE" Direction="$Resources:Direction;" Url="Lists/CustomUserRoles" BaseType="0" xmlns="http://schemas.microsoft.com/sharepoint/">
   <MetaData>
     <ContentTypes>
-      
-      
-    <ContentType ID="0x01007d4b18926754453cb6d89e91bd0f9e43" Name="ListFieldsContentType"><FieldRefs><FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Name="Title" /><FieldRef ID="{e331b239-c625-4184-a6a8-8905a6f4b578}" Name="User1" /></FieldRefs></ContentType><ContentTypeRef ID="0x01">
+      <ContentType ID="0x0100eb3b595d94fe4c04bf917758c9497c80" Name="ListFieldsContentType">
+        <FieldRefs>
+          <FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Name="Title" />
+          <FieldRef ID="{70e986a3-c8cf-4ab2-88ad-729d4693d3ed}" Name="User" />
+        </FieldRefs>
+      </ContentType>
+      <ContentTypeRef ID="0x01">
         <Folder TargetName="Item" />
-      </ContentTypeRef><ContentTypeRef ID="0x0120" /></ContentTypes>
+      </ContentTypeRef>
+      <ContentTypeRef ID="0x0120" />
+    </ContentTypes>
     <Fields>
-      
-    <Field ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Type="Text" Name="Title" DisplayName="$Resources:core,Title;" Required="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="Title" MaxLength="255" /><Field Name="User1" ID="{e331b239-c625-4184-a6a8-8905a6f4b578}" DisplayName="User" Type="User" List="UserInfo" /></Fields>
+      <Field ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Type="Text" Name="RoleName" DisplayName="$Resources:core,Title;" Required="FALSE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="Title" MaxLength="255" />
+      <Field Name="User" ID="{70e986a3-c8cf-4ab2-88ad-729d4693d3ed}" DisplayName="User" Type="User" List="UserInfo" />
+    </Fields>
     <Views>
-      
-      
-    <View BaseViewID="0" Type="HTML" MobileView="TRUE" TabularView="FALSE">
+      <View BaseViewID="0" Type="HTML" MobileView="TRUE" TabularView="FALSE">
         <Toolbar Type="Standard" />
         <XslLink Default="TRUE">main.xsl</XslLink>
         <RowLimit Paged="TRUE">30</RowLimit>
         <ViewFields>
-          
-        <FieldRef Name="LinkTitleNoMenu"></FieldRef></ViewFields>
+          <FieldRef Name="LinkTitleNoMenu"></FieldRef>
+        </ViewFields>
         <Query>
           <OrderBy>
-            
-          <FieldRef Name="Modified" Ascending="FALSE"></FieldRef></OrderBy>
+
+            <FieldRef Name="Modified" Ascending="FALSE"></FieldRef>
+          </OrderBy>
         </Query>
         <ParameterBindings>
           <ParameterBinding Name="AddNewAnnouncement" Location="Resource(wss,addnewitem)" />
           <ParameterBinding Name="NoAnnouncements" Location="Resource(wss,noXinviewofY_LIST)" />
           <ParameterBinding Name="NoAnnouncementsHowTo" Location="Resource(wss,noXinviewofY_ONET_HOME)" />
         </ParameterBindings>
-      </View><View BaseViewID="1" Type="HTML" WebPartZoneID="Main" DisplayName="$Resources:core,objectiv_schema_mwsidcamlidC24;" DefaultView="FALSE" MobileView="TRUE" MobileDefaultView="TRUE" SetupPath="pages\viewpage.aspx" ImageUrl="/_layouts/15/images/generic.png?rev=23" Url="AllItems.aspx">
+      </View>
+      <View BaseViewID="1" Type="HTML" WebPartZoneID="Main" DisplayName="$Resources:core,objectiv_schema_mwsidcamlidC24;" DefaultView="FALSE" MobileView="TRUE" MobileDefaultView="TRUE" SetupPath="pages\viewpage.aspx" ImageUrl="/_layouts/15/images/generic.png?rev=23" Url="AllItems.aspx">
         <Toolbar Type="Standard" />
         <XslLink Default="TRUE">main.xsl</XslLink>
         <JSLink>clienttemplates.js</JSLink>
         <RowLimit Paged="TRUE">30</RowLimit>
         <ViewFields>
-          
-        <FieldRef Name="LinkTitle"></FieldRef><FieldRef Name="User1" /></ViewFields>
+          <FieldRef Name="LinkTitle"></FieldRef>
+          <FieldRef Name="User" />
+        </ViewFields>
         <Query>
           <OrderBy>
-            
-          <FieldRef Name="ID"></FieldRef></OrderBy>
+            <FieldRef Name="ID"></FieldRef>
+          </OrderBy>
         </Query>
         <ParameterBindings>
           <ParameterBinding Name="NoAnnouncements" Location="Resource(wss,noXinviewofY_LIST)" />
           <ParameterBinding Name="NoAnnouncementsHowTo" Location="Resource(wss,noXinviewofY_DEFAULT)" />
         </ParameterBindings>
-      </View><View BaseViewID="2" Name="7c8e96d0-9e64-4c91-8911-f1efc458a2dc" DisplayName="AllItems123" Type="HTML" ReadOnly="TRUE" WebPartZoneID="Main" SetupPath="pages\viewpage.aspx" Url="AllItems123.aspx" DefaultView="TRUE"><ViewFields><FieldRef Name="LinkTitle" /><FieldRef Name="User1" /></ViewFields><Query /><Toolbar Type="Standard" /><XslLink Default="TRUE">main.xsl</XslLink><JSLink>clienttemplates.js</JSLink></View></Views>
+      </View>
+      <View BaseViewID="2" Name="8712b1fc-dde3-4a47-aed7-fcad1c09606c" DisplayName="AllItems123" Type="HTML" WebPartZoneID="Main" SetupPath="pages\viewpage.aspx" Url="AllItems123.aspx" DefaultView="TRUE">
+        <ViewFields>
+          <FieldRef Name="LinkTitle" />
+          <FieldRef Name="User" />
+        </ViewFields>
+        <Query />
+        <Toolbar Type="Standard" />
+        <XslLink Default="TRUE">main.xsl</XslLink>
+        <JSLink>clienttemplates.js</JSLink>
+      </View>
+    </Views>
     <Forms>
       <Form Type="DisplayForm" Url="DispForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
       <Form Type="EditForm" Url="EditForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />

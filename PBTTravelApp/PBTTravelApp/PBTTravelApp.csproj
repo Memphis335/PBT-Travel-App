@@ -68,6 +68,9 @@
     <Content Include="Features\Feature8\Feature8.Template.xml">
       <DependentUpon>Feature8.feature</DependentUpon>
     </Content>
+    <Content Include="Features\Feature9\Feature9.Template.xml">
+      <DependentUpon>Feature9.feature</DependentUpon>
+    </Content>
     <Content Include="Lists\CustomUserRoles\CustomUserRolesInstance\Elements.xml" />
     <Content Include="Lists\CustomUserRoles\Elements.xml" />
     <Content Include="Lists\CustomUserRoles\Schema.xml" />
@@ -86,6 +89,7 @@
     <Content Include="Lists\DictProjects\DictProjectsInstance\Elements.xml" />
     <Content Include="Lists\DictProjects\Elements.xml" />
     <Content Include="Lists\DictProjects\Schema.xml" />
+    <Content Include="Lists\owssvr.xml" />
     <Content Include="Lists\Settings\Elements.xml" />
     <Content Include="Lists\Settings\Schema.xml" />
     <Content Include="Lists\Settings\SettingsInstance\Elements.xml" />
@@ -110,11 +114,14 @@
     <None Include="Features\Feature8\Feature8.feature">
       <FeatureId>{b138638b-be29-48fe-b425-ed1ca48734d1}</FeatureId>
     </None>
+    <None Include="Features\Feature9\Feature9.feature">
+      <FeatureId>{467ce0d6-fc5a-4bad-a07d-c37a8e018323}</FeatureId>
+    </None>
     <None Include="Lists\CustomUserRoles\CustomUserRolesInstance\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{fa7bcd7f-051d-4fb6-9ed0-1f78a243f6e1}</SharePointProjectItemId>
+      <SharePointProjectItemId>{6430e28b-27ed-4d87-a6be-a34964e66b73}</SharePointProjectItemId>
     </None>
     <None Include="Lists\CustomUserRoles\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{9fc8b451-b067-4514-8e24-eb91ae0670f6}</SharePointProjectItemId>
+      <SharePointProjectItemId>{ed28405c-a55e-434b-8516-1facc86cf376}</SharePointProjectItemId>
     </None>
     <None Include="Lists\DictCostCenters\DictCostCentersInstance\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{28218f09-875b-4d8d-bf4a-0dc6bff6db5f}</SharePointProjectItemId>

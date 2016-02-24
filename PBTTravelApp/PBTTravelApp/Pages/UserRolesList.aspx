@@ -4,31 +4,30 @@
 
 <%-- The markup and script in the following Content element will be placed in the <head> of the page --%>
 <asp:Content ContentPlaceHolderID="divHeader" runat="server">
-
+        <link href="../Content/validationEngine.jquery.css" rel="stylesheet" />
     <link href="../Content/jquery.chosen.css" rel="stylesheet" />
     <link href="../Content/fullcalendar.css" rel="stylesheet" />
-    <script src="../Scripts/Custom/UserRoles.js"></script>
-    <script src="../Scripts/chosen.jquery.min.js"></script>
-    <script src="../Scripts/jquery.cookie.js"></script>
+
     <script src="../Scripts/jquery.autogrow-textarea.js"></script>
     <script src="../Scripts/jquery.tagsinput.min.js"></script>
-    <link href="../Content/validationEngine.jquery.css" rel="stylesheet" />
     <script src="../Scripts/jquery.validate.min.js"></script>
     <script src="../Scripts/jquery.validationEngine.js"></script>
     <script src="../Scripts/jquery.validationEngine-en.js"></script>
+
+    <script src="../Scripts/Custom/UserRoles.js"></script>
 </asp:Content>
 
-<asp:content contentplaceholderid="mainContent" runat="server">
+<asp:Content ContentPlaceHolderID="mainContent" runat="server">
     <div id="containerRight" class="containerRight">
         <div id="topHeader" class="topHeader">
-            <h1>User Roles </h1>
+            <h1>System Administrators </h1>
         </div>
 
-        <div id="mainContainer" style="clear:both;">
-           <div style="width: 500px; margin-top: 15px">
+        <div id="mainContainer" style="clear: both;">
+            <div style="width: 500px; margin-top: 15px">
                 <div class="jtableContainer" id="Administrators"></div>
             </div>
 
         </div>
     </div>
-</asp:content>
+</asp:Content>

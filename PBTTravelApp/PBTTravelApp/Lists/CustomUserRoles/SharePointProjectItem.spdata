@@ -5,6 +5,6 @@
     <ProjectItemFile Source="Schema.xml" Target="CustomUserRoles\" Type="ElementFile" />
   </Files>
   <ExtensionData>
-    <ExtensionDataItem Key="Microsoft.VisualStudio.SharePoint.ListSettings.ListFieldsContentTypeID" Value="0x01007d4b18926754453cb6d89e91bd0f9e43" />
+    <ExtensionDataItem Key="Microsoft.VisualStudio.SharePoint.ListSettings.ListFieldsContentTypeID" Value="0x0100eb3b595d94fe4c04bf917758c9497c80" />
   </ExtensionData>
 </ProjectItem>

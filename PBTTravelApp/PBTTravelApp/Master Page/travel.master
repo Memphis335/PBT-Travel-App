@@ -27,12 +27,13 @@
     <link href="../Content/themes/jquery-ui.css" rel="stylesheet" />
     <link href="../Content/themes/metro/blue/jquery-ui.css" rel="stylesheet" />
     <link href="../Content/themes/metro/blue/jtable.css" rel="stylesheet" />
-    
+
     <link href="../Content/Custom/style.css" rel="stylesheet" />
 
     <script src="../Scripts/jquery-2.2.0.min.js"></script>
     <script src="../Scripts/jquery-ui-1.9.2.min.js"></script>
     <script src="../Scripts/jtable/jquery.jtable.js"></script>
+    <script src="../Scripts/notify.min.js"></script>
 
     <script src="../Scripts/bootstrap.min.js"></script>
     <script src="../Scripts/bootstrap-timepicker.min.js"></script>
@@ -41,11 +42,11 @@
     <script src="../Scripts/modernizr.min.js"></script>
     <script src="../Scripts/moment.min.js"></script>
     <script src="../Scripts/jquery.loadTemplate-1.4.4.min.js"></script>
-    <script src="../Scripts/notify.min.js"></script>
 
-    <!-- Custom Scripts -->
     <script src="../Scripts/Custom/Common.js"></script>
-    <asp:ContentPlaceHolder ID="divHeader" runat="server"></asp:ContentPlaceHolder>
+    <!-- Custom Scripts -->
+    <asp:ContentPlaceHolder ID="divHeader" runat="server">
+    </asp:ContentPlaceHolder>
 
     <SharePoint:SPShortcutIcon runat="server" IconUrl="../Images/pbt1.ico?rev=42" />
 
