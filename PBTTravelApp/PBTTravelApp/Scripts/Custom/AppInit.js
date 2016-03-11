@@ -145,29 +145,11 @@ $(document).ready(function () {
     if (SystemSettings.AppInitExecuted == "false") {
         AppInit.assignRoles();
         AppInit.createRoleItemEntry(CurrentUser.Id);
-        AppInit.createDictionaryEntry("DictProjects", "MTN BIB");
-        AppInit.createDictionaryEntry("DictDepartments",
-            "BIB");
-        AppInit.createDictionaryEntry("DictCostCenters",
-            "Sample Cost Center");
-        AppInit.createDictionaryEntry("DictPaymentSources", "Cash");
-        AppInit.createDictionaryEntry("DictPaymentSources",
-            "Corporate card");
-        AppInit.createDictionaryEntry("DictPaymentSources",
-            "Travel agency");
-        AppInit.createDictionaryEntry("DictExpenseCategories", "Hotel");
-        AppInit.createDictionaryEntry("DictExpenseCategories",
-            "Transport");
-        AppInit.createDictionaryEntry("DictExpenseCategories", "Meals");
-        AppInit.createDictionaryEntry("DictExpenseCategories", "Other");
-        AppInit.createSettingsEntry("LastLicenseCheck",
-            "LastLicenseCheck", "0", "true");
-        AppInit.createSettingsEntry("AppInitExecuted",
-            "AppInitExecuted", "true", "true");
-        AppInit.createSettingsEntry("Default currency name",
-            "DefaultCurrencyName", "ZAR", "false");
-        AppInit.createSettingsEntry("Organization Name",
-            "OrganizationName", "PBT Group", "false"
-        );
+
+        AppInit.createDictionaryEntry("DictProjects","MTN BIB");
+
+        AppInit.createSettingsEntry("AppInitExecuted","AppInitExecuted", "true", "true");
+        AppInit.createSettingsEntry("Default currency name","DefaultCurrencyName", "ZAR", "false");
+        AppInit.createSettingsEntry("Organization Name","OrganizationName", "PBT Group", "false");
     }
 });

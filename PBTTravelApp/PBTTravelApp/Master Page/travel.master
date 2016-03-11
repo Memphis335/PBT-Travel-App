@@ -17,34 +17,47 @@
 
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
     <link href="../Content/bootstrap-responsive.min.css" rel="stylesheet" />
-    <link href="../Content/bootstrap-timepicker.min.css" rel="stylesheet" />
+    <link href="../Content/themes/jquery-ui.css" rel="stylesheet" />
+    <link href="../Content/animate.min.css" rel="stylesheet" />
+    <link href="../Content/animate.delay.css" rel="stylesheet" />
     <link href="../Content/uniform.tp.css" rel="stylesheet" />
     <link href="../Content/jquery.alerts.css" rel="stylesheet" />
+    <link href="../Content/jquery.tagsinput.css" rel="stylesheet" />
+    <link href="../Content/themes/base/spinner.css" rel="stylesheet" />
+    <link href="../Content/jquery.chosen.css" rel="stylesheet" />
+    <link href="../Content/fullcalendar.css" rel="stylesheet" />
     <link href="../Content/lato.css" rel="stylesheet" />
     <link href="../Content/style.default.css" rel="stylesheet" />
-
-    <!-- Theme -->
-    <link href="../Content/themes/jquery-ui.css" rel="stylesheet" />
+    <link href="../Content/bootstrap-timepicker.min.css" rel="stylesheet" />
     <link href="../Content/themes/metro/blue/jquery-ui.css" rel="stylesheet" />
     <link href="../Content/themes/metro/blue/jtable.css" rel="stylesheet" />
 
-    <link href="../Content/Custom/style.css" rel="stylesheet" />
-
     <script src="../Scripts/jquery-2.2.0.min.js"></script>
     <script src="../Scripts/jquery-ui-1.9.2.min.js"></script>
+    <script src="../Scripts/jquery-ui-1.11.4.js"></script>
+
     <script src="../Scripts/jtable/jquery.jtable.js"></script>
-    <script src="../Scripts/notify.min.js"></script>
 
     <script src="../Scripts/bootstrap.min.js"></script>
     <script src="../Scripts/bootstrap-timepicker.min.js"></script>
-    <script src="../Scripts/chosen.jquery.min.js"></script>
+    <script src="../Scripts/jquery.timepicker.js"></script>
+    <script src="../Scripts/fullcalendar.min.js"></script>
+    <script src="../Scripts/jquery.validate.min.js"></script>
+    <script src="../Scripts/jquery.tagsinput.min.js"></script>
+    <script src="../Scripts/jquery.autogrow-textarea.js"></script>
+    <script src="../Scripts/chosen.jquery.js"></script>
     <script src="../Scripts/jquery.cookie.js"></script>
     <script src="../Scripts/modernizr.min.js"></script>
+    <script src="../Scripts/elements.js"></script>
+    <script src="../Scripts/Prettify/prettify.js"></script>
     <script src="../Scripts/moment.min.js"></script>
+    <script src="../Scripts/notify.min.js"></script>
     <script src="../Scripts/jquery.loadTemplate-1.4.4.min.js"></script>
+    <script src="../Scripts/jquery.MultiFile.min.js"></script>
 
     <script src="../Scripts/Custom/Common.js"></script>
     <!-- Custom Scripts -->
+    <link href="../Content/Custom/style.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="divHeader" runat="server">
     </asp:ContentPlaceHolder>
 

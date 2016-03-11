@@ -24,7 +24,6 @@
     <ProjectItemFile Source="Custom\MySettlements.js" Target="Scripts\Custom\" Type="ElementFile" />
     <ProjectItemFile Source="notify.min.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="numeral.js" Target="Scripts\" Type="ElementFile" />
-    <ProjectItemFile Source="prettify.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="Custom\ReportsRequests.js" Target="Scripts\Custom\" Type="ElementFile" />
     <ProjectItemFile Source="Custom\ReportsRequestsCosts.js" Target="Scripts\Custom\" Type="ElementFile" />
     <ProjectItemFile Source="Custom\ReportsSettlements.js" Target="Scripts\Custom\" Type="ElementFile" />
@@ -127,5 +126,46 @@
     <ProjectItemFile Source="jquery.validationEngine.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="jquery.validationEngine-en.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="Custom\ToApproveByMe.js" Target="Scripts\Custom\" Type="ElementFile" />
+    <ProjectItemFile Source="Prettify\run_prettify.js" Target="Scripts\Prettify\" Type="ElementFile" />
+    <ProjectItemFile Source="Prettify\prettify.js" Target="Scripts\Prettify\" Type="ElementFile" />
+    <ProjectItemFile Source="Prettify\lang-yaml.js" Target="Scripts\Prettify\" Type="ElementFile" />
+    <ProjectItemFile Source="Prettify\lang-xq.js" Target="Scripts\Prettify\" Type="ElementFile" />
+    <ProjectItemFile Source="Prettify\lang-wiki.js" Target="Scripts\Prettify\" Type="ElementFile" />
+    <ProjectItemFile Source="Prettify\lang-vhdl.js" Target="Scripts\Prettify\" Type="ElementFile" />
+    <ProjectItemFile Source="Prettify\lang-vb.js" Target="Scripts\Prettify\" Type="ElementFile" />
+    <ProjectItemFile Source="Prettify\lang-tex.js" Target="Scripts\Prettify\" Type="ElementFile" />
+    <ProjectItemFile Source="Prettify\lang-tcl.js" Target="Scripts\Prettify\" Type="ElementFile" />
+    <ProjectItemFile Source="Prettify\lang-sql.js" Target="Scripts\Prettify\" Type="ElementFile" />
+    <ProjectItemFile Source="Prettify\lang-scala.js" Target="Scripts\Prettify\" Type="ElementFile" />
+    <ProjectItemFile Source="Prettify\lang-rd.js" Target="Scripts\Prettify\" Type="ElementFile" />
+    <ProjectItemFile Source="Prettify\lang-r.js" Target="Scripts\Prettify\" Type="ElementFile" />
+    <ProjectItemFile Source="Prettify\lang-proto.js" Target="Scripts\Prettify\" Type="ElementFile" />
+    <ProjectItemFile Source="Prettify\lang-pascal.js" Target="Scripts\Prettify\" Type="ElementFile" />
+    <ProjectItemFile Source="Prettify\lang-n.js" Target="Scripts\Prettify\" Type="ElementFile" />
+    <ProjectItemFile Source="Prettify\lang-mumps.js" Target="Scripts\Prettify\" Type="ElementFile" />
+    <ProjectItemFile Source="Prettify\lang-ml.js" Target="Scripts\Prettify\" Type="ElementFile" />
+    <ProjectItemFile Source="Prettify\lang-matlab.js" Target="Scripts\Prettify\" Type="ElementFile" />
+    <ProjectItemFile Source="Prettify\lang-lua.js" Target="Scripts\Prettify\" Type="ElementFile" />
+    <ProjectItemFile Source="Prettify\lang-llvm.js" Target="Scripts\Prettify\" Type="ElementFile" />
+    <ProjectItemFile Source="Prettify\lang-lisp.js" Target="Scripts\Prettify\" Type="ElementFile" />
+    <ProjectItemFile Source="Prettify\lang-hs.js" Target="Scripts\Prettify\" Type="ElementFile" />
+    <ProjectItemFile Source="Prettify\lang-go.js" Target="Scripts\Prettify\" Type="ElementFile" />
+    <ProjectItemFile Source="Prettify\lang-erlang.js" Target="Scripts\Prettify\" Type="ElementFile" />
+    <ProjectItemFile Source="Prettify\lang-dart.js" Target="Scripts\Prettify\" Type="ElementFile" />
+    <ProjectItemFile Source="Prettify\lang-css.js" Target="Scripts\Prettify\" Type="ElementFile" />
+    <ProjectItemFile Source="Prettify\lang-clj.js" Target="Scripts\Prettify\" Type="ElementFile" />
+    <ProjectItemFile Source="Prettify\lang-basic.js" Target="Scripts\Prettify\" Type="ElementFile" />
+    <ProjectItemFile Source="Prettify\lang-apollo.js" Target="Scripts\Prettify\" Type="ElementFile" />
+    <ProjectItemFile Source="handsontable\handsontable.full.min.js.map" Target="Scripts\handsontable\" Type="ElementFile" />
+    <ProjectItemFile Source="chosen.jquery.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="jquery.timepicker.min.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="jquery.timepicker.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="fullcalendar.min.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="fullcalendar.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="Fabric-UI\datepicker.js" Target="Scripts\Fabric-UI\" Type="ElementFile" />
+    <ProjectItemFile Source="Fabric-UI\dropdown.js" Target="Scripts\Fabric-UI\" Type="ElementFile" />
+    <ProjectItemFile Source="moment-with-locales.min.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="moment-with-locales.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="moment.js" Target="Scripts\" Type="ElementFile" />
   </Files>
 </ProjectItem>

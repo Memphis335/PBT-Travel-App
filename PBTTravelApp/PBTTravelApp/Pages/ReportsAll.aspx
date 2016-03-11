@@ -4,6 +4,7 @@
 
 <%-- The markup and script in the following Content element will be placed in the <head> of the page --%>
 <asp:Content ContentPlaceHolderID="divHeader" runat="server">
+    <link href="../Content/Custom/jQuery-UI-Custom.css" rel="stylesheet" />
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="mainContent" runat="server">

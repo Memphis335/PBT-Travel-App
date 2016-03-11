@@ -75,5 +75,56 @@
     <ProjectItemFile Source="Custom\jtable-Custom.css" Target="Content\Custom\" Type="ElementFile" />
     <ProjectItemFile Source="bootstrap-responsive.min.css" Target="Content\" Type="ElementFile" />
     <ProjectItemFile Source="themes\metro\blue\jquery-ui.css" Target="Content\themes\metro\blue\" Type="ElementFile" />
+    <ProjectItemFile Source="Prettify\Themes\sunburst.css" Target="Content\Prettify\Themes\" Type="ElementFile" />
+    <ProjectItemFile Source="Prettify\Themes\sons-of-obsidian.css" Target="Content\Prettify\Themes\" Type="ElementFile" />
+    <ProjectItemFile Source="Prettify\Themes\doxy.css" Target="Content\Prettify\Themes\" Type="ElementFile" />
+    <ProjectItemFile Source="Prettify\Themes\desert.css" Target="Content\Prettify\Themes\" Type="ElementFile" />
+    <ProjectItemFile Source="Prettify\prettify.css" Target="Content\Prettify\" Type="ElementFile" />
+    <ProjectItemFile Source="jquery.timepicker.css" Target="Content\" Type="ElementFile" />
+    <ProjectItemFile Source="fullcalendar.print.css" Target="Content\" Type="ElementFile" />
+    <ProjectItemFile Source="fullcalendar.min.css" Target="Content\" Type="ElementFile" />
+    <ProjectItemFile Source="Custom\jQuery-UI-Custom.css" Target="Content\Custom\" Type="ElementFile" />
+    <ProjectItemFile Source="Fabric-UI\fabric.rtl.min.css" Target="Content\Fabric-UI\" Type="ElementFile" />
+    <ProjectItemFile Source="Fabric-UI\fabric.rtl.css" Target="Content\Fabric-UI\" Type="ElementFile" />
+    <ProjectItemFile Source="Fabric-UI\fabric.min.css" Target="Content\Fabric-UI\" Type="ElementFile" />
+    <ProjectItemFile Source="Fabric-UI\fabric.css" Target="Content\Fabric-UI\" Type="ElementFile" />
+    <ProjectItemFile Source="Fabric-UI\fabric.components.rtl.min.css" Target="Content\Fabric-UI\" Type="ElementFile" />
+    <ProjectItemFile Source="Fabric-UI\fabric.components.rtl.css" Target="Content\Fabric-UI\" Type="ElementFile" />
+    <ProjectItemFile Source="Fabric-UI\fabric.components.min.css" Target="Content\Fabric-UI\" Type="ElementFile" />
+    <ProjectItemFile Source="Fabric-UI\fabric.components.css" Target="Content\Fabric-UI\" Type="ElementFile" />
+    <ProjectItemFile Source="sass\_Fabric.Animations.RTL.scss" Target="Content\sass\" Type="ElementFile" />
+    <ProjectItemFile Source="sass\_Fabric.Animations.scss" Target="Content\sass\" Type="ElementFile" />
+    <ProjectItemFile Source="sass\_Fabric.Color.Mixins.scss" Target="Content\sass\" Type="ElementFile" />
+    <ProjectItemFile Source="sass\_Fabric.Color.Variables.scss" Target="Content\sass\" Type="ElementFile" />
+    <ProjectItemFile Source="sass\_Fabric.Common.scss" Target="Content\sass\" Type="ElementFile" />
+    <ProjectItemFile Source="sass\_Fabric.Grid.scss" Target="Content\sass\" Type="ElementFile" />
+    <ProjectItemFile Source="sass\_Fabric.Icons.scss" Target="Content\sass\" Type="ElementFile" />
+    <ProjectItemFile Source="sass\_Fabric.Mixins.scss" Target="Content\sass\" Type="ElementFile" />
+    <ProjectItemFile Source="sass\_Fabric.Responsive.Utilities.Variables.scss" Target="Content\sass\" Type="ElementFile" />
+    <ProjectItemFile Source="sass\_Fabric.Responsive.Variables.scss" Target="Content\sass\" Type="ElementFile" />
+    <ProjectItemFile Source="sass\_Fabric.Typography.Fonts.scss" Target="Content\sass\" Type="ElementFile" />
+    <ProjectItemFile Source="sass\_Fabric.Typography.Language.Overrides.scss" Target="Content\sass\" Type="ElementFile" />
+    <ProjectItemFile Source="sass\_Fabric.Typography.scss" Target="Content\sass\" Type="ElementFile" />
+    <ProjectItemFile Source="sass\_Fabric.Typography.Variables.scss" Target="Content\sass\" Type="ElementFile" />
+    <ProjectItemFile Source="sass\_Fabric.Utilities.scss" Target="Content\sass\" Type="ElementFile" />
+    <ProjectItemFile Source="sass\_Fabric.ZIndex.Variables.scss" Target="Content\sass\" Type="ElementFile" />
+    <ProjectItemFile Source="sass\_Office.Color.Variables.scss" Target="Content\sass\" Type="ElementFile" />
+    <ProjectItemFile Source="sass\Fabric.Animations.Output.scss" Target="Content\sass\" Type="ElementFile" />
+    <ProjectItemFile Source="sass\Fabric.Animations.RTL.Output.scss" Target="Content\sass\" Type="ElementFile" />
+    <ProjectItemFile Source="sass\Fabric.Color.Mixins.Output.scss" Target="Content\sass\" Type="ElementFile" />
+    <ProjectItemFile Source="sass\Fabric.Components.scss" Target="Content\sass\" Type="ElementFile" />
+    <ProjectItemFile Source="sass\Fabric.Grid.Output.scss" Target="Content\sass\" Type="ElementFile" />
+    <ProjectItemFile Source="sass\Fabric.Icons.Font.Output.scss" Target="Content\sass\" Type="ElementFile" />
+    <ProjectItemFile Source="sass\Fabric.Icons.Output.scss" Target="Content\sass\" Type="ElementFile" />
+    <ProjectItemFile Source="sass\Fabric.Icons.RTL.Output.scss" Target="Content\sass\" Type="ElementFile" />
+    <ProjectItemFile Source="sass\Fabric.Responsive.Utilities.Output.scss" Target="Content\sass\" Type="ElementFile" />
+    <ProjectItemFile Source="sass\Fabric.RTL.scss" Target="Content\sass\" Type="ElementFile" />
+    <ProjectItemFile Source="sass\Fabric.scss" Target="Content\sass\" Type="ElementFile" />
+    <ProjectItemFile Source="sass\Fabric.Typography.Fonts.Output.scss" Target="Content\sass\" Type="ElementFile" />
+    <ProjectItemFile Source="sass\Fabric.Typography.Language.Overrides.Output.scss" Target="Content\sass\" Type="ElementFile" />
+    <ProjectItemFile Source="sass\Fabric.Typography.Output.scss" Target="Content\sass\" Type="ElementFile" />
+    <ProjectItemFile Source="sass\Fabric.Utilities.Output.scss" Target="Content\sass\" Type="ElementFile" />
+    <ProjectItemFile Source="chosen-sprite.png" Target="Content\" Type="ElementFile" />
+    <ProjectItemFile Source="chosen-sprite_alt.png" Target="Content\" Type="ElementFile" />
   </Files>
 </ProjectItem>

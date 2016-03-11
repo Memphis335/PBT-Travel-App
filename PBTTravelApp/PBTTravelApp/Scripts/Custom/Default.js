@@ -5,11 +5,11 @@ Default = function () {
         var f;
         var g = moment().subtract(14, "days").format(commonDateFormat2);
         var b = "CreatedById eq " + CurrentUser.Id +
-            " and ((RequestStatus eq 'Draft' or RequestStatus eq 'PendingApproval' or SettlementStatus eq 'Draft' or SettlementStatus eq 'PendingApproval' ) or  (Created ge datetime'" +
+            " and ((RequestStatus eq 'Draft' or RequestStatus eq 'PendingApproval') or  (Created ge datetime'" +
             g + "T00%3a00%3a00')   )";
         var e = appweburl +
             "/_vti_bin/ListData.svc/TravelRequests/?$filter=" + b +
-            "&$inlinecount=allpages&$select=Id,TripStartDate,TripEndDate,RequestStatus,SettlementStatus, IsSettlement, TripPurpose&$expand=RequestApprover&$orderby=" +
+            "&$inlinecount=allpages&$select=Id,TripStartDate,TripEndDate,RequestStatus, TripPurpose&$expand=RequestApprover&$orderby=" +
             c.jtSorting.replace(" DESC", " desc").replace(" ASC",
                 " asc") + "&$skip=" + c.jtStartIndex + "&$top=" + c.jtPageSize;
         return $.Deferred(function(h) {

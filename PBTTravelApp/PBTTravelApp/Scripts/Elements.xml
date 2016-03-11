@@ -23,7 +23,6 @@
     <File Path="Scripts\Custom\MySettlements.js" Url="Scripts/Custom/MySettlements.js" ReplaceContent="TRUE" />
     <File Path="Scripts\notify.min.js" Url="Scripts/notify.min.js" ReplaceContent="TRUE" />
     <File Path="Scripts\numeral.js" Url="Scripts/numeral.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\prettify.js" Url="Scripts/prettify.js" ReplaceContent="TRUE" />
     <File Path="Scripts\Custom\ReportsRequests.js" Url="Scripts/Custom/ReportsRequests.js" ReplaceContent="TRUE" />
     <File Path="Scripts\Custom\ReportsRequestsCosts.js" Url="Scripts/Custom/ReportsRequestsCosts.js" ReplaceContent="TRUE" />
     <File Path="Scripts\Custom\ReportsSettlements.js" Url="Scripts/Custom/ReportsSettlements.js" ReplaceContent="TRUE" />
@@ -126,5 +125,46 @@
     <File Path="Scripts\jquery.validationEngine.js" Url="Scripts/jquery.validationEngine.js" ReplaceContent="TRUE" />
     <File Path="Scripts\jquery.validationEngine-en.js" Url="Scripts/jquery.validationEngine-en.js" ReplaceContent="TRUE" />
     <File Path="Scripts\Custom\ToApproveByMe.js" Url="Scripts/Custom/ToApproveByMe.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Prettify\run_prettify.js" Url="Scripts/Prettify/run_prettify.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Prettify\prettify.js" Url="Scripts/Prettify/prettify.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Prettify\lang-yaml.js" Url="Scripts/Prettify/lang-yaml.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Prettify\lang-xq.js" Url="Scripts/Prettify/lang-xq.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Prettify\lang-wiki.js" Url="Scripts/Prettify/lang-wiki.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Prettify\lang-vhdl.js" Url="Scripts/Prettify/lang-vhdl.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Prettify\lang-vb.js" Url="Scripts/Prettify/lang-vb.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Prettify\lang-tex.js" Url="Scripts/Prettify/lang-tex.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Prettify\lang-tcl.js" Url="Scripts/Prettify/lang-tcl.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Prettify\lang-sql.js" Url="Scripts/Prettify/lang-sql.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Prettify\lang-scala.js" Url="Scripts/Prettify/lang-scala.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Prettify\lang-rd.js" Url="Scripts/Prettify/lang-rd.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Prettify\lang-r.js" Url="Scripts/Prettify/lang-r.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Prettify\lang-proto.js" Url="Scripts/Prettify/lang-proto.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Prettify\lang-pascal.js" Url="Scripts/Prettify/lang-pascal.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Prettify\lang-n.js" Url="Scripts/Prettify/lang-n.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Prettify\lang-mumps.js" Url="Scripts/Prettify/lang-mumps.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Prettify\lang-ml.js" Url="Scripts/Prettify/lang-ml.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Prettify\lang-matlab.js" Url="Scripts/Prettify/lang-matlab.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Prettify\lang-lua.js" Url="Scripts/Prettify/lang-lua.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Prettify\lang-llvm.js" Url="Scripts/Prettify/lang-llvm.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Prettify\lang-lisp.js" Url="Scripts/Prettify/lang-lisp.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Prettify\lang-hs.js" Url="Scripts/Prettify/lang-hs.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Prettify\lang-go.js" Url="Scripts/Prettify/lang-go.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Prettify\lang-erlang.js" Url="Scripts/Prettify/lang-erlang.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Prettify\lang-dart.js" Url="Scripts/Prettify/lang-dart.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Prettify\lang-css.js" Url="Scripts/Prettify/lang-css.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Prettify\lang-clj.js" Url="Scripts/Prettify/lang-clj.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Prettify\lang-basic.js" Url="Scripts/Prettify/lang-basic.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Prettify\lang-apollo.js" Url="Scripts/Prettify/lang-apollo.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\handsontable\handsontable.full.min.js.map" Url="Scripts/handsontable/handsontable.full.min.js.map" ReplaceContent="TRUE" />
+    <File Path="Scripts\chosen.jquery.js" Url="Scripts/chosen.jquery.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\jquery.timepicker.min.js" Url="Scripts/jquery.timepicker.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\jquery.timepicker.js" Url="Scripts/jquery.timepicker.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\fullcalendar.min.js" Url="Scripts/fullcalendar.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\fullcalendar.js" Url="Scripts/fullcalendar.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Fabric-UI\datepicker.js" Url="Scripts/Fabric-UI/datepicker.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Fabric-UI\dropdown.js" Url="Scripts/Fabric-UI/dropdown.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\moment-with-locales.min.js" Url="Scripts/moment-with-locales.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\moment-with-locales.js" Url="Scripts/moment-with-locales.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\moment.js" Url="Scripts/moment.js" ReplaceContent="TRUE" />
   </Module>
 </Elements>
