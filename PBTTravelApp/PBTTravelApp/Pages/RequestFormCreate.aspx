@@ -52,7 +52,7 @@
                                     <input type="text" name="txtEmail" id="txtEmail" class="input-xlarge" /></span>
                             </p>
                             <p>
-                                <label>ID Number</label>
+                                <label>ID / Passport Number</label>
                                 <span class="field">
                                     <input type="text" name="txtEmployeeID" id="txtEmployeeID" class="input-xlarge" title="As per South African ID." /></span>
                             </p>
@@ -62,11 +62,22 @@
                                     <input type="text" name="txtPhoneNumber" id="txtPhoneNumber" class="input-xlarge" /></span>
                             </p>
                             <p>
+                                <label>Frequent-flyer Program</label>
+                                <span class="field">
+                                    <input type="text" name="txtFFP" id="txtFFP" class="input-xlarge" />
+                                </span>
+                            </p>
+                            <p>
+                                <label>Frequent-flyer Program Number</label>
+                                <span class="field">
+                                    <input type="text" name="txtFFPN" id="txtFFPN" class="input-xlarge" />
+                                </span>
+                            </p>
+                            <p>
                                 <label>Project</label>
                                 <span class="field">
                                     <select name="ddlProject" id="ddlProject" class="ms-Dropdown">
                                         <option value="">Choose One</option>
-
                                     </select>
                                 </span>
                             </p>

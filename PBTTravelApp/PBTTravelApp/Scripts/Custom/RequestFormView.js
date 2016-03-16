@@ -44,7 +44,9 @@ RequestFormView = function () {
         f = function (j) {
             var k;
             var l =
-                "$select=ID,Author/Id,Title,Email,EmployeeID,PhoneNumber,Project,RequestStatus,RequestApprover/Title,RequestApprover/Id,RequestApproveDate,TripStartDate,TripEndDate,Created,Modified,RequestApproveDate,RequestRejectReason,TripPurpose,Notices,DestinationsJSON,TicketIssued,AccomodationConfirmed,CarRentalBooked,TransfersArranged,PassportVisaValid";
+                "$select=ID,Author/Id,Title,Email,EmployeeID,PhoneNumber,Project,RequestStatus,RequestApprover/Title,RequestApprover/Id," +
+            "RequestApproveDate,TripStartDate,TripEndDate,Created,Modified,RequestApproveDate,RequestRejectReason,TripPurpose,Notices,DestinationsJSON," +
+            "TicketIssued,AccomodationConfirmed,CarRentalBooked,TransfersArranged,PassportVisaValid,FrequentFlyer,FrequentflyerNumber";
             $.ajax({
                 url: appweburl +
                     "/_api/Web/lists/getbytitle('TravelRequests')/items?" +
@@ -235,8 +237,7 @@ RequestFormView = function () {
                     $("#btnApproveRequest").hide();
                     $("#btnRejectRequest").hide();
                     $("#lblRequestStatus").text("Approved");
-                    addMessage("Request successfully approved",
-                        "success");
+                    addMessage("Request successfully approved","success");
                 },
                 error: function (n, l, m) {
                     alert(m);
@@ -246,9 +247,7 @@ RequestFormView = function () {
         g = function (l, k) {
             var j = e();
             $.ajax({
-                url: appweburl +
-                    "/_api/Web/lists/getbytitle('TravelRequests')/getItemByStringId('" +
-                    l + "')",
+                url: appweburl + "/_api/Web/lists/getbytitle('TravelRequests')/getItemByStringId('" + l + "')",
                 contentType: "application/json; odata=verbose",
                 async: false,
                 type: "POST",
@@ -256,8 +255,7 @@ RequestFormView = function () {
                     __metadata: {
                         type: "SP.Data.TravelRequestsListItem"
                     },
-                    RequestStatus: RequestStatusEnum.Rejected
-                        .Value,
+                    RequestStatus: RequestStatusEnum.Rejected.Value,
                     RequestRejectReason: k
                 }),
                 headers: {
@@ -395,9 +393,6 @@ $(document).ready(function () {
         }
         else {
             if (l.RequestStatus == "Approved") {
-                if (l.IsSettlement == false) {
-                    $("#btnCreateSettlement").show();
-                }
                 if (CurrentUser.IsAdmin == false) {
                     $("#btnEditRequest").hide();
                 }
@@ -504,6 +499,9 @@ $(document).ready(function () {
     $("#lblRental").text(l.CarRentalBooked);
     $("#lblTransfer").text(l.TransfersArranged);
     $("#lblPassport").text(l.PassportVisaValid);
+    $("#lblFrequentflyer").text(l.FrequentFlyer);
+    $("#lblNotice").text(l.Notices);
+    $("#lblFrequentflyerNumber").text(l.FrequentflyerNumber);
 
     var a = function (r, s) {
         var t = 0;

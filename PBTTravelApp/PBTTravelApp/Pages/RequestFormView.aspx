@@ -27,20 +27,6 @@
         <div id="mainContainer" style="clear: both;">
             <div class="maincontent">
                 <form id="requestFormCreate" class="stdform stdform2" method="post" action="RequestFormCreate.aspx">
-                    <div style="margin: 10px;">
-                        <button id="btnEditRequest" type="button" class="btn btn-primary">Edit request</button>
-                        <button id="btnPrint" type="button" class="btn btn-primary">Print</button>
-                        <button id="btnSendRequestToApprove" type="button" class="btn btn-primary" style="display: none;">Send to approve</button>
-                        <button id="btnApproveRequest" type="button" class="btn btn-primary" style="display: none;">Approve</button>
-                        <button id="btnRejectRequest" type="button" class="btn btn-primary" style="display: none;">Reject</button>
-                        <button id="btnCreateSettlement" type="button" class="btn btn-primary" style="display: none;">Create settlement</button>
-                        <button id="btnSendSettlementToApprove" type="button" class="btn btn-primary" style="display: none;">Send to approve</button>
-                        <button id="btnApproveSettlement" type="button" class="btn btn-primary" style="display: none;">Approve</button>
-                        <button id="btnRejectSettlement" type="button" class="btn btn-primary" style="display: none;">Reject</button>
-                        <div id="divValidationSummary" style="margin: 5px; display: none;">
-                            <label id="lblValidationSummary" class="error">Please fix the validation errors</label>
-                        </div>
-                    </div>
                     <div class="tabbedwidget tab-primary" id="formTabs">
                         <ul id="tabs">
                             <li><a href="#aPersonalInfo">Personal Info</a></li>
@@ -68,8 +54,20 @@
                                 <span class="field"><span id="lblPhoneNumber" class="sLabel"></span></span>
                             </p>
                             <p>
+                                <label>Frequent-flyer Program</label>
+                                <span class="field"><span id="lblFrequentflyer" class="sLabel"></span></span>
+                            </p>
+                            <p>
+                                <label>Frequent-flyer Program Number</label>
+                                <span class="field"><span id="lblFrequentflyerNumber" class="sLabel"></span></span>
+                            </p>
+                            <p>
                                 <label>Project</label>
                                 <span class="field"><span id="lblProject" class="sLabel"></span></span>
+                            </p>
+                            <p>
+                                <label>Personal Requests</label>
+                                <span class="field"><span id="lblNotice" class="sLabel"></span></span>
                             </p>
                         </div>
                         <div id="aRequestInfo">
@@ -155,6 +153,16 @@
                                 <label for="lblPassport">Passport/Visa Valid?</label>
                                 <span class="field"><span id="lblPassport" class="sLabel"></span></span>
                             </p>
+                        </div>
+                    </div>
+                    <div style="margin: 10px;">
+                        <button id="btnEditRequest" type="button" class="ms-Button"><span class="ms-Button-label">Edit request</span></button>
+                        <button id="btnPrint" type="button" class="ms-Button"><span class="ms-Button-label">Print</span></button>
+                        <button id="btnSendRequestToApprove" type="button" class="ms-Button ms-Button--primary" style="display: none;"><span class="ms-Button-label">Send to approve</span></button>
+                        <button id="btnApproveRequest" type="button" class="ms-Button" style="display: none;"><span class="ms-Button-label">Approve</span></button>
+                        <button id="btnRejectRequest" type="button" class="ms-Button ms-Button--primary" style="display: none;"><span class="ms-Button-label">Reject</span></button>
+                        <div id="divValidationSummary" style="margin: 5px; display: none;">
+                            <label id="lblValidationSummary" class="error">Please fix the validation errors</label>
                         </div>
                     </div>
                     <!--tabbedwidget-->

@@ -135,13 +135,15 @@ RequestFormCreate = function () {
                     TripEndDate: moment(j.TripEndDate).utc().format(sharepointDateFormat),
                     TripPurpose: j.TripPurpose,
                     Notices: j.Notices,
-                    //RequestApprover: j.RequestApprover,
+                    RequestApproverId: j.RequestApprover,
                     DestinationsJSON: j.DestinationsJSON,
                     TicketIssued: j.TicketIssued,
                     AccomodationConfirmed: j.AccomodationConfirmed,
                     CarRentalBooked: j.CarRentalBooked,
                     TransfersArranged: j.TransfersArranged,
                     PassportVisaValid: j.PassportVisaValid,
+                    FrequentFlyer: j.FrequentFlyer,
+                    FrequentflyerNumber: j.FrequentflyerNumber,
                     RequestStatus: RequestStatusEnum.Draft.Value
                 }),
                 headers: {
@@ -233,6 +235,8 @@ $(document).ready(function () {
             r.CarRentalBooked = carRentalBooked;
             r.TransfersArranged = transfersArranged;
             r.PassportVisaValid = passportVisaValid;
+            r.FrequentFlyer = $("#txtFFP").val();
+            r.FrequentflyerNumber = $("#txtFFPN").val();
             RequestFormCreate.createRequestForm(r);
         }
     });

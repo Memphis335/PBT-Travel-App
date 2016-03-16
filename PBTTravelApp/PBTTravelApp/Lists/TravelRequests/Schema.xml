@@ -26,7 +26,9 @@
           <FieldRef ID="{7584b63b-9e18-4953-b7a6-616f5ef2fc1f}" Name="CarRentalBooked" />
           <FieldRef ID="{72e976d6-911a-4d4b-93de-03c0fa73983b}" Name="TransfersArranged" />
           <FieldRef ID="{32aad8a1-9b8f-4436-b060-b0a1ed8360af}" Name="PassportVisaValid" />
-          <FieldRef ID="{1fc534f9-eeec-4877-a11a-ca149b0d3114}" Name="TicketIssued_x003f_" />
+          <FieldRef ID="{1fc534f9-eeec-4877-a11a-ca149b0d3114}" Name="TicketIssued" />
+          <FieldRef ID="{38ff40f8-dcd4-4f4d-8fba-6d4867676582}" Name="FrequentFlyer" />
+          <FieldRef ID="{0ceb7124-1a5e-4431-a60f-342eeb259b0e}" Name="FrequentflyerNumber" />
         </FieldRefs>
       </ContentType>
       <ContentTypeRef ID="0x01">
@@ -58,6 +60,8 @@
       <Field Name="TransfersArranged" ID="{72e976d6-911a-4d4b-93de-03c0fa73983b}" DisplayName="Transfers Arranged?" Type="Boolean" />
       <Field Name="PassportVisaValid" ID="{32aad8a1-9b8f-4436-b060-b0a1ed8360af}" DisplayName="Passport/Visa Valid?" Type="Boolean" />
       <Field Name="TicketIssued" ID="{1fc534f9-eeec-4877-a11a-ca149b0d3114}" DisplayName="Ticket Issued?" Type="Boolean" />
+      <Field Name="FrequentFlyer" ID="{38ff40f8-dcd4-4f4d-8fba-6d4867676582}" DisplayName="Frequent Flyer" Type="Text" Required="FALSE" />
+      <Field Name="FrequentflyerNumber" ID="{0ceb7124-1a5e-4431-a60f-342eeb259b0e}" DisplayName="Frequent flyer Number" Type="Text" />
     </Fields>
     <Views>
       <View BaseViewID="0" Type="HTML" MobileView="TRUE" TabularView="FALSE">
@@ -101,7 +105,8 @@
           <FieldRef Name="RequestApproveLinkURL" />
           <FieldRef Name="IsRequestApproveEmailSent" />
           <FieldRef Name="RequestRejectReason" />
-          <FieldRef Name="TicketIssued_x003f_" />
+          <FieldRef Name="FrequentFlyer" />
+          <FieldRef Name="FrequentflyerNumber" />
         </ViewFields>
         <Query>
           <OrderBy>
