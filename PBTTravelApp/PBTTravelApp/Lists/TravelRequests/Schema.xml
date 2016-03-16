@@ -20,6 +20,13 @@
           <FieldRef ID="{79a78424-8d2d-40d7-93ba-5afde7557106}" Name="RequestApproveLinkURL" />
           <FieldRef ID="{27894e4a-5dbf-442f-ba65-d0a9cc3f40cd}" Name="IsRequestApproveEmailSent" />
           <FieldRef ID="{10bb07a1-76b6-42bc-97e4-e9ceef876585}" Name="PersonalR" />
+          <FieldRef ID="{9da06699-0fef-4b9d-8345-6151d321d1ab}" Name="_ModerationComments" />
+          <FieldRef ID="{e8151bff-5592-4c93-a1d9-ccc1aa9a433d}" Name="RequestRejectReason" />
+          <FieldRef ID="{bb2c895c-a366-455e-867f-063b55acb89c}" Name="AccomodationConfirmed" />
+          <FieldRef ID="{7584b63b-9e18-4953-b7a6-616f5ef2fc1f}" Name="CarRentalBooked" />
+          <FieldRef ID="{72e976d6-911a-4d4b-93de-03c0fa73983b}" Name="TransfersArranged" />
+          <FieldRef ID="{32aad8a1-9b8f-4436-b060-b0a1ed8360af}" Name="PassportVisaValid" />
+          <FieldRef ID="{1fc534f9-eeec-4877-a11a-ca149b0d3114}" Name="TicketIssued_x003f_" />
         </FieldRefs>
       </ContentType>
       <ContentTypeRef ID="0x01">
@@ -28,7 +35,7 @@
       <ContentTypeRef ID="0x0120" />
     </ContentTypes>
     <Fields>
-      <Field ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Type="Text" Name="Title" DisplayName="Title" Required="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="Title" MaxLength="255" />
+      <Field ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Type="Text" Name="Title" DisplayName="RequesterName" Required="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="Title" MaxLength="255" />
       <Field Name="EmployeeID" ID="{d02113af-7e7c-4d35-9da7-cbd589e7c747}" DisplayName="EmployeeID" Type="Text" />
       <Field Name="PhoneNumber" ID="{0f8779b6-601f-4ba5-849a-2c1eef0fd919}" DisplayName="PhoneNumber" Type="Text" />
       <Field Name="Project" ID="{564090f3-79bb-4551-a5f3-f904b9e07abf}" DisplayName="Project" Type="Text" />
@@ -44,6 +51,13 @@
       <Field Name="RequestApproveLinkURL" ID="{79a78424-8d2d-40d7-93ba-5afde7557106}" DisplayName="RequestApproveLinkURL" Type="Note" />
       <Field Name="IsRequestApproveEmailSent" ID="{27894e4a-5dbf-442f-ba65-d0a9cc3f40cd}" DisplayName="IsRequestApproveEmailSent" Type="Boolean" />
       <Field Name="PersonalR" ID="{10bb07a1-76b6-42bc-97e4-e9ceef876585}" DisplayName="PersonalR" Type="Note" />
+      <Field Name="_ModerationComments" ID="{9da06699-0fef-4b9d-8345-6151d321d1ab}" DisplayName="Approver Comments" Type="Note" Hidden="TRUE" CanToggleHidden="TRUE" Filterable="False" Sortable="FALSE" StaticName="_ModerationComments" />
+      <Field Name="RequestRejectReason" ID="{e8151bff-5592-4c93-a1d9-ccc1aa9a433d}" DisplayName="Request Reject Reason" Type="Note" />
+      <Field Name="AccomodationConfirmed" ID="{bb2c895c-a366-455e-867f-063b55acb89c}" DisplayName="Accomodation Confirmed?" Type="Boolean" />
+      <Field Name="CarRentalBooked" ID="{7584b63b-9e18-4953-b7a6-616f5ef2fc1f}" DisplayName="Car Rental Booked?" Type="Boolean" />
+      <Field Name="TransfersArranged" ID="{72e976d6-911a-4d4b-93de-03c0fa73983b}" DisplayName="Transfers Arranged?" Type="Boolean" />
+      <Field Name="PassportVisaValid" ID="{32aad8a1-9b8f-4436-b060-b0a1ed8360af}" DisplayName="Passport/Visa Valid?" Type="Boolean" />
+      <Field Name="TicketIssued" ID="{1fc534f9-eeec-4877-a11a-ca149b0d3114}" DisplayName="Ticket Issued?" Type="Boolean" />
     </Fields>
     <Views>
       <View BaseViewID="0" Type="HTML" MobileView="TRUE" TabularView="FALSE">
@@ -86,6 +100,8 @@
           <FieldRef Name="DestinationsJSON" />
           <FieldRef Name="RequestApproveLinkURL" />
           <FieldRef Name="IsRequestApproveEmailSent" />
+          <FieldRef Name="RequestRejectReason" />
+          <FieldRef Name="TicketIssued_x003f_" />
         </ViewFields>
         <Query>
           <OrderBy>

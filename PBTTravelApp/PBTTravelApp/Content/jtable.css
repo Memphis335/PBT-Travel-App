@@ -447,13 +447,13 @@ div.jtable-busy-message {
   border: 1px solid #fff;
   padding: 5px 5px 5px 58px;
   color: #fff;
-  background: url('../../metro/blue/loading.gif') no-repeat;
+  background: url('../Images/loading.gif') no-repeat;
   background-color: #0072c6;
   background-position: 8px;
 }
 
 div.jtable-main-container > table.jtable > tbody > tr.jtable-data-row > td > .jtable-view-command-button {
-  background: url('../../metro/view.png') no-repeat;
+  background: url('../Images/view.png') no-repeat;
   width: 16px;
   height: 16px;
   opacity: 0.4;

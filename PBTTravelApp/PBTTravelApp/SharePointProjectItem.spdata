@@ -3,6 +3,5 @@
   <Files>
     <ProjectItemFile Source="Elements.xml" Type="ElementManifest" />
     <ProjectItemFile Source="Master Page\travel.master" Target="Master Page\" Type="ElementFile" />
-    <ProjectItemFile Source="Lists\owssvr.xml" Target="Lists\" Type="ElementFile" />
   </Files>
 </ProjectItem>

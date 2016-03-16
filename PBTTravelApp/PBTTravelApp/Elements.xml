@@ -2,6 +2,5 @@
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
   <Module Name="RootModule">
     <File Path="Master Page\travel.master" Url="Master Page/travel.master" ReplaceContent="TRUE" />
-    <File Path="Lists\owssvr.xml" Url="Lists/owssvr.xml" ReplaceContent="TRUE" />
   </Module>
 </Elements>

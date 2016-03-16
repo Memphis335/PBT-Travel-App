@@ -57,6 +57,7 @@
     <Content Include="Content\Prettify\Themes\sons-of-obsidian.css" />
     <Content Include="Content\Prettify\Themes\sunburst.css" />
     <Content Include="Content\themes\metro\blue\jquery-ui.css" />
+    <Content Include="Content\themes\metro\view.png" />
     <Content Include="Content\validationEngine.jquery.css" />
     <Content Include="Content\Fabric-UI\fabric.components.css" />
     <Content Include="Content\Fabric-UI\fabric.components.min.css" />
@@ -93,22 +94,9 @@
     <Content Include="Lists\CustomUserRoles\CustomUserRolesInstance\Elements.xml" />
     <Content Include="Lists\CustomUserRoles\Elements.xml" />
     <Content Include="Lists\CustomUserRoles\Schema.xml" />
-    <Content Include="Lists\DictCostCenters\DictCostCentersInstance\Elements.xml" />
-    <Content Include="Lists\DictCostCenters\Elements.xml" />
-    <Content Include="Lists\DictCostCenters\Schema.xml" />
-    <Content Include="Lists\DictDepartments\DictDepartmentsInstance\Elements.xml" />
-    <Content Include="Lists\DictDepartments\Elements.xml" />
-    <Content Include="Lists\DictDepartments\Schema.xml" />
-    <Content Include="Lists\DictExpenseCategories\DictExpenseCategoriesInstance\Elements.xml" />
-    <Content Include="Lists\DictExpenseCategories\Elements.xml" />
-    <Content Include="Lists\DictExpenseCategories\Schema.xml" />
-    <Content Include="Lists\DictPaymentSources\DictPaymentSourcesInstance\Elements.xml" />
-    <Content Include="Lists\DictPaymentSources\Elements.xml" />
-    <Content Include="Lists\DictPaymentSources\Schema.xml" />
     <Content Include="Lists\DictProjects\DictProjectsInstance\Elements.xml" />
     <Content Include="Lists\DictProjects\Elements.xml" />
     <Content Include="Lists\DictProjects\Schema.xml" />
-    <Content Include="Lists\owssvr.xml" />
     <Content Include="Lists\Settings\Elements.xml" />
     <Content Include="Lists\Settings\Schema.xml" />
     <Content Include="Lists\Settings\SettingsInstance\Elements.xml" />
@@ -141,30 +129,6 @@
     </None>
     <None Include="Lists\CustomUserRoles\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{ed28405c-a55e-434b-8516-1facc86cf376}</SharePointProjectItemId>
-    </None>
-    <None Include="Lists\DictCostCenters\DictCostCentersInstance\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{28218f09-875b-4d8d-bf4a-0dc6bff6db5f}</SharePointProjectItemId>
-    </None>
-    <None Include="Lists\DictCostCenters\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{bacc4927-5627-473a-b3ff-4ba56858ee9a}</SharePointProjectItemId>
-    </None>
-    <None Include="Lists\DictDepartments\DictDepartmentsInstance\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{95ef8712-a542-47a2-8568-d8fc5c921e68}</SharePointProjectItemId>
-    </None>
-    <None Include="Lists\DictDepartments\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{09eb60c8-e14b-4f16-9df8-512fbfea788b}</SharePointProjectItemId>
-    </None>
-    <None Include="Lists\DictExpenseCategories\DictExpenseCategoriesInstance\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{d5a41b07-92eb-4249-8bc0-e70713d116e7}</SharePointProjectItemId>
-    </None>
-    <None Include="Lists\DictExpenseCategories\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{91d67cd3-432a-45f8-a8cf-16a3ad0f0435}</SharePointProjectItemId>
-    </None>
-    <None Include="Lists\DictPaymentSources\DictPaymentSourcesInstance\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{d27a8c0f-358c-4a84-a41f-a3ff2c721a07}</SharePointProjectItemId>
-    </None>
-    <None Include="Lists\DictPaymentSources\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{d2d2e16e-0848-48b5-b8e3-369f2c8e9cb2}</SharePointProjectItemId>
     </None>
     <None Include="Lists\DictProjects\DictProjectsInstance\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{8651b4e5-ac30-4f64-853d-08855e381386}</SharePointProjectItemId>
@@ -316,16 +280,13 @@
       <SharePointProjectItemId>{8c232c65-3ca7-4b57-a3cf-243de48cd47d}</SharePointProjectItemId>
     </None>
     <Content Include="Pages\Help.aspx" />
-    <Content Include="Pages\Licenses.aspx" />
     <Content Include="Pages\menu.html" />
     <Content Include="Pages\MyRequests.aspx" />
-    <Content Include="Pages\MySettlements.aspx" />
     <Content Include="Pages\ReportsAll.aspx" />
     <Content Include="Pages\ReportsRequests.aspx" />
     <Content Include="Pages\ReportsRequestsCosts.aspx" />
-    <Content Include="Pages\ReportsSettlements.aspx" />
-    <Content Include="Pages\ReportsSettlementsCosts.aspx" />
     <Content Include="Pages\RequestFormCreate.aspx" />
+    <Content Include="Pages\RequestFormView.aspx" />
     <Content Include="Pages\Settings.aspx" />
     <Content Include="Pages\ToApproveByMe.aspx" />
     <Content Include="Pages\UserRolesList.aspx" />
@@ -337,6 +298,7 @@
     <Content Include="Scripts\Custom\Common.js" />
     <Content Include="Scripts\Custom\Default.js" />
     <Content Include="Scripts\Custom\Dictionaries.js" />
+    <Content Include="Scripts\Custom\RequestFormView.js" />
     <Content Include="Scripts\Custom\ToApproveByMe.js" />
     <Content Include="Scripts\elements.js" />
     <Content Include="Scripts\Elements.xml" />

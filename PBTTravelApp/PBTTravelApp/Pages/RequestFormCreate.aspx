@@ -114,7 +114,7 @@
                                 </span>
                                 <label>Travel Destinations</label>
                             </p>
-                            <div id="divDestinations" style="clear: both; overflow: auto; padding-top: 15px;"></div>
+                            <div id="divDestinations" style="clear: both; overflow: auto; padding-top: 15px;" onclick="dateCalc();"></div>
                         </div>
                         <div id="aAttachments" title="eg. ID's or Passports">
                             <input type="file" id="fileUpload" />

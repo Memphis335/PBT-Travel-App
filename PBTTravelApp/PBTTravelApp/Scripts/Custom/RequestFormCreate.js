@@ -75,8 +75,7 @@ RequestFormCreate = function () {
     var d = function (j) {
         var i;
         $.ajax({
-            url: appweburl + "/_api/Web/lists/getbytitle('" + j +
-                "')/items?$select=Title,ID",
+            url: appweburl + "/_api/Web/lists/getbytitle('" + j + "')/items?$select=Title,ID",
             type: "GET",
             async: false,
             headers: {
@@ -130,21 +129,20 @@ RequestFormCreate = function () {
                     Email: j.Email,
                     EmployeeID: j.EmployeeID,
                     PhoneNumber: j.PhoneNumber,
-                    Department: j.Department,
                     Project: j.Project,
-                    CostCenter: j.CostCenter,
-                    TripStartDate: moment(j.TripStartDate).utc()
-                        .format(sharepointDateFormat),
-                    TripEndDate: moment(j.TripEndDate).utc()
-                        .format(sharepointDateFormat),
+                    PersonalR: j.PersonalR,
+                    TripStartDate: moment(j.TripStartDate).utc().format(sharepointDateFormat),
+                    TripEndDate: moment(j.TripEndDate).utc().format(sharepointDateFormat),
                     TripPurpose: j.TripPurpose,
                     Notices: j.Notices,
-                    RequestApproverId: j.RequestApprover,
+                    //RequestApprover: j.RequestApprover,
                     DestinationsJSON: j.DestinationsJSON,
-                    TravelExpensesJSON: j.TravelExpensesJSON,
-                    RequestStatus: RequestStatusEnum.Draft.Value,
-                    RequestTotalCost: j.RequestTotalCost,
-                    IsSettlement: "false"
+                    TicketIssued: j.TicketIssued,
+                    AccomodationConfirmed: j.AccomodationConfirmed,
+                    CarRentalBooked: j.CarRentalBooked,
+                    TransfersArranged: j.TransfersArranged,
+                    PassportVisaValid: j.PassportVisaValid,
+                    RequestStatus: RequestStatusEnum.Draft.Value
                 }),
                 headers: {
                     accept: "application/json;odata=verbose",
@@ -153,26 +151,67 @@ RequestFormCreate = function () {
                 },
                 success: function (k) {
                     g(k.d.Id);
-                    location.href =
-                        "RequestFormView.aspx?requestID=" + k.d
-                        .Id;
+                    location.href = "RequestFormView.aspx?requestID=" + k.d.Id;
                 },
                 error: function (m, k, l) {
                     alert(l);
                 }
             });
-        }
-
+        };
     return {
         getAllUsers: c,
         getDictionary: d,
         createRequestForm: b
     };
 }();
+
+function dateCalc() {
+    var end = $("#txtEndDate").val();
+    var start = $("#txtStartDate").val();
+    var days = moment(start).diff(end, "days");
+    console.log("Start and End");
+    console.log(start, end);
+    console.log(days);
+    if (days <= 4) {
+        //$("#divDestinations").handsontable({
+        //    columns: [
+        //        {
+        //            data: "Transfers",
+        //            editor: false
+        //        }
+        //    ]
+
+        //});
+        console.log("Less than 4");
+    }
+};
+
 $(document).ready(function () {
-    $("#tabs").tabs({
-        event: "mouseover"
-    });
+    $("#aBookingProgress :input").prop("disabled", true);
+    $("#aBookingProgress").attr("Title", "For office use only");
+    var accomodationConfirmed = false;
+    var ticketIssued = false;
+    var carRentalBooked = false;
+    var transfersArranged = false;
+    var passportVisaValid = false;
+
+    if ($("#chkTicket").is(":checked")) {
+        ticketIssued = true;
+    }
+    if ($("#chkAccom").is(":checked")) {
+        accomodationConfirmed = true;
+    }
+    if ($("#chkRental").is(":checked")) {
+        carRentalBooked = true;
+    }
+    if ($("#chkTransfer").is(":checked")) {
+        transfersArranged = true;
+    }
+    if ($("#chkPassport").is(":checked")) {
+        passportVisaValid = true;
+    }
+
+
     $("#requestFormCreate").submit(function (q) {
         if ($("#requestFormCreate").valid()) {
             q.preventDefault();
@@ -181,21 +220,19 @@ $(document).ready(function () {
             r.Email = $("#txtEmail").val();
             r.EmployeeID = $("#txtEmployeeID").val().StripTags();
             r.PhoneNumber = $("#txtPhoneNumber").val().StripTags();
-            r.Department = $("#ddlDepartment").val();
             r.Project = $("#ddlProject").val();
-            r.CostCenter = $("#ddlCostCenter").val();
-            r.TripStartDate = $("#txtTripStartDate").val().StripTags();
-            r.TripEndDate = $("#txtTripEndDate").val().StripTags();
-            r.TripPurpose = $("#txtTripPurpose").val().StripTags();
+            r.PersonalR = $("#taPersonal").val().StripTags();
+            r.TripStartDate = $("#txtStartDate").val().StripTags();
+            r.TripEndDate = $("#txtEndDate").val().StripTags();
+            r.TripPurpose = $("#txtPurpose").val().StripTags();
             r.Notices = $("#taNotices").val().StripTags();
             r.RequestApprover = $("#ddlRequestApprover").val();
-            r.DestinationsJSON = JSON.stringify($(
-                    "#divDestinations").data("handsontable")
-                .getData());
-            r.TravelExpensesJSON = JSON.stringify($(
-                "#divTravelExpenses").data(
-                "handsontable").getData());
-            r.RequestTotalCost = $("#hdnRequestTotalCost").val();
+            r.DestinationsJSON = JSON.stringify($("#divDestinations").data("handsontable").getData());
+            r.TicketIssued = ticketIssued;
+            r.AccomodationConfirmed = accomodationConfirmed;
+            r.CarRentalBooked = carRentalBooked;
+            r.TransfersArranged = transfersArranged;
+            r.PassportVisaValid = passportVisaValid;
             RequestFormCreate.createRequestForm(r);
         }
     });
@@ -204,6 +241,7 @@ $(document).ready(function () {
     });
     $("#txtRequesterName").val(CurrentUser.Name);
     $("#txtEmail").val(CurrentUser.Email);
+    
     var c = RequestFormCreate.getAllUsers();
     var i = $("#ddlRequestApprover");
     $.each(c, function () {
@@ -220,16 +258,9 @@ $(document).ready(function () {
             STRING: {
                 remove: "Delete"
             }
-        })
+        });
     });
-    var k = RequestFormCreate.getDictionary("DictDepartments");
-    var g = $("#ddlDepartment");
-    $.each(k, function () {
-        g.append($("<option>", {
-            value: this.Title,
-            text: this.Title
-        }));
-    });
+
     var n = RequestFormCreate.getDictionary("DictProjects");
     var h = $("#ddlProject");
     $.each(n, function () {
@@ -238,108 +269,79 @@ $(document).ready(function () {
             text: this.Title
         }));
     });
-    var j = RequestFormCreate.getDictionary("DictCostCenters");
-    var f = $("#ddlCostCenter");
-    $.each(j, function () {
-        f.append($("<option>", {
-            value: this.Title,
-            text: this.Title
-        }));
-    });
-    var d = new Array();
-    var l = RequestFormCreate.getDictionary("DictExpenseCategories");
-    $.each(l, function () {
-        d.push(this.Title)
-    });
-    var e = new Array();
-    var m = RequestFormCreate.getDictionary("DictPaymentSources");
-    $.each(m, function () {
-        e.push(this.Title)
-    });
-    $("#txtTripStartDate").datepicker();
-    $("#txtTripEndDate").datepicker();
+
+    $("#txtStartDate").datepicker();
+    $("#txtEndDate").datepicker();
     $(".chzn-select").chosen({
         no_results_text: "Oops, nothing found!"
     });
     $.datepicker.setDefaults({
         dateFormat: commonDateFormat,
         showButtonPanel: false,
-        changeMonth: false,
+        changeMonth: true,
         changeYear: false
     });
-    jQuery("#requestFormCreate").validate({
-        ignore: ".ignore",
-        rules: {
-            txtRequesterName: {
-                required: true,
-                maxlength: 250
-            },
-            txtEmail: {
-                required: true,
-                email: true,
-                maxlength: 250
-            },
-            txtTripPurpose: {
-                required: true,
-                maxlength: 250
-            },
-            txtEmployeeID: {
-                maxlength: 250
-            },
-            txtPhoneNumber: {
-                maxlength: 250
-            },
-            taNotices: {
-                maxlength: 1000
-            },
-            txtTripStartDate: {
-                required: true,
-                maxlength: 250
-            },
-            txtTripEndDate: {
-                required: true,
-                maxlength: 250
-            },
+        jQuery("#requestFormCreate").validate({
+            ignore: ".ignore",
+            rules: {
+                txtRequesterName: {
+                    required: true,
+                    maxlength: 250
+                },
+                txtEmail: {
+                    required: true,
+                    email: true,
+                    maxlength: 250
+                },
+                txtTripPurpose: {
+                    required: true,
+                    maxlength: 250
+                },
+                txtEmployeeID: {
+                    maxlength: 250
+                },
+                txtPhoneNumber: {
+                    maxlength: 250
+                },
+                taNotices: {
+                    maxlength: 1000
+                },
+                txtTripStartDate: {
+                    required: true,
+                    maxlength: 250
+                },
+                txtTripEndDate: {
+                    required: true,
+                    maxlength: 250
+                },
             ddlProject: "required",
-            ddlDepartment: "required",
-            ddlCostCenter: "required",
             ddlRequestApprover: "required",
-            txtDestinations: "required",
-            txtTravelExpenses: "required"
-        },
+            txtDestinations: "required"
+            },
         messages: {
             txtRequesterName: "Please enter your name",
             txtEmail: "Please enter a valid email address",
             ddlProject: "Please select a valid project",
-            ddlDepartment: "Please select a valid department",
-            ddlCostCenter: "Please select a valid cost center",
-            txtTripStartDate: "Please enter trip start date",
-            txtTripEndDate: "Please enter trip end date",
+            txtTripStartDate: "Please enter departure date",
+            txtTripEndDate: "Please enter return date",
             txtTripPurpose: "Please enter trip purpose",
             ddlRequestApprover: "Please enter request approver",
-            txtDestinations: "Please fill travel destinations",
-            txtTravelExpenses: "Please fill travel expenses"
+            txtDestinations: "Please fill travel destinations"
         },
         invalidHandler: function (q, s) {
             var r = s.numberOfInvalids();
-            if (r && (s.errorList[0].element.name === "txtRequesterName" || s.errorList[0].element.name === "txtEmail" || s.errorList[0].element.name === "ddlProject" || s.errorList[0].element.name === "ddlDepartment" || s.errorList[0].element.name === "ddlCostCenter")) {
-                $("#formTabs").tabs("select",
-                    "#aPersonalInfo");
+            if (r && (s.errorList[0].element.name === "txtRequesterName" || s.errorList[0].element.name === "txtEmail" || s.errorList[0].element.name === "ddlProject")) {
+                var index = $('#formTabs a[href="#aPersonalInfo"]').parent().index();
+                $("#formTabs").tabs("option", "active", index);
             } else {
                 if (r && (s.errorList[0].element.name === "ddlRequestApprover")) {
-                    $("#formTabs").tabs("select",
-                        "#aApprovals");
+                    var index = $('#formTabs a[href="#aApprovals"]').parent().index();
+                    $("#formTabs").tabs("option", "active", index);
                 } else {
                     if (r && (s.errorList[0].element.name === "txtTripStartDate" || s.errorList[0].element.name === "txtTripEndDate" || s.errorList[0].element.name === "txtTripPurpose" || s.errorList[0].element.name === "txtDestinations")) {
-                        $("#formTabs").tabs("select",
-                            "#aTravelInfo");
+                        var index = $('#formTabs a[href="#aTravelInfo"]').parent().index();
+                        $("#formTabs").tabs("option", "active", index);
                         $("#formTabs").click();
-                    } else {
-                        if (r && (s.errorList[0].element.name === "txtTravelExpenses")) {
-                            $("#formTabs").tabs("select",
-                                "#aTravelExpenses");
-                            $("#formTabs").click();
-                        }
                     }
                 }
             }
@@ -356,8 +358,9 @@ $(document).ready(function () {
     var p = [{
         Country: "",
         City: "",
-        Hotel: "",
-        Transport: "",
+        AccR: null,
+        RentalR: null,
+        Transfers: null,
         StartDate: "",
         EndDate: ""
     }];
@@ -366,27 +369,34 @@ $(document).ready(function () {
         $("#txtDestinations").val(r.isEmptyRow(0) ? "" : "false");
     };
     $("#divDestinations").handsontable({
-        data: p,
-        minSpareRows: 1,
-        multiSelect: false,
-        contextMenu: false,
-        afterChange: a,
-        colWidths: [110, 110, 200, 160, 160, 100, 100],
-        colHeaders: ["Country", "City", "Accommodation Details",
-            "Mode of Transportation",
-            "Transportation Details", "Start Date",
-            "End Date"
+            data: p,
+            minSpareRows: 1,
+            multiSelect: false,
+            contextMenu: false,
+            afterChange: a,
+            colWidths: [150, 130, 200, 160, 160, 100, 100],
+            colHeaders: ["Country", "City", "Accommodation Required",
+            "Rental Car Required","Airport Transfers","Start Date","End Date"
         ],
         columns: [{
             data: "Country"
         }, {
             data: "City"
         }, {
-            data: "Hotel"
+            data: "AccR",
+            type: "checkbox",
+            checkedTemplate: "yes",
+            uncheckedTemplate: "no"
         }, {
-            data: "TransportMode"
+            data: "RentalR",
+            type: "checkbox",
+            checkedTemplate: "yes",
+            uncheckedTemplate: "no"
         }, {
-            data: "Transport"
+            data: "Transfers",
+            type: "checkbox",
+            checkedTemplate: "yes",
+            uncheckedTemplate: "no"
         }, {
             data: "StartDate",
             type: "date",
@@ -395,108 +405,6 @@ $(document).ready(function () {
             data: "EndDate",
             type: "date",
             dateFormat: commonDateFormat
-        }]
-    });
-    var b = function () {
-        var s = 0;
-        var t = $("#divTravelExpenses").data("handsontable");
-        var u = t.getData();
-        $("#txtTravelExpenses").val(t.isEmptyRow(0) ? "" : "false");
-        $.each(u, function () {
-            if ($.isNumeric(this.CurrencyAmount) && $.isNumeric(
-                this.ExchangeRate)) {
-                s += this.CurrencyAmount * this.ExchangeRate;
-            }
-        });
-        $("#lblTotal").text("Total expenses amount: " + numeral(s).format(
-            "0,0.00") + " " + SystemSettings.DefaultCurrencyName);
-        $("#hdnRequestTotalCost").val(numeral(s).format("0,0.00"));
-    };
-    var o = [{
-        ExpenseDate: "",
-        Description: "",
-        Category: "",
-        PaymentSource: "",
-        Currency: "",
-        ExchangeRate: "",
-        CurrencyAmount: ""
-    }];
-    $("#divTravelExpenses").handsontable({
-        data: o,
-        startRows: 7,
-        startCols: 4,
-        minSpareRows: 1,
-        multiSelect: false,
-        contextMenu: false,
-        afterChange: b,
-        colWidths: [100, 150, 110, 150, 60, 100, 120],
-        colHeaders: ["Expense Date", "Description", "Category",
-            "Payment Source", "Currency", "Exchange Rate",
-            "Currency Amount"
-        ],
-        columns: [{
-            data: "ExpenseDate",
-            type: "date",
-            dateFormat: commonDateFormat
-        }, {
-            data: "Description"
-        }, {
-            data: "Category",
-            editor: "select",
-            selectOptions: d
-        }, {
-            data: "PaymentSource",
-            editor: "select",
-            selectOptions: e
-        }, {
-            data: "Currency",
-            editor: "select",
-            selectOptions: ["AED", "AFA", "ALL", "AMD",
-                "ANG", "AOR", "ARS", "AUD", "AWG",
-                "AZN", "BBD", "BDT", "BGN", "BHD",
-                "BIF", "BMD", "BND", "BOB", "BRL",
-                "BSD", "BTN", "BWP", "BYR", "BZD",
-                "CAD", "CDF", "CHF", "CLP", "CNY",
-                "COP", "CRC", "CUP", "CVE", "CZK",
-                "DJF", "DKK", "DOP", "DZD", "EEK",
-                "EGP", "ERN", "ETB", "EUR", "FJD",
-                "FKP", "GBP", "GEL", "GHS", "GIP",
-                "GMD", "GNF", "GTQ", "GYD", "HKD",
-                "HNL", "HRK", "HTG", "HUF", "IDR",
-                "ILS", "INR", "IQD", "IRR", "ISK",
-                "JMD", "JOD", "JPY", "KES", "KGS",
-                "KHR", "KMF", "KPW", "KRW", "KWD",
-                "KYD", "KZT", "LAK", "LBP", "LKR",
-                "LRD", "LSL", "LTL", "LVL", "LYD",
-                "MAD", "MDL", "MGA", "MKD", "MMK",
-                "MNT", "MOP", "MRO", "MUR", "MVR",
-                "MWK", "MXN", "MYR", "MZN", "NAD",
-                "NGN", "NIO", "NOK", "NZD", "OMR",
-                "PAB", "PEN", "PGK", "PHP", "PKR",
-                "PLN", "PYG", "QAR", "RON", "RSD",
-                "RUB", "RWF", "SAR", "SBD", "SCR",
-                "SDG", "SEK", "SGD", "SHP", "SLL",
-                "SOS", "SRD", "STD", "SVC", "SYP",
-                "SZL", "THB", "TJS", "TMT", "TND",
-                "TOP", "TRY", "TTD", "TWD", "TZS",
-                "UAH", "UGX", "USD", "UYU", "UZS",
-                "VEF", "VND", "VUV", "WST", "XAF",
-                "XAG", "XAU", "XCD", "XDR", "XFO",
-                "XFU", "XOF", "XPD", "XPF", "XPT",
-                "YER", "ZAR", "ZMK", "ZWL"
-            ]
-        }, {
-            data: "ExchangeRate",
-            type: "numeric",
-            format: "0.000",
-            allowInvalid: false,
-            language: "en"
-        }, {
-            data: "CurrencyAmount",
-            type: "numeric",
-            format: "0,0.00",
-            language: "en",
-            allowInvalid: false
         }]
     });
 });

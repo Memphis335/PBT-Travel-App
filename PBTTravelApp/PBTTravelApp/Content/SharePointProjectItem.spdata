@@ -126,5 +126,6 @@
     <ProjectItemFile Source="sass\Fabric.Utilities.Output.scss" Target="Content\sass\" Type="ElementFile" />
     <ProjectItemFile Source="chosen-sprite.png" Target="Content\" Type="ElementFile" />
     <ProjectItemFile Source="chosen-sprite_alt.png" Target="Content\" Type="ElementFile" />
+    <ProjectItemFile Source="themes\metro\view.png" Target="Content\themes\metro\" Type="ElementFile" />
   </Files>
 </ProjectItem>

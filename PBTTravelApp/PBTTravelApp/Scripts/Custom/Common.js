@@ -1,6 +1,6 @@
 ﻿"use strict";
 $.support.cors = true;
-var commonDateFormat = "dd-mm-yy";
+var commonDateFormat = "dd/mm/yy";
 var commonDateFormat2 = "YYYY-MM-DD";
 var commonDateFormatWithHour = "YYYY-MM-DD HH:mm";
 var sharepointDateFormat = "YYYY-MM-DDTHH:mm:ssZZ";

@@ -125,5 +125,6 @@
     <File Path="Content\sass\Fabric.Utilities.Output.scss" Url="Content/sass/Fabric.Utilities.Output.scss" ReplaceContent="TRUE" />
     <File Path="Content\chosen-sprite.png" Url="Content/chosen-sprite.png" ReplaceContent="TRUE" />
     <File Path="Content\chosen-sprite_alt.png" Url="Content/chosen-sprite_alt.png" ReplaceContent="TRUE" />
+    <File Path="Content\themes\metro\view.png" Url="Content/themes/metro/view.png" ReplaceContent="TRUE" />
   </Module>
 </Elements>
