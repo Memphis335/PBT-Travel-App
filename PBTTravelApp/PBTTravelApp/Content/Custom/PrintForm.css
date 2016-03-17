@@ -1,0 +1,60 @@
+﻿    .printBody {
+		width:95%;
+		background: #fff;
+	    font-family:  Tahoma,Helvetica,Arial,sans-serif;
+	    font-size: 8pt ;
+        margin-left: auto;
+        margin-right: auto;
+        text-align:center;
+    }
+
+    #printForm table {
+        width:95%;
+        margin-left: auto;
+        margin-right: auto;
+        border-color: black;
+        border-width: 0 0 1px 1px;
+        border-style: solid;
+    }
+
+    #printForm td {
+        border-color: black;
+        border-width: 1px 1px 0 0;
+        border-style: solid;
+        margin: 0;
+        padding: 4px;
+        text-align:left;
+        padding-left:5px;
+
+    }
+    #printForm th
+    {
+		border-color: black;
+        border-width: 1px 1px 0 0;
+        border-style: solid;
+        margin: 0;
+        padding: 4px;
+        background-color:#ededed;	
+        font-weight:bold;
+        text-align:left;
+        padding-left:5px;
+	}
+    #printForm .header{
+		font-weight:bold;
+		background-color:#ededed;	
+	}
+	#printForm td.small {
+	 width:20%;
+	}    
+	#printForm td.large 
+	{
+	  width:30%
+	}
+	#printForm td.totalAmount
+	{
+		text-align:right;padding-right:10px;font-weight:bold;
+	}
+	#printForm .informationBox
+	{
+		border:1px black solid;width:100%;padding:5px;margin-top:10px;padding-bottom:10px;
+	}

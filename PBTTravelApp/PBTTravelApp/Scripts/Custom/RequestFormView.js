@@ -137,8 +137,7 @@ RequestFormView = function () {
             var j = e();
             $.ajax({
                 url: appweburl +
-                    "/_api/Web/lists/getbytitle('TravelRequests')/getItemByStringId('" +
-                    k + "')",
+                    "/_api/Web/lists/getbytitle('TravelRequests')/getItemByStringId('" + k + "')",
                 contentType: "application/json; odata=verbose",
                 async: false,
                 type: "POST",
@@ -146,8 +145,7 @@ RequestFormView = function () {
                     __metadata: {
                         type: "SP.Data.TravelRequestsListItem"
                     },
-                    RequestStatus: RequestStatusEnum.PendingApproval
-                        .Value,
+                    RequestStatus: RequestStatusEnum.PendingApproval.Value,
                     RequestApproveLinkURL: appweburl + "/Pages/RequestFormView.aspx?requestID=" + k + "&SPHostUrl=" +
                         encodeURIComponent(hostweburl) + "&SPAppWebUrl=" + encodeURIComponent(appweburl),
                     IsRequestApproveEmailSent: "false"
@@ -161,11 +159,8 @@ RequestFormView = function () {
                 },
                 success: function (l) {
                     $("#btnSendRequestToApprove").hide();
-                    $("#lblRequestStatus").text(
-                        "Pending approval");
-                    addMessage(
-                        "Request successfully sent for approval",
-                        "success");
+                    $("#lblRequestStatus").text("Pending approval");
+                    addMessage("Request successfully sent for approval","success");
                 },
                 error: function (n, l, m) {
                     alert(m);
@@ -187,8 +182,7 @@ RequestFormView = function () {
                         type: "SP.Data.TravelRequestsListItem"
                     },
                     IsSettlement: "true",
-                    SettlementStatus: RequestStatusEnum.Draft
-                        .Value,
+                    SettlementStatus: RequestStatusEnum.Draft.Value,
                     SettlementDestinationsJSON: l.DestinationsJSON,
                     SettlementTravelExpensesJSON: l.TravelExpensesJSON,
                     SettlementTotalCost: l.RequestTotalCost
@@ -202,9 +196,7 @@ RequestFormView = function () {
                 },
                 success: function (m) {
                     i(k, "SettlementCreateDate");
-                    location.href =
-                        "SettlementFormView.aspx?requestID=" +
-                        k;
+                    location.href ="SettlementFormView.aspx?requestID=" + k;
                 },
                 error: function (o, m, n) {
                     alert(n);
@@ -214,8 +206,7 @@ RequestFormView = function () {
         a = function (k) {
             var j = e();
             $.ajax({
-                url: appweburl +
-                    "/_api/Web/lists/getbytitle('TravelRequests')/getItemByStringId('" + k + "')",
+                url: appweburl + "/_api/Web/lists/getbytitle('TravelRequests')/getItemByStringId('" + k + "')",
                 contentType: "application/json; odata=verbose",
                 async: false,
                 type: "POST",
@@ -328,9 +319,6 @@ $(document).ready(function () {
     });
     $("#btnSendRequestToApprove").click(function () {
         RequestFormView.sendToApprove(m);
-    });
-    $("#btnCreateSettlement").click(function () {
-        RequestFormView.createSettlement(m);
     });
     var h = $("#dialog-confirm-approve").dialog({
         autoOpen: false,

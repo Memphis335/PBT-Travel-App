@@ -22,6 +22,7 @@
     <WorkflowPartId>{b06e06b4-0b2f-41a9-b0b6-06c05b9751ca}</WorkflowPartId>
     <CspkgPartId>{148e75d3-ca38-4f8e-ab14-5e7b219defea}</CspkgPartId>
     <SqlPackagePartId>{8c232c65-3ca7-4b57-a3cf-243de48cd47d}</SqlPackagePartId>
+    <ActiveDeploymentConfiguration>Debug</ActiveDeploymentConfiguration>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -48,6 +49,7 @@
     <Content Include="Content\chosen-sprite.png" />
     <Content Include="Content\Custom\jQuery-UI-Custom.css" />
     <Content Include="Content\Custom\jtable-Custom.css" />
+    <Content Include="Content\Custom\PrintForm.css" />
     <Content Include="Content\fullcalendar.min.css" />
     <Content Include="Content\fullcalendar.print.css" />
     <Content Include="Content\jquery.timepicker.css" />
@@ -100,6 +102,10 @@
     <Content Include="Lists\Settings\Elements.xml" />
     <Content Include="Lists\Settings\Schema.xml" />
     <Content Include="Lists\Settings\SettingsInstance\Elements.xml" />
+    <Content Include="Pages\PrintForm.aspx" />
+    <Content Include="Scripts\Custom\PrintForm.js" />
+    <Content Include="WorkflowHistoryList\Elements.xml" />
+    <Content Include="WorkflowTaskList\Elements.xml" />
     <None Include="Features\Feature2\Feature2.feature">
       <FeatureId>{86006914-363c-4a68-b34c-6833cd335d5c}</FeatureId>
     </None>
@@ -273,6 +279,15 @@
     </None>
     <None Include="SharePointProjectItem.spdata">
       <SharePointProjectItemId>{6a7e6028-878d-4f7b-8273-1362b049308d}</SharePointProjectItemId>
+    </None>
+    <None Include="SubmitForApproval\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{6af18465-3e38-470d-98ad-193368402822}</SharePointProjectItemId>
+    </None>
+    <None Include="WorkflowHistoryList\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{a24c23a0-1f20-495d-b15e-36193aa2e96c}</SharePointProjectItemId>
+    </None>
+    <None Include="WorkflowTaskList\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{a13d765b-9931-434d-aca2-77c71a56b7a3}</SharePointProjectItemId>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -498,10 +513,41 @@
   <ItemGroup>
     <Folder Include="Properties\" />
   </ItemGroup>
+  <ItemGroup>
+    <XamlAppDef Include="SubmitForApproval\Workflow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </XamlAppDef>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Activities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SharePoint.DesignTime.Activities.16.0, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel.Activities" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\SharePointTools\Microsoft.VisualStudio.SharePoint.targets" Condition="'$(VSToolsPath)' != ''" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{C1CDDADD-2546-481F-9697-4EA41081F2FC}">
+        <DeploymentConfigurations>
+          <DeploymentConfiguration Name="Debug">
+            <DeploymentSteps>Microsoft.VisualStudio.SharePoint.Apps.UninstallAppForSharePoint;Microsoft.VisualStudio.SharePoint.Apps.InstallAppForSharePoint</DeploymentSteps>
+            <RetractionSteps>Microsoft.VisualStudio.SharePoint.Apps.UninstallAppForSharePoint</RetractionSteps>
+          </DeploymentConfiguration>
+        </DeploymentConfigurations>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

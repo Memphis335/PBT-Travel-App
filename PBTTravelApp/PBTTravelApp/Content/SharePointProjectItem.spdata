@@ -127,5 +127,6 @@
     <ProjectItemFile Source="chosen-sprite.png" Target="Content\" Type="ElementFile" />
     <ProjectItemFile Source="chosen-sprite_alt.png" Target="Content\" Type="ElementFile" />
     <ProjectItemFile Source="themes\metro\view.png" Target="Content\themes\metro\" Type="ElementFile" />
+    <ProjectItemFile Source="Custom\PrintForm.css" Target="Content\Custom\" Type="ElementFile" />
   </Files>
 </ProjectItem>

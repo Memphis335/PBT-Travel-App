@@ -40,13 +40,13 @@
                             <p class="control-group">
                                 <label for="lblRequesterName">Requester Name</label>
                                 <span class="field"><span id="lblRequesterName" class="sLabel"></span></span>
-                            </p>
+                            </p> 
                             <p class="control-group">
                                 <label for="lblEmail">Email</label>
                                 <span class="field"><span id="lblEmail" class="sLabel"></span></span>
                             </p>
                             <p>
-                                <label>Employee ID</label>
+                                <label>ID / Passport</label>
                                 <span class="field"><span id="lblEmployeeID" class="sLabel"></span></span>
                             </p>
                             <p>
