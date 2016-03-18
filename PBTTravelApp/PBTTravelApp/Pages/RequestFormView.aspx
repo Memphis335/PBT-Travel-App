@@ -15,6 +15,12 @@
     <link href="../Content/jquery.handsontable.bootstrap.css" rel="stylesheet" />
 
     <!-- JS -->
+    <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/4.0/1/MicrosoftAjax.js"></script>
+    <script type="text/javascript" src="_layouts/15/SP.Core.js"></script>
+    <script type="text/javascript" src="_layouts/15/sp.runtime.js"></script>
+    <script type="text/javascript" src="_layouts/15/sp.js"></script>
+    <script type="text/javascript" src="_layouts/15/sp.workflowservices.js"></script>
+    
     <script src="../Scripts/Custom/RequestFormView.js"></script>
 
 </asp:Content>
@@ -40,7 +46,7 @@
                             <p class="control-group">
                                 <label for="lblRequesterName">Requester Name</label>
                                 <span class="field"><span id="lblRequesterName" class="sLabel"></span></span>
-                            </p> 
+                            </p>
                             <p class="control-group">
                                 <label for="lblEmail">Email</label>
                                 <span class="field"><span id="lblEmail" class="sLabel"></span></span>
@@ -170,13 +176,17 @@
             </div>
         </div>
     </div>
+    <div id="dialog-send-approval" title="Are you sure?" style="display: none;">
+        <p>
+            This request will be submitted for approval and no editing is allowed afterwards. Are you sure all details are correct?                                                                                         
+        </p>
+    </div>
     <div id="dialog-confirm-approve" title="Are you sure?" style="display: none;">
         <p>
             This request will be approved. Are you sure?                                                                                         
         </p>
     </div>
     <div id="dialog-confirm-reject" title="Are you sure?" style="display: none;">
-
         <form id="rejectForm" action="#">
             <p>
                 This request will be rejected.
@@ -184,9 +194,7 @@
                 Please enter reject reason.<br />
                 <input id="txtRejectReason" type="text" name="txtRejectReason" class="input-xlarge" />
             </p>
-
         </form>
-
     </div>
 
     <div id="dialog-print">

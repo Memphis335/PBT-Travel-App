@@ -19,7 +19,7 @@ RequestFormView = function () {
             }
         });
         return j;
-        },
+    },
         d = function (k) {
             var j;
             $.ajax({
@@ -45,7 +45,7 @@ RequestFormView = function () {
             var k;
             var l =
                 "$select=ID,Author/Id,Title,Email,EmployeeID,PhoneNumber,Project,RequestStatus,RequestApprover/Title,RequestApprover/Id," +
-            "RequestApproveDate,TripStartDate,TripEndDate,Created,Modified,RequestApproveDate,RequestRejectReason,TripPurpose,Notices,DestinationsJSON," +
+            "RequestApproveDate,TripStartDate,TripEndDate,Created,Modified,RequestApproveDate,IsRequestApproveEmailSent,RequestRejectReason,TripPurpose,Notices,DestinationsJSON," +
             "TicketIssued,AccomodationConfirmed,CarRentalBooked,TransfersArranged,PassportVisaValid,FrequentFlyer,FrequentflyerNumber";
             $.ajax({
                 url: appweburl +
@@ -101,21 +101,11 @@ RequestFormView = function () {
                     RequestApproveDate: l
                 });
             }
-            else {
-                if (j == "SettlementCreateDate") {
-                    n = JSON.stringify({
-                        __metadata: {
-                            type: "SP.Data.TravelRequestsListItem"
-                        },
-                        SettlementCreateDate: l
-                    });
-                }
-            }
+
             var k = e();
             $.ajax({
                 url: appweburl +
-                    "/_api/Web/lists/getbytitle('TravelRequests')/getItemByStringId('" +
-                    m + "')",
+                    "/_api/Web/lists/getbytitle('TravelRequests')/getItemByStringId('" + m + "')",
                 contentType: "application/json; odata=verbose",
                 async: false,
                 type: "POST",
@@ -136,8 +126,7 @@ RequestFormView = function () {
         h = function (k) {
             var j = e();
             $.ajax({
-                url: appweburl +
-                    "/_api/Web/lists/getbytitle('TravelRequests')/getItemByStringId('" + k + "')",
+                url: appweburl + "/_api/Web/lists/getbytitle('TravelRequests')/getItemByStringId('" + k + "')",
                 contentType: "application/json; odata=verbose",
                 async: false,
                 type: "POST",
@@ -148,7 +137,7 @@ RequestFormView = function () {
                     RequestStatus: RequestStatusEnum.PendingApproval.Value,
                     RequestApproveLinkURL: appweburl + "/Pages/RequestFormView.aspx?requestID=" + k + "&SPHostUrl=" +
                         encodeURIComponent(hostweburl) + "&SPAppWebUrl=" + encodeURIComponent(appweburl),
-                    IsRequestApproveEmailSent: "false"
+                    IsRequestApproveEmailSent: "true"
                 }),
                 headers: {
                     accept: "application/json;odata=verbose",
@@ -158,48 +147,14 @@ RequestFormView = function () {
                     "IF-MATCH": "*"
                 },
                 success: function (l) {
+                    startWorkflow(k, "894d962a-1997-481f-bf01-49848df8bfda");
                     $("#btnSendRequestToApprove").hide();
+                    $("#btnEditRequest").hide();
                     $("#lblRequestStatus").text("Pending approval");
-                    addMessage("Request successfully sent for approval","success");
+                    addMessage("Request successfully sent for approval", "success");
                 },
                 error: function (n, l, m) {
                     alert(m);
-                }
-            });
-        },
-        b = function (k) {
-            var l = RequestFormView.getRequestForm(k);
-            var j = e();
-            $.ajax({
-                url: appweburl +
-                    "/_api/Web/lists/getbytitle('TravelRequests')/getItemByStringId('" +
-                    k + "')",
-                contentType: "application/json; odata=verbose",
-                async: false,
-                type: "POST",
-                data: JSON.stringify({
-                    __metadata: {
-                        type: "SP.Data.TravelRequestsListItem"
-                    },
-                    IsSettlement: "true",
-                    SettlementStatus: RequestStatusEnum.Draft.Value,
-                    SettlementDestinationsJSON: l.DestinationsJSON,
-                    SettlementTravelExpensesJSON: l.TravelExpensesJSON,
-                    SettlementTotalCost: l.RequestTotalCost
-                }),
-                headers: {
-                    accept: "application/json;odata=verbose",
-                    "x-requestforceauthentication": true,
-                    "X-RequestDigest": j,
-                    "X-Http-Method": "PATCH",
-                    "IF-MATCH": "*"
-                },
-                success: function (m) {
-                    i(k, "SettlementCreateDate");
-                    location.href ="SettlementFormView.aspx?requestID=" + k;
-                },
-                error: function (o, m, n) {
-                    alert(n);
                 }
             });
         },
@@ -228,7 +183,7 @@ RequestFormView = function () {
                     $("#btnApproveRequest").hide();
                     $("#btnRejectRequest").hide();
                     $("#lblRequestStatus").text("Approved");
-                    addMessage("Request successfully approved","success");
+                    addMessage("Request successfully approved", "success");
                 },
                 error: function (n, l, m) {
                     alert(m);
@@ -290,13 +245,39 @@ RequestFormView = function () {
             });
             return j;
         };
+    function startWorkflow(itemId, subId) {
+        var context = SP.ClientContext.get_current();
+        var web = context.get_web();
+        var wfServiceManager = SP.WorkflowServices.WorkflowServicesManager.newObject(context, web);
+        var subscription = wfServiceManager.getWorkflowSubscriptionService().getSubscription(subId);
+
+        context.load(subscription);
+        context.executeQueryAsync(
+            function (sender, args) {
+                console.log("Subscription load success. Attempting to start workflow.");
+                var inputParameters = {};
+                wfServiceManager.getWorkflowInstanceService().startWorkflowOnListItem(subscription, itemId, inputParameters);
+
+                context.executeQueryAsync(
+                    function (sender, args) { console.log("Successfully starting workflow."); },
+                    function (sender, args) {
+                        console.log("Failed to start workflow.");
+                        console.log("Error: " + args.get_message() + "\n" + args.get_stackTrace());
+                    }
+                );
+            },
+            function (sender, args) {
+                console.log("Failed to load subscription.");
+                console.log("Error: " + args.get_message() + "\n" + args.get_stackTrace());
+            }
+        );
+    };
     return {
         getRequestForm: f,
         getDictionary: d,
         sendToApprove: h,
         approveRequest: a,
         rejectRequest: g,
-        createSettlement: b,
         getAllAttachments: c
     };
 }();
@@ -317,8 +298,22 @@ $(document).ready(function () {
             "PrintForm.aspx?type=request&requestID=" + m,
             "Travel Request Form", 1024, 768, true);
     });
-    $("#btnSendRequestToApprove").click(function () {
-        RequestFormView.sendToApprove(m);
+
+    var j = $("#dialog-send-approval").dialog({
+        autoOpen: false,
+        resizable: false,
+        height: 240,
+        width: 420,
+        //modal: true,
+        buttons: {
+            Cancel: function () {
+                $(this).dialog("close");
+            },
+            Yes: function () {
+                RequestFormView.sendToApprove(m);
+                $(this).dialog("close");
+            },
+        }
     });
     var h = $("#dialog-confirm-approve").dialog({
         autoOpen: false,
@@ -346,8 +341,7 @@ $(document).ready(function () {
                 $(this).dialog("close");
             },
             Reject: function () {
-                RequestFormView.rejectRequest(m, $(
-                    "#txtRejectReason").val());
+                RequestFormView.rejectRequest(m, $("#txtRejectReason").val());
                 $(this).dialog("close");
             },
         }
@@ -363,6 +357,12 @@ $(document).ready(function () {
         location.href = "AccessDenied.aspx";
         return;
     }
+    if (l.IsRequestApproveEmailSent) {
+        $("#btnEditRequest").hide();
+    }
+    $("#btnSendRequestToApprove").click(function () {
+        j.dialog("open");
+    });
     if (l.RequestStatus == "Draft" || l.RequestStatus == "Rejected") {
         $("#btnSendRequestToApprove").show();
     }
@@ -406,7 +406,7 @@ $(document).ready(function () {
     $("#lblEmployeeID").text(l.EmployeeID == null ? "" : l.EmployeeID);
     $("#lblPhoneNumber").text(l.PhoneNumber == null ? "" : l.PhoneNumber);
     $("#lblProject").text(l.Project == null ? "" : l.Project);
-    
+
     if (l.RequestRejectReason != null) {
         $("#lblRejectReason").text(l.RequestRejectReason);
     }
@@ -482,11 +482,23 @@ $(document).ready(function () {
             dateFormat: commonDateFormat
         }]
     });
-    $("#lblTicket").text(l.TicketIssued);
-    $("#lblAccom").text(l.AccomodationConfirmed);
-    $("#lblRental").text(l.CarRentalBooked);
-    $("#lblTransfer").text(l.TransfersArranged);
-    $("#lblPassport").text(l.PassportVisaValid);
+
+    if (l.TicketIssued) {
+        $("#lblTicket").addClass("ms-Icon ms-Icon--check");
+    } else $("#lblTicket").addClass("ms-Icon ms-Icon--x");
+    if (l.AccomodationConfirmed) {
+        $("#lblAccom").addClass("ms-Icon ms-Icon--check");
+    } else $("#lblAccom").addClass("ms-Icon ms-Icon--x");
+    if (l.CarRentalBooked) {
+        $("#lblRental").addClass("ms-Icon ms-Icon--check");
+    } else $("#lblRental").addClass("ms-Icon ms-Icon--x");
+    if (l.TransfersArranged) {
+        $("#lblTransfer").addClass("ms-Icon ms-Icon--check");
+    } else $("#lblTransfer").addClass("ms-Icon ms-Icon--x");
+    if (l.PassportVisaValid) {
+        $("#lblPassport").addClass("ms-Icon ms-Icon--check");
+    } else $("#lblPassport").addClass("ms-Icon ms-Icon--x");
+
     $("#lblFrequentflyer").text(l.FrequentFlyer);
     $("#lblNotice").text(l.Notices);
     $("#lblFrequentflyerNumber").text(l.FrequentflyerNumber);
@@ -503,7 +515,7 @@ $(document).ready(function () {
         });
 
     };
-    
+
     var f = $("#divDestinations").data("handsontable");
     var g = f.getData();
     if (g.length > 1 && f.isEmptyRow(g.length - 1)) {

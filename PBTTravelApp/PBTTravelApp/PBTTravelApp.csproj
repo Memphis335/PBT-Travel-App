@@ -103,7 +103,10 @@
     <Content Include="Lists\Settings\Schema.xml" />
     <Content Include="Lists\Settings\SettingsInstance\Elements.xml" />
     <Content Include="Pages\PrintForm.aspx" />
+    <Content Include="Pages\RequestFormEdit.aspx" />
     <Content Include="Scripts\Custom\PrintForm.js" />
+    <Content Include="Scripts\Custom\RequestFormEdit.js" />
+    <Content Include="Scripts\Custom\workflows.js" />
     <Content Include="WorkflowHistoryList\Elements.xml" />
     <Content Include="WorkflowTaskList\Elements.xml" />
     <None Include="Features\Feature2\Feature2.feature">

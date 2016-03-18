@@ -168,5 +168,7 @@
     <File Path="Scripts\moment.js" Url="Scripts/moment.js" ReplaceContent="TRUE" />
     <File Path="Scripts\Custom\RequestFormView.js" Url="Scripts/Custom/RequestFormView.js" ReplaceContent="TRUE" />
     <File Path="Scripts\Custom\PrintForm.js" Url="Scripts/Custom/PrintForm.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Custom\workflows.js" Url="Scripts/Custom/workflows.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Custom\RequestFormEdit.js" Url="Scripts/Custom/RequestFormEdit.js" ReplaceContent="TRUE" />
   </Module>
 </Elements>

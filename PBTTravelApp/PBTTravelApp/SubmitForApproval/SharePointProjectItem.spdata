@@ -7,9 +7,9 @@
     <ExtensionDataItem Key="WorkflowAssociation.EventSourceGUID" Value="Lists/TravelRequests" />
     <ExtensionDataItem Key="WorkflowAssociation.HistoryListId" Value="Lists/WorkflowHistoryList" />
     <ExtensionDataItem Key="WorkflowAssociation.TaskListId" Value="Lists/WorkflowTaskList" />
-    <ExtensionDataItem Key="WorkflowAssociationItemAdded.Description" Value="SubmitForApproval - ItemAdded" />
-    <ExtensionDataItem Key="WorkflowAssociationItemAdded.DisplayName" Value="SubmitForApproval - ItemAdded" />
-    <ExtensionDataItem Key="WorkflowAssociationItemAdded.Enabled" Value="true" />
+    <ExtensionDataItem Key="WorkflowAssociationItemAdded.Description" Value="SubmitForApproval" />
+    <ExtensionDataItem Key="WorkflowAssociationItemAdded.DisplayName" Value="SubmitForApproval" />
+    <ExtensionDataItem Key="WorkflowAssociationItemAdded.Enabled" Value="false" />
     <ExtensionDataItem Key="WorkflowAssociationItemAdded.EventSourceGUID" Value="Lists/TravelRequests" />
     <ExtensionDataItem Key="WorkflowAssociationItemAdded.EventType" Value="ItemAdded" />
     <ExtensionDataItem Key="WorkflowAssociationItemAdded.HistoryListId" Value="Lists/WorkflowHistoryList" />

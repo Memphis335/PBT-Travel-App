@@ -15,5 +15,6 @@
     <File Path="Pages\UserRolesList.aspx" Url="Pages/UserRolesList.aspx" ReplaceContent="TRUE" />
     <File Path="Pages\RequestFormView.aspx" Url="Pages/RequestFormView.aspx" ReplaceContent="TRUE" />
     <File Path="Pages\PrintForm.aspx" Url="Pages/PrintForm.aspx" ReplaceContent="TRUE" />
+    <File Path="Pages\RequestFormEdit.aspx" Url="Pages/RequestFormEdit.aspx" ReplaceContent="TRUE" />
   </Module>
 </Elements>

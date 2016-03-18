@@ -16,5 +16,6 @@
     <ProjectItemFile Source="UserRolesList.aspx" Target="Pages\" Type="ElementFile" />
     <ProjectItemFile Source="RequestFormView.aspx" Target="Pages\" Type="ElementFile" />
     <ProjectItemFile Source="PrintForm.aspx" Target="Pages\" Type="ElementFile" />
+    <ProjectItemFile Source="RequestFormEdit.aspx" Target="Pages\" Type="ElementFile" />
   </Files>
 </ProjectItem>

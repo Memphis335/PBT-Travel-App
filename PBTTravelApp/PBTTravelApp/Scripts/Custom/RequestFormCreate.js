@@ -189,8 +189,10 @@ function dateCalc() {
 };
 
 $(document).ready(function () {
-    $("#aBookingProgress :input").prop("disabled", true);
-    $("#aBookingProgress").attr("Title", "For office use only");
+    if (!CurrentUser.IsAdmin) {
+        $("#aBookingProgress :input").prop("disabled", true);
+        $("#aBookingProgress").attr("Title", "For office use only");
+    }
     var accomodationConfirmed = false;
     var ticketIssued = false;
     var carRentalBooked = false;
@@ -212,7 +214,6 @@ $(document).ready(function () {
     if ($("#chkPassport").is(":checked")) {
         passportVisaValid = true;
     }
-
 
     $("#requestFormCreate").submit(function (q) {
         if ($("#requestFormCreate").valid()) {
