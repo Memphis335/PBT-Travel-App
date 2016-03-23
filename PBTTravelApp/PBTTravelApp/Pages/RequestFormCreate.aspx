@@ -160,8 +160,8 @@
                     </div>
                     <!--tabbedwidget-->
                     <div style="margin: 10px;">
-                        <button id="btnSubmit" class="ms-Button ms-Button--primary" type="submit"><span class="ms-Button-icon"><i class="ms-Icon ms-Icon--plus"></i></span><span class="ms-Button-label">Save changes</span> <span class="ms-Button-description">Submit travel request for approval</span> </button>
-                        <button id="btnCancel" class="ms-Button" type="button"><span class="ms-Button-icon"><i class="ms-Icon ms-Icon--plus"></i></span><span class="ms-Button-label">Cancel</span> <span class="ms-Button-description">Cancel this travel request</span> </button>
+                        <button id="btnSubmit" class="ms-Button ms-Button--primary" type="submit"><span class="ms-Button-label"><i class="ms-Icon ms-Icon--save"></i> Save changes</span></button>
+                        <button id="btnCancel" class="ms-Button" type="button"><span class="ms-Button-label"><i class="ms-Icon ms-Icon--x"></i> Cancel</span></button>
                     </div>
                 </form>
             </div>

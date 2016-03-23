@@ -43,9 +43,9 @@
       <Field Name="Project" ID="{564090f3-79bb-4551-a5f3-f904b9e07abf}" DisplayName="Project" Type="Text" />
       <Field Name="RequestStatus" ID="{386a38e6-7a2a-46eb-8177-c54a1085ce29}" DisplayName="RequestStatus" Type="Text" />
       <Field Name="RequestApprover" ID="{8cad7d4b-f652-4d50-85e1-14c1c5525c3f}" DisplayName="RequestApprover" Type="User" List="UserInfo" />
-      <Field Name="RequestApproveDate" ID="{79b3e14d-e4d4-4818-aefd-ce6c7ff0374b}" DisplayName="RequestApproveDate" Type="DateTime" Format="DateOnly" />
-      <Field Name="TripStartDate" ID="{81a68464-4ff8-4eeb-b6c5-d85527816870}" DisplayName="TripStartDate" Type="DateTime" Format="DateOnly" />
-      <Field Name="TripEndDate" ID="{5482ae14-e19a-4f00-96dc-3d8b39c8d0a6}" DisplayName="TripEndDate" Type="DateTime" Format="DateOnly" />
+      <Field Name="RequestApproveDate" ID="{79b3e14d-e4d4-4818-aefd-ce6c7ff0374b}" DisplayName="RequestApproveDate" Type="DateTime"  />
+      <Field Name="TripStartDate" ID="{81a68464-4ff8-4eeb-b6c5-d85527816870}" DisplayName="TripStartDate" Type="DateTime"  />
+      <Field Name="TripEndDate" ID="{5482ae14-e19a-4f00-96dc-3d8b39c8d0a6}" DisplayName="TripEndDate" Type="DateTime"  />
       <Field Name="TripPurpose" ID="{17e8e2e6-04da-48b8-a9b2-7d25a690e23f}" DisplayName="TripPurpose" Type="Text" />
       <Field Name="Notices" ID="{0002b4c7-9d97-473a-8f8f-e01fb9082c5c}" DisplayName="Notices" Type="Text" />
       <Field Name="DestinationsJSON" ID="{49e22a4b-27da-46fd-bb48-71b2ff85c27e}" DisplayName="DestinationsJSON" Type="Note" />

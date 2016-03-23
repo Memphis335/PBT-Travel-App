@@ -267,8 +267,6 @@
 .ui-widget-overlay { background: #eeeeee; opacity: .80;filter:Alpha(Opacity=80); }
 .ui-widget-shadow { margin: -4px 0 0 -4px; padding: 4px; background: #aaaaaa; opacity: .60;filter:Alpha(Opacity=60); -moz-border-radius: 0px; -khtml-border-radius: 0px; -webkit-border-radius: 0px; border-radius: 0px; }/*
 
-
-
 /*
  * jQuery UI Dialog 1.8.16
  *

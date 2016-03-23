@@ -1,6 +1,6 @@
 ﻿"use strict";
 $.support.cors = true;
-var commonDateFormat = "dd/mm/yy";
+var commonDateFormat = "yy-mm-dd";
 var commonDateFormat2 = "YYYY-MM-DD";
 var commonDateFormatWithHour = "YYYY-MM-DD HH:mm";
 var sharepointDateFormat = "YYYY-MM-DDTHH:mm:ssZZ";
@@ -118,7 +118,7 @@ if (typeof hostweburl != "undefined" && appweburl != "undefined") {
 } else {
     hostweburl = $.cookie("hostweburl");
     appweburl = $.cookie("appweburl");
-    if (typeof appweburl === "undefined") {
+    if (typeof appweburl == "undefined") {
         location.href = "AuthError.aspx";
     }
 }
@@ -138,8 +138,7 @@ $(document).ready(function () {
             CurrentUser.LoginName = a.d.LoginName;
             $.ajax({
                 url: appweburl +
-                    "/_vti_bin/ListData.svc/CustomUserRoles/?$filter=Title eq 'Admin' and UserId eq " +
-                    CurrentUser.Id,
+                    "/_vti_bin/ListData.svc/CustomUserRoles/?$filter=Title eq 'Admin' and UserId eq " + CurrentUser.Id,
                 type: "GET",
                 async: false,
                 headers: {

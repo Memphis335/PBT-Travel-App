@@ -27,7 +27,6 @@
         <div id="mainContainer" style="clear: both;">
             <div class="maincontent">
                 <form id="requestFormEdit" class="stdform stdform2" method="post">
-                    
                     <div class="tabbedwidget tab-primary" id="formTabs">
                         <ul id="tabs">
                             <li><a href="#aPersonalInfo">Personal Info</a></li>

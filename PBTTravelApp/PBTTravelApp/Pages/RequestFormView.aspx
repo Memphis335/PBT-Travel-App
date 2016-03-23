@@ -20,7 +20,7 @@
     <script type="text/javascript" src="_layouts/15/sp.runtime.js"></script>
     <script type="text/javascript" src="_layouts/15/sp.js"></script>
     <script type="text/javascript" src="_layouts/15/sp.workflowservices.js"></script>
-    
+
     <script src="../Scripts/Custom/RequestFormView.js"></script>
 
 </asp:Content>
@@ -162,11 +162,11 @@
                         </div>
                     </div>
                     <div style="margin: 10px;">
-                        <button id="btnEditRequest" type="button" class="ms-Button"><span class="ms-Button-label">Edit request</span></button>
-                        <button id="btnPrint" type="button" class="ms-Button"><span class="ms-Button-label">Print</span></button>
-                        <button id="btnSendRequestToApprove" type="button" class="ms-Button ms-Button--primary" style="display: none;"><span class="ms-Button-label">Send to approve</span></button>
-                        <button id="btnApproveRequest" type="button" class="ms-Button" style="display: none;"><span class="ms-Button-label">Approve</span></button>
-                        <button id="btnRejectRequest" type="button" class="ms-Button ms-Button--primary" style="display: none;"><span class="ms-Button-label">Reject</span></button>
+                        <button id="btnEditRequest" type="button" class="ms-Button"><span class="ms-Button-label"><i class="ms-Icon ms-Icon--editBox"></i>Edit request</span></button>
+                        <button id="btnPrint" type="button" class="ms-Button"><span class="ms-Button-label"><i class="ms-Icon ms-Icon--print"></i>Print</span></button>
+                        <button id="btnSendRequestToApprove" type="button" class="ms-Button ms-Button--primary" style="display: none;"><span class="ms-Button-label"><i class="ms-Icon ms-Icon--mailSend"></i>Send to approve</span></button>
+                        <button id="btnApproveRequest" type="button" class="ms-Button ms-Button--primary" style="display: none;"><span class="ms-Button-label"><i class="ms-Icon ms-Icon--check"></i>Approve</span></button>
+                        <button id="btnRejectRequest" type="button" class="ms-Button" style="display: none;"><span class="ms-Button-label"><i class="ms-Icon ms-Icon--x"></i>Reject</span></button>
                         <div id="divValidationSummary" style="margin: 5px; display: none;">
                             <label id="lblValidationSummary" class="error">Please fix the validation errors</label>
                         </div>
@@ -183,14 +183,13 @@
     </div>
     <div id="dialog-confirm-approve" title="Are you sure?" style="display: none;">
         <p>
-            This request will be approved. Are you sure?                                                                                         
+            This request will be approved. Are you sure?                                                                                   
         </p>
     </div>
     <div id="dialog-confirm-reject" title="Are you sure?" style="display: none;">
         <form id="rejectForm" action="#">
             <p>
-                This request will be rejected.
-                <br />
+                This request will be rejected.<br />
                 Please enter reject reason.<br />
                 <input id="txtRejectReason" type="text" name="txtRejectReason" class="input-xlarge" />
             </p>

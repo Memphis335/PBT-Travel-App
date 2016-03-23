@@ -247,27 +247,23 @@ $(document).ready(function () {
         $("#aBookingProgress").hide();
         $("#liBookingProgress").hide();
     }
-    var accomodationConfirmed = false;
-    var ticketIssued = false;
-    var carRentalBooked = false;
-    var transfersArranged = false;
-    var passportVisaValid = false;
 
     if ($("#chkTicket").is(":checked")) {
-        ticketIssued = true;
-    }
+        var ticketIssued = true;
+    } else ticketIssued = false;
     if ($("#chkAccom").is(":checked")) {
-        accomodationConfirmed = true;
-    }
+        var accomodationConfirmed = true;
+    } else accomodationConfirmed = false;
     if ($("#chkRental").is(":checked")) {
-        carRentalBooked = true;
+        var carRentalBooked = true;
     }
     if ($("#chkTransfer").is(":checked")) {
-        transfersArranged = true;
+        var transfersArranged = true;
     }
     if ($("#chkPassport").is(":checked")) {
-        passportVisaValid = true;
+        var passportVisaValid = true;
     }
+    
     $("#requestFormEdit").submit(function (w) {
         if ($("#requestFormEdit").valid()) {
             w.preventDefault();
@@ -284,7 +280,7 @@ $(document).ready(function () {
             x.Notices = $("#taNotices").val().StripTags();
             x.RequestApprover = $("#ddlRequestApprover").val();
             x.DestinationsJSON = JSON.stringify($("#divDestinations").data("handsontable").getData());
-            x.TicketIssued = ticketIssued;
+            x.TicketIssued = true;
             x.AccomodationConfirmed = accomodationConfirmed;
             x.CarRentalBooked = carRentalBooked;
             x.TransfersArranged = transfersArranged;
@@ -334,18 +330,27 @@ $(document).ready(function () {
     $("#taPersonal").val(s.PersonalR);
     $("#txtFFP").val(s.FrequentFlyer);
     $("#txtFFPN").val(s.FrequentflyerNumber);
+    if (s.TicketIssued) {
+        $("#chkTicket").is(":checked");
+    } else $("#chkTicket").is(":unchecked");
+    $("#chkAccom").val(s.accomodationConfirmed);
+    $("#chkRental").val(s.CarRentalBooked);
+    $("#chkTransfer").val(s.TransfersArranged);
+    $("#chkPassport").val(s.PassportVisaValid);
+
     var v = moment(s.TripStartDate);
     if (v.isValid()) {
-        $("#txtStartDate").val(v.format(commonDateFormat));
+        $("#txtStartDate").val(v.format(commonDateFormat2));
     }
     var u = moment(s.TripEndDate);
     if (u.isValid()) {
-        $("#txtEndDate").val(u.format(commonDateFormat));
+        $("#txtEndDate").val(u.format(commonDateFormat2));
     }
     $("#txtPurpose").val(s.TripPurpose);
     if (s.Notices != null) {
         $("#taNotices").val(s.Notices);
     }
+
     $("#txtRequestApprover").val(s.RequestApprover.Name);
     if (s.RequestRejectReason != null) {
         $("#lblRejectReason").text(s.RequestRejectReason);
@@ -361,8 +366,7 @@ $(document).ready(function () {
     $.each(c, function () {
         m.append($("<option>", {
             value: this.Id,
-            text: this.Title + " (" + this.Email +
-                ")"
+            text: this.Title + " (" + this.Email + ")"
         }));
     });
     m.val(s.RequestApprover.Id);
@@ -390,7 +394,7 @@ $(document).ready(function () {
     $.datepicker.setDefaults({
         dateFormat: commonDateFormat,
         showButtonPanel: false,
-        changeMonth: false,
+        changeMonth: true,
         changeYear: false,
     });
     jQuery("#requestFormEdit").validate({

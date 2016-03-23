@@ -226,6 +226,7 @@ $(document).ready(function () {
             r.Project = $("#ddlProject").val();
             r.PersonalR = $("#taPersonal").val().StripTags();
             r.TripStartDate = $("#txtStartDate").val().StripTags();
+            console.log($("#txtStartDate").val().StripTags());
             r.TripEndDate = $("#txtEndDate").val().StripTags();
             r.TripPurpose = $("#txtPurpose").val().StripTags();
             r.Notices = $("#taNotices").val().StripTags();

@@ -16,5 +16,7 @@
     <File Path="Pages\RequestFormView.aspx" Url="Pages/RequestFormView.aspx" ReplaceContent="TRUE" />
     <File Path="Pages\PrintForm.aspx" Url="Pages/PrintForm.aspx" ReplaceContent="TRUE" />
     <File Path="Pages\RequestFormEdit.aspx" Url="Pages/RequestFormEdit.aspx" ReplaceContent="TRUE" />
+    <File Path="Pages\AuthError.aspx" Url="Pages/AuthError.aspx" ReplaceContent="TRUE" />
+    <File Path="Pages\NotFound.aspx" Url="Pages/NotFound.aspx" ReplaceContent="TRUE" />
   </Module>
 </Elements>

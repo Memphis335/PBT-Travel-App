@@ -17,5 +17,7 @@
     <ProjectItemFile Source="RequestFormView.aspx" Target="Pages\" Type="ElementFile" />
     <ProjectItemFile Source="PrintForm.aspx" Target="Pages\" Type="ElementFile" />
     <ProjectItemFile Source="RequestFormEdit.aspx" Target="Pages\" Type="ElementFile" />
+    <ProjectItemFile Source="AuthError.aspx" Target="Pages\" Type="ElementFile" />
+    <ProjectItemFile Source="NotFound.aspx" Target="Pages\" Type="ElementFile" />
   </Files>
 </ProjectItem>

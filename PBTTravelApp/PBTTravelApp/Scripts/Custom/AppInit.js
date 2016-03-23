@@ -122,8 +122,7 @@ AppInit = function () {
             });
             $.ajax({
                 url: appweburl +
-                    "/_api/web/roleassignments/addroleassignment(principalid=" +
-                    g + ",roleDefId=1073741827)",
+                    "/_api/web/roleassignments/addroleassignment(principalid=" + g + ",roleDefId=1073741827)",
                 contentType: "application/json; odata=verbose",
                 type: "POST",
                 async: false,

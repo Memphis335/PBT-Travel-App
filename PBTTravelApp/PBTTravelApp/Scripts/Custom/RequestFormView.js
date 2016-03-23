@@ -215,8 +215,7 @@ RequestFormView = function () {
                     $("#btnApproveRequest").hide();
                     $("#btnRejectRequest").hide();
                     $("#lblRequestStatus").text("Rejected");
-                    addMessage("Request successfully rejected",
-                        "success");
+                    addMessage("Request successfully rejected","success");
                 },
                 error: function (o, m, n) {
                     alert(n);
@@ -304,7 +303,7 @@ $(document).ready(function () {
         resizable: false,
         height: 240,
         width: 420,
-        //modal: true,
+        modal: false,
         buttons: {
             Cancel: function () {
                 $(this).dialog("close");
@@ -318,8 +317,9 @@ $(document).ready(function () {
     var h = $("#dialog-confirm-approve").dialog({
         autoOpen: false,
         resizable: false,
-        height: 140,
-        modal: true,
+        height: 180,
+        width: 320,
+        modal: false,
         buttons: {
             Cancel: function () {
                 $(this).dialog("close");
@@ -351,9 +351,7 @@ $(document).ready(function () {
         location.href = "NotFound.aspx";
         return;
     }
-    if (HasAccessToRequest(l.Author.Id, l.RequestApprover.Id,
-        CurrentUser.Id, CurrentUser.IsAdmin, l.RequestStatus, false
-    ) == false) {
+    if (HasAccessToRequest(l.Author.Id, l.RequestApprover.Id,CurrentUser.Id, CurrentUser.IsAdmin, l.RequestStatus, false) == false) {
         location.href = "AccessDenied.aspx";
         return;
     }
@@ -367,7 +365,7 @@ $(document).ready(function () {
         $("#btnSendRequestToApprove").show();
     }
     else {
-        if (l.RequestStatus == "PendingApproval") {
+        if (l.RequestStatus === "Pending Approval") {
             if (l.RequestApprover.Id == CurrentUser.Id) {
                 $("#btnApproveRequest").show();
                 $("#btnRejectRequest").show();
@@ -503,28 +501,13 @@ $(document).ready(function () {
     $("#lblNotice").text(l.Notices);
     $("#lblFrequentflyerNumber").text(l.FrequentflyerNumber);
 
-    var a = function (r, s) {
-        var t = 0;
-        var u = $("#divTravelExpenses").data("handsontable");
-        var v = u.getData();
-        $.each(v, function () {
-            if ($.isNumeric(this.CurrencyAmount) && $.isNumeric(
-                this.ExchangeRate)) {
-                t += this.CurrencyAmount * this.ExchangeRate;
-            }
-        });
-
-    };
-
     var f = $("#divDestinations").data("handsontable");
     var g = f.getData();
     if (g.length > 1 && f.isEmptyRow(g.length - 1)) {
         f.alter("remove_row", parseInt(g.length - 1));
     }
-    $(".ui-dialog-buttonpane").find('button:contains("Approve")').addClass(
-        "btn btn-primary");
-    $(".ui-dialog-buttonpane").find('button:contains("Reject")').addClass(
-        "btn btn-primary");
-    $(".ui-dialog-buttonpane").find('button:contains("Cancel")').addClass(
-        "btn");
+    $(".ui-dialog-buttonpane").find('button:contains("Approve")').addClass("btn btn-primary");
+    $(".ui-dialog-buttonpane").find('button:contains("Reject")').addClass("btn btn-primary");
+    $(".ui-dialog-buttonpane").find('button:contains("Yes")').addClass("btn btn-primary");
+    $(".ui-dialog-buttonpane").find('button:contains("Cancel")').addClass("btn");
 });
