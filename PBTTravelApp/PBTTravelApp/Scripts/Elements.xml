@@ -170,5 +170,6 @@
     <File Path="Scripts\Custom\PrintForm.js" Url="Scripts/Custom/PrintForm.js" ReplaceContent="TRUE" />
     <File Path="Scripts\Custom\workflows.js" Url="Scripts/Custom/workflows.js" ReplaceContent="TRUE" />
     <File Path="Scripts\Custom\RequestFormEdit.js" Url="Scripts/Custom/RequestFormEdit.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Custom\sppeoplepicker.min.js" Url="Scripts/Custom/sppeoplepicker.min.js" ReplaceContent="TRUE" />
   </Module>
 </Elements>

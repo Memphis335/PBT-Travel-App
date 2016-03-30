@@ -171,5 +171,6 @@
     <ProjectItemFile Source="Custom\PrintForm.js" Target="Scripts\Custom\" Type="ElementFile" />
     <ProjectItemFile Source="Custom\workflows.js" Target="Scripts\Custom\" Type="ElementFile" />
     <ProjectItemFile Source="Custom\RequestFormEdit.js" Target="Scripts\Custom\" Type="ElementFile" />
+    <ProjectItemFile Source="Custom\sppeoplepicker.min.js" Target="Scripts\Custom\" Type="ElementFile" />
   </Files>
 </ProjectItem>

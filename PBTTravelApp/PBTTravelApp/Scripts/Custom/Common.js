@@ -148,8 +148,7 @@ $(document).ready(function () {
                 cache: false,
                 success: function(b) {
                     if (b.d.results.length > 0) {
-                        CurrentUser.IsAdmin =
-                            true;
+                        CurrentUser.IsAdmin = true;
                 }
                 }
             });

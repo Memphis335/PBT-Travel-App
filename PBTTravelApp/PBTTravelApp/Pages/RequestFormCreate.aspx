@@ -9,14 +9,12 @@
     <link href="../Content/Custom/jQuery-UI-Custom.css" rel="stylesheet" />
 
     <!-- Handsontable-->
-
     <script src="../Scripts/handsontable/handsontable.full.js"></script>
     <link media="screen" href="../Content/handsontable/handsontable.full.css" rel="stylesheet" />
     <link href="../Content/jquery.handsontable.bootstrap.css" rel="stylesheet" />
 
     <!-- JS -->
     <script src="../Scripts/Custom/RequestFormCreate.js"></script>
-
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="mainContent" runat="server">
@@ -91,10 +89,11 @@
                             <p>
                                 <label>Request Approver</label>
                                 <span class="field">
-                                    <select name="ddlRequestApprover" id="ddlRequestApprover" data-placeholder="Choose a Employee..." style="margin-right: 10px; width: 370px;" class="" tabindex="2">
+                                    <%--<select name="ddlRequestApprover" id="ddlRequestApprover" data-placeholder="Choose a Employee..." style="margin-right: 10px; width: 370px;" class="" tabindex="2">
                                         <option value=""></option>
-                                    </select>
+                                    </select>--%>
                                 </span>
+                                <div id="peoplePickerDiv"></div>
                             </p>
                         </div>
                         <div id="aTravelInfo">

@@ -108,6 +108,7 @@
     <Content Include="Pages\RequestFormEdit.aspx" />
     <Content Include="Scripts\Custom\PrintForm.js" />
     <Content Include="Scripts\Custom\RequestFormEdit.js" />
+    <Content Include="Scripts\Custom\sppeoplepicker.min.js" />
     <Content Include="Scripts\Custom\workflows.js" />
     <Content Include="WorkflowHistoryList\Elements.xml" />
     <Content Include="WorkflowTaskList\Elements.xml" />

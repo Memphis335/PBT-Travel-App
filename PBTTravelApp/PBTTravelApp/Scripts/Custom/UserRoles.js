@@ -73,8 +73,7 @@ UserRoles = function () {
                 var l = false;
                 $.ajax({
                     url: appweburl +
-                        "/_api/Web/lists/getbytitle('CustomUserRoles')/items?$select=ID, User/Id&$expand=User/Id&$filter=User/Id eq " +
-                        i,
+                        "/_api/Web/lists/getbytitle('CustomUserRoles')/items?$select=ID, User/Id&$expand=User/Id&$filter=User/Id eq " + i,
                     type: "GET",
                     async: false,
                     headers: {
@@ -135,8 +134,7 @@ UserRoles = function () {
             return $.Deferred(function (i) {
                 $.ajax({
                     url: appweburl +
-                        "/_api/Web/lists/getbytitle('CustomUserRoles')/getItemByStringId('" +
-                        g + "')",
+                        "/_api/Web/lists/getbytitle('CustomUserRoles')/getItemByStringId('" + g + "')",
                     type: "DELETE",
                     headers: {
                         accept: "application/json;odata=verbose",
@@ -165,7 +163,7 @@ UserRoles = function () {
 $(document).ready(function () {
     if (CurrentUser.IsAdmin == false) {
         alert("Access Error!");
-        //location.href = "AccessDenied.aspx";
+        location.href = "AccessDenied.aspx";
         return;
     }
     $("#Administrators").jtable({
@@ -180,10 +178,7 @@ $(document).ready(function () {
                 return UserRoles.readAll();
             },
             createAction: function (a) {
-                return UserRoles.createItem($("#Edit-User")
-                    .val(), $(
-                        "#Edit-User option:selected").text(),
-                    "Admin");
+                return UserRoles.createItem($("#Edit-User").val(), $("#Edit-User option:selected").text(),"Admin");
                 $("#Administrators").jtable("reload");
             },
             deleteAction: function (a) {
@@ -207,13 +202,12 @@ $(document).ready(function () {
                     var c = new Array();
                     c.push({
                         Value: "",
-                        DisplayText: "Select user..."
+                        DisplayText: "Select user...",
                     });
                     $.each(a, function () {
                         c.push({
                             Value: this.Id,
-                            DisplayText: this
-                                .Title
+                            DisplayText: this.Title
                         });
                     });
                     return c;
@@ -232,8 +226,7 @@ $(document).ready(function () {
             }
         },
         formCreated: function (b, a) {
-            a.form.find('select[name="User"]').addClass(
-                "validate[required]");
+            a.form.find('select[name="User"]').addClass("validate[required]");
             a.form.validationEngine();
         },
         formSubmitting: function (b, a) {
@@ -245,12 +238,9 @@ $(document).ready(function () {
         }
     });
     $("#Administrators").jtable("load");
-    $(".ui-dialog-buttonpane").find('button:contains("Save")').addClass(
-        "btn btn-primary");
-    $(".ui-dialog-buttonpane").find('button:contains("Delete")').addClass(
-        "btn btn-primary");
-    $(".ui-dialog-buttonpane").find('button:contains("Cancel")').addClass(
-        "btn");
-    $(".ui-dialog-buttonpane").find('button:contains("Close")').addClass(
-        "btn");
+    $("div").remove(".ui-widget-overlay .ui-front");
+    $(".ui-dialog-buttonpane").find('button:contains("Save")').addClass("btn btn-primary");
+    $(".ui-dialog-buttonpane").find('button:contains("Delete")').addClass("btn btn-primary");
+    $(".ui-dialog-buttonpane").find('button:contains("Cancel")').addClass("btn");
+    $(".ui-dialog-buttonpane").find('button:contains("Close")').addClass("btn");
 });

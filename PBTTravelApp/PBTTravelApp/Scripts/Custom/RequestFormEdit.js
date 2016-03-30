@@ -247,27 +247,12 @@ $(document).ready(function () {
         $("#aBookingProgress").hide();
         $("#liBookingProgress").hide();
     }
-
-    if ($("#chkTicket").is(":checked")) {
-        var ticketIssued = true;
-    } else ticketIssued = false;
-    if ($("#chkAccom").is(":checked")) {
-        var accomodationConfirmed = true;
-    } else accomodationConfirmed = false;
-    if ($("#chkRental").is(":checked")) {
-        var carRentalBooked = true;
-    }
-    if ($("#chkTransfer").is(":checked")) {
-        var transfersArranged = true;
-    }
-    if ($("#chkPassport").is(":checked")) {
-        var passportVisaValid = true;
-    }
     
     $("#requestFormEdit").submit(function (w) {
         if ($("#requestFormEdit").valid()) {
             w.preventDefault();
             var x = {};
+            x.ID = t;
             x.RequesterName = $("#txtRequesterName").val().StripTags();
             x.Email = $("#txtEmail").val();
             x.EmployeeID = $("#txtEmployeeID").val().StripTags();
@@ -280,14 +265,14 @@ $(document).ready(function () {
             x.Notices = $("#taNotices").val().StripTags();
             x.RequestApprover = $("#ddlRequestApprover").val();
             x.DestinationsJSON = JSON.stringify($("#divDestinations").data("handsontable").getData());
-            x.TicketIssued = true;
-            x.AccomodationConfirmed = accomodationConfirmed;
-            x.CarRentalBooked = carRentalBooked;
-            x.TransfersArranged = transfersArranged;
-            x.PassportVisaValid = passportVisaValid;
+            x.TicketIssued = $("#chkTicket").is(":checked");
+            x.AccomodationConfirmed = $("#chkAccom").is(":checked");
+            x.CarRentalBooked = $("#chkRental").is(":checked");
+            x.TransfersArranged = $("#chkTransfer").is(":checked");
+            x.PassportVisaValid = $("#chkPassport").is(":checked");
             x.FrequentFlyer = $("#txtFFP").val();
             x.FrequentflyerNumber = $("#txtFFPN").val();
-            RequestFormCreate.createRequestForm(x);
+            RequestFormEdit.updateRequestForm(x);
         }
     });
     var s = RequestFormEdit.getRequestForm(t);
@@ -296,8 +281,7 @@ $(document).ready(function () {
         return;
     }
     if (HasAccessToRequest(s.Author.Id, s.RequestApprover != null ? s.RequestApprover
-        .Id : null, CurrentUser.Id, CurrentUser.IsAdmin, s.RequestStatus,
-        true) == false) {
+        .Id : null, CurrentUser.Id, CurrentUser.IsAdmin, s.RequestStatus,true) == false) {
         location.href = "AccessDenied.aspx";
         return;
     }
@@ -317,9 +301,7 @@ $(document).ready(function () {
     $.each(i, function () {
         h++;
         g = "MultiFilelabel" + h;
-        f.append('<div class="MultiFile-label"  id="' + g +
-            '"  ><a class="MultiFile-remove" onclick="RequestFormEdit.deleteAttachment(\'' +
-            g + "','" + this.FileName + "'," + t +
+        f.append('<div class="MultiFile-label"  id="' + g + '"  ><a class="MultiFile-remove" onclick="RequestFormEdit.deleteAttachment(\'' + g + "','" + this.FileName + "'," + t +
             ');"  href="#fileUpload_wrap">Delete </a><span class="MultiFile-title">' +
             this.FileName + "</span></div>");
     });
@@ -331,12 +313,20 @@ $(document).ready(function () {
     $("#txtFFP").val(s.FrequentFlyer);
     $("#txtFFPN").val(s.FrequentflyerNumber);
     if (s.TicketIssued) {
-        $("#chkTicket").is(":checked");
-    } else $("#chkTicket").is(":unchecked");
-    $("#chkAccom").val(s.accomodationConfirmed);
-    $("#chkRental").val(s.CarRentalBooked);
-    $("#chkTransfer").val(s.TransfersArranged);
-    $("#chkPassport").val(s.PassportVisaValid);
+        $("#chkTicket").prop("checked", true);
+    } else $("#chkTicket").prop("checked", false);
+    if (s.AccomodationConfirmed) {
+        $("#chkAccom").prop("checked", true);
+    } else $("#chkAccom").prop("checked", false);
+    if (s.CarRentalBooked) {
+        $("#chkRental").prop("checked", true);
+    } else $("#chkRental").prop("checked", false);
+    if (s.TransfersArranged) {
+        $("#chkTransfer").prop("checked", true);
+    } else $("#chkTransfer").prop("checked", false);
+    if (s.PassportVisaValid) {
+        $("#chkPassport").prop("checked", true);
+    } else $("#chkPassport").prop("checked", false);
 
     var v = moment(s.TripStartDate);
     if (v.isValid()) {
@@ -366,7 +356,7 @@ $(document).ready(function () {
     $.each(c, function () {
         m.append($("<option>", {
             value: this.Id,
-            text: this.Title + " (" + this.Email + ")"
+            text: this.Title + "(" + this.Email + ")"
         }));
     });
     m.val(s.RequestApprover.Id);

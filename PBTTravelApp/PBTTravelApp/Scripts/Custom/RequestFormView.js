@@ -46,7 +46,7 @@ RequestFormView = function () {
             var l =
                 "$select=ID,Author/Id,Title,Email,EmployeeID,PhoneNumber,Project,RequestStatus,RequestApprover/Title,RequestApprover/Id," +
             "RequestApproveDate,TripStartDate,TripEndDate,Created,Modified,RequestApproveDate,IsRequestApproveEmailSent,RequestRejectReason,TripPurpose,Notices,DestinationsJSON," +
-            "TicketIssued,AccomodationConfirmed,CarRentalBooked,TransfersArranged,PassportVisaValid,FrequentFlyer,FrequentflyerNumber";
+            "TicketIssued,AccomodationConfirmed,CarRentalBooked,TransfersArranged,PassportVisaValid,FrequentFlyer,FrequentflyerNumber,WorkflowTrigger";
             $.ajax({
                 url: appweburl +
                     "/_api/Web/lists/getbytitle('TravelRequests')/items?" +
@@ -169,7 +169,8 @@ RequestFormView = function () {
                     __metadata: {
                         type: "SP.Data.TravelRequestsListItem"
                     },
-                    RequestStatus: RequestStatusEnum.Approved.Value
+                    RequestStatus: RequestStatusEnum.Approved.Value,
+                    WorkflowTrigger: "Decided"
                 }),
                 headers: {
                     accept: "application/json;odata=verbose",
@@ -202,7 +203,8 @@ RequestFormView = function () {
                         type: "SP.Data.TravelRequestsListItem"
                     },
                     RequestStatus: RequestStatusEnum.Rejected.Value,
-                    RequestRejectReason: k
+                    RequestRejectReason: k,
+                    WorkflowTrigger: "Decided"
                 }),
                 headers: {
                     accept: "application/json;odata=verbose",
@@ -335,7 +337,7 @@ $(document).ready(function () {
         resizable: false,
         height: 180,
         width: 320,
-        modal: true,
+        modal: false,
         buttons: {
             Cancel: function () {
                 $(this).dialog("close");

@@ -193,28 +193,7 @@ $(document).ready(function () {
         $("#aBookingProgress :input").prop("disabled", true);
         $("#aBookingProgress").attr("Title", "For office use only");
     }
-    var accomodationConfirmed = false;
-    var ticketIssued = false;
-    var carRentalBooked = false;
-    var transfersArranged = false;
-    var passportVisaValid = false;
-
-    if ($("#chkTicket").is(":checked")) {
-        ticketIssued = true;
-    }
-    if ($("#chkAccom").is(":checked")) {
-        accomodationConfirmed = true;
-    }
-    if ($("#chkRental").is(":checked")) {
-        carRentalBooked = true;
-    }
-    if ($("#chkTransfer").is(":checked")) {
-        transfersArranged = true;
-    }
-    if ($("#chkPassport").is(":checked")) {
-        passportVisaValid = true;
-    }
-
+   
     $("#requestFormCreate").submit(function (q) {
         if ($("#requestFormCreate").valid()) {
             q.preventDefault();
@@ -226,17 +205,16 @@ $(document).ready(function () {
             r.Project = $("#ddlProject").val();
             r.PersonalR = $("#taPersonal").val().StripTags();
             r.TripStartDate = $("#txtStartDate").val().StripTags();
-            console.log($("#txtStartDate").val().StripTags());
             r.TripEndDate = $("#txtEndDate").val().StripTags();
             r.TripPurpose = $("#txtPurpose").val().StripTags();
             r.Notices = $("#taNotices").val().StripTags();
             r.RequestApprover = $("#ddlRequestApprover").val();
             r.DestinationsJSON = JSON.stringify($("#divDestinations").data("handsontable").getData());
-            r.TicketIssued = ticketIssued;
-            r.AccomodationConfirmed = accomodationConfirmed;
-            r.CarRentalBooked = carRentalBooked;
-            r.TransfersArranged = transfersArranged;
-            r.PassportVisaValid = passportVisaValid;
+            r.TicketIssued = $("#chkTicket").is(":checked");
+            r.AccomodationConfirmed = $("#chkAccom").is(":checked");
+            r.CarRentalBooked = $("#chkRental").is(":checked");
+            r.TransfersArranged = $("#chkTransfer").is(":checked");
+            r.PassportVisaValid = $("#chkPassport").is(":checked");
             r.FrequentFlyer = $("#txtFFP").val();
             r.FrequentflyerNumber = $("#txtFFPN").val();
             RequestFormCreate.createRequestForm(r);
@@ -247,7 +225,7 @@ $(document).ready(function () {
     });
     $("#txtRequesterName").val(CurrentUser.Name);
     $("#txtEmail").val(CurrentUser.Email);
-    
+    $("#peoplePickerDiv").spPeoplePicker();
     var c = RequestFormCreate.getAllUsers();
     var i = $("#ddlRequestApprover");
     $.each(c, function () {
