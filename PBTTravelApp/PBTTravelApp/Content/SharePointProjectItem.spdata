@@ -128,5 +128,7 @@
     <ProjectItemFile Source="chosen-sprite_alt.png" Target="Content\" Type="ElementFile" />
     <ProjectItemFile Source="themes\metro\view.png" Target="Content\themes\metro\" Type="ElementFile" />
     <ProjectItemFile Source="Custom\PrintForm.css" Target="Content\Custom\" Type="ElementFile" />
+    <ProjectItemFile Source="sass\_Fabric.Mixins.RTL.scss" Target="Content\sass\" Type="ElementFile" />
+    <ProjectItemFile Source="Custom\PeoplePicker.css" Target="Content\Custom\" Type="ElementFile" />
   </Files>
 </ProjectItem>

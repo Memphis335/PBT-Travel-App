@@ -208,7 +208,7 @@ $(document).ready(function () {
             r.TripEndDate = $("#txtEndDate").val().StripTags();
             r.TripPurpose = $("#txtPurpose").val().StripTags();
             r.Notices = $("#taNotices").val().StripTags();
-            r.RequestApprover = $("#ddlRequestApprover").val();
+            r.RequestApprover = $("#peoplePickerDiv").val();
             r.DestinationsJSON = JSON.stringify($("#divDestinations").data("handsontable").getData());
             r.TicketIssued = $("#chkTicket").is(":checked");
             r.AccomodationConfirmed = $("#chkAccom").is(":checked");
@@ -231,8 +231,7 @@ $(document).ready(function () {
     $.each(c, function () {
         i.append($("<option>", {
             value: this.Id,
-            text: this.Title + " (" + this.Email +
-                ")"
+            text: this.Title + " (" + this.Email + ")"
         }));
     });
     $(function () {

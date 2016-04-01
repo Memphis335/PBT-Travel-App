@@ -127,5 +127,7 @@
     <File Path="Content\chosen-sprite_alt.png" Url="Content/chosen-sprite_alt.png" ReplaceContent="TRUE" />
     <File Path="Content\themes\metro\view.png" Url="Content/themes/metro/view.png" ReplaceContent="TRUE" />
     <File Path="Content\Custom\PrintForm.css" Url="Content/Custom/PrintForm.css" ReplaceContent="TRUE" />
+    <File Path="Content\sass\_Fabric.Mixins.RTL.scss" Url="Content/sass/_Fabric.Mixins.RTL.scss" ReplaceContent="TRUE" />
+    <File Path="Content\Custom\PeoplePicker.css" Url="Content/Custom/PeoplePicker.css" ReplaceContent="TRUE" />
   </Module>
 </Elements>

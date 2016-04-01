@@ -49,6 +49,7 @@
     <Content Include="Content\chosen-sprite.png" />
     <Content Include="Content\Custom\jQuery-UI-Custom.css" />
     <Content Include="Content\Custom\jtable-Custom.css" />
+    <Content Include="Content\Custom\PeoplePicker.css" />
     <Content Include="Content\Custom\PrintForm.css" />
     <Content Include="Content\fullcalendar.min.css" />
     <Content Include="Content\fullcalendar.print.css" />
@@ -106,12 +107,17 @@
     <Content Include="Pages\NotFound.aspx" />
     <Content Include="Pages\PrintForm.aspx" />
     <Content Include="Pages\RequestFormEdit.aspx" />
+    <Content Include="Scripts\Custom\App.js" />
+    <Content Include="Scripts\Custom\peoplepicker.js" />
     <Content Include="Scripts\Custom\PrintForm.js" />
     <Content Include="Scripts\Custom\RequestFormEdit.js" />
-    <Content Include="Scripts\Custom\sppeoplepicker.min.js" />
+    <Content Include="Scripts\Custom\sppeoplepicker.js" />
     <Content Include="Scripts\Custom\workflows.js" />
+    <Content Include="Scripts\jquery.fabric.js" />
+    <Content Include="Scripts\jquery.fabric.min.js" />
     <Content Include="WorkflowHistoryList\Elements.xml" />
     <Content Include="WorkflowTaskList\Elements.xml" />
+    <None Include="Content\sass\_Fabric.Mixins.RTL.scss" />
     <None Include="Features\Feature2\Feature2.feature">
       <FeatureId>{86006914-363c-4a68-b34c-6833cd335d5c}</FeatureId>
     </None>

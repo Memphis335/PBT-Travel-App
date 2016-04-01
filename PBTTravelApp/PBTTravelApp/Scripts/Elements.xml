@@ -170,6 +170,10 @@
     <File Path="Scripts\Custom\PrintForm.js" Url="Scripts/Custom/PrintForm.js" ReplaceContent="TRUE" />
     <File Path="Scripts\Custom\workflows.js" Url="Scripts/Custom/workflows.js" ReplaceContent="TRUE" />
     <File Path="Scripts\Custom\RequestFormEdit.js" Url="Scripts/Custom/RequestFormEdit.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\Custom\sppeoplepicker.min.js" Url="Scripts/Custom/sppeoplepicker.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Custom\sppeoplepicker.js" Url="Scripts/Custom/sppeoplepicker.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Custom\App.js" Url="Scripts/Custom/App.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\jquery.fabric.min.js" Url="Scripts/jquery.fabric.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\jquery.fabric.js" Url="Scripts/jquery.fabric.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Custom\peoplepicker.js" Url="Scripts/Custom/peoplepicker.js" ReplaceContent="TRUE" />
   </Module>
 </Elements>

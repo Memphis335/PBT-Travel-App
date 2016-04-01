@@ -7,6 +7,7 @@
     <link href="../Content/Fabric-UI/fabric.css" rel="stylesheet" />
     <link href="../Content/Fabric-UI/fabric.components.css" rel="stylesheet" />
     <link href="../Content/Custom/jQuery-UI-Custom.css" rel="stylesheet" />
+    <link href="../Content/Custom/PeoplePicker.css" rel="stylesheet" />
 
     <!-- Handsontable-->
     <script src="../Scripts/handsontable/handsontable.full.js"></script>
@@ -15,6 +16,11 @@
 
     <!-- JS -->
     <script src="../Scripts/Custom/RequestFormCreate.js"></script>
+    <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/4.0/1/MicrosoftAjax.js"></script>
+    <script src="../Scripts/Custom/App.js"></script>
+    <script src="../Scripts/Custom/sppeoplepicker.js"></script>
+    <script src="../Scripts/Custom/peoplepicker.js"></script>
+
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="mainContent" runat="server">
@@ -88,25 +94,25 @@
                         <div id="aApprovals" style="height: 200px;">
                             <p>
                                 <label>Request Approver</label>
-                                <span class="field">
+                                <div class="field">
                                     <%--<select name="ddlRequestApprover" id="ddlRequestApprover" data-placeholder="Choose a Employee..." style="margin-right: 10px; width: 370px;" class="" tabindex="2">
                                         <option value=""></option>
                                     </select>--%>
-                                </span>
-                                <div id="peoplePickerDiv"></div>
+                                    <div id="peoplePickerDiv" style="margin-right: 10px; width: 370px;"></div>
+                                </div>
                             </p>
                         </div>
                         <div id="aTravelInfo">
                             <p class="control-group">
                                 <label for="txtStartDate">Departure Date</label>
                                 <span class="field">
-                                    <input id="txtStartDate" type="date" name="txtTripStartDate" class="input-xlarge" /></span>
+                                    <input id="txtStartDate" type="text" name="txtTripStartDate" class="input-xlarge" /></span>
                             </p>
                             <p class="control-group">
                                 <label for="txtEndDate">Return Date</label>
                                 <span class="field">
-                                    <input id="txtEndDate" type="date" name="txtTripEndDate" class="input-xlarge" /></span>
-                                <input type="hidden" id="dateCalc"/>
+                                    <input id="txtEndDate" type="text" name="txtTripEndDate" class="input-xlarge" /></span>
+                                <input type="hidden" id="dateCalc" />
                             </p>
                             <p class="control-group">
                                 <label for="txtPurpose">Purpose of Trip</label>
@@ -133,34 +139,34 @@
                             <p class="control-group">
                                 <label for="chkTicket">Ticket Issued?</label>
                                 <span class="field">
-                                <input id="chkTicket" name="chkTicket" type="checkbox"/></span>
+                                    <input id="chkTicket" name="chkTicket" type="checkbox" /></span>
                             </p>
                             <p class="control-group">
                                 <label for="chkAccom">Accomodation Confirmed?</label>
                                 <span class="field">
-                                <input id="chkAccom" name="chkAccom" type="checkbox"/></span>
+                                    <input id="chkAccom" name="chkAccom" type="checkbox" /></span>
                             </p>
                             <p class="control-group">
                                 <label for="chkRental">Car Rental Booked?</label>
                                 <span class="field">
-                                <input id="chkRental" name="chkRental" type="checkbox"/></span>
+                                    <input id="chkRental" name="chkRental" type="checkbox" /></span>
                             </p>
                             <p class="control-group">
                                 <label for="chkTransfer">Airport Transfers Arranged?</label>
                                 <span class="field">
-                                <input id="chkTransfer" name="chkTransfer" type="checkbox"/></span>
+                                    <input id="chkTransfer" name="chkTransfer" type="checkbox" /></span>
                             </p>
                             <p class="control-group">
                                 <label for="chkPassport">Passport/Visa Valid?</label>
                                 <span class="field">
-                                <input id="chkPassport" name="chkPassport" type="checkbox"/></span>
+                                    <input id="chkPassport" name="chkPassport" type="checkbox" /></span>
                             </p>
                         </div>
                     </div>
                     <!--tabbedwidget-->
                     <div style="margin: 10px;">
-                        <button id="btnSubmit" class="ms-Button ms-Button--primary" type="submit"><span class="ms-Button-label"><i class="ms-Icon ms-Icon--save"></i> Save changes</span></button>
-                        <button id="btnCancel" class="ms-Button" type="button"><span class="ms-Button-label"><i class="ms-Icon ms-Icon--x"></i> Cancel</span></button>
+                        <button id="btnSubmit" class="ms-Button ms-Button--primary" type="submit"><span class="ms-Button-label"><i class="ms-Icon ms-Icon--save"></i>Save changes</span></button>
+                        <button id="btnCancel" class="ms-Button" type="button"><span class="ms-Button-label"><i class="ms-Icon ms-Icon--x"></i>Cancel</span></button>
                     </div>
                 </form>
             </div>

@@ -171,6 +171,10 @@
     <ProjectItemFile Source="Custom\PrintForm.js" Target="Scripts\Custom\" Type="ElementFile" />
     <ProjectItemFile Source="Custom\workflows.js" Target="Scripts\Custom\" Type="ElementFile" />
     <ProjectItemFile Source="Custom\RequestFormEdit.js" Target="Scripts\Custom\" Type="ElementFile" />
-    <ProjectItemFile Source="Custom\sppeoplepicker.min.js" Target="Scripts\Custom\" Type="ElementFile" />
+    <ProjectItemFile Source="Custom\sppeoplepicker.js" Target="Scripts\Custom\" Type="ElementFile" />
+    <ProjectItemFile Source="Custom\App.js" Target="Scripts\Custom\" Type="ElementFile" />
+    <ProjectItemFile Source="jquery.fabric.min.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="jquery.fabric.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="Custom\peoplepicker.js" Target="Scripts\Custom\" Type="ElementFile" />
   </Files>
 </ProjectItem>
