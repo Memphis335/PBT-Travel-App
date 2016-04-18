@@ -100,6 +100,10 @@
                         </div>
                         <div id="aTravelInfo">
                             <p class="control-group">
+                                <label for="lblDeptCity">Departure City</label>
+                                <span class="field"><span id="lblDeptCity" class="sLabel"></span></span>
+                            </p>
+                            <p class="control-group">
                                 <label for="lblTripStartDate">Trip Start Date</label>
                                 <span class="field"><span id="lblTripStartDate" class="sLabel"></span></span>
                             </p>
@@ -141,23 +145,23 @@
                         <div id="aBookingProgress">
                             <p class="control-group">
                                 <label for="lblTicket">Ticket Issued?</label>
-                                <span class="field"><span id="lblTicket" class="sLabel"></span></span>
+                                <span class="field"><span id="lblTicket" class="sLabel" style="width: 20px;"></span><span id="lblNote1" class="sLabel"></span></span>
                             </p>
                             <p class="control-group">
                                 <label for="lblAccom">Accomodation Confirmed?</label>
-                                <span class="field"><span id="lblAccom" class="sLabel"></span></span>
+                                <span class="field"><span id="lblAccom" class="sLabel" style="width: 20px;"></span><span id="lblNote2" class="sLabel"></span></span>
                             </p>
                             <p class="control-group">
                                 <label for="lblRental">Car Rental Booked?</label>
-                                <span class="field"><span id="lblRental" class="sLabel"></span></span>
+                                <span class="field"><span id="lblRental" class="sLabel" style="width: 20px;"></span><span id="lblNote3" class="sLabel"></span></span>
                             </p>
                             <p class="control-group">
                                 <label for="lblTransfer">Airport Transfers Arranged?</label>
-                                <span class="field"><span id="lblTransfer" class="sLabel"></span></span>
+                                <span class="field"><span id="lblTransfer" class="sLabel" style="width: 20px;"></span><span id="lblNote4" class="sLabel"></span></span>
                             </p>
                             <p class="control-group">
                                 <label for="lblPassport">Passport/Visa Valid?</label>
-                                <span class="field"><span id="lblPassport" class="sLabel"></span></span>
+                                <span class="field"><span id="lblPassport" class="sLabel" style="width: 20px;"></span><span id="lblNote5" class="sLabel"></span></span>
                             </p>
                         </div>
                     </div>

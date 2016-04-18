@@ -66,7 +66,7 @@ RequestFormEdit = function () {
             var m =
                 "$select=ID,Author/Id,Title,Email,EmployeeID,PhoneNumber,Project,RequestStatus,RequestApprover/Title,RequestApprover/Id," +
                 "RequestApproveDate,PersonalR,TripStartDate,TripEndDate,Created,Modified,RequestApproveDate,RequestRejectReason,TripPurpose,Notices,DestinationsJSON," +
-                "TicketIssued,AccomodationConfirmed,CarRentalBooked,TransfersArranged,PassportVisaValid,FrequentFlyer,FrequentflyerNumber";
+                "TicketIssued,AccomodationConfirmed,CarRentalBooked,TransfersArranged,PassportVisaValid,FrequentFlyer,FrequentflyerNumber,City,Note1,Note2,Note3,Note4,Note5";
             $.ajax({
                 url: appweburl +
                     "/_api/Web/lists/getbytitle('TravelRequests')/items?" + m +
@@ -118,7 +118,13 @@ RequestFormEdit = function () {
                     PassportVisaValid: l.PassportVisaValid,
                     FrequentFlyer: l.FrequentFlyer,
                     FrequentflyerNumber: l.FrequentflyerNumber,
-                    RequestStatus: RequestStatusEnum.Draft.Value
+                    RequestStatus: RequestStatusEnum.Draft.Value,
+                    Note1: l.Note1,
+                    Note2: l.Note2,
+                    Note3: l.Note3,
+                    Note4: l.Note4,
+                    Note5: l.Note5,
+                    City: City
                 }),
                 headers: {
                     accept: "application/json;odata=verbose",
@@ -242,12 +248,10 @@ $(document).ready(function () {
     $("#btnCancel").click(function () {
         location.href = "RequestFormView.aspx?requestID=" + t;
     });
-    if (!CurrentUser.IsAdmin) {
-        $("#aBookingProgress :input").prop("disabled", true);
-        $("#aBookingProgress").hide();
-        $("#liBookingProgress").hide();
+    if (CurrentUser.IsAdmin) {
+        $("#liBookingProgress").show();
     }
-    
+
     $("#requestFormEdit").submit(function (w) {
         if ($("#requestFormEdit").valid()) {
             w.preventDefault();
@@ -270,9 +274,15 @@ $(document).ready(function () {
             x.CarRentalBooked = $("#chkRental").is(":checked");
             x.TransfersArranged = $("#chkTransfer").is(":checked");
             x.PassportVisaValid = $("#chkPassport").is(":checked");
-            x.FrequentFlyer = $("#txtFFP").val();
+            x.FrequentFlyer = $("#ddlFFP").val();
             x.FrequentflyerNumber = $("#txtFFPN").val();
-            RequestFormEdit.updateRequestForm(x);
+            x.Note1 = $("#txtTicket").val();
+            x.Note2 = $("#txtAccom").val();
+            x.Note3 = $("#txtRental").val();
+            x.Note4 = $("#txtTransfer").val();
+            x.Note5 = $("#txtPassport").val();
+            x.City = $("#txtDeptCity").val();
+        RequestFormEdit.updateRequestForm(x);
         }
     });
     var s = RequestFormEdit.getRequestForm(t);
@@ -280,8 +290,7 @@ $(document).ready(function () {
         location.href = "NotFound.aspx";
         return;
     }
-    if (HasAccessToRequest(s.Author.Id, s.RequestApprover != null ? s.RequestApprover
-        .Id : null, CurrentUser.Id, CurrentUser.IsAdmin, s.RequestStatus,true) == false) {
+    if (HasAccessToRequest(s.Author.Id, s.RequestApprover != null ? s.RequestApprover.Id : null, CurrentUser.Id, CurrentUser.IsAdmin, s.RequestStatus, true) == false) {
         location.href = "AccessDenied.aspx";
         return;
     }
@@ -302,15 +311,19 @@ $(document).ready(function () {
         h++;
         g = "MultiFilelabel" + h;
         f.append('<div class="MultiFile-label"  id="' + g + '"  ><a class="MultiFile-remove" onclick="RequestFormEdit.deleteAttachment(\'' + g + "','" + this.FileName + "'," + t +
-            ');"  href="#fileUpload_wrap">Delete </a><span class="MultiFile-title">' +
-            this.FileName + "</span></div>");
+            ');"  href="#fileUpload_wrap">Delete </a><span class="MultiFile-title">' + this.FileName + "</span></div>");
     });
     $("#txtRequesterName").val(s.Title);
     $("#txtEmail").val(s.Email);
     $("#txtEmployeeID").val(s.EmployeeID);
     $("#txtPhoneNumber").val(s.PhoneNumber);
     $("#taPersonal").val(s.PersonalR);
-    $("#txtFFP").val(s.FrequentFlyer);
+    $("#txtTicket").val(s.Note1);
+    $("#txtAccom").val(s.Note2);
+    $("#txtRental").val(s.Note3);
+    $("#txtTransfer").val(s.Note4);
+    $("#txtPassport").val(s.Note5);
+    $("#txtDeptCity").val(s.City);
     $("#txtFFPN").val(s.FrequentflyerNumber);
     if (s.TicketIssued) {
         $("#chkTicket").prop("checked", true);
@@ -370,7 +383,16 @@ $(document).ready(function () {
         }));
     });
     l.val(s.Project);
-    var d = new Array();
+
+    var q = RequestFormEdit.getDictionary("DictPrograms");
+    var p = $("#ddlFFP");
+    $.each(q, function () {
+        p.append($("<option>", {
+            value: this.Title,
+            text: this.Title
+        }));
+    });
+    p.val(s.FrequentFlyer);
 
     $("#lblRequestID").text(s.ID);
     $("#lblRequestStatus").text(s.RequestStatus);
@@ -439,16 +461,16 @@ $(document).ready(function () {
             var x = y.numberOfInvalids();
             if (x && (y.errorList[0].element.name ==
                 "txtRequesterName" || y.errorList[0].element.name == "txtEmail" || y.errorList[0].element.name == "ddlProject")) {
-                $("#formTabs").tabs("select","#aPersonalInfo");
+                $("#formTabs").tabs("select", "#aPersonalInfo");
             } else {
                 if (x && (y.errorList[0].element.name == "ddlRequestApprover")) {
-                    $("#formTabs").tabs("select","#aApprovals");
+                    $("#formTabs").tabs("select", "#aApprovals");
                 } else {
-                    if (x && (y.errorList[0].element.name =="txtTripStartDate" || y.errorList[0].element.name =="txtTripEndDate" || y.errorList[0].element.name =="txtTripPurpose" || y.errorList[0].element.name == "txtDestinations")) {
+                    if (x && (y.errorList[0].element.name == "txtTripStartDate" || y.errorList[0].element.name == "txtTripEndDate" || y.errorList[0].element.name == "txtTripPurpose" || y.errorList[0].element.name == "txtDestinations")) {
                         $("#formTabs").tabs("select",
                             "#aTravelInfo");
                         $("#formTabs").click();
-                    } 
+                    }
                 }
             }
         },

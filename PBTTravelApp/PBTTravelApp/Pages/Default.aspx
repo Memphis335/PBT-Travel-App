@@ -4,6 +4,8 @@
 
 <%-- The markup and script in the following Content element will be placed in the <head> of the page --%>
 <asp:Content ContentPlaceHolderID="divHeader" runat="server">
+    <link href="../Content/Fabric-UI/fabric.css" rel="stylesheet" />
+
     <script src="../Scripts/Custom/AppInit.js"></script>
     <script src="../Scripts/Custom/Default.js"></script>
 </asp:Content>
@@ -17,15 +19,18 @@
         <div id="getStarted" style="margin-top: 20px;">
             <h2>Get started with Travel Request System</h2>
             <div class="tilesContainer">
+                <div id="dashboard" onclick="window.location.href='Dashboard.aspx'" class="tileMedium tileDashboard" hidden="hidden">
+                    <div class="tileText">Dashboard</div>
+                    <div class="tileIconContainer"><i class="ms-Icon ms-Icon--dashboard"></i></div>
+                </div>
                 <div onclick="window.location.href='RequestFormCreate.aspx'" class="tileMedium tileAdd">
                     <div class="tileText">Create new</div>
+                    <div class="tileIconContainer"><i class="ms-Icon ms-Icon--plus"></i></div>
                 </div>
                 <div onclick="window.location.href='ToApproveByMe.aspx'" class="tileMedium tileApprove">
                     <div class="tileText">Approve</div>
+                    <div class="tileIconContainer"><i class="ms-Icon ms-Icon--tasks"></i></div>
                 </div>
-                <%--<div onclick="window.location.href='UserGuide.aspx'" class="tileMedium tileLearn">
-                    <div class="tileText">Learn more</div>
-                </div>--%>
             </div>
         </div>
         <div style="width: 800px; margin-top: 25px">

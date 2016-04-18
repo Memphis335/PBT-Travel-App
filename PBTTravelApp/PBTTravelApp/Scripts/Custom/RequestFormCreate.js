@@ -26,8 +26,7 @@ RequestFormCreate = function () {
         var k = e();
         $.ajax({
             url: appweburl +
-                "/_api/Web/lists/getbytitle('TravelRequests')/items(" +
-                l + ")/AttachmentFiles/add(FileName='" + j +
+                "/_api/Web/lists/getbytitle('TravelRequests')/items(" + l + ")/AttachmentFiles/add(FileName='" + j +
                 "')",
             type: "POST",
             async: false,
@@ -144,6 +143,7 @@ RequestFormCreate = function () {
                     PassportVisaValid: j.PassportVisaValid,
                     FrequentFlyer: j.FrequentFlyer,
                     FrequentflyerNumber: j.FrequentflyerNumber,
+                    City: j.City,
                     RequestStatus: RequestStatusEnum.Draft.Value
                 }),
                 headers: {
@@ -167,31 +167,10 @@ RequestFormCreate = function () {
     };
 }();
 
-function dateCalc() {
-    var end = $("#txtEndDate").val();
-    var start = $("#txtStartDate").val();
-    var days = moment(start).diff(end, "days");
-    console.log("Start and End");
-    console.log(start, end);
-    console.log(days);
-    if (days <= 4) {
-        //$("#divDestinations").handsontable({
-        //    columns: [
-        //        {
-        //            data: "Transfers",
-        //            editor: false
-        //        }
-        //    ]
-
-        //});
-        console.log("Less than 4");
-    }
-};
 
 $(document).ready(function () {
-    if (!CurrentUser.IsAdmin) {
-        $("#aBookingProgress :input").prop("disabled", true);
-        $("#aBookingProgress").attr("Title", "For office use only");
+    if (CurrentUser.IsAdmin) {
+        $("#liBookingProgress").show();
     }
    
     $("#requestFormCreate").submit(function (q) {
@@ -208,15 +187,16 @@ $(document).ready(function () {
             r.TripEndDate = $("#txtEndDate").val().StripTags();
             r.TripPurpose = $("#txtPurpose").val().StripTags();
             r.Notices = $("#taNotices").val().StripTags();
-            r.RequestApprover = $("#peoplePickerDiv").val();
+            r.RequestApprover = $("#ddlRequestApprover").val();
             r.DestinationsJSON = JSON.stringify($("#divDestinations").data("handsontable").getData());
             r.TicketIssued = $("#chkTicket").is(":checked");
             r.AccomodationConfirmed = $("#chkAccom").is(":checked");
             r.CarRentalBooked = $("#chkRental").is(":checked");
             r.TransfersArranged = $("#chkTransfer").is(":checked");
             r.PassportVisaValid = $("#chkPassport").is(":checked");
-            r.FrequentFlyer = $("#txtFFP").val();
+            r.FrequentFlyer = $("#ddlFFP").val();
             r.FrequentflyerNumber = $("#txtFFPN").val();
+            r.City = $("#txtDeptCity").val();
             RequestFormCreate.createRequestForm(r);
         }
     });
@@ -225,7 +205,9 @@ $(document).ready(function () {
     });
     $("#txtRequesterName").val(CurrentUser.Name);
     $("#txtEmail").val(CurrentUser.Email);
-    $("#peoplePickerDiv").spPeoplePicker();
+
+    //$("#peoplePickerDiv").spPeoplePicker();
+
     var c = RequestFormCreate.getAllUsers();
     var i = $("#ddlRequestApprover");
     $.each(c, function () {
@@ -246,6 +228,14 @@ $(document).ready(function () {
 
     var n = RequestFormCreate.getDictionary("DictProjects");
     var h = $("#ddlProject");
+    $.each(n, function () {
+        h.append($("<option>", {
+            value: this.Title,
+            text: this.Title
+        }));
+    });
+    var n = RequestFormCreate.getDictionary("DictPrograms");
+    var h = $("#ddlFFP");
     $.each(n, function () {
         h.append($("<option>", {
             value: this.Title,

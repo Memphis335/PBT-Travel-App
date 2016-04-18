@@ -46,7 +46,7 @@ RequestFormView = function () {
             var l =
                 "$select=ID,Author/Id,Title,Email,EmployeeID,PhoneNumber,Project,RequestStatus,RequestApprover/Title,RequestApprover/Id," +
             "RequestApproveDate,TripStartDate,TripEndDate,Created,Modified,RequestApproveDate,IsRequestApproveEmailSent,RequestRejectReason,TripPurpose,Notices,DestinationsJSON," +
-            "TicketIssued,AccomodationConfirmed,CarRentalBooked,TransfersArranged,PassportVisaValid,FrequentFlyer,FrequentflyerNumber,WorkflowTrigger";
+            "TicketIssued,AccomodationConfirmed,CarRentalBooked,TransfersArranged,PassportVisaValid,FrequentFlyer,FrequentflyerNumber,City,Note1,Note2,Note3,Note4,Note5,WorkflowTrigger";
             $.ajax({
                 url: appweburl +
                     "/_api/Web/lists/getbytitle('TravelRequests')/items?" +
@@ -135,8 +135,7 @@ RequestFormView = function () {
                         type: "SP.Data.TravelRequestsListItem"
                     },
                     RequestStatus: RequestStatusEnum.PendingApproval.Value,
-                    RequestApproveLinkURL: appweburl + "/Pages/RequestFormView.aspx?requestID=" + k + "&SPHostUrl=" +
-                        encodeURIComponent(hostweburl) + "&SPAppWebUrl=" + encodeURIComponent(appweburl),
+                    RequestApproveLinkURL: appweburl + "/Pages/RequestFormView.aspx?requestID=" + k + "&SPHostUrl=" + encodeURIComponent(hostweburl) + "&SPAppWebUrl=" + encodeURIComponent(appweburl),
                     IsRequestApproveEmailSent: "true"
                 }),
                 headers: {
@@ -335,7 +334,7 @@ $(document).ready(function () {
     var i = $("#dialog-confirm-reject").dialog({
         autoOpen: false,
         resizable: false,
-        height: 180,
+        height: 240,
         width: 320,
         modal: false,
         buttons: {
@@ -367,7 +366,7 @@ $(document).ready(function () {
         $("#btnSendRequestToApprove").show();
     }
     else {
-        if (l.RequestStatus === "Pending Approval") {
+        if (l.RequestStatus === "PendingApproval") {
             if (l.RequestApprover.Id == CurrentUser.Id) {
                 $("#btnApproveRequest").show();
                 $("#btnRejectRequest").show();
@@ -396,9 +395,7 @@ $(document).ready(function () {
     else {
         var d = $("#aAttachments");
         $.each(e, function () {
-            d.append('<div><a target="_blank" href="' + this.ServerRelativeUrl +
-                '" class="attachment" >' + this.FileName +
-                "</a> </div>");
+            d.append('<div><a target="_blank" href="' + this.ServerRelativeUrl + '" class="attachment" >' + this.FileName + "</a> </div>");
         });
     }
     $("#lblRequesterName").text(l.Title);
@@ -406,19 +403,19 @@ $(document).ready(function () {
     $("#lblEmployeeID").text(l.EmployeeID == null ? "" : l.EmployeeID);
     $("#lblPhoneNumber").text(l.PhoneNumber == null ? "" : l.PhoneNumber);
     $("#lblProject").text(l.Project == null ? "" : l.Project);
+    $("#lblNote1").text(l.Note1 == null ? "" : l.Note1);
+    $("#lblNote2").text(l.Note2 == null ? "" : l.Note2);
+    $("#lblNote3").text(l.Note3 == null ? "" : l.Note3);
+    $("#lblNote4").text(l.Note4 == null ? "" : l.Note4);
+    $("#lblNote5").text(l.Note5 == null ? "" : l.Note5);
+    $("#lblDeptCity").text(l.City);
 
     if (l.RequestRejectReason != null) {
         $("#lblRejectReason").text(l.RequestRejectReason);
     }
     else {
         $("#pRejectReason").hide();
-    } if (l.IsSettlement) {
-        $("#aSettlementLink").prop("href",
-            "SettlementFormView.aspx?requestID=" + m);
-    }
-    else {
-        $("#pSettlementLink").hide();
-    }
+    } 
     var q = moment(l.TripStartDate);
     if (q.isValid()) {
         $("#lblTripStartDate").text(q.format(commonDateFormat2));

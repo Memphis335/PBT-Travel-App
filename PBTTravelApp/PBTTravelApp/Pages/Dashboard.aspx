@@ -4,35 +4,33 @@
 
 <%-- The markup and script in the following Content element will be placed in the <head> of the page --%>
 <asp:Content ContentPlaceHolderID="divHeader" runat="server">
+    <link href="../Content/fullcalendar.css" rel="stylesheet" />
     <link href="../Content/jquery.chosen.css" rel="stylesheet" />
     <link href="../Content/jquery.tagsinput.css" rel="stylesheet" />
-    <link href="../Content/fullcalendar.css" rel="stylesheet" />
 
-    <script src="../Scripts/jquery.validate.min.js"></script>
     <script src="../Scripts/jquery.tagsinput.min.js"></script>
-    <script src="../Scripts/jquery.autogrow-textarea.js"></script>
     <script src="../Scripts/chosen.jquery.min.js"></script>
-    <script src="../Scripts/jquery.cookie.js"></script>
-
-    <script src="../Scripts/jquery.validationEngine.js"></script>
-    <script src="../Scripts/jquery.validationEngine-en.js"></script>
-    <script src="../Scripts/jquery.validate.min.js"></script>
-
-    <script src="../Scripts/Custom/Dictionaries.js"></script>
+    <script src="../Scripts/Custom/Dashboard.js"></script>
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="mainContent" runat="server">
     <div id="containerRight" class="containerRight">
         <div id="topHeader" class="topHeader">
-            <h1>Dictionaries</h1>
+            <h1>Dashboard </h1>
         </div>
+
         <div id="mainContainer" style="clear: both;">
-            <div style="width: 500px; margin-top: 15px">
-                <div class="jtableContainer" id="DictProjects"></div>
+
+            <div style="width: 1000px; margin-top: 15px">
+                <div class="jtableContainer" id="Approved"></div>
             </div>
-            <div style="width: 500px; margin-top: 15px">
-                <div class="jtableContainer" id="DictPrograms"></div>
+            <div style="width: 1000px; margin-top: 15px">
+                <div class="jtableContainer" id="Rejected"></div>
             </div>
+            <div style="width: 1000px; margin-top: 15px">
+                <div class="jtableContainer" id="Pending"></div>
+            </div>
+
         </div>
     </div>
 </asp:Content>

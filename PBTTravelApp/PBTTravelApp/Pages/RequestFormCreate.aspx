@@ -19,7 +19,6 @@
     <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/4.0/1/MicrosoftAjax.js"></script>
     <script src="../Scripts/Custom/App.js"></script>
     <script src="../Scripts/Custom/sppeoplepicker.js"></script>
-    <script src="../Scripts/Custom/peoplepicker.js"></script>
 
 </asp:Content>
 
@@ -42,7 +41,7 @@
                             <li><a href="#aApprovals">Approver</a></li>
                             <li><a href="#aTravelInfo">Travel Info</a></li>
                             <li><a href="#aAttachments">Attachments</a></li>
-                            <li><a href="#aBookingProgress">Booking Progress</a></li>
+                            <li id="liBookingProgress" style="display: none;"><a href="#aBookingProgress">Booking Progress</a></li>
                         </ul>
                         <div id="aPersonalInfo">
                             <p class="control-group">
@@ -68,7 +67,9 @@
                             <p>
                                 <label>Frequent-flyer Program</label>
                                 <span class="field">
-                                    <input type="text" name="txtFFP" id="txtFFP" class="input-xlarge" />
+                                    <select name="ddlFFP" id="ddlFFP" class="ms-Dropdown">
+                                        <option value="">Choose One</option>
+                                    </select>
                                 </span>
                             </p>
                             <p>
@@ -95,14 +96,19 @@
                             <p>
                                 <label>Request Approver</label>
                                 <div class="field">
-                                    <%--<select name="ddlRequestApprover" id="ddlRequestApprover" data-placeholder="Choose a Employee..." style="margin-right: 10px; width: 370px;" class="" tabindex="2">
+                                    <select name="ddlRequestApprover" id="ddlRequestApprover" data-placeholder="Choose a Employee..." style="margin-right: 10px; width: 370px;" class="" tabindex="2">
                                         <option value=""></option>
-                                    </select>--%>
-                                    <div id="peoplePickerDiv" style="margin-right: 10px; width: 370px;"></div>
+                                    </select>
+                                    <%--<div id="peoplePickerDiv" style="margin-right: 10px; width: 370px;"></div>--%>
                                 </div>
                             </p>
                         </div>
                         <div id="aTravelInfo">
+                            <p class="control-group">
+                                <label for="txtStartDate">Departure City</label>
+                                <span class="field">
+                                    <input id="txtDeptCity" type="text" name="txtDeptCity" class="input-xlarge" /></span>
+                            </p>
                             <p class="control-group">
                                 <label for="txtStartDate">Departure Date</label>
                                 <span class="field">
@@ -135,7 +141,7 @@
                         <div id="aAttachments" title="eg. ID's or Passports">
                             <input type="file" id="fileUpload" />
                         </div>
-                        <div id="aBookingProgress">
+                        <div id="aBookingProgress" style="display: none;">
                             <p class="control-group">
                                 <label for="chkTicket">Ticket Issued?</label>
                                 <span class="field">

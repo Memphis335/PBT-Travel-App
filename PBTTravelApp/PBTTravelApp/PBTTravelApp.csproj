@@ -70,6 +70,9 @@
     <Content Include="Content\Fabric-UI\fabric.min.css" />
     <Content Include="Content\Fabric-UI\fabric.rtl.css" />
     <Content Include="Content\Fabric-UI\fabric.rtl.min.css" />
+    <Content Include="Features\Feature10\Feature10.Template.xml">
+      <DependentUpon>Feature10.feature</DependentUpon>
+    </Content>
     <Content Include="Features\Feature2\Feature2.Template.xml">
       <DependentUpon>Feature2.feature</DependentUpon>
     </Content>
@@ -97,6 +100,9 @@
     <Content Include="Lists\CustomUserRoles\CustomUserRolesInstance\Elements.xml" />
     <Content Include="Lists\CustomUserRoles\Elements.xml" />
     <Content Include="Lists\CustomUserRoles\Schema.xml" />
+    <Content Include="Lists\DictPrograms\DictProgramsInstance\Elements.xml" />
+    <Content Include="Lists\DictPrograms\Elements.xml" />
+    <Content Include="Lists\DictPrograms\Schema.xml" />
     <Content Include="Lists\DictProjects\DictProjectsInstance\Elements.xml" />
     <Content Include="Lists\DictProjects\Elements.xml" />
     <Content Include="Lists\DictProjects\Schema.xml" />
@@ -104,10 +110,12 @@
     <Content Include="Lists\Settings\Schema.xml" />
     <Content Include="Lists\Settings\SettingsInstance\Elements.xml" />
     <Content Include="Pages\AuthError.aspx" />
+    <Content Include="Pages\Dashboard.aspx" />
     <Content Include="Pages\NotFound.aspx" />
     <Content Include="Pages\PrintForm.aspx" />
     <Content Include="Pages\RequestFormEdit.aspx" />
     <Content Include="Scripts\Custom\App.js" />
+    <Content Include="Scripts\Custom\Dashboard.js" />
     <Content Include="Scripts\Custom\peoplepicker.js" />
     <Content Include="Scripts\Custom\PrintForm.js" />
     <Content Include="Scripts\Custom\RequestFormEdit.js" />
@@ -118,6 +126,9 @@
     <Content Include="WorkflowHistoryList\Elements.xml" />
     <Content Include="WorkflowTaskList\Elements.xml" />
     <None Include="Content\sass\_Fabric.Mixins.RTL.scss" />
+    <None Include="Features\Feature10\Feature10.feature">
+      <FeatureId>{780f280d-6cb8-48c2-b71a-8efca54a4eb8}</FeatureId>
+    </None>
     <None Include="Features\Feature2\Feature2.feature">
       <FeatureId>{86006914-363c-4a68-b34c-6833cd335d5c}</FeatureId>
     </None>
@@ -147,6 +158,12 @@
     </None>
     <None Include="Lists\CustomUserRoles\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{ed28405c-a55e-434b-8516-1facc86cf376}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\DictPrograms\DictProgramsInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{462ea222-0c1a-4c85-bd29-f30fcd96ab02}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\DictPrograms\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{ce1a4cb9-d023-40cf-a7bd-b202a8754b28}</SharePointProjectItemId>
     </None>
     <None Include="Lists\DictProjects\DictProjectsInstance\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{8651b4e5-ac30-4f64-853d-08855e381386}</SharePointProjectItemId>

@@ -22,13 +22,10 @@ ToApproveByMe = function () {
     },
         c = function (g, f) {
             var i;
-            var e = "RequestApproverId eq " + CurrentUser.Id +
-                " and RequestStatus eq 'Pending Approval'";
-            var h = appweburl +
-                "/_vti_bin/ListData.svc/TravelRequests/?$filter=" + e +
+            var e = "RequestApproverId eq " + CurrentUser.Id + " and RequestStatus eq 'PendingApproval'";
+            var h = appweburl + "/_vti_bin/ListData.svc/TravelRequests/?$filter=" + e +
                 "&$inlinecount=allpages&$select=Id,RequesterName,Created,TripStartDate,TripEndDate,RequestStatus,TripPurpose&$orderby=" +
-                f.jtSorting.replace(" DESC", " desc").replace(" ASC",
-                    " asc") + "&$skip=" + f.jtStartIndex + "&$top=" + f.jtPageSize;
+                f.jtSorting.replace(" DESC", " desc").replace(" ASC", " asc") + "&$skip=" + f.jtStartIndex + "&$top=" + f.jtPageSize;
             return $.Deferred(function (j) {
                 $.ajax({
                     url: h,
@@ -112,9 +109,7 @@ $(document).ready(function () {
                     display: function (a) {
                         var b = moment(a.record.Created);
                         if (b.isValid()) {
-                            return b.format(
-                                commonDateFormat2
-                            );
+                            return b.format(commonDateFormat2);
                         }
                     }
                 },
@@ -124,9 +119,7 @@ $(document).ready(function () {
                     display: function (a) {
                         var b = moment(a.record.TripStartDate);
                         if (b.isValid()) {
-                            return b.format(
-                                commonDateFormat2
-                            );
+                            return b.format(commonDateFormat2);
                         }
                     }
                 },
@@ -136,9 +129,7 @@ $(document).ready(function () {
                     display: function (a) {
                         var b = moment(a.record.TripEndDate);
                         if (b.isValid()) {
-                            return b.format(
-                                commonDateFormat2
-                            );
+                            return b.format(commonDateFormat2);
                         }
                     }
                 },

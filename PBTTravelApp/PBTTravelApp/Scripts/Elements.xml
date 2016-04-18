@@ -175,5 +175,6 @@
     <File Path="Scripts\jquery.fabric.min.js" Url="Scripts/jquery.fabric.min.js" ReplaceContent="TRUE" />
     <File Path="Scripts\jquery.fabric.js" Url="Scripts/jquery.fabric.js" ReplaceContent="TRUE" />
     <File Path="Scripts\Custom\peoplepicker.js" Url="Scripts/Custom/peoplepicker.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Custom\Dashboard.js" Url="Scripts/Custom/Dashboard.js" ReplaceContent="TRUE" />
   </Module>
 </Elements>

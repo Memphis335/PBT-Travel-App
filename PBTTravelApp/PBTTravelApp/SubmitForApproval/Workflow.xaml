@@ -513,7 +513,7 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
           </InArgument>
         </p1:WriteToHistory.Message>
       </p1:WriteToHistory>
-      <p1:Email AdditionalHeaders="{x:Null}" BCC="{x:Null}" CC="{x:Null}" sap2010:WorkflowViewState.IdRef="Email_5" Subject="New Travel Request Submitted">
+      <p1:Email AdditionalHeaders="{x:Null}" BCC="{x:Null}" CC="{x:Null}" sap2010:WorkflowViewState.IdRef="Email_5" Subject="**New Travel Request Submitted**">
         <p1:Email.Body>
           <InArgument x:TypeArguments="x:String">
             <mca:CSharpValue x:TypeArguments="x:String" xml:space="preserve">"&lt;html xmlns:v='urn:schemas-microsoft-com:vml' xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word'" +
@@ -533,11 +533,12 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
 "&lt;o:shapelayout v:ext='edit'&gt;" +
 "&lt;o:idmap v:ext='edit' data='1' /&gt;" +
 "&lt;/o:shapelayout&gt;&lt;/xml&gt;&lt;![endif]--&gt;&lt;/head&gt;&lt;body lang=EN-US link='#FB4A18' vlink='#FB9318'&gt;&lt;div class=WordSection1&gt; " +
-"&lt;p class=MsoNormal&gt;Hi " + approverName +
+"&lt;p class=MsoNormal&gt;Hi Admin" +
 "&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt; " + 
-crtRequestor + " has logged a new travel request, it is waiting for approval from you" +
+crtRequestor + " has logged a new travel request, it is waiting for approval from " + approverName +
 ". &lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt; " +
-"You can review the request &lt;a href=" + webUrl + "/Pages/RequestFormView.aspx?requestID=" + Id + "&amp;sphosturl=" + HostURL + "&amp;spappweburl=" + webUrl + "&gt;here&lt;/a&gt;&lt;o:p&gt;&lt;/o:p&gt; " + 
+"You can review the request &lt;a href=" + webUrl + "/Pages/RequestFormView.aspx?requestID=" + Id + "&amp;sphosturl=" + HostURL + "&amp;spappweburl=" + webUrl + "&gt;here&lt;/a&gt;. &lt;o:p&gt;&lt;/o:p&gt; " +
+"&amp;nbsp;Do not action this request yet!" +
 "&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;Regards&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"</mca:CSharpValue>
           </InArgument>
         </p1:Email.Body>
@@ -553,6 +554,8 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
         <Variable x:TypeArguments="p:DynamicValue" Name="dv_4" />
         <Variable x:TypeArguments="p:DynamicValue" Name="dv_5" />
         <Variable x:TypeArguments="x:String" Name="RequestStatus1" />
+        <Variable x:TypeArguments="p:DynamicValue" Name="dv_6" />
+        <Variable x:TypeArguments="x:String" Name="RequestStatus2" />
       </Sequence.Variables>
       <p1:WaitForFieldChange EventPayload="{x:Null}" ItemGuid="{x:Null}" FieldValue="Decided" sap2010:WorkflowViewState.IdRef="WaitForFieldChange_2">
         <p1:WaitForFieldChange.FieldName>
@@ -575,10 +578,43 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
           </InArgument>
         </p1:WaitForFieldChange.ListId>
       </p1:WaitForFieldChange>
+      <p1:LookupSPListItem ItemGuid="{x:Null}" Properties="{x:Null}" sap2010:WorkflowViewState.IdRef="LookupSPListItem_4">
+        <p1:LookupSPListItem.ItemId>
+          <InArgument x:TypeArguments="x:Int32">
+            <p:ExpressionContainerValue x:TypeArguments="x:Int32">
+              <p1:GetCurrentItemId />
+            </p:ExpressionContainerValue>
+          </InArgument>
+        </p1:LookupSPListItem.ItemId>
+        <p1:LookupSPListItem.ListId>
+          <InArgument x:TypeArguments="s:Guid">
+            <p:ExpressionContainerValue x:TypeArguments="s:Guid">
+              <p1:GetCurrentListId />
+            </p:ExpressionContainerValue>
+          </InArgument>
+        </p1:LookupSPListItem.ListId>
+        <p1:LookupSPListItem.Result>
+          <OutArgument x:TypeArguments="p:DynamicValue">
+            <mca:CSharpReference x:TypeArguments="p:DynamicValue">dv_6</mca:CSharpReference>
+          </OutArgument>
+        </p1:LookupSPListItem.Result>
+      </p1:LookupSPListItem>
+      <p:GetODataProperties DisplayName="GetDynamicValueProperties" sap2010:WorkflowViewState.IdRef="GetODataProperties_9">
+        <p:GetODataProperties.Source>
+          <InArgument x:TypeArguments="p:DynamicValue">
+            <mca:CSharpValue x:TypeArguments="p:DynamicValue">dv_6</mca:CSharpValue>
+          </InArgument>
+        </p:GetODataProperties.Source>
+        <scg:Dictionary x:TypeArguments="x:String, OutArgument">
+          <OutArgument x:TypeArguments="x:String" x:Key="RequestStatus">
+            <mca:CSharpReference x:TypeArguments="x:String">RequestStatus2</mca:CSharpReference>
+          </OutArgument>
+        </scg:Dictionary>
+      </p:GetODataProperties>
       <If sap2010:WorkflowViewState.IdRef="If_1">
         <If.Condition>
           <InArgument x:TypeArguments="x:Boolean">
-            <mca:CSharpValue x:TypeArguments="x:Boolean">RequestStatus == "Approved"</mca:CSharpValue>
+            <mca:CSharpValue x:TypeArguments="x:Boolean">RequestStatus2 == "Approved"</mca:CSharpValue>
           </InArgument>
         </If.Condition>
         <If.Then>
@@ -619,6 +655,43 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
         </If.Then>
         <If.Else>
           <Sequence sap2010:WorkflowViewState.IdRef="Sequence_16">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="p:DynamicValue" Name="dv_7" />
+              <Variable x:TypeArguments="x:String" Name="RequestRejectReason1" />
+            </Sequence.Variables>
+            <p1:LookupSPListItem ItemGuid="{x:Null}" Properties="{x:Null}" sap2010:WorkflowViewState.IdRef="LookupSPListItem_5">
+              <p1:LookupSPListItem.ItemId>
+                <InArgument x:TypeArguments="x:Int32">
+                  <p:ExpressionContainerValue x:TypeArguments="x:Int32">
+                    <p1:GetCurrentItemId />
+                  </p:ExpressionContainerValue>
+                </InArgument>
+              </p1:LookupSPListItem.ItemId>
+              <p1:LookupSPListItem.ListId>
+                <InArgument x:TypeArguments="s:Guid">
+                  <p:ExpressionContainerValue x:TypeArguments="s:Guid">
+                    <p1:GetCurrentListId />
+                  </p:ExpressionContainerValue>
+                </InArgument>
+              </p1:LookupSPListItem.ListId>
+              <p1:LookupSPListItem.Result>
+                <OutArgument x:TypeArguments="p:DynamicValue">
+                  <mca:CSharpReference x:TypeArguments="p:DynamicValue">dv_7</mca:CSharpReference>
+                </OutArgument>
+              </p1:LookupSPListItem.Result>
+            </p1:LookupSPListItem>
+            <p:GetODataProperties DisplayName="GetDynamicValueProperties" sap2010:WorkflowViewState.IdRef="GetODataProperties_10">
+              <p:GetODataProperties.Source>
+                <InArgument x:TypeArguments="p:DynamicValue">
+                  <mca:CSharpValue x:TypeArguments="p:DynamicValue">dv_7</mca:CSharpValue>
+                </InArgument>
+              </p:GetODataProperties.Source>
+              <scg:Dictionary x:TypeArguments="x:String, OutArgument">
+                <OutArgument x:TypeArguments="x:String" x:Key="RequestRejectReason">
+                  <mca:CSharpReference x:TypeArguments="x:String">RequestRejectReason1</mca:CSharpReference>
+                </OutArgument>
+              </scg:Dictionary>
+            </p:GetODataProperties>
             <p1:Email AdditionalHeaders="{x:Null}" BCC="{x:Null}" CC="{x:Null}" sap2010:WorkflowViewState.IdRef="Email_6" Subject="Travel Denied">
               <p1:Email.Body>
                 <InArgument x:TypeArguments="x:String">
@@ -643,7 +716,7 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
 "&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt; " +
 "Bad news! Your travel request was declined by " + approverName +
 ". &lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt; " +
-"Reason for the decision : " + RequestRejectReason +
+"Reason for the decision : " + RequestRejectReason1 +
 ". &lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt; " +
 "You can rectify/edit your requests &lt;a href=" + webUrl + "/Pages/RequestFormView.aspx?requestID=" + Id + "#aBookingProgress&amp;sphosturl=" + HostURL + "&amp;spappweburl="+ webUrl +"&gt;here&lt;/a&gt;&lt;o:p&gt;&lt;/o:p&gt; " + 
 "&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;Regards&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"</mca:CSharpValue>
@@ -680,7 +753,7 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
 "&lt;/o:shapelayout&gt;&lt;/xml&gt;&lt;![endif]--&gt;&lt;/head&gt;&lt;body lang=EN-US link='#FB4A18' vlink='#FB9318'&gt;&lt;div class=WordSection1&gt; " +
 "&lt;p class=MsoNormal&gt;Hi Admins" +
 "&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt; " + 
-"A decision has been reached on the request logged by " + crtRequestor + " and the status is : " + RequestStatus1 +
+"A decision has been reached on the request logged by " + crtRequestor + " and the status is : " + RequestStatus2 +
 ". &lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt; " +
 "Please action the request accordingly. Link to the request &lt;a href=" + webUrl + "/Pages/RequestFormView.aspx?requestID=" + Id + "&amp;sphosturl=" + HostURL + "&amp;spappweburl=" + webUrl + "&gt; click here&lt;/a&gt;&lt;o:p&gt;&lt;/o:p&gt; " + 
 "&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;Regards&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"</mca:CSharpValue>
@@ -688,7 +761,7 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
         </p1:Email.Body>
         <p1:Email.Subject>
           <InArgument x:TypeArguments="x:String">
-            <mca:CSharpValue x:TypeArguments="x:String">"Travel Request " + RequestStatus1</mca:CSharpValue>
+            <mca:CSharpValue x:TypeArguments="x:String">"Travel Request " + RequestStatus2</mca:CSharpValue>
           </InArgument>
         </p1:Email.Subject>
         <p1:Email.To>
@@ -699,7 +772,7 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
       </p1:Email>
       <TerminateWorkflow sap2010:WorkflowViewState.IdRef="TerminateWorkflow_2" Reason="Completed" />
     </Sequence>
-    <sads:DebugSymbol.Symbol>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</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>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</sads:DebugSymbol.Symbol>
   </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -720,7 +793,7 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="486,51">
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="516,51">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -746,7 +819,7 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="247,62" />
-      <sap2010:ViewStateData Id="Sequence_7" sap:VirtualizedContainerService.HintSize="486,51">
+      <sap2010:ViewStateData Id="Sequence_7" sap:VirtualizedContainerService.HintSize="516,51">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -755,7 +828,7 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="WebUri_1" sap:VirtualizedContainerService.HintSize="200,68" />
-      <sap2010:ViewStateData Id="Sequence_11" sap:VirtualizedContainerService.HintSize="486,51">
+      <sap2010:ViewStateData Id="Sequence_11" sap:VirtualizedContainerService.HintSize="516,51">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -771,7 +844,7 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Sequence_8" sap:VirtualizedContainerService.HintSize="486,51">
+      <sap2010:ViewStateData Id="Sequence_8" sap:VirtualizedContainerService.HintSize="516,51">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -787,7 +860,7 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Sequence_9" sap:VirtualizedContainerService.HintSize="486,51">
+      <sap2010:ViewStateData Id="Sequence_9" sap:VirtualizedContainerService.HintSize="516,51">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -807,7 +880,7 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
       <sap2010:ViewStateData Id="BuildCollection`1_2" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="WriteToHistory_1" sap:VirtualizedContainerService.HintSize="200,68" />
       <sap2010:ViewStateData Id="Email_1" sap:VirtualizedContainerService.HintSize="200,68" />
-      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="486,51">
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="516,51">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -818,7 +891,7 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
       <sap2010:ViewStateData Id="BuildCollection`1_3" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="WriteToHistory_2" sap:VirtualizedContainerService.HintSize="200,68" />
       <sap2010:ViewStateData Id="Email_2" sap:VirtualizedContainerService.HintSize="200,68" />
-      <sap2010:ViewStateData Id="Sequence_10" sap:VirtualizedContainerService.HintSize="486,51">
+      <sap2010:ViewStateData Id="Sequence_10" sap:VirtualizedContainerService.HintSize="516,51">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -890,7 +963,7 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="WriteToHistory_5" sap:VirtualizedContainerService.HintSize="247,68" />
       <sap2010:ViewStateData Id="Email_5" sap:VirtualizedContainerService.HintSize="247,68" />
-      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="486,51">
+      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="516,51">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -898,7 +971,7 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="WaitForFieldChange_2" sap:VirtualizedContainerService.HintSize="464,68">
+      <sap2010:ViewStateData Id="WaitForFieldChange_2" sap:VirtualizedContainerService.HintSize="494,68">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <scg:Dictionary x:TypeArguments="x:String, msdad:ViewStateNameValue" x:Key="SPLocalizedDisplayNames">
@@ -909,16 +982,50 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="LookupSPListItem_4" sap:VirtualizedContainerService.HintSize="494,89">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <scg:Dictionary x:TypeArguments="x:String, msdad:ViewStateNameValue" x:Key="SPLocalizedDisplayNames">
+              <msdad:ViewStateNameValue x:Key="ItemId" DisplayName="(current item)" Value="$CurrentItemId" />
+              <msdad:ViewStateNameValue x:Key="ListId" DisplayName="(current list)" Value="$CurrentListId" />
+            </scg:Dictionary>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="GetODataProperties_9" sap:VirtualizedContainerService.HintSize="494,92">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:String x:Key="Properties.SelectedEntityType">Lists/TravelRequests</x:String>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="Email_4" sap:VirtualizedContainerService.HintSize="200,68" />
-      <sap2010:ViewStateData Id="Email_6" sap:VirtualizedContainerService.HintSize="200,68" />
-      <sap2010:ViewStateData Id="Sequence_16" sap:VirtualizedContainerService.HintSize="222,192">
+      <sap2010:ViewStateData Id="LookupSPListItem_5" sap:VirtualizedContainerService.HintSize="247,89">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <scg:Dictionary x:TypeArguments="x:String, msdad:ViewStateNameValue" x:Key="SPLocalizedDisplayNames">
+              <msdad:ViewStateNameValue x:Key="ItemId" DisplayName="(current item)" Value="$CurrentItemId" />
+              <msdad:ViewStateNameValue x:Key="ListId" DisplayName="(current list)" Value="$CurrentListId" />
+            </scg:Dictionary>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="GetODataProperties_10" sap:VirtualizedContainerService.HintSize="247,92">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:String x:Key="Properties.SelectedEntityType">Lists/TravelRequests</x:String>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Email_6" sap:VirtualizedContainerService.HintSize="247,68" />
+      <sap2010:ViewStateData Id="Sequence_16" sap:VirtualizedContainerService.HintSize="269,453">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="464,342">
+      <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="494,603">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -926,9 +1033,9 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Email_7" sap:VirtualizedContainerService.HintSize="464,68" />
-      <sap2010:ViewStateData Id="TerminateWorkflow_2" sap:VirtualizedContainerService.HintSize="464,22" />
-      <sap2010:ViewStateData Id="Sequence_13" sap:VirtualizedContainerService.HintSize="486,744">
+      <sap2010:ViewStateData Id="Email_7" sap:VirtualizedContainerService.HintSize="494,68" />
+      <sap2010:ViewStateData Id="TerminateWorkflow_2" sap:VirtualizedContainerService.HintSize="494,22" />
+      <sap2010:ViewStateData Id="Sequence_13" sap:VirtualizedContainerService.HintSize="516,1266">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -936,14 +1043,14 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Sequence_6" sap:VirtualizedContainerService.HintSize="508,1596">
+      <sap2010:ViewStateData Id="Sequence_6" sap:VirtualizedContainerService.HintSize="538,2118">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="PBTTravelApp.SubmitForApproval.Workflow_1" sap:VirtualizedContainerService.HintSize="548,1676" />
+      <sap2010:ViewStateData Id="PBTTravelApp.SubmitForApproval.Workflow_1" sap:VirtualizedContainerService.HintSize="578,2198" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </Activity>

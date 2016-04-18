@@ -176,5 +176,6 @@
     <ProjectItemFile Source="jquery.fabric.min.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="jquery.fabric.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="Custom\peoplepicker.js" Target="Scripts\Custom\" Type="ElementFile" />
+    <ProjectItemFile Source="Custom\Dashboard.js" Target="Scripts\Custom\" Type="ElementFile" />
   </Files>
 </ProjectItem>
