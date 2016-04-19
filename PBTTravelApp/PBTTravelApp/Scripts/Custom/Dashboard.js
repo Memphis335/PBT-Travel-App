@@ -51,7 +51,7 @@ MyRequests = function () {
         },
         o = function (f, e) {
             var h;
-            var b = "(RequestStatus eq 'Draft' or RequestStatus eq 'Pending Approval')";
+            var b = "(RequestStatus eq 'Draft' or RequestStatus eq 'PendingApproval')";
             var g = appweburl + "/_vti_bin/ListData.svc/TravelRequests/?$filter=" + b + "&$inlinecount=allpages&$select=Id,Created,RequesterName,TripStartDate,TripEndDate,RequestStatus,RequestApprover,TripPurpose,RequestRejectReason&$expand=RequestApprover&$orderby=" +
                 e.jtSorting.replace(" DESC", " desc").replace(" ASC", " asc") + "&$skip=" + e.jtStartIndex + "&$top=" + e.jtPageSize;
             return $.Deferred(function (k) {
@@ -236,6 +236,15 @@ $(document).ready(function () {
                     display: function (d) {
                         return "<button title='View' onclick='location.href=\"RequestFormView.aspx?requestID=" + d.record.Id + "\"' class='jtable-command-button jtable-view-command-button'><span>View</span></button>";
                     }
+                },
+                CustomEditAction: {
+                    title: "",
+                    listClass: "jtable-command-column",
+                    sorting: false,
+                    width: "1%",
+                    display: function (d) {
+                        return "<button title='Edit' onclick='location.href=\"RequestFormEdit.aspx?requestID=" + d.record.Id + "\"' class='jtable-command-button jtable-edit-command-button'><span>Edit</span></button>";
+                    }
                 }
             }
         });
@@ -318,15 +327,6 @@ $(document).ready(function () {
                     width: "1%",
                     display: function (d) {
                         return "<button title='View' onclick='location.href=\"RequestFormView.aspx?requestID=" + d.record.Id + "\"' class='jtable-command-button jtable-view-command-button'><span>View</span></button>";
-                    }
-                },
-                CustomEditAction: {
-                    title: "",
-                    listClass: "jtable-command-column",
-                    sorting: false,
-                    width: "1%",
-                    display: function (d) {
-                        return "<button title='Edit' onclick='location.href=\"RequestFormEdit.aspx?requestID=" + d.record.Id + "\"' class='jtable-command-button jtable-edit-command-button'><span>Edit</span></button>";
                     }
                 }
             }

@@ -129,5 +129,6 @@
     <File Path="Content\Custom\PrintForm.css" Url="Content/Custom/PrintForm.css" ReplaceContent="TRUE" />
     <File Path="Content\sass\_Fabric.Mixins.RTL.scss" Url="Content/sass/_Fabric.Mixins.RTL.scss" ReplaceContent="TRUE" />
     <File Path="Content\Custom\PeoplePicker.css" Url="Content/Custom/PeoplePicker.css" ReplaceContent="TRUE" />
+    <File Path="Content\themes\metro\blue\progressindicator.gif" Url="Content/themes/metro/blue/progressindicator.gif" ReplaceContent="TRUE" />
   </Module>
 </Elements>

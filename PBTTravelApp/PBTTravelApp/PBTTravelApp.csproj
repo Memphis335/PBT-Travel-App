@@ -60,6 +60,7 @@
     <Content Include="Content\Prettify\Themes\sons-of-obsidian.css" />
     <Content Include="Content\Prettify\Themes\sunburst.css" />
     <Content Include="Content\themes\metro\blue\jquery-ui.css" />
+    <Content Include="Content\themes\metro\blue\progressindicator.gif" />
     <Content Include="Content\themes\metro\view.png" />
     <Content Include="Content\validationEngine.jquery.css" />
     <Content Include="Content\Fabric-UI\fabric.components.css" />

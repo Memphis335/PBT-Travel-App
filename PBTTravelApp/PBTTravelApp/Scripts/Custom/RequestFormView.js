@@ -23,8 +23,7 @@ RequestFormView = function () {
         d = function (k) {
             var j;
             $.ajax({
-                url: appweburl + "/_vti_bin/ListData.svc/" + k +
-                    "/?$select=Name&$inlinecount=allpages",
+                url: appweburl + "/_vti_bin/ListData.svc/" + k + "/?$select=Name&$inlinecount=allpages",
                 type: "GET",
                 async: false,
                 headers: {
@@ -43,16 +42,12 @@ RequestFormView = function () {
         },
         f = function (j) {
             var k;
-            var l =
-                "$select=ID,Author/Id,Title,Email,EmployeeID,PhoneNumber,Project,RequestStatus,RequestApprover/Title,RequestApprover/Id," +
+            var l = "$select=ID,Author/Id,Title,Email,EmployeeID,PhoneNumber,Project,RequestStatus,RequestApprover/Title,RequestApprover/Id," +
             "RequestApproveDate,TripStartDate,TripEndDate,Created,Modified,RequestApproveDate,IsRequestApproveEmailSent,RequestRejectReason,TripPurpose,Notices,DestinationsJSON," +
             "TicketIssued,AccomodationConfirmed,CarRentalBooked,TransfersArranged,PassportVisaValid,FrequentFlyer,FrequentflyerNumber,City,Note1,Note2,Note3,Note4,Note5,WorkflowTrigger";
             $.ajax({
                 url: appweburl +
-                    "/_api/Web/lists/getbytitle('TravelRequests')/items?" +
-                    l +
-                    "&$expand=Author/Id, RequestApprover/Title,RequestApprover/Id&$filter=ID eq " +
-                    j,
+                    "/_api/Web/lists/getbytitle('TravelRequests')/items?" + l + "&$expand=Author/Id, RequestApprover/Title,RequestApprover/Id&$filter=ID eq " + j,
                 type: "GET",
                 async: false,
                 cache: false,
@@ -72,9 +67,7 @@ RequestFormView = function () {
         i = function (m, j) {
             var l;
             $.ajax({
-                url: appweburl +
-                    "/_api/web/lists/getbytitle('TravelRequests')/Items?$select=Modified&$filter=Id eq " +
-                    m,
+                url: appweburl + "/_api/web/lists/getbytitle('TravelRequests')/Items?$select=Modified&$filter=Id eq " + m,
                 type: "GET",
                 async: false,
                 cache: false,
@@ -104,8 +97,7 @@ RequestFormView = function () {
 
             var k = e();
             $.ajax({
-                url: appweburl +
-                    "/_api/Web/lists/getbytitle('TravelRequests')/getItemByStringId('" + m + "')",
+                url: appweburl + "/_api/Web/lists/getbytitle('TravelRequests')/getItemByStringId('" + m + "')",
                 contentType: "application/json; odata=verbose",
                 async: false,
                 type: "POST",
@@ -216,7 +208,7 @@ RequestFormView = function () {
                     $("#btnApproveRequest").hide();
                     $("#btnRejectRequest").hide();
                     $("#lblRequestStatus").text("Rejected");
-                    addMessage("Request successfully rejected","success");
+                    addMessage("Request successfully rejected", "success");
                 },
                 error: function (o, m, n) {
                     alert(n);
@@ -352,7 +344,7 @@ $(document).ready(function () {
         location.href = "NotFound.aspx";
         return;
     }
-    if (HasAccessToRequest(l.Author.Id, l.RequestApprover.Id,CurrentUser.Id, CurrentUser.IsAdmin, l.RequestStatus, false) == false) {
+    if (HasAccessToRequest(l.Author.Id, l.RequestApprover.Id, CurrentUser.Id, CurrentUser.IsAdmin, l.RequestStatus, false) == false) {
         location.href = "AccessDenied.aspx";
         return;
     }
@@ -380,8 +372,9 @@ $(document).ready(function () {
         }
         else {
             if (l.RequestStatus == "Approved") {
-                if (CurrentUser.IsAdmin == false) {
+                if (!CurrentUser.IsAdmin) {
                     $("#btnEditRequest").hide();
+                    $("#btnSendRequestToApprove").hide();
                 }
                 $("#btnApproveRequest").hide();
                 $("#btnRejectRequest").hide();
@@ -415,7 +408,7 @@ $(document).ready(function () {
     }
     else {
         $("#pRejectReason").hide();
-    } 
+    }
     var q = moment(l.TripStartDate);
     if (q.isValid()) {
         $("#lblTripStartDate").text(q.format(commonDateFormat2));

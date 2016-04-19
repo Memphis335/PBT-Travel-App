@@ -66,7 +66,7 @@ RequestFormEdit = function () {
             var m =
                 "$select=ID,Author/Id,Title,Email,EmployeeID,PhoneNumber,Project,RequestStatus,RequestApprover/Title,RequestApprover/Id," +
                 "RequestApproveDate,PersonalR,TripStartDate,TripEndDate,Created,Modified,RequestApproveDate,RequestRejectReason,TripPurpose,Notices,DestinationsJSON," +
-                "TicketIssued,AccomodationConfirmed,CarRentalBooked,TransfersArranged,PassportVisaValid,FrequentFlyer,FrequentflyerNumber,City,Note1,Note2,Note3,Note4,Note5";
+                "TicketIssued,AccomodationConfirmed,CarRentalBooked,TransfersArranged,PassportVisaValid,FrequentFlyer,FrequentflyerNumber,City,Note1,Note2,Note3,Note4,Note5,WorkflowTrigger";
             $.ajax({
                 url: appweburl +
                     "/_api/Web/lists/getbytitle('TravelRequests')/items?" + m +
@@ -118,13 +118,14 @@ RequestFormEdit = function () {
                     PassportVisaValid: l.PassportVisaValid,
                     FrequentFlyer: l.FrequentFlyer,
                     FrequentflyerNumber: l.FrequentflyerNumber,
-                    RequestStatus: RequestStatusEnum.Draft.Value,
+                    RequestStatus: l.RequestStatus,
                     Note1: l.Note1,
                     Note2: l.Note2,
                     Note3: l.Note3,
                     Note4: l.Note4,
                     Note5: l.Note5,
-                    City: City
+                    City: l.City,
+                    WorkflowTrigger: "Edited"
                 }),
                 headers: {
                     accept: "application/json;odata=verbose",
@@ -282,6 +283,9 @@ $(document).ready(function () {
             x.Note4 = $("#txtTransfer").val();
             x.Note5 = $("#txtPassport").val();
             x.City = $("#txtDeptCity").val();
+            if (CurrentUser.IsAdmin) {
+                x.RequestStatus = RequestStatusEnum.Approved.Value;
+            } else x.RequestStatus = RequestStatusEnum.Draft.Value;
         RequestFormEdit.updateRequestForm(x);
         }
     });
