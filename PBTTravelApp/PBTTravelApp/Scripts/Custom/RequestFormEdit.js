@@ -65,11 +65,10 @@ RequestFormEdit = function () {
             var l;
             var m =
                 "$select=ID,Author/Id,Title,Email,EmployeeID,PhoneNumber,Project,RequestStatus,RequestApprover/Title,RequestApprover/Id," +
-                "RequestApproveDate,PersonalR,TripStartDate,TripEndDate,Created,Modified,RequestApproveDate,RequestRejectReason,TripPurpose,Notices,DestinationsJSON," +
-                "TicketIssued,AccomodationConfirmed,CarRentalBooked,TransfersArranged,PassportVisaValid,FrequentFlyer,FrequentflyerNumber,City,Note1,Note2,Note3,Note4,Note5,WorkflowTrigger";
+                    "RequestApproveDate,PersonalR,TripStartDate,TripEndDate,Created,Modified,RequestApproveDate,RequestRejectReason,TripPurpose,Notices,DestinationsJSON," +
+                    "TicketIssued,AccomodationConfirmed,CarRentalBooked,TransfersArranged,PassportVisaValid,FrequentFlyer,FrequentflyerNumber,City,Note1,Note2,Note3,Note4,Note5,refTicket,refAccom,refRental,refTransfer,WorkflowTrigger";
             $.ajax({
-                url: appweburl +
-                    "/_api/Web/lists/getbytitle('TravelRequests')/items?" + m +
+                url: appweburl + "/_api/Web/lists/getbytitle('TravelRequests')/items?" + m +
                     "&$expand=Author/Id,RequestApprover/Title,RequestApprover/Id&$filter=ID eq " + k,
                 type: "GET",
                 async: false,
@@ -124,6 +123,10 @@ RequestFormEdit = function () {
                     Note3: l.Note3,
                     Note4: l.Note4,
                     Note5: l.Note5,
+                    refTicket: l.refTicket,
+                    refAccom: l.refAccom,
+                    refRental: l.refRental,
+                    refTransfer: l.refTransfer,
                     City: l.City,
                     WorkflowTrigger: "Edited"
                 }),
@@ -136,6 +139,7 @@ RequestFormEdit = function () {
                 },
                 success: function (m) {
                     h(l.ID);
+                    fileUpload(l.ID);
                     location.href = "RequestFormView.aspx?requestID=" + l.ID;
                 },
                 error: function (o, m, n) {
@@ -147,8 +151,7 @@ RequestFormEdit = function () {
             var k;
             $.ajax({
                 url: appweburl +
-                    "/_api/Web/lists/getByTitle('TravelRequests')/items?$select=AttachmentFiles&$expand=AttachmentFiles&$filter=Id eq " +
-                    l,
+                    "/_api/Web/lists/getByTitle('TravelRequests')/items?$select=AttachmentFiles&$expand=AttachmentFiles&$filter=Id eq " + l,
                 contentType: "application/json; odata=verbose",
                 async: false,
                 cache: false,
@@ -196,25 +199,7 @@ RequestFormEdit = function () {
             }
             return k;
         },
-        h = function (k) {
-            if ($("input[type=file]").length > 1 && !window.FileReader) {
-                alert(
-                    "You cannot upload file because HTML5 FileSystem APIs are not fully supported in this browser."
-                );
-            }
-            $("input[type=file]").each(function () {
-                var m = $(this).prop("files");
-                var l = m[0];
-                if (l) {
-                    var n = new FileReader();
-                    n.onload = function (o) {
-                        l(k, l.name, o.target.result);
-                    };
-                    n.readAsDataURL(l);
-                }
-            });
-        },
-        l = function (n, l, k) {
+        j = function (n, l, k) {
             var m = f();
             $.ajax({
                 url: appweburl +
@@ -230,6 +215,91 @@ RequestFormEdit = function () {
                 data: a(k),
                 error: function (q, o, p) { }
             });
+        },
+        h = function (k) {
+            if ($("input[type=file]").length > 1 && !window.FileReader) {
+                alert(
+                    "You cannot upload file because HTML5 FileSystem APIs are not fully supported in this browser."
+                );
+            }
+            $("#fileUpload").each(function () {
+                var m = $(this).prop("files");
+                var l = m[0];
+                if (l) {
+                    var n = new FileReader();
+                    n.onload = function (o) {
+                        j(k, l.name, o.target.result);
+                    };
+                    n.readAsDataURL(l);
+                }
+            });
+        },
+        fileUpload = function (k) {
+            if ($("input[type=file]").length > 1 && !window.FileReader) {
+                alert(
+                    "You cannot upload files because HTML5 FileSystem APIs are not fully supported in this browser."
+                );
+            }
+            $("#fileTicket").each(function () {
+                var m = $(this).prop("files");
+                var l = m[0];
+                var name = "Flight_Ticket";
+                if (l) {
+                    var n = new FileReader();
+                    n.onload = function (o) {
+                        j(k, name, o.target.result);
+                    };
+                    n.readAsDataURL(l);
+                }
+            });
+            $("#fileAccom").each(function () {
+                var m = $(this).prop("files");
+                var l = m[0];
+                var name = "Acc_Confirmation";
+                if (l) {
+                    var n = new FileReader();
+                    n.onload = function (o) {
+                        j(k, name, o.target.result);
+                    };
+                    n.readAsDataURL(l);
+                }
+            });
+            $("#fileRental").each(function () {
+                var m = $(this).prop("files");
+                var l = m[0];
+                var name = "Rental_Confirmation";
+                if (l) {
+                    var n = new FileReader();
+                    n.onload = function (o) {
+                        j(k, name, o.target.result);
+                    };
+                    n.readAsDataURL(l);
+                }
+            });
+            $("#fileTransfer").each(function () {
+                var m = $(this).prop("files");
+                var l = m[0];
+                var name = "Transfer_Confirmation";
+                if (l) {
+                    var n = new FileReader();
+                    n.onload = function (o) {
+                        j(k, name, o.target.result);
+                    };
+                    n.readAsDataURL(l);
+                }
+            });
+            $("#filePassport").each(function () {
+                var m = $(this).prop("files");
+                var l = m[0];
+                var name = "Visa_Confirmation";
+                if (l) {
+                    var n = new FileReader();
+                    n.onload = function (o) {
+                        j(k, name, o.target.result);
+                    };
+                    n.readAsDataURL(l);
+                }
+            });
         };
     return {
         getAllUsers: d,
@@ -242,7 +312,7 @@ RequestFormEdit = function () {
 }();
 $(document).ready(function () {
     var t = getQueryStringParameter("requestID");
-    if (typeof t == "undefined" || $.isNumeric(t) == false) {
+    if (typeof t == "undefined" || $.isNumeric(t) === false) {
         location.href = "NotFound.aspx";
         return;
     }
@@ -278,15 +348,19 @@ $(document).ready(function () {
             x.FrequentFlyer = $("#ddlFFP").val();
             x.FrequentflyerNumber = $("#txtFFPN").val();
             x.Note1 = $("#txtTicket").val();
+            x.refTicket = $("#refTicket").val();
             x.Note2 = $("#txtAccom").val();
+            x.refAccom = $("#refAccom").val();
             x.Note3 = $("#txtRental").val();
+            x.refRental = $("#refRental").val();
             x.Note4 = $("#txtTransfer").val();
+            x.refTransfer = $("#refTransfer").val();
             x.Note5 = $("#txtPassport").val();
             x.City = $("#txtDeptCity").val();
             if (CurrentUser.IsAdmin) {
                 x.RequestStatus = RequestStatusEnum.Approved.Value;
             } else x.RequestStatus = RequestStatusEnum.Draft.Value;
-        RequestFormEdit.updateRequestForm(x);
+            RequestFormEdit.updateRequestForm(x);
         }
     });
     var s = RequestFormEdit.getRequestForm(t);
@@ -294,13 +368,13 @@ $(document).ready(function () {
         location.href = "NotFound.aspx";
         return;
     }
-    if (HasAccessToRequest(s.Author.Id, s.RequestApprover != null ? s.RequestApprover.Id : null, CurrentUser.Id, CurrentUser.IsAdmin, s.RequestStatus, true) == false) {
+    if (HasAccessToRequest(s.Author.Id, s.RequestApprover != null ? s.RequestApprover.Id : null, CurrentUser.Id, CurrentUser.IsAdmin, s.RequestStatus, true) === false) {
         location.href = "AccessDenied.aspx";
         return;
     }
     $(function () {
         $("#fileUpload").MultiFile({
-            max: 5,
+            max: 8,
             max_size: 3072,
             STRING: {
                 remove: "Delete"
@@ -309,13 +383,29 @@ $(document).ready(function () {
     });
     var i = RequestFormEdit.getAllAttachments(t);
     var f = $("#fileUpload_wrap_list");
+    var fileTicket = $("#fileTicketRetrieved");
+    var fileAccom = $("#fileAccomRetrieved");
+    var fileRental = $("#fileRentalRetrieved");
+    var fileTransfer = $("#fileTransferRetrieved");
+    var filePass = $("#filePassRetrieved");
     var h = 0;
     var g;
     $.each(i, function () {
-        h++;
-        g = "MultiFilelabel" + h;
-        f.append('<div class="MultiFile-label"  id="' + g + '"  ><a class="MultiFile-remove" onclick="RequestFormEdit.deleteAttachment(\'' + g + "','" + this.FileName + "'," + t +
-            ');"  href="#fileUpload_wrap">Delete </a><span class="MultiFile-title">' + this.FileName + "</span></div>");
+        if (this.FileName == "Flight_Ticket") {
+            fileTicket.append('<div class="MultiFile-label"  id="' + g + '"  ><span class="MultiFile-title">' + this.FileName + ' <a class="MultiFile-remove" onclick="RequestFormEdit.deleteAttachment(\'' + g + "','" + this.FileName + "'," + t + ');"  href="#fileUpload_wrap"><i class="ms-Icon ms-Icon--trash" title="Delete"></i></a></span></div>');
+        } else if (this.FileName == "Acc_Confirmation") {
+            fileAccom.append('<div class="MultiFile-label"  id="' + g + '"  ><span class="MultiFile-title">' + this.FileName + ' <a class="MultiFile-remove" onclick="RequestFormEdit.deleteAttachment(\'' + g + "','" + this.FileName + "'," + t + ');"  href="#fileUpload_wrap"><i class="ms-Icon ms-Icon--trash" title="Delete"></i></a></span></div>');
+        } else if (this.FileName == "Rental_Confirmation") {
+            fileRental.append('<div class="MultiFile-label"  id="' + g + '"  ><span class="MultiFile-title">' + this.FileName + ' <a class="MultiFile-remove" onclick="RequestFormEdit.deleteAttachment(\'' + g + "','" + this.FileName + "'," + t + ');"  href="#fileUpload_wrap"><i class="ms-Icon ms-Icon--trash" title="Delete"></i></a></span></div>');
+        } else if (this.FileName == "Transfer_Confirmation") {
+            fileTransfer.append('<div class="MultiFile-label"  id="' + g + '"  ><span class="MultiFile-title">' + this.FileName + ' <a class="MultiFile-remove" onclick="RequestFormEdit.deleteAttachment(\'' + g + "','" + this.FileName + "'," + t + ');"  href="#fileUpload_wrap"><i class="ms-Icon ms-Icon--trash" title="Delete"></i></a></span></div>');
+        } else if (this.FileName == "Visa_Confirmation") {
+            filePass.append('<div class="MultiFile-label"  id="' + g + '"  ><span class="MultiFile-title">' + this.FileName + ' <a class="MultiFile-remove" onclick="RequestFormEdit.deleteAttachment(\'' + g + "','" + this.FileName + "'," + t + ');"  href="#fileUpload_wrap"><i class="ms-Icon ms-Icon--trash" title="Delete"></i></a></span></div>');
+        } else {
+            h++;
+            g = "MultiFilelabel" + h;
+            f.append('<div class="MultiFile-label"  id="' + g + '"  ><span class="MultiFile-title">' + this.FileName + ' <a class="MultiFile-remove" onclick="RequestFormEdit.deleteAttachment(\'' + g + "','" + this.FileName + "'," + t + ');"  href="#fileUpload_wrap"><i class="ms-Icon ms-Icon--trash" title="Delete"></i></a></span></div>');
+        }
     });
     $("#txtRequesterName").val(s.Title);
     $("#txtEmail").val(s.Email);
@@ -323,9 +413,13 @@ $(document).ready(function () {
     $("#txtPhoneNumber").val(s.PhoneNumber);
     $("#taPersonal").val(s.PersonalR);
     $("#txtTicket").val(s.Note1);
+    $("#refTicket").val(s.refTicket);
     $("#txtAccom").val(s.Note2);
+    $("#refAccom").val(s.refAccom);
     $("#txtRental").val(s.Note3);
+    $("#refRental").val(s.refRental);
     $("#txtTransfer").val(s.Note4);
+    $("#refTransfer").val(s.refTransfer);
     $("#txtPassport").val(s.Note5);
     $("#txtDeptCity").val(s.City);
     $("#txtFFPN").val(s.FrequentflyerNumber);
@@ -403,6 +497,10 @@ $(document).ready(function () {
     $("#lblCreatedDate").text(moment(s.Created).format(commonDateFormatWithHour));
     $("#lblModifiedDate").text(moment(s.Modified).format(commonDateFormatWithHour));
     $("#txtStartDate").datepicker();
+    $("#txtStartDate").focusout(function () {
+        $("#divDestinations").handsontable("setDataAtCell", 0, 5, $("#txtStartDate").val());
+    });
+
     $("#txtEndDate").datepicker();
     $(".chzn-select").chosen({
         no_results_text: "Oops, nothing found!"
@@ -411,7 +509,7 @@ $(document).ready(function () {
         dateFormat: commonDateFormat,
         showButtonPanel: false,
         changeMonth: true,
-        changeYear: false,
+        changeYear: false
     });
     jQuery("#requestFormEdit").validate({
         ignore: ".ignore",
@@ -463,14 +561,13 @@ $(document).ready(function () {
         },
         invalidHandler: function (w, y) {
             var x = y.numberOfInvalids();
-            if (x && (y.errorList[0].element.name ==
-                "txtRequesterName" || y.errorList[0].element.name == "txtEmail" || y.errorList[0].element.name == "ddlProject")) {
+            if (x && (y.errorList[0].element.name === "txtRequesterName" || y.errorList[0].element.name === "txtEmail" || y.errorList[0].element.name === "ddlProject")) {
                 $("#formTabs").tabs("select", "#aPersonalInfo");
             } else {
-                if (x && (y.errorList[0].element.name == "ddlRequestApprover")) {
+                if (x && (y.errorList[0].element.name === "ddlRequestApprover")) {
                     $("#formTabs").tabs("select", "#aApprovals");
                 } else {
-                    if (x && (y.errorList[0].element.name == "txtTripStartDate" || y.errorList[0].element.name == "txtTripEndDate" || y.errorList[0].element.name == "txtTripPurpose" || y.errorList[0].element.name == "txtDestinations")) {
+                    if (x && (y.errorList[0].element.name === "txtTripStartDate" || y.errorList[0].element.name === "txtTripEndDate" || y.errorList[0].element.name === "txtTripPurpose" || y.errorList[0].element.name === "txtDestinations")) {
                         $("#formTabs").tabs("select",
                             "#aTravelInfo");
                         $("#formTabs").click();
@@ -479,15 +576,13 @@ $(document).ready(function () {
             }
         },
         highlight: function (w) {
-            jQuery(w).closest(".control-group").addClass(
-                "error");
+            jQuery(w).closest(".control-group").addClass("error");
         },
         success: function (w) {
-            jQuery(w).closest(".control-group").removeClass(
-                "error");
+            jQuery(w).closest(".control-group").removeClass("error");
         }
     });
-    var a = function (w, y) {
+    var a = function () {
         var x = $("#divDestinations").data("handsontable");
         $("#txtDestinations").val(x.isEmptyRow(0) ? "" : "false");
     };
@@ -498,7 +593,7 @@ $(document).ready(function () {
         contextMenu: false,
         afterChange: a,
         colWidths: [150, 130, 200, 160, 160, 100, 100],
-        colHeaders: ["Country", "City", "Accommodation Required",
+        colHeaders: ["Country", "City / Airport", "Accommodation Required",
             "Rental Car Required", "Airport Transfers", "Start Date", "End Date"
         ],
         columns: [{
@@ -527,7 +622,17 @@ $(document).ready(function () {
         }, {
             data: "EndDate",
             type: "date",
-            dateFormat: commonDateFormat
+            dateFormat: commonDateFormat,
+            validator: function (value, callback) {
+                var date = $("#txtEndDate").val();
+                if (value > date) {
+                    alert("Trip end date cannot be after your return date.");
+                    this.instance.setDataAtCell(this.row, this.col, date);
+                    $(td).css("color", "red");
+                }
+                callback(true);
+            },
+            allowInvalid: false
         }]
     });
 });

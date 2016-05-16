@@ -80,8 +80,11 @@ MyRequests = function () {
         },
         c = function (f, e) {
             var h;
+            var dateFilter = Date.now();
+            var i = moment(dateFilter).utc();
+            var z = "TripEndDate ge datetime'" + i.format(commonDateFormat2) + "'";
             var b = "RequestStatus eq 'Approved'";
-            var g = appweburl + "/_vti_bin/ListData.svc/TravelRequests/?$filter=" + b + "&$inlinecount=allpages&$select=Id,Created,RequesterName,TripStartDate,TripEndDate,RequestStatus,RequestApprover,TripPurpose,RequestRejectReason&$expand=RequestApprover&$orderby=" +
+            var g = appweburl + "/_vti_bin/ListData.svc/TravelRequests/?$filter=(" + b + ") and (" + z + ")&$inlinecount=allpages&$select=Id,Created,RequesterName,TripStartDate,TripEndDate,RequestStatus,RequestApprover,TripPurpose&$expand=RequestApprover&$orderby=" +
                 e.jtSorting.replace(" DESC", " desc").replace(" ASC", " asc") + "&$skip=" + e.jtStartIndex + "&$top=" + e.jtPageSize;
             return $.Deferred(function (k) {
                 $.ajax({
@@ -143,7 +146,7 @@ MyRequests = function () {
 $(document).ready(function () {
     $(function () {
         $("#Approved").jtable({
-            title: "Approved Requests",
+            title: "All Approved Requests",
             paging: true,
             pageSize: 10,
             sorting: true,
@@ -191,8 +194,7 @@ $(document).ready(function () {
                     title: "Trip Start",
                     width: "10%",
                     display: function (d) {
-                        var e = moment(d.record
-                            .TripStartDate);
+                        var e = moment(d.record.TripStartDate);
                         if (e.isValid()) {
                             return e.format(commonDateFormat2);
                         }
@@ -202,8 +204,7 @@ $(document).ready(function () {
                     title: "Trip End",
                     width: "10%",
                     display: function (d) {
-                        var e = moment(d.record
-                            .TripEndDate);
+                        var e = moment(d.record.TripEndDate);
                         if (e.isValid()) {
                             return e.format(commonDateFormat2);
                         }

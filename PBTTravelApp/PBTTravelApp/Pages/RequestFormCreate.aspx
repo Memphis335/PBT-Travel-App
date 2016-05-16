@@ -112,7 +112,8 @@
                             <p class="control-group">
                                 <label for="txtStartDate">Departure Date</label>
                                 <span class="field">
-                                    <input id="txtStartDate" type="text" name="txtTripStartDate" class="input-xlarge" /></span>
+                                        <input id="txtStartDate" type="text" name="txtTripStartDate" class="input-xlarge" />
+                                </span>
                             </p>
                             <p class="control-group">
                                 <label for="txtEndDate">Return Date</label>
@@ -136,7 +137,7 @@
                                 </span>
                                 <label>Travel Destinations</label>
                             </p>
-                            <div id="divDestinations" style="clear: both; overflow: auto; padding-top: 15px;" onclick="dateCalc();"></div>
+                            <div id="divDestinations" style="clear: both; overflow: auto; padding-top: 15px;"></div>
                         </div>
                         <div id="aAttachments" title="eg. ID's or Passports">
                             <input type="file" id="fileUpload" />

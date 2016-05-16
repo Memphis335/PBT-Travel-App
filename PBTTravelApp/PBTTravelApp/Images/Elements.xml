@@ -12,5 +12,6 @@
     <File Path="Images\tile-add.png" Url="Images/tile-add.png" ReplaceContent="TRUE" />
     <File Path="Images\tile-approve.png" Url="Images/tile-approve.png" ReplaceContent="TRUE" />
     <File Path="Images\tile-learn.png" Url="Images/tile-learn.png" ReplaceContent="TRUE" />
+    <File Path="Images\GPS-Tracking-128.png" Url="Images/GPS-Tracking-128.png" ReplaceContent="TRUE" />
   </Module>
 </Elements>

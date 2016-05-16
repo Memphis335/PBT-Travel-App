@@ -164,37 +164,61 @@
                         <div id="aBookingProgress" style="display: none;">
                             <p class="control-group">
                                 <label for="chkTicket">Ticket Issued?</label>
-                                <span class="field">
+                                <span class="fieldCustom">
                                     <input id="chkTicket" name="chkTicket" type="checkbox" />
+                                    <label for="refTicket" style="width: 60px;">Ref : </label>
+                                    <input type="text" id="refTicket" name="refTicket" />
+                                    <label for="txtTicket" style="width: 60px;">Notes : </label>
                                     <input id="txtTicket" name="txtTicket" type="text" />
+                                    <input type="file" id="fileTicket" style="margin-left: 5px;"/>
+                                    <span id="fileTicketRetrieved" class="file"></span>
                                 </span>
                             </p>
                             <p class="control-group">
                                 <label for="chkAccom">Accomodation Confirmed?</label>
-                                <span class="field">
+                                <span class="fieldCustom">
                                     <input id="chkAccom" name="chkAccom" type="checkbox" />
+                                    <label for="refAccom" style="width: 60px;">Ref : </label>
+                                    <input id="refAccom" type="text" name="refAccom" />
+                                    <label for="txtAccom" style="width: 60px;">Notes : </label>
                                     <input id="txtAccom" name="txtAccom" type="text" />
+                                    <input type="file" id="fileAccom" style="margin-left: 5px;" />
+                                    <span id="fileAccomRetrieved" class="file"></span>
                                 </span>
                             </p>
                             <p class="control-group">
                                 <label for="chkRental">Car Rental Booked?</label>
-                                <span class="field">
+                                <span class="fieldCustom">
                                     <input id="chkRental" name="chkRental" type="checkbox" />
+                                    <label for="refRental" style="width: 60px;">Ref : </label>
+                                    <input type="text" id="refRental" name="refRental" />
+                                    <label for="txtRental" style="width: 60px;">Notes : </label>
                                     <input id="txtRental" name="txtRental" type="text" />
+                                    <input type="file" id="fileRental" style="margin-left: 5px;" />
+                                    <span id="fileRentalRetrieved" class="file"></span>
                                 </span>
                             </p>
                             <p class="control-group">
                                 <label for="chkTransfer">Airport Transfers Arranged?</label>
-                                <span class="field">
+                                <span class="fieldCustom">
                                     <input id="chkTransfer" name="chkTransfer" type="checkbox" />
+                                    <label for="refTransfer" style="width: 60px;">Ref : </label>
+                                    <input type="text" id="refTransfer" name="refTransfer" />
+                                    <label for="txtTransfer" style="width: 60px;">Notes : </label>
                                     <input id="txtTransfer" name="txtTransfer" type="text" />
+                                    <input type="file" id="fileTransfer" style="margin-left: 5px;" />
+                                    <span id="fileTransferRetrieved" class="file"></span>
                                 </span>
                             </p>
                             <p class="control-group">
                                 <label for="chkPassport">Passport/Visa Valid?</label>
-                                <span class="field">
+                                <span class="fieldCustom">
                                     <input id="chkPassport" name="chkPassport" type="checkbox" />
+                                    <label></label><input type="text"/>
+                                    <label for="txtPassport" style="width: 60px;">Notes : </label>
                                     <input id="txtPassport" name="txtPassport" type="text" />
+                                    <input type="file" id="filePassport" style="margin-left: 5px;" />
+                                    <span id="filePassRetrieved" class="file"></span>
                                 </span>
                             </p>
                         </div>

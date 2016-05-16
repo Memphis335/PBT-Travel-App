@@ -19,6 +19,7 @@
     <script src="../Scripts/jquery.validate.min.js"></script>
 
     <script src="../Scripts/Custom/Dictionaries.js"></script>
+    <script src="../Scripts/Custom/UserRoles.js"></script>
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="mainContent" runat="server">
@@ -32,6 +33,9 @@
             </div>
             <div style="width: 500px; margin-top: 15px">
                 <div class="jtableContainer" id="DictPrograms"></div>
+            </div>
+            <div style="width: 500px; margin-top: 15px">
+                <div class="jtableContainer" id="DictApprovers"></div>
             </div>
         </div>
     </div>

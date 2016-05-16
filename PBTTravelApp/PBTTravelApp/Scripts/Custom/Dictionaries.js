@@ -94,8 +94,7 @@ Dictionaries = function () {
                     contentType: "application/json;odata=verbose",
                     data: JSON.stringify({
                         __metadata: {
-                            type: "SP.Data." + h +
-                                "ListItem"
+                            type: "SP.Data." + h + "ListItem"
                         },
                         Title: j
                     }),
@@ -180,15 +179,12 @@ $(document).ready(function () {
                 },
                 updateAction: function (f) {
                     return Dictionaries.updateItem("Dict" + e, a(f, "ID"), c(a(f, "Title")));
-                    $("#Dict" + e).jtable("reload");
                 },
                 createAction: function (f) {
                     return Dictionaries.createItem("Dict" + e, c(a(f, "Title")));
-                    $("#Dict" + e).jtable("reload");
                 },
                 deleteAction: function (f) {
                     return Dictionaries.deleteItem("Dict" + e, f.ID);
-                    $("#Dict" + e).jtable("reload");
                 }
             },
             fields: {

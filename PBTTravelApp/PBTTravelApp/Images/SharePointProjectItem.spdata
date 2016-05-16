@@ -13,5 +13,6 @@
     <ProjectItemFile Source="tile-add.png" Target="Images\" Type="ElementFile" />
     <ProjectItemFile Source="tile-approve.png" Target="Images\" Type="ElementFile" />
     <ProjectItemFile Source="tile-learn.png" Target="Images\" Type="ElementFile" />
+    <ProjectItemFile Source="GPS-Tracking-128.png" Target="Images\" Type="ElementFile" />
   </Files>
 </ProjectItem>

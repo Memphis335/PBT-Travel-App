@@ -121,5 +121,6 @@ $(function () {
     $(".jtable-page-size-change").hide();
     if (CurrentUser.IsAdmin) {
         $("#dashboard").show();
+        $("#adminNavPanel").show();
     }
 });

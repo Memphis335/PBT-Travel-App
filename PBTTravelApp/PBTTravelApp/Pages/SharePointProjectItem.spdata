@@ -6,9 +6,7 @@
     <ProjectItemFile Source="menu.html" Target="Pages\" Type="ElementFile" />
     <ProjectItemFile Source="Help.aspx" Target="Pages\" Type="ElementFile" />
     <ProjectItemFile Source="MyRequests.aspx" Target="Pages\" Type="ElementFile" />
-    <ProjectItemFile Source="ReportsAll.aspx" Target="Pages\" Type="ElementFile" />
     <ProjectItemFile Source="ReportsRequests.aspx" Target="Pages\" Type="ElementFile" />
-    <ProjectItemFile Source="ReportsRequestsCosts.aspx" Target="Pages\" Type="ElementFile" />
     <ProjectItemFile Source="RequestFormCreate.aspx" Target="Pages\" Type="ElementFile" />
     <ProjectItemFile Source="Settings.aspx" Target="Pages\" Type="ElementFile" />
     <ProjectItemFile Source="ToApproveByMe.aspx" Target="Pages\" Type="ElementFile" />

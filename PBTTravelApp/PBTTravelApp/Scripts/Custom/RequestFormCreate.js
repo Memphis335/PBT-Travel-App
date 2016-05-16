@@ -71,10 +71,10 @@ RequestFormCreate = function () {
         }
         return j;
     };
-    var d = function (j) {
+    var d = function (j,f) {
         var i;
         $.ajax({
-            url: appweburl + "/_api/Web/lists/getbytitle('" + j + "')/items?$select=Title,ID",
+            url: appweburl + "/_api/Web/lists/getbytitle('" + j + "')/items?$select=" + f,
             type: "GET",
             async: false,
             headers: {
@@ -95,7 +95,7 @@ RequestFormCreate = function () {
             var i;
             $.ajax({
                 url: appweburl +
-                    "/_api/web/siteusers?$filter=Email ne '' and substringof('SPOCrawler',Email) eq false and PrincipalType eq 1 and substringof('SPOCrawler',LoginName) eq false and substringof('system',LoginName) eq false and substringof('SharePoint',Title) eq false and substringof('_SPO',Title) eq false and substringof('spocrwl',LoginName) eq false",
+                   "/_api/web/siteusers?$filter=PrincipalType eq 1 and substringof('SPOCrawler',LoginName) eq false and substringof('system',LoginName) eq false and substringof('SharePoint',Title) eq false and substringof('_SPO',Title) eq false and substringof('_spoc',LoginName) eq false",
                 contentType: "application/json; odata=verbose",
                 async: false,
                 type: "GET",
@@ -206,14 +206,16 @@ $(document).ready(function () {
     $("#txtRequesterName").val(CurrentUser.Name);
     $("#txtEmail").val(CurrentUser.Email);
 
-    //$("#peoplePickerDiv").spPeoplePicker();
+    $("#txtStartDate").focusout(function () {
+        $("#divDestinations").handsontable("setDataAtCell", 0, 5, $("#txtStartDate").val());
+    });
 
-    var c = RequestFormCreate.getAllUsers();
+    var c = RequestFormCreate.getDictionary("DictApprovers", "ID,User/Title,User/Id&$expand=User/Title,User/Id");
     var i = $("#ddlRequestApprover");
     $.each(c, function () {
         i.append($("<option>", {
-            value: this.Id,
-            text: this.Title + " (" + this.Email + ")"
+            value: this.User.Id,
+            text: this.User.Title
         }));
     });
     $(function () {
@@ -226,15 +228,15 @@ $(document).ready(function () {
         });
     });
 
-    var n = RequestFormCreate.getDictionary("DictProjects");
-    var h = $("#ddlProject");
-    $.each(n, function () {
-        h.append($("<option>", {
+    var nn = RequestFormCreate.getDictionary("DictProjects", "Title, ID");
+    var hh = $("#ddlProject");
+    $.each(nn, function () {
+        hh.append($("<option>", {
             value: this.Title,
             text: this.Title
         }));
     });
-    var n = RequestFormCreate.getDictionary("DictPrograms");
+    var n = RequestFormCreate.getDictionary("DictPrograms", "Title, ID");
     var h = $("#ddlFFP");
     $.each(n, function () {
         h.append($("<option>", {
@@ -243,16 +245,27 @@ $(document).ready(function () {
         }));
     });
 
-    $("#txtStartDate").datepicker();
-    $("#txtEndDate").datepicker();
+    $("#txtStartDate").datetimepicker({
+        format: commonDateFormatWithHour,
+        icons: {
+            time: "ms-Icon ms-Icon--clock",
+            date: "ms-Icon ms-Icon--calendar",
+            up: "ms-Icon ms-Icon--caretUp",
+            down: "ms-Icon ms-Icon--caretDown"
+        },
+        keepOpen: true
+    });
+    $("#txtEndDate").datetimepicker({
+        format: commonDateFormatWithHour,
+        icons: {
+            time: "ms-Icon ms-Icon--clock",
+            date: "ms-Icon ms-Icon--calendar",
+            up: "ms-Icon ms-Icon--caretUp",
+            down: "ms-Icon ms-Icon--caretDown"
+        }
+    });
     $(".chzn-select").chosen({
         no_results_text: "Oops, nothing found!"
-    });
-    $.datepicker.setDefaults({
-        dateFormat: commonDateFormat,
-        showButtonPanel: false,
-        changeMonth: true,
-        changeYear: false
     });
         jQuery("#requestFormCreate").validate({
             ignore: ".ignore",
@@ -348,7 +361,7 @@ $(document).ready(function () {
             contextMenu: false,
             afterChange: a,
             colWidths: [150, 130, 200, 160, 160, 100, 100],
-            colHeaders: ["Country", "City", "Accommodation Required",
+            colHeaders: ["Country", "City / Airport", "Accommodation Required",
             "Rental Car Required","Airport Transfers","Start Date","End Date"
         ],
         columns: [{
@@ -377,7 +390,17 @@ $(document).ready(function () {
         }, {
             data: "EndDate",
             type: "date",
-            dateFormat: commonDateFormat
+            dateFormat: commonDateFormat,
+            validator: function (value, callback) {
+                var date = $("#txtEndDate").val();
+                if (value > date) {
+                    alert("Trip end date cannot be after your return date.");
+                    this.instance.setDataAtCell(this.row, this.col, date);
+                    $(td).css("color", "red");
+                }
+                callback(true);
+            },
+            allowInvalid: false
         }]
     });
 });

@@ -44,7 +44,7 @@ RequestFormView = function () {
             var k;
             var l = "$select=ID,Author/Id,Title,Email,EmployeeID,PhoneNumber,Project,RequestStatus,RequestApprover/Title,RequestApprover/Id," +
             "RequestApproveDate,TripStartDate,TripEndDate,Created,Modified,RequestApproveDate,IsRequestApproveEmailSent,RequestRejectReason,TripPurpose,Notices,DestinationsJSON," +
-            "TicketIssued,AccomodationConfirmed,CarRentalBooked,TransfersArranged,PassportVisaValid,FrequentFlyer,FrequentflyerNumber,City,Note1,Note2,Note3,Note4,Note5,WorkflowTrigger";
+            "TicketIssued,AccomodationConfirmed,CarRentalBooked,TransfersArranged,PassportVisaValid,FrequentFlyer,FrequentflyerNumber,City,Note1,Note2,Note3,Note4,Note5,refTicket,refAccom,refRental,refTransfer,WorkflowTrigger";
             $.ajax({
                 url: appweburl +
                     "/_api/Web/lists/getbytitle('TravelRequests')/items?" + l + "&$expand=Author/Id, RequestApprover/Title,RequestApprover/Id&$filter=ID eq " + j,
@@ -219,8 +219,7 @@ RequestFormView = function () {
             var j;
             $.ajax({
                 url: appweburl +
-                    "/_api/Web/lists/getByTitle('TravelRequests')/items?$select=AttachmentFiles&$expand=AttachmentFiles&$filter=Id eq " +
-                    k,
+                    "/_api/Web/lists/getByTitle('TravelRequests')/items?$select=AttachmentFiles&$expand=AttachmentFiles&$filter=Id eq " + k,
                 contentType: "application/json; odata=verbose",
                 async: false,
                 cache: false,
@@ -387,8 +386,25 @@ $(document).ready(function () {
     }
     else {
         var d = $("#aAttachments");
+        var fileTicket = $("#noAttachTicket");
+        var fileAccom = $("#noAttachAccom");
+        var fileRental = $("#noAttachRental");
+        var fileTransfer = $("#noAttachTransfer");
+        var filePass = $("#noAttachPass");
         $.each(e, function () {
-            d.append('<div><a target="_blank" href="' + this.ServerRelativeUrl + '" class="attachment" >' + this.FileName + "</a> </div>");
+            if (this.FileName == "Flight_Ticket") {
+                fileTicket.append('<div><a target="_blank" href="' + this.ServerRelativeUrl + '" class="attachment" ><i class="ms-Icon ms-Icon--attachment"></i>' + this.FileName + "</a></div>");
+            } else if (this.FileName == "Acc_Confirmation") {
+                fileAccom.append('<div><a target="_blank" href="' + this.ServerRelativeUrl + '" class="attachment" ><i class="ms-Icon ms-Icon--attachment"></i>' + this.FileName + "</a></div>");
+            } else if (this.FileName == "Rental_Confirmation") {
+                fileRental.append('<div><a target="_blank" href="' + this.ServerRelativeUrl + '" class="attachment" ><i class="ms-Icon ms-Icon--attachment"></i>' + this.FileName + "</a></div>");
+            } else if (this.FileName == "Transfer_Confirmation") {
+                fileTransfer.append('<div><a target="_blank" href="' + this.ServerRelativeUrl + '" class="attachment" ><i class="ms-Icon ms-Icon--attachment"></i>' + this.FileName + "</a></div>");
+            } else if (this.FileName == "Visa_Confirmation") {
+                filePass.append('<div><a target="_blank" href="' + this.ServerRelativeUrl + '" class="attachment" ><i class="ms-Icon ms-Icon--attachment"></i>' + this.FileName + "</a></div>");
+            } else {
+                d.append('<div><a target="_blank" href="' + this.ServerRelativeUrl + '" class="attachment" ><i class="ms-Icon ms-Icon--attachment"></i>' + this.FileName + "</a></div>");
+            }
         });
     }
     $("#lblRequesterName").text(l.Title);
@@ -401,6 +417,10 @@ $(document).ready(function () {
     $("#lblNote3").text(l.Note3 == null ? "" : l.Note3);
     $("#lblNote4").text(l.Note4 == null ? "" : l.Note4);
     $("#lblNote5").text(l.Note5 == null ? "" : l.Note5);
+    $("#refTicket").text(l.refTicket == null ? "" : l.refTicket);
+    $("#refAccom").text(l.refAccom == null ? "" : l.refAccom);
+    $("#refRental").text(l.refRental == null ? "" : l.refRental);
+    $("#refTransfer").text(l.refTransfer == null ? "" : l.refTransfer);
     $("#lblDeptCity").text(l.City);
 
     if (l.RequestRejectReason != null) {
@@ -440,7 +460,7 @@ $(document).ready(function () {
         autoColumnSize: false,
         readOnly: true,
         colWidths: [150, 130, 200, 160, 160, 100, 100],
-        colHeaders: ["Country", "City", "Accommodation Required",
+        colHeaders: ["Country", "City / Airport", "Accommodation Required",
         "Rental Car Required", "Airport Transfers", "Start Date", "End Date"
         ],
         columns: [{

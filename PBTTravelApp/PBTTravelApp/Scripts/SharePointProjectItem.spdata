@@ -4,7 +4,6 @@
     <ProjectItemFile Source="Elements.xml" Target="Scripts\" Type="ElementManifest" />
     <ProjectItemFile Source="Custom\AppInit.js" Target="Scripts\Custom\" Type="ElementFile" />
     <ProjectItemFile Source="bootstrap.min.js" Target="Scripts\" Type="ElementFile" />
-    <ProjectItemFile Source="bootstrap-timepicker.min.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="chosen.jquery.min.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="Custom\Common.js" Target="Scripts\Custom\" Type="ElementFile" />
     <ProjectItemFile Source="Custom\Default.js" Target="Scripts\Custom\" Type="ElementFile" />
@@ -19,15 +18,11 @@
     <ProjectItemFile Source="jquery-ui-1.9.2.min.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="Custom\LicenseInit.js" Target="Scripts\Custom\" Type="ElementFile" />
     <ProjectItemFile Source="modernizr.min.js" Target="Scripts\" Type="ElementFile" />
-    <ProjectItemFile Source="moment.min.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="Custom\MyRequests.js" Target="Scripts\Custom\" Type="ElementFile" />
     <ProjectItemFile Source="Custom\MySettlements.js" Target="Scripts\Custom\" Type="ElementFile" />
     <ProjectItemFile Source="notify.min.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="numeral.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="Custom\ReportsRequests.js" Target="Scripts\Custom\" Type="ElementFile" />
-    <ProjectItemFile Source="Custom\ReportsRequestsCosts.js" Target="Scripts\Custom\" Type="ElementFile" />
-    <ProjectItemFile Source="Custom\ReportsSettlements.js" Target="Scripts\Custom\" Type="ElementFile" />
-    <ProjectItemFile Source="Custom\ReportsSettlementsCosts.js" Target="Scripts\Custom\" Type="ElementFile" />
     <ProjectItemFile Source="Custom\RequestFormCreate.js" Target="Scripts\Custom\" Type="ElementFile" />
     <ProjectItemFile Source="underscore-min.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="jquery-2.2.0.min.map" Target="Scripts\" Type="ElementFile" />
@@ -158,15 +153,10 @@
     <ProjectItemFile Source="Prettify\lang-apollo.js" Target="Scripts\Prettify\" Type="ElementFile" />
     <ProjectItemFile Source="handsontable\handsontable.full.min.js.map" Target="Scripts\handsontable\" Type="ElementFile" />
     <ProjectItemFile Source="chosen.jquery.js" Target="Scripts\" Type="ElementFile" />
-    <ProjectItemFile Source="jquery.timepicker.min.js" Target="Scripts\" Type="ElementFile" />
-    <ProjectItemFile Source="jquery.timepicker.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="fullcalendar.min.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="fullcalendar.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="Fabric-UI\datepicker.js" Target="Scripts\Fabric-UI\" Type="ElementFile" />
     <ProjectItemFile Source="Fabric-UI\dropdown.js" Target="Scripts\Fabric-UI\" Type="ElementFile" />
-    <ProjectItemFile Source="moment-with-locales.min.js" Target="Scripts\" Type="ElementFile" />
-    <ProjectItemFile Source="moment-with-locales.js" Target="Scripts\" Type="ElementFile" />
-    <ProjectItemFile Source="moment.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="Custom\RequestFormView.js" Target="Scripts\Custom\" Type="ElementFile" />
     <ProjectItemFile Source="Custom\PrintForm.js" Target="Scripts\Custom\" Type="ElementFile" />
     <ProjectItemFile Source="Custom\workflows.js" Target="Scripts\Custom\" Type="ElementFile" />
@@ -177,5 +167,22 @@
     <ProjectItemFile Source="jquery.fabric.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="Custom\peoplepicker.js" Target="Scripts\Custom\" Type="ElementFile" />
     <ProjectItemFile Source="Custom\Dashboard.js" Target="Scripts\Custom\" Type="ElementFile" />
+    <ProjectItemFile Source="jQuery.FileUpload\jquery.iframe-transport.js" Target="Scripts\jQuery.FileUpload\" Type="ElementFile" />
+    <ProjectItemFile Source="jQuery.FileUpload\jquery.fileupload-video.js" Target="Scripts\jQuery.FileUpload\" Type="ElementFile" />
+    <ProjectItemFile Source="jQuery.FileUpload\jquery.fileupload-validate.js" Target="Scripts\jQuery.FileUpload\" Type="ElementFile" />
+    <ProjectItemFile Source="jQuery.FileUpload\jquery.fileupload-ui.js" Target="Scripts\jQuery.FileUpload\" Type="ElementFile" />
+    <ProjectItemFile Source="jQuery.FileUpload\jquery.fileupload-process.js" Target="Scripts\jQuery.FileUpload\" Type="ElementFile" />
+    <ProjectItemFile Source="jQuery.FileUpload\jquery.fileupload-jquery-ui.js" Target="Scripts\jQuery.FileUpload\" Type="ElementFile" />
+    <ProjectItemFile Source="jQuery.FileUpload\jquery.fileupload-image.js" Target="Scripts\jQuery.FileUpload\" Type="ElementFile" />
+    <ProjectItemFile Source="jQuery.FileUpload\jquery.fileupload-audio.js" Target="Scripts\jQuery.FileUpload\" Type="ElementFile" />
+    <ProjectItemFile Source="jQuery.FileUpload\jquery.fileupload-angular.js" Target="Scripts\jQuery.FileUpload\" Type="ElementFile" />
+    <ProjectItemFile Source="jQuery.FileUpload\jquery.fileupload.js" Target="Scripts\jQuery.FileUpload\" Type="ElementFile" />
+    <ProjectItemFile Source="jQuery.FileUpload\cors\jquery.xdr-transport.js" Target="Scripts\jQuery.FileUpload\cors\" Type="ElementFile" />
+    <ProjectItemFile Source="jQuery.FileUpload\cors\jquery.postmessage-transport.js" Target="Scripts\jQuery.FileUpload\cors\" Type="ElementFile" />
+    <ProjectItemFile Source="moment.min.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="Moment.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="bootstrap-timepicker.min.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="jquery.timepicker.min.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="bootstrap.js" Target="Scripts\" Type="ElementFile" />
   </Files>
 </ProjectItem>
