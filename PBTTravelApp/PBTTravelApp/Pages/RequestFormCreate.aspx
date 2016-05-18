@@ -14,7 +14,9 @@
     <link href="../Content/jquery.handsontable.bootstrap.css" rel="stylesheet" />
 
     <!-- JS -->
+    <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/4.0/1/MicrosoftAjax.js"></script>
     <script src="../Scripts/Custom/RequestFormCreate.js"></script>
+    <script src="../Scripts/Custom/sppeoplepicker.min.js"></script>
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="mainContent" runat="server">
