@@ -34,7 +34,7 @@
                             <li><a href="#aApprovals">Approver</a></li>
                             <li><a href="#aTravelInfo">Travel Info</a></li>
                             <li><a href="#aAttachments">Attachments</a></li>
-                            <li id="liBookingProgress"><a href="#aBookingProgress">Booking Progress</a></li>
+                            <li id="liBookingProgress" style="display: none;"><a href="#aBookingProgress">Booking Progress</a></li>
                         </ul>
                         <div id="aPersonalInfo">
                             <p class="control-group">
@@ -60,7 +60,9 @@
                             <p>
                                 <label>Frequent-flyer Program</label>
                                 <span class="field">
-                                    <input type="text" name="txtFFP" id="txtFFP" class="input-xlarge" />
+                                    <select name="ddlFFP" id="ddlFFP" class="ms-Dropdown">
+                                        <option value="">Choose One</option>
+                                    </select>
                                 </span>
                             </p>
                             <p>
@@ -121,14 +123,19 @@
                         </div>
                         <div id="aTravelInfo">
                             <p class="control-group">
+                                <label for="txtDeptCity">Departure City</label>
+                                <span class="field">
+                                    <input id="txtDeptCity" type="text" name="txtDeptCity" class="input-xlarge" /></span>
+                            </p>
+                            <p class="control-group">
                                 <label for="txtStartDate">Departure Date</label>
                                 <span class="field">
-                                    <input id="txtStartDate" type="date" name="txtTripStartDate" class="input-xlarge" /></span>
+                                    <input id="txtStartDate" type="text" name="txtTripStartDate" class="input-xlarge" /></span>
                             </p>
                             <p class="control-group">
                                 <label for="txtEndDate">Return Date</label>
                                 <span class="field">
-                                    <input id="txtEndDate" type="date" name="txtTripEndDate" class="input-xlarge" /></span>
+                                    <input id="txtEndDate" type="text" name="txtTripEndDate" class="input-xlarge" /></span>
                                 <input type="hidden" id="dateCalc" />
                             </p>
                             <p class="control-group">
@@ -154,38 +161,72 @@
                             <div class="MultiFile-list" id="fileUpload_wrap_list">
                             </div>
                         </div>
-                        <div id="aBookingProgress">
+                        <div id="aBookingProgress" style="display: none;">
                             <p class="control-group">
                                 <label for="chkTicket">Ticket Issued?</label>
-                                <span class="field">
-                                    <input id="chkTicket" name="chkTicket" type="checkbox" /></span>
+                                <span class="fieldCustom">
+                                    <input id="chkTicket" name="chkTicket" type="checkbox" />
+                                    <label for="refTicket" style="width: 60px;">Ref : </label>
+                                    <input type="text" id="refTicket" name="refTicket" />
+                                    <label for="txtTicket" style="width: 60px;">Notes : </label>
+                                    <input id="txtTicket" name="txtTicket" type="text" />
+                                    <input type="file" id="fileTicket" style="margin-left: 5px;"/>
+                                    <span id="fileTicketRetrieved" class="file"></span>
+                                </span>
                             </p>
                             <p class="control-group">
                                 <label for="chkAccom">Accomodation Confirmed?</label>
-                                <span class="field">
-                                    <input id="chkAccom" name="chkAccom" type="checkbox" /></span>
+                                <span class="fieldCustom">
+                                    <input id="chkAccom" name="chkAccom" type="checkbox" />
+                                    <label for="refAccom" style="width: 60px;">Ref : </label>
+                                    <input id="refAccom" type="text" name="refAccom" />
+                                    <label for="txtAccom" style="width: 60px;">Notes : </label>
+                                    <input id="txtAccom" name="txtAccom" type="text" />
+                                    <input type="file" id="fileAccom" style="margin-left: 5px;" />
+                                    <span id="fileAccomRetrieved" class="file"></span>
+                                </span>
                             </p>
                             <p class="control-group">
                                 <label for="chkRental">Car Rental Booked?</label>
-                                <span class="field">
-                                    <input id="chkRental" name="chkRental" type="checkbox" /></span>
+                                <span class="fieldCustom">
+                                    <input id="chkRental" name="chkRental" type="checkbox" />
+                                    <label for="refRental" style="width: 60px;">Ref : </label>
+                                    <input type="text" id="refRental" name="refRental" />
+                                    <label for="txtRental" style="width: 60px;">Notes : </label>
+                                    <input id="txtRental" name="txtRental" type="text" />
+                                    <input type="file" id="fileRental" style="margin-left: 5px;" />
+                                    <span id="fileRentalRetrieved" class="file"></span>
+                                </span>
                             </p>
                             <p class="control-group">
                                 <label for="chkTransfer">Airport Transfers Arranged?</label>
-                                <span class="field">
-                                    <input id="chkTransfer" name="chkTransfer" type="checkbox" /></span>
+                                <span class="fieldCustom">
+                                    <input id="chkTransfer" name="chkTransfer" type="checkbox" />
+                                    <label for="refTransfer" style="width: 60px;">Ref : </label>
+                                    <input type="text" id="refTransfer" name="refTransfer" />
+                                    <label for="txtTransfer" style="width: 60px;">Notes : </label>
+                                    <input id="txtTransfer" name="txtTransfer" type="text" />
+                                    <input type="file" id="fileTransfer" style="margin-left: 5px;" />
+                                    <span id="fileTransferRetrieved" class="file"></span>
+                                </span>
                             </p>
                             <p class="control-group">
                                 <label for="chkPassport">Passport/Visa Valid?</label>
-                                <span class="field">
-                                    <input id="chkPassport" name="chkPassport" type="checkbox" /></span>
+                                <span class="fieldCustom">
+                                    <input id="chkPassport" name="chkPassport" type="checkbox" />
+                                    <label></label><input type="text"/>
+                                    <label for="txtPassport" style="width: 60px;">Notes : </label>
+                                    <input id="txtPassport" name="txtPassport" type="text" />
+                                    <input type="file" id="filePassport" style="margin-left: 5px;" />
+                                    <span id="filePassRetrieved" class="file"></span>
+                                </span>
                             </p>
                         </div>
                     </div>
                     <div style="margin: 10px;">
 
-                        <button id="btnSubmit" type="submit" class="ms-Button ms-Button--primary"><span class="ms-Button-label"><i class="ms-Icon ms-Icon--save"></i> Save changes</span></button>
-                        <button id="btnCancel" type="button" class="ms-Button"><span class="ms-Button-label"><i class="ms-Icon ms-Icon--x"></i> Cancel</span></button>
+                        <button id="btnSubmit" type="submit" class="ms-Button ms-Button--primary"><span class="ms-Button-label"><i class="ms-Icon ms-Icon--save"></i>Save changes</span></button>
+                        <button id="btnCancel" type="button" class="ms-Button"><span class="ms-Button-label"><i class="ms-Icon ms-Icon--x"></i>Cancel</span></button>
 
                         <div id="divValidationSummary" style="margin: 5px; display: none;">
                             <label id="lblValidationSummary" class="error">Please fix the validation errors</label>

@@ -45,13 +45,20 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-responsive.min.css" />
-    <Content Include="Content\chosen-sprite_alt.png" />
-    <Content Include="Content\chosen-sprite.png" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Custom\jQuery-UI-Custom.css" />
     <Content Include="Content\Custom\jtable-Custom.css" />
+    <Content Include="Content\Custom\PeoplePicker.css" />
     <Content Include="Content\Custom\PrintForm.css" />
     <Content Include="Content\fullcalendar.min.css" />
     <Content Include="Content\fullcalendar.print.css" />
+    <Content Include="Content\jQuery.FileUpload\css\jquery.fileupload-noscript.css" />
+    <Content Include="Content\jQuery.FileUpload\css\jquery.fileupload-ui-noscript.css" />
+    <Content Include="Content\jQuery.FileUpload\css\jquery.fileupload-ui.css" />
+    <Content Include="Content\jQuery.FileUpload\css\jquery.fileupload.css" />
+    <Content Include="Content\jQuery.FileUpload\img\loading.gif" />
+    <Content Include="Content\jQuery.FileUpload\img\progressbar.gif" />
     <Content Include="Content\jquery.timepicker.css" />
     <Content Include="Content\Prettify\prettify.css" />
     <Content Include="Content\Prettify\Themes\desert.css" />
@@ -59,6 +66,7 @@
     <Content Include="Content\Prettify\Themes\sons-of-obsidian.css" />
     <Content Include="Content\Prettify\Themes\sunburst.css" />
     <Content Include="Content\themes\metro\blue\jquery-ui.css" />
+    <Content Include="Content\themes\metro\blue\progressindicator.gif" />
     <Content Include="Content\themes\metro\view.png" />
     <Content Include="Content\validationEngine.jquery.css" />
     <Content Include="Content\Fabric-UI\fabric.components.css" />
@@ -69,78 +77,97 @@
     <Content Include="Content\Fabric-UI\fabric.min.css" />
     <Content Include="Content\Fabric-UI\fabric.rtl.css" />
     <Content Include="Content\Fabric-UI\fabric.rtl.min.css" />
-    <Content Include="Features\Feature2\Feature2.Template.xml">
-      <DependentUpon>Feature2.feature</DependentUpon>
+    <Content Include="Features\Feature10\Feature10.Template.xml">
+      <DependentUpon>Feature10.feature</DependentUpon>
     </Content>
     <Content Include="Features\Feature3\Feature3.Template.xml">
       <DependentUpon>Feature3.feature</DependentUpon>
     </Content>
-    <Content Include="Features\Feature4\Feature4.Template.xml">
-      <DependentUpon>Feature4.feature</DependentUpon>
-    </Content>
-    <Content Include="Features\Feature5\Feature5.Template.xml">
-      <DependentUpon>Feature5.feature</DependentUpon>
-    </Content>
-    <Content Include="Features\Feature6\Feature6.Template.xml">
-      <DependentUpon>Feature6.feature</DependentUpon>
-    </Content>
     <Content Include="Features\Feature7\Feature7.Template.xml">
       <DependentUpon>Feature7.feature</DependentUpon>
-    </Content>
-    <Content Include="Features\Feature8\Feature8.Template.xml">
-      <DependentUpon>Feature8.feature</DependentUpon>
     </Content>
     <Content Include="Features\Feature9\Feature9.Template.xml">
       <DependentUpon>Feature9.feature</DependentUpon>
     </Content>
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Images\GPS-Tracking-128.png">
+      <OpcRelationship>manifest-icon</OpcRelationship>
+    </Content>
     <Content Include="Lists\CustomUserRoles\CustomUserRolesInstance\Elements.xml" />
     <Content Include="Lists\CustomUserRoles\Elements.xml" />
     <Content Include="Lists\CustomUserRoles\Schema.xml" />
+    <Content Include="Lists\DictPrograms\DictProgramsInstance\Elements.xml" />
+    <Content Include="Lists\DictPrograms\Elements.xml" />
+    <Content Include="Lists\DictPrograms\Schema.xml" />
     <Content Include="Lists\DictProjects\DictProjectsInstance\Elements.xml" />
     <Content Include="Lists\DictProjects\Elements.xml" />
-    <Content Include="Lists\DictProjects\Schema.xml" />
+    <Content Include="Lists\DictProjects\Schema.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Lists\Settings\Elements.xml" />
     <Content Include="Lists\Settings\Schema.xml" />
     <Content Include="Lists\Settings\SettingsInstance\Elements.xml" />
     <Content Include="Pages\AuthError.aspx" />
+    <Content Include="Pages\Dashboard.aspx" />
     <Content Include="Pages\NotFound.aspx" />
     <Content Include="Pages\PrintForm.aspx" />
     <Content Include="Pages\RequestFormEdit.aspx" />
+    <Content Include="Scripts\bootstrap-timepicker.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\Custom\App.js" />
+    <Content Include="Scripts\Custom\Dashboard.js" />
+    <Content Include="Scripts\Custom\peoplepicker.js" />
     <Content Include="Scripts\Custom\PrintForm.js" />
     <Content Include="Scripts\Custom\RequestFormEdit.js" />
-    <Content Include="Scripts\Custom\sppeoplepicker.min.js" />
+    <Content Include="Scripts\Custom\sppeoplepicker.js" />
     <Content Include="Scripts\Custom\workflows.js" />
+    <Content Include="Scripts\jquery.fabric.js" />
+    <Content Include="Scripts\jquery.fabric.min.js" />
+    <Content Include="Scripts\jQuery.FileUpload\cors\jquery.postmessage-transport.js" />
+    <Content Include="Scripts\jQuery.FileUpload\cors\jquery.xdr-transport.js" />
+    <Content Include="Scripts\jQuery.FileUpload\jquery.fileupload-angular.js" />
+    <Content Include="Scripts\jQuery.FileUpload\jquery.fileupload-audio.js" />
+    <Content Include="Scripts\jQuery.FileUpload\jquery.fileupload-image.js" />
+    <Content Include="Scripts\jQuery.FileUpload\jquery.fileupload-jquery-ui.js" />
+    <Content Include="Scripts\jQuery.FileUpload\jquery.fileupload-process.js" />
+    <Content Include="Scripts\jQuery.FileUpload\jquery.fileupload-ui.js" />
+    <Content Include="Scripts\jQuery.FileUpload\jquery.fileupload-validate.js" />
+    <Content Include="Scripts\jQuery.FileUpload\jquery.fileupload-video.js" />
+    <Content Include="Scripts\jQuery.FileUpload\jquery.fileupload.js" />
+    <Content Include="Scripts\jQuery.FileUpload\jquery.iframe-transport.js" />
+    <Content Include="Scripts\jquery.timepicker.min.js" />
+    <Content Include="Scripts\Moment.js" />
+    <Content Include="Scripts\moment.min.js" />
     <Content Include="WorkflowHistoryList\Elements.xml" />
     <Content Include="WorkflowTaskList\Elements.xml" />
-    <None Include="Features\Feature2\Feature2.feature">
-      <FeatureId>{86006914-363c-4a68-b34c-6833cd335d5c}</FeatureId>
+    <None Include="Content\sass\_Fabric.Mixins.RTL.scss" />
+    <None Include="Features\Feature10\Feature10.feature">
+      <FeatureId>{780f280d-6cb8-48c2-b71a-8efca54a4eb8}</FeatureId>
     </None>
     <None Include="Features\Feature3\Feature3.feature">
       <FeatureId>{fe2cf3cc-ec9e-463c-8c97-55d4d2a8a1d4}</FeatureId>
     </None>
-    <None Include="Features\Feature4\Feature4.feature">
-      <FeatureId>{822eb185-8e64-42c6-aa22-5d211cd44f3b}</FeatureId>
-    </None>
-    <None Include="Features\Feature5\Feature5.feature">
-      <FeatureId>{58f32c98-6630-44cc-88d8-4a51957ced3d}</FeatureId>
-    </None>
-    <None Include="Features\Feature6\Feature6.feature">
-      <FeatureId>{e7a13f30-e78a-4610-95e1-834908dceb81}</FeatureId>
-    </None>
     <None Include="Features\Feature7\Feature7.feature">
       <FeatureId>{da42155e-68f4-41fe-b5a7-eeea57e49f3a}</FeatureId>
-    </None>
-    <None Include="Features\Feature8\Feature8.feature">
-      <FeatureId>{b138638b-be29-48fe-b425-ed1ca48734d1}</FeatureId>
     </None>
     <None Include="Features\Feature9\Feature9.feature">
       <FeatureId>{467ce0d6-fc5a-4bad-a07d-c37a8e018323}</FeatureId>
     </None>
+    <None Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="fonts\glyphicons-halflings-regular.woff" />
+    <None Include="fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Lists\CustomUserRoles\CustomUserRolesInstance\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{6430e28b-27ed-4d87-a6be-a34964e66b73}</SharePointProjectItemId>
     </None>
     <None Include="Lists\CustomUserRoles\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{ed28405c-a55e-434b-8516-1facc86cf376}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\DictPrograms\DictProgramsInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{462ea222-0c1a-4c85-bd29-f30fcd96ab02}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\DictPrograms\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{ce1a4cb9-d023-40cf-a7bd-b202a8754b28}</SharePointProjectItemId>
     </None>
     <None Include="Lists\DictProjects\DictProjectsInstance\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{8651b4e5-ac30-4f64-853d-08855e381386}</SharePointProjectItemId>
@@ -162,7 +189,6 @@
     <Content Include="Content\animate.delay.css" />
     <Content Include="Content\animate.min.css" />
     <Content Include="Content\bootstrap-timepicker.min.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Custom\style.css" />
     <Content Include="Content\fullcalendar.css" />
     <Content Include="Content\handsontable\handsontable.css" />
@@ -303,9 +329,7 @@
     <Content Include="Pages\Help.aspx" />
     <Content Include="Pages\menu.html" />
     <Content Include="Pages\MyRequests.aspx" />
-    <Content Include="Pages\ReportsAll.aspx" />
     <Content Include="Pages\ReportsRequests.aspx" />
-    <Content Include="Pages\ReportsRequestsCosts.aspx" />
     <Content Include="Pages\RequestFormCreate.aspx" />
     <Content Include="Pages\RequestFormView.aspx" />
     <Content Include="Pages\Settings.aspx" />
@@ -313,7 +337,6 @@
     <Content Include="Pages\UserRolesList.aspx" />
     <Content Include="Scripts\chosen.jquery.js" />
     <Content Include="Scripts\Custom\AppInit.js" />
-    <Content Include="Scripts\bootstrap-timepicker.min.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\chosen.jquery.min.js" />
     <Content Include="Scripts\Custom\Common.js" />
@@ -343,8 +366,6 @@
     <Content Include="Scripts\jquery.loadTemplate-1.4.4.min.js" />
     <Content Include="Scripts\jquery.MultiFile.min.js" />
     <Content Include="Scripts\jquery.tagsinput.min.js" />
-    <Content Include="Scripts\jquery.timepicker.js" />
-    <Content Include="Scripts\jquery.timepicker.min.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validationEngine-en.js" />
     <Content Include="Scripts\jquery.validationEngine.js" />
@@ -433,18 +454,11 @@
     <Content Include="Content\themes\metro\jtable_metro_base.min.css" />
     <Content Include="Scripts\Custom\LicenseInit.js" />
     <Content Include="Scripts\modernizr.min.js" />
-    <Content Include="Scripts\moment-with-locales.js" />
-    <Content Include="Scripts\moment-with-locales.min.js" />
-    <Content Include="Scripts\moment.js" />
-    <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\Custom\MyRequests.js" />
     <Content Include="Scripts\Custom\MySettlements.js" />
     <Content Include="Scripts\notify.min.js" />
     <Content Include="Scripts\numeral.js" />
     <Content Include="Scripts\Custom\ReportsRequests.js" />
-    <Content Include="Scripts\Custom\ReportsRequestsCosts.js" />
-    <Content Include="Scripts\Custom\ReportsSettlements.js" />
-    <Content Include="Scripts\Custom\ReportsSettlementsCosts.js" />
     <Content Include="Scripts\Custom\RequestFormCreate.js" />
     <Content Include="Scripts\Custom\Settings.js" />
     <Content Include="Scripts\Prettify\lang-apollo.js" />
@@ -489,9 +503,7 @@
     <Content Include="Content\App.css" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\AppIcon.png">
-      <OpcRelationship>manifest-icon</OpcRelationship>
-    </Content>
+    <Content Include="Images\AppIcon.png" />
     <Content Include="Images\Elements.xml" />
     <None Include="Images\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{aa2aa0b2-6197-46ac-a18f-31a65b8ff214}</SharePointProjectItemId>
@@ -516,7 +528,6 @@
       <SubType>Designer</SubType>
     </AppManifestFile>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <XamlAppDef Include="SubmitForApproval\Workflow.xaml">
       <Generator>MSBuild:Compile</Generator>

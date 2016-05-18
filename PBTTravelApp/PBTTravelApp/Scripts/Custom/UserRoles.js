@@ -20,12 +20,12 @@ UserRoles = function () {
         });
         return f;
         },
-        e = function () {
+        e = function (x) {
             var f;
             return $.Deferred(function (g) {
                 $.ajax({
                     url: appweburl +
-                        "/_api/Web/lists/getbytitle('CustomUserRoles')/items?$select=ID,User/Title,User/Id&$expand=User/Title,User/Id",
+                        "/_api/Web/lists/getbytitle('" + x + "')/items?$select=ID,User/Title,User/Id&$expand=User/Title,User/Id",
                     type: "GET",
                     headers: {
                         accept: "application/json;odata=verbose"
@@ -66,14 +66,14 @@ UserRoles = function () {
             });
             return f;
         },
-        a = function (i, j, h) {
+        a = function (i, j, h, x) {
             var f = d();
             var g;
             return $.Deferred(function (k) {
                 var l = false;
                 $.ajax({
                     url: appweburl +
-                        "/_api/Web/lists/getbytitle('CustomUserRoles')/items?$select=ID, User/Id&$expand=User/Id&$filter=User/Id eq " + i,
+                        "/_api/Web/lists/getbytitle('" + x + "')/items?$select=ID, User/Id&$expand=User/Id&$filter=User/Id eq " + i,
                     type: "GET",
                     async: false,
                     headers: {
@@ -95,14 +95,13 @@ UserRoles = function () {
                     return;
                 }
                 $.ajax({
-                    url: appweburl +
-                        "/_api/Web/lists/getbytitle('CustomUserRoles')/items",
+                    url: appweburl + "/_api/Web/lists/getbytitle('" + x + "')/items",
                     contentType: "application/json; odata=verbose",
                     async: false,
                     type: "POST",
                     data: JSON.stringify({
                         __metadata: {
-                            type: "SP.Data.CustomUserRolesListItem"
+                            type: "SP.Data." + x + "ListItem"
                         },
                         Title: h,
                         UserId: i
@@ -128,13 +127,13 @@ UserRoles = function () {
                 });
             });
         },
-        b = function (g) {
+        b = function (g,x) {
             var f = d();
             var h;
             return $.Deferred(function (i) {
                 $.ajax({
                     url: appweburl +
-                        "/_api/Web/lists/getbytitle('CustomUserRoles')/getItemByStringId('" + g + "')",
+                        "/_api/Web/lists/getbytitle('" + x + "')/getItemByStringId('" + g + "')",
                     type: "DELETE",
                     headers: {
                         accept: "application/json;odata=verbose",
@@ -175,15 +174,13 @@ $(document).ready(function () {
         },
         actions: {
             listAction: function (b, a) {
-                return UserRoles.readAll();
+                return UserRoles.readAll("CustomUserRoles");
             },
             createAction: function (a) {
-                return UserRoles.createItem($("#Edit-User").val(), $("#Edit-User option:selected").text(),"Admin");
-                $("#Administrators").jtable("reload");
+                return UserRoles.createItem($("#Edit-User").val(), $("#Edit-User option:selected").text(), "Admin", "CustomUserRoles");
             },
             deleteAction: function (a) {
-                return UserRoles.deleteItem(a.ID);
-                $("#Administrators").jtable("reload");
+                return UserRoles.deleteItem(a.ID, "CustomUserRoles");
             }
         },
         fields: {
@@ -202,7 +199,7 @@ $(document).ready(function () {
                     var c = new Array();
                     c.push({
                         Value: "",
-                        DisplayText: "Select user...",
+                        DisplayText: "Select user..."
                     });
                     $.each(a, function () {
                         c.push({
@@ -238,6 +235,76 @@ $(document).ready(function () {
         }
     });
     $("#Administrators").jtable("load");
+    $("#DictApprovers").jtable({
+        title: "Travel Approvers",
+        paging: false,
+        defaultSorting: "Title asc",
+        messages: {
+            addNewRecord: "Add new"
+        },
+        actions: {
+            listAction: function (b, a) {
+                return UserRoles.readAll("Approvers");
+            },
+            createAction: function (a) {
+                return UserRoles.createItem($("#Edit-User").val(), $("#Edit-User option:selected").text(), "", "Approvers");
+            },
+            deleteAction: function (a) {
+                return UserRoles.deleteItem(a.ID, "Approvers");
+            }
+        },
+        fields: {
+            ID: {
+                key: true,
+                create: false,
+                edit: false,
+                list: false
+            },
+            User: {
+                title: "User",
+                width: "100%",
+                options: function (b) {
+                    b.clearCache();
+                    var a = UserRoles.getAllUsers();
+                    var c = new Array();
+                    c.push({
+                        Value: "",
+                        DisplayText: "Select user..."
+                    });
+                    $.each(a, function () {
+                        c.push({
+                            Value: this.Id,
+                            DisplayText: this.Title
+                        });
+                    });
+                    return c;
+                },
+                display: function (a) {
+                    if (typeof a.record.User != "undefined" &&
+                        a.record.User != null) {
+                        return a.record.User.Title;
+                    } else {
+                        if (a.record.Title != null) {
+                            return a.record.Title;
+                        }
+                    }
+                },
+                sorting: false
+            }
+        },
+        formCreated: function (b, a) {
+            a.form.find('select[name="User"]').addClass("validate[required]");
+            a.form.validationEngine();
+        },
+        formSubmitting: function (b, a) {
+            return a.form.validationEngine("validate");
+        },
+        formClosed: function (b, a) {
+            a.form.validationEngine("hide");
+            a.form.validationEngine("detach");
+        }
+    });
+    $("#DictApprovers").jtable("load");
     $("div").remove(".ui-widget-overlay .ui-front");
     $(".ui-dialog-buttonpane").find('button:contains("Save")').addClass("btn btn-primary");
     $(".ui-dialog-buttonpane").find('button:contains("Delete")').addClass("btn btn-primary");

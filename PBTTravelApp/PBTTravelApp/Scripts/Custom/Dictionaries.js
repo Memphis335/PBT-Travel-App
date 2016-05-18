@@ -19,15 +19,14 @@ Dictionaries = function () {
             }
         });
         return f;
-        },
+    },
         a = function (g, i) {
             var f = c();
             var h;
             return $.Deferred(function (j) {
                 $.ajax({
                     url: appweburl +
-                        "/_api/Web/lists/getbytitle('" + g +
-                        "')/items",
+                        "/_api/Web/lists/getbytitle('" + g + "')/items",
                     contentType: "application/json; odata=verbose",
                     type: "POST",
                     data: JSON.stringify({
@@ -63,8 +62,7 @@ Dictionaries = function () {
             return $.Deferred(function (h) {
                 $.ajax({
                     url: appweburl +
-                        "/_api/Web/lists/getbytitle('" + f +
-                        "')/items?$select=Title,ID",
+                        "/_api/Web/lists/getbytitle('" + f + "')/items?$select=Title,ID",
                     type: "GET",
                     headers: {
                         accept: "application/json;odata=verbose"
@@ -90,15 +88,13 @@ Dictionaries = function () {
             return $.Deferred(function (k) {
                 $.ajax({
                     url: appweburl +
-                        "/_api/Web/lists/getbytitle('" + h +
-                        "')/getItemByStringId('" + g + "')",
+                        "/_api/Web/lists/getbytitle('" + h + "')/getItemByStringId('" + g + "')",
                     type: "POST",
                     async: true,
                     contentType: "application/json;odata=verbose",
                     data: JSON.stringify({
                         __metadata: {
-                            type: "SP.Data." + h +
-                                "ListItem"
+                            type: "SP.Data." + h + "ListItem"
                         },
                         Title: j
                     }),
@@ -126,8 +122,7 @@ Dictionaries = function () {
             return $.Deferred(function (j) {
                 $.ajax({
                     url: appweburl +
-                        "/_api/Web/lists/getbytitle('" + h +
-                        "')/getItemByStringId('" + g + "')",
+                        "/_api/Web/lists/getbytitle('" + h + "')/getItemByStringId('" + g + "')",
                     type: "DELETE",
                     headers: {
                         accept: "application/json;odata=verbose",
@@ -180,25 +175,16 @@ $(document).ready(function () {
             },
             actions: {
                 listAction: function (g, f) {
-                    return Dictionaries.readAll("Dict" +
-                        e);
+                    return Dictionaries.readAll("Dict" + e);
                 },
                 updateAction: function (f) {
-                    return Dictionaries.updateItem(
-                        "Dict" + e, a(f, "ID"), c(a(
-                            f, "Title")));
-                    $("#Dict" + e).jtable("reload");
+                    return Dictionaries.updateItem("Dict" + e, a(f, "ID"), c(a(f, "Title")));
                 },
                 createAction: function (f) {
-                    return Dictionaries.createItem(
-                        "Dict" + e, c(a(f, "Title"))
-                    );
-                    $("#Dict" + e).jtable("reload");
+                    return Dictionaries.createItem("Dict" + e, c(a(f, "Title")));
                 },
                 deleteAction: function (f) {
-                    return Dictionaries.deleteItem(
-                        "Dict" + e, f.ID);
-                    $("#Dict" + e).jtable("reload");
+                    return Dictionaries.deleteItem("Dict" + e, f.ID);
                 }
             },
             fields: {
@@ -210,19 +196,16 @@ $(document).ready(function () {
                 },
                 Title: {
                     title: "Name",
-                    width: "400",
+                    width: "400"
                 }
             },
             formCreated: function (g, f) {
-                f.form.find('input[name="Title"]').addClass(
-                    "validate[required]");
+                f.form.find('input[name="Title"]').addClass("validate[required]");
                 f.form.validationEngine();
             },
             formSubmitting: function (g, f) {
-                $("#Edit-Title").val($("#Edit-Title").val()
-                    .StripTags());
-                return f.form.validationEngine(
-                    "validate");
+                $("#Edit-Title").val($("#Edit-Title").val().StripTags());
+                return f.form.validationEngine("validate");
             },
             formClosed: function (g, f) {
                 f.form.validationEngine("hide");
@@ -232,14 +215,8 @@ $(document).ready(function () {
         $("#Dict" + e).jtable("load");
     };
     b("Projects", "Projects");
-    b("Departments", "Departments");
-    b("CostCenters", "Cost Centers");
-    b("PaymentSources", "Payment Sources");
-    b("ExpenseCategories", "Expense Categories");
-    $(".ui-dialog-buttonpane").find('button:contains("Save")').addClass(
-        "btn btn-primary");
-    $(".ui-dialog-buttonpane").find('button:contains("Delete")').addClass(
-        "btn btn-primary");
-    $(".ui-dialog-buttonpane").find('button:contains("Cancel")').addClass(
-        "btn");
+    b("Programs", "Travel Programs");
+    $(".ui-dialog-buttonpane").find('button:contains("Save")').addClass("btn btn-primary");
+    $(".ui-dialog-buttonpane").find('button:contains("Delete")').addClass("btn btn-primary");
+    $(".ui-dialog-buttonpane").find('button:contains("Cancel")').addClass("btn");
 });

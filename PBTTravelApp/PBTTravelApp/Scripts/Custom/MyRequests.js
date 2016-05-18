@@ -22,21 +22,16 @@ MyRequests = function () {
         },
         c = function (f, e) {
             var h;
-            var j = [RequestStatusEnum.Draft.Value, RequestStatusEnum.PendingApproval
-                .Value, RequestStatusEnum.Rejected.Value,
-                RequestStatusEnum.Approved.Value
-            ];
+            var j = [RequestStatusEnum.Draft.Value, RequestStatusEnum.PendingApproval.Value,RequestStatusEnum.Rejected.Value,RequestStatusEnum.Approved.Value];
             var i = getQueryStringParameter("status");
             if (typeof i == "undefined" || j.indexOf(i) == -1) {
                 return;
             }
-            var d = "CreatedById eq " + CurrentUser.Id +
-                " and RequestStatus eq '" + i + "'";
+            var d = "CreatedById eq " + CurrentUser.Id + " and RequestStatus eq '" + i + "'";
             var g = appweburl +
                 "/_vti_bin/ListData.svc/TravelRequests/?$filter=" + d +
                 "&$inlinecount=allpages&$select=Id,Created,TripStartDate,TripEndDate,RequestStatus,RequestApprover,TripPurpose&$expand=RequestApprover&$orderby=" +
-                e.jtSorting.replace(" DESC", " desc").replace(" ASC",
-                    " asc") + "&$skip=" + e.jtStartIndex + "&$top=" + e.jtPageSize;
+                e.jtSorting.replace(" DESC", " desc").replace(" ASC"," asc") + "&$skip=" + e.jtStartIndex + "&$top=" + e.jtPageSize;
             return $.Deferred(function (k) {
                 $.ajax({
                     url: g,
@@ -94,17 +89,13 @@ MyRequests = function () {
     };
 }();
 $(document).ready(function () {
-    var c = [RequestStatusEnum.Draft.Value, RequestStatusEnum.PendingApproval
-        .Value, RequestStatusEnum.Rejected.Value, RequestStatusEnum
-        .Approved.Value
-    ];
+    var c = [RequestStatusEnum.Draft.Value, RequestStatusEnum.PendingApproval.Value, RequestStatusEnum.Rejected.Value, RequestStatusEnum.Approved.Value];
     var b = getQueryStringParameter("status");
     if (typeof b == "undefined" || c.indexOf(b) == -1) {
         alert("Bad request ID!");
         return;
     }
-    var a = "Requests in " + (b == RequestStatusEnum.PendingApproval.Value ?
-        "Pending approval" : b) + " status";
+    var a = "Requests in " + (b == RequestStatusEnum.PendingApproval.Value ? "Pending Approval" : b) + " status";
     if (b == RequestStatusEnum.Approved.Value) {
         $(function () {
             $("#PendingRequests").jtable({
@@ -122,8 +113,7 @@ $(document).ready(function () {
                         icon: "../Scripts/Libraries/jtable/themes/metro/add.png",
                         text: "Create new request",
                         click: function () {
-                            location.href =
-                                "RequestFormCreate.aspx";
+                            location.href = "RequestFormCreate.aspx";
                         }
                     }]
                 },
@@ -146,9 +136,7 @@ $(document).ready(function () {
                             var e = moment(d.record
                                 .Created).utc();
                             if (e.isValid()) {
-                                return e.format(
-                                    commonDateFormat2
-                                );
+                                return e.format(commonDateFormat2);
                             }
                         }
                     },
@@ -159,9 +147,7 @@ $(document).ready(function () {
                             var e = moment(d.record
                                 .TripStartDate);
                             if (e.isValid()) {
-                                return e.format(
-                                    commonDateFormat2
-                                );
+                                return e.format(commonDateFormat2);
                             }
                         }
                     },
@@ -172,9 +158,7 @@ $(document).ready(function () {
                             var e = moment(d.record
                                 .TripEndDate);
                             if (e.isValid()) {
-                                return e.format(
-                                    commonDateFormat2
-                                );
+                                return e.format(commonDateFormat2);
                             }
                         }
                     },
@@ -187,12 +171,8 @@ $(document).ready(function () {
                         width: "15%",
                         sorting: false,
                         display: function (d) {
-                            if (typeof d.record.RequestApprover !=
-                                "undefined" && d.record
-                                .RequestApprover !=
-                                null) {
-                                return d.record.RequestApprover
-                                    .Name;
+                            if (typeof d.record.RequestApprover !="undefined" && d.record.RequestApprover !=null) {
+                                return d.record.RequestApprover.Name;
                             }
                         }
                     },
@@ -207,10 +187,7 @@ $(document).ready(function () {
                         sorting: false,
                         width: "1%",
                         display: function (d) {
-                            return;
-                            "<button title='View' onclick='location.href=\"RequestFormView.aspx?requestID=" +
-                            d.record.Id +
-                            "\"' class='jtable-command-button jtable-view-command-button'><span>View</span></button>";
+                            return "<button title='View' onclick='location.href=\"RequestFormView.aspx?requestID=" + d.record.Id + "\"' class='jtable-command-button jtable-view-command-button'><span>View</span></button>";
                         }
                     }
                 }
@@ -234,18 +211,15 @@ $(document).ready(function () {
                         icon: "../content/themes/metro/add.png",
                         text: "Create new request",
                         click: function () {
-                            location.href =
-                                "RequestFormCreate.aspx";
+                            location.href = "RequestFormCreate.aspx";
                         }
                     }]
                 },
                 actions: {
                     listAction: MyRequests.readMyRequests,
                     deleteAction: function (d) {
-                        return MyRequests.deleteItem(
-                            d.Id);
-                        $("#PendingRequests").jtable(
-                            "reload");
+                        return MyRequests.deleteItem(d.Id),
+                            $("#PendingRequests").jtable("reload");
                     }
                 },
                 fields: {
@@ -264,9 +238,7 @@ $(document).ready(function () {
                             var e = moment(d.record
                                 .Created).utc();
                             if (e.isValid()) {
-                                return e.format(
-                                    commonDateFormat2
-                                );
+                                return e.format(commonDateFormat2);
                             }
                         }
                     },
@@ -277,9 +249,7 @@ $(document).ready(function () {
                             var e = moment(d.record
                                 .TripStartDate);
                             if (e.isValid()) {
-                                return e.format(
-                                    commonDateFormat2
-                                );
+                                return e.format(commonDateFormat2);
                             }
                         }
                     },
@@ -290,9 +260,7 @@ $(document).ready(function () {
                             var e = moment(d.record
                                 .TripEndDate);
                             if (e.isValid()) {
-                                return e.format(
-                                    commonDateFormat2
-                                );
+                                return e.format(commonDateFormat2);
                             }
                         }
                     },
@@ -305,12 +273,8 @@ $(document).ready(function () {
                         width: "15%",
                         sorting: false,
                         display: function (d) {
-                            if (typeof d.record.RequestApprover !=
-                                "undefined" && d.record
-                                .RequestApprover !=
-                                null) {
-                                return d.record.RequestApprover
-                                    .Name;
+                            if (typeof d.record.RequestApprover != "undefined" && d.record.RequestApprover != null) {
+                                return d.record.RequestApprover.Name;
                             }
                         }
                     },
@@ -325,10 +289,7 @@ $(document).ready(function () {
                         sorting: false,
                         width: "1%",
                         display: function (d) {
-                            return;
-                            "<button title='View' onclick='location.href=\"RequestFormView.aspx?requestID=" +
-                            d.record.Id +
-                            "\"' class='jtable-command-button jtable-view-command-button'><span>View</span></button>";
+                            return "<button title='View' onclick='location.href=\"RequestFormView.aspx?requestID=" + d.record.Id + "\"' class='jtable-command-button jtable-view-command-button'><span>View</span></button>";
                         }
                     },
                     CustomEditAction: {
@@ -337,10 +298,7 @@ $(document).ready(function () {
                         sorting: false,
                         width: "1%",
                         display: function (d) {
-                            return;
-                            "<button title='Edit' onclick='location.href=\"RequestFormEdit.aspx?requestID=" +
-                            d.record.Id +
-                            "\"' class='jtable-command-button jtable-edit-command-button'><span>Edit</span></button>";
+                            return "<button title='Edit' onclick='location.href=\"RequestFormEdit.aspx?requestID=" + d.record.Id + "\"' class='jtable-command-button jtable-edit-command-button'><span>Edit</span></button>";
                         }
                     }
                 }

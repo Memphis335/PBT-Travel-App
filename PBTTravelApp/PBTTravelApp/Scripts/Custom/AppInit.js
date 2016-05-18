@@ -72,8 +72,7 @@ AppInit = function () {
         b = function (g, h) {
             var f = e();
             $.ajax({
-                url: appweburl + "/_api/Web/lists/getbytitle('" + g +
-                    "')/items",
+                url: appweburl + "/_api/Web/lists/getbytitle('" + g + "')/items",
                 contentType: "application/json; odata=verbose",
                 type: "POST",
                 data: JSON.stringify({
@@ -144,9 +143,9 @@ $(document).ready(function () {
     if (SystemSettings.AppInitExecuted == "false") {
         AppInit.assignRoles();
         AppInit.createRoleItemEntry(CurrentUser.Id);
-
-        AppInit.createDictionaryEntry("DictProjects","MTN BIB");
-
+        AppInit.createDictionaryEntry("DictProjects", "MTN BIB");
+        AppInit.createDictionaryEntry("DictPrograms", "SA Voyager");
+        AppInit.createDictionaryEntry("DictPrograms", "Discovery Miles");
         AppInit.createSettingsEntry("AppInitExecuted","AppInitExecuted", "true", "true");
         AppInit.createSettingsEntry("Default currency name","DefaultCurrencyName", "ZAR", "false");
         AppInit.createSettingsEntry("Organization Name","OrganizationName", "PBT Group", "false");

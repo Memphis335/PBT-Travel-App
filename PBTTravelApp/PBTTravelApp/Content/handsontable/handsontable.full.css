@@ -119,7 +119,7 @@
 }
 
 .handsontable th {
-  background-color: #2176cc ;
+  background-color: #012538 ;
   color: white;
   text-align: left;
   font-weight: normal;
@@ -131,7 +131,7 @@
 }
 
 .handsontable th.active {
-  background-color: #2176cc  ;
+  background-color: #012538  ;
 }
 
 .handsontable thead th .relative {
@@ -212,13 +212,13 @@
 }
 
 .handsontable .htBorder.htFillBorder {
-  background: #2176cc ;
+  background: #012538 ;
   width: 1px;
   height: 1px;
 }
 
 .handsontableInput {
-  border: 2px solid #5292F7;
+  border: 2px solid #8a8a8a;
   outline-width: 0;
   margin: 0;
   padding: 1px 4px 0 2px;

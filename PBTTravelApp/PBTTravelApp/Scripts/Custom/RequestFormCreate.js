@@ -26,9 +26,7 @@ RequestFormCreate = function () {
         var k = e();
         $.ajax({
             url: appweburl +
-                "/_api/Web/lists/getbytitle('TravelRequests')/items(" +
-                l + ")/AttachmentFiles/add(FileName='" + j +
-                "')",
+                "/_api/Web/lists/getbytitle('TravelRequests')/items(" + l + ")/AttachmentFiles/add(FileName='" + j + "')",
             type: "POST",
             async: false,
             processData: false,
@@ -72,10 +70,10 @@ RequestFormCreate = function () {
         }
         return j;
     };
-    var d = function (j) {
+    var d = function (j, f) {
         var i;
         $.ajax({
-            url: appweburl + "/_api/Web/lists/getbytitle('" + j + "')/items?$select=Title,ID",
+            url: appweburl + "/_api/Web/lists/getbytitle('" + j + "')/items?$select=" + f,
             type: "GET",
             async: false,
             headers: {
@@ -96,7 +94,7 @@ RequestFormCreate = function () {
             var i;
             $.ajax({
                 url: appweburl +
-                    "/_api/web/siteusers?$filter=Email ne '' and substringof('SPOCrawler',Email) eq false and PrincipalType eq 1 and substringof('SPOCrawler',LoginName) eq false and substringof('system',LoginName) eq false and substringof('SharePoint',Title) eq false and substringof('_SPO',Title) eq false and substringof('spocrwl',LoginName) eq false",
+                   "/_api/web/siteusers?$filter=PrincipalType eq 1 and substringof('SPOCrawler',LoginName) eq false and substringof('system',LoginName) eq false and substringof('SharePoint',Title) eq false and substringof('_SPO',Title) eq false and substringof('_spoc',LoginName) eq false",
                 contentType: "application/json; odata=verbose",
                 async: false,
                 type: "GET",
@@ -144,6 +142,7 @@ RequestFormCreate = function () {
                     PassportVisaValid: j.PassportVisaValid,
                     FrequentFlyer: j.FrequentFlyer,
                     FrequentflyerNumber: j.FrequentflyerNumber,
+                    City: j.City,
                     RequestStatus: RequestStatusEnum.Draft.Value
                 }),
                 headers: {
@@ -167,33 +166,12 @@ RequestFormCreate = function () {
     };
 }();
 
-function dateCalc() {
-    var end = $("#txtEndDate").val();
-    var start = $("#txtStartDate").val();
-    var days = moment(start).diff(end, "days");
-    console.log("Start and End");
-    console.log(start, end);
-    console.log(days);
-    if (days <= 4) {
-        //$("#divDestinations").handsontable({
-        //    columns: [
-        //        {
-        //            data: "Transfers",
-        //            editor: false
-        //        }
-        //    ]
-
-        //});
-        console.log("Less than 4");
-    }
-};
 
 $(document).ready(function () {
-    if (!CurrentUser.IsAdmin) {
-        $("#aBookingProgress :input").prop("disabled", true);
-        $("#aBookingProgress").attr("Title", "For office use only");
+    if (CurrentUser.IsAdmin) {
+        $("#liBookingProgress").show();
     }
-   
+
     $("#requestFormCreate").submit(function (q) {
         if ($("#requestFormCreate").valid()) {
             q.preventDefault();
@@ -215,8 +193,12 @@ $(document).ready(function () {
             r.CarRentalBooked = $("#chkRental").is(":checked");
             r.TransfersArranged = $("#chkTransfer").is(":checked");
             r.PassportVisaValid = $("#chkPassport").is(":checked");
-            r.FrequentFlyer = $("#txtFFP").val();
+            r.FrequentFlyer = $("#ddlFFP").val();
             r.FrequentflyerNumber = $("#txtFFPN").val();
+            r.FFP2 = $("#ddlFFP2").val();
+            r.FFPN2 = $("#txtFFPN2").val();
+            r.FFPNMul = $("#txtFFPNMul").val();
+            r.City = $("#txtDeptCity").val();
             RequestFormCreate.createRequestForm(r);
         }
     });
@@ -225,14 +207,17 @@ $(document).ready(function () {
     });
     $("#txtRequesterName").val(CurrentUser.Name);
     $("#txtEmail").val(CurrentUser.Email);
-    $("#peoplePickerDiv").spPeoplePicker();
-    var c = RequestFormCreate.getAllUsers();
+
+    $("#txtStartDate").focusout(function () {
+        $("#divDestinations").handsontable("setDataAtCell", 0, 5, $("#txtStartDate").val());
+    });
+
+    var c = RequestFormCreate.getDictionary("Approvers", "ID,User/Title,User/Id&$expand=User/Title,User/Id");
     var i = $("#ddlRequestApprover");
     $.each(c, function () {
         i.append($("<option>", {
-            value: this.Id,
-            text: this.Title + " (" + this.Email +
-                ")"
+            value: this.User.Id,
+            text: this.User.Title
         }));
     });
     $(function () {
@@ -245,63 +230,97 @@ $(document).ready(function () {
         });
     });
 
-    var n = RequestFormCreate.getDictionary("DictProjects");
-    var h = $("#ddlProject");
+    $("#addMore").on("click", function () {
+        $("#ExtraNum").toggle();
+        $("#ExtraProg").toggle();
+    });
+    $("#addMore2").on("click", function () {
+        $("#ExtraNumMul").toggle();
+    });
+
+    var nn = RequestFormCreate.getDictionary("DictProjects", "Title, ID");
+    var hh = $("#ddlProject");
+    $.each(nn, function () {
+        hh.append($("<option>", {
+            value: this.Title,
+            text: this.Title
+        }));
+    });
+    var n = RequestFormCreate.getDictionary("DictPrograms", "Title, ID");
+    var h = $("#ddlFFP");
     $.each(n, function () {
         h.append($("<option>", {
             value: this.Title,
             text: this.Title
         }));
     });
+    var hhh = $("#ddlFFP2");
+    $.each(n, function () {
+        hhh.append($("<option>", {
+            value: this.Title,
+            text: this.Title
+        }));
+    });
 
-    $("#txtStartDate").datepicker();
-    $("#txtEndDate").datepicker();
+    $("#txtStartDate").datetimepicker({
+        format: commonDateFormatWithHour,
+        icons: {
+            time: "ms-Icon ms-Icon--clock",
+            date: "ms-Icon ms-Icon--calendar",
+            up: "ms-Icon ms-Icon--caretUp",
+            down: "ms-Icon ms-Icon--caretDown"
+        },
+        keepOpen: true
+    });
+    $("#txtEndDate").datetimepicker({
+        format: commonDateFormatWithHour,
+        icons: {
+            time: "ms-Icon ms-Icon--clock",
+            date: "ms-Icon ms-Icon--calendar",
+            up: "ms-Icon ms-Icon--caretUp",
+            down: "ms-Icon ms-Icon--caretDown"
+        }
+    });
     $(".chzn-select").chosen({
         no_results_text: "Oops, nothing found!"
     });
-    $.datepicker.setDefaults({
-        dateFormat: commonDateFormat,
-        showButtonPanel: false,
-        changeMonth: true,
-        changeYear: false
-    });
-        jQuery("#requestFormCreate").validate({
-            ignore: ".ignore",
-            rules: {
-                txtRequesterName: {
-                    required: true,
-                    maxlength: 250
-                },
-                txtEmail: {
-                    required: true,
-                    email: true,
-                    maxlength: 250
-                },
-                txtTripPurpose: {
-                    required: true,
-                    maxlength: 250
-                },
-                txtEmployeeID: {
-                    maxlength: 250
-                },
-                txtPhoneNumber: {
-                    maxlength: 250
-                },
-                taNotices: {
-                    maxlength: 1000
-                },
-                txtTripStartDate: {
-                    required: true,
-                    maxlength: 250
-                },
-                txtTripEndDate: {
-                    required: true,
-                    maxlength: 250
-                },
+    jQuery("#requestFormCreate").validate({
+        ignore: ".ignore",
+        rules: {
+            txtRequesterName: {
+                required: true,
+                maxlength: 250
+            },
+            txtEmail: {
+                required: true,
+                email: true,
+                maxlength: 250
+            },
+            txtTripPurpose: {
+                required: true,
+                maxlength: 250
+            },
+            txtEmployeeID: {
+                maxlength: 250
+            },
+            txtPhoneNumber: {
+                maxlength: 250
+            },
+            taNotices: {
+                maxlength: 1000
+            },
+            txtTripStartDate: {
+                required: true,
+                maxlength: 250
+            },
+            txtTripEndDate: {
+                required: true,
+                maxlength: 250
+            },
             ddlProject: "required",
             ddlRequestApprover: "required",
             txtDestinations: "required"
-            },
+        },
         messages: {
             txtRequesterName: "Please enter your name",
             txtEmail: "Please enter a valid email address",
@@ -353,14 +372,14 @@ $(document).ready(function () {
         $("#txtDestinations").val(r.isEmptyRow(0) ? "" : "false");
     };
     $("#divDestinations").handsontable({
-            data: p,
-            minSpareRows: 1,
-            multiSelect: false,
-            contextMenu: false,
-            afterChange: a,
-            colWidths: [150, 130, 200, 160, 160, 100, 100],
-            colHeaders: ["Country", "City", "Accommodation Required",
-            "Rental Car Required","Airport Transfers","Start Date","End Date"
+        data: p,
+        minSpareRows: 1,
+        multiSelect: false,
+        contextMenu: false,
+        afterChange: a,
+        colWidths: [150, 130, 200, 160, 160, 100, 100],
+        colHeaders: ["Country", "City / Airport", "Accommodation Required",
+        "Rental Car Required", "Airport Transfers", "Start Date", "End Date"
         ],
         columns: [{
             data: "Country"
@@ -388,7 +407,17 @@ $(document).ready(function () {
         }, {
             data: "EndDate",
             type: "date",
-            dateFormat: commonDateFormat
+            dateFormat: commonDateFormat,
+            validator: function (value, callback) {
+                var date = $("#txtEndDate").val();
+                if (value > date) {
+                    alert("Trip end date cannot be after your return date.");
+                    this.instance.setDataAtCell(this.row, this.col, date);
+                    $(td).css("color", "red");
+                }
+                callback(true);
+            },
+            allowInvalid: false
         }]
     });
 });

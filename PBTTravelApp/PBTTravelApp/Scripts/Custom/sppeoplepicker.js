@@ -4,8 +4,7 @@
     $.fn.spPeoplePicker = function (options) {
 
         var methods = {
-
-            init: function () {
+            init: function() {
 
                 var container = $(this);
 
@@ -23,7 +22,7 @@
                 return container;
             },
 
-            removeChosenUser: function () {
+            removeChosenUser: function() {
                 var source = $(this);
                 var controlContext = methods.getControlContext(source);
                 var chosen = source.closest('span.sp-peoplepicker-chosen');
@@ -47,7 +46,7 @@
                 chosen.remove();
             },
 
-            selectUser: function (e) {
+            selectUser: function(e) {
                 e.preventDefault();
 
                 // this represents the item they just clicked on in the dropdown
@@ -66,7 +65,8 @@
                     login: selectedItem.attr('sp-login'),
                     title: selectedItem.attr('sp-title'),
                     email: selectedItem.attr('sp-email'),
-                    displayName: selectedItem.attr('sp-displayName')
+                    displayName: selectedItem.attr('sp-displayName'),
+                    id: selectedItem.attr('sp-id')
                 };
 
                 // update our hidden field value
@@ -86,7 +86,7 @@
                 controlContext.userEditInput.val('');
             },
 
-            setSelectedUsers: function (/*controlContext*/ controlContext, /*userInfo[]*/ arr) {
+            setSelectedUsers: function( /*controlContext*/ controlContext, /*userInfo[]*/ arr) {
 
                 if (arr === null || !$.isArray(arr)) {
                     // count this as an attempt to clear the control
@@ -102,11 +102,11 @@
 
                 for (var i = 0; i < arr.length; i++) {
                     var chosen = arr[i];
-                    controlContext.selectUsersDiv.append('<span class="sp-peoplepicker-chosen" sp-login="' + chosen.login + '">' + chosen.displayName + '<span class="sp-peoplepicker-removeChosen"><span class="glyphicon glyphicon-remove"></span></span></span>');
+                    controlContext.selectUsersDiv.append('<span class="sp-peoplepicker-chosen" sp-login="' + chosen.login + '" value="' + chosen.id + '">' + chosen.displayName + '<span class="sp-peoplepicker-removeChosen"><i class="ms-Icon ms-Icon--x"></i></span></span>');
                 }
             },
 
-            searchUser: function (e) {
+            searchUser: function(e) {
 
                 var source = $(this);
 
@@ -125,7 +125,7 @@
                 controlContext.dropdown.empty();
                 controlContext.dropdown.append('<li role="presentation">Searching...</li>');
 
-                $app.withSPContext(function (spContext) {
+                $app.withSPContext(function(spContext) {
 
                     var queryTerm = '' + settings.searchPrefix + currentValue + settings.searchSuffix;
 
@@ -147,10 +147,9 @@
                     };
 
                     // issue request
-                    spContext.executeQueryAsync(
-                        $app.getCtxCallback(searchCtx, methods.searchSuccess),
+                    spContext.executeQueryAsync($app.getCtxCallback(searchCtx, methods.searchSuccess),
                         $app.getCtxCallback(searchCtx, methods.searchFail));
-                }).fail(function () {
+                }).fail(function() {
                     controlContext.dropdown.empty();
                     alert('There was a problem connecting to SharePoint. Please refresh the page to try again.');
                 });
@@ -178,6 +177,18 @@
                 // parse out results
                 var results = spContext.parseObjectFromJsonString(this.result.get_value());
 
+                function getUserId(userName) {
+                    var siteUrl = $.cookie("appweburl");
+
+                    var call = $.ajax({
+                        url: siteUrl + "/_api/web/siteusers(@v)?@v='" +
+                                encodeURIComponent(userName) + "'",
+                        method: "GET",
+                        headers: { "Accept": "application/json; odata=verbose" }
+                    });
+                    return call;
+                }
+
                 if (results.length < 1) {
                     controlContext.dropdown.append('<li role="presentation">No results found</li>');
                 }
@@ -195,8 +206,12 @@
                         var displayName = item.DisplayText;
                         var title = item.EntityData.Title;
                         var email = item.EntityData.Email;
+                        var userId = getUserId(loginName);
+                        userId.done(function(user) {
+                            alert(user.d.id);
+                        });
 
-                        foundItems.push('<li role="presentation" class="sp-peoplepicker-foundItem" sp-login="' + loginName + '" sp-title="' + title + '" sp-email="' + email + '" sp-displayName="' + displayName + '">' + displayName + '</li>');
+                        foundItems.push('<li role="presentation" class="sp-peoplepicker-foundItem" sp-login="' + loginName + '" sp-title="' + title + '" sp-email="' + email + '" sp-id="'  + '" sp-displayName="' + displayName + '">' + displayName + '</li>');
                     }
 
                     controlContext.dropdown.append(foundItems.join(''));
@@ -241,7 +256,7 @@
         //setup default settings
         var settings = $.extend({
             onLoaded: null,
-            minSearchTriggerLength: 4,
+            minSearchTriggerLength: 2,
             maximumEntitySuggestions: 30,
             principalType: 1,
             principalSource: 15,

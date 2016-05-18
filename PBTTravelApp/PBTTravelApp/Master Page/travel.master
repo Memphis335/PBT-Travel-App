@@ -39,8 +39,10 @@
     <script src="../Scripts/jtable/jquery.jtable.js"></script>
 
     <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="../Scripts/bootstrap.js"></script>
+    <script src="../Scripts/Moment.js"></script>
     <script src="../Scripts/bootstrap-timepicker.min.js"></script>
-    <script src="../Scripts/jquery.timepicker.js"></script>
+    <script src="../Scripts/jquery.timepicker.min.js"></script>
     <script src="../Scripts/fullcalendar.min.js"></script>
     <script src="../Scripts/jquery.validate.min.js"></script>
     <script src="../Scripts/jquery.tagsinput.min.js"></script>
@@ -50,7 +52,7 @@
     <script src="../Scripts/modernizr.min.js"></script>
     <script src="../Scripts/elements.js"></script>
     <script src="../Scripts/Prettify/prettify.js"></script>
-    <script src="../Scripts/moment.min.js"></script>
+    
     <script src="../Scripts/notify.min.js"></script>
     <script src="../Scripts/jquery.loadTemplate-1.4.4.min.js"></script>
     <script src="../Scripts/jquery.MultiFile.min.js"></script>

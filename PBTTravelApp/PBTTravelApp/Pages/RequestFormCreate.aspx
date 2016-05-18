@@ -7,6 +7,7 @@
     <link href="../Content/Fabric-UI/fabric.css" rel="stylesheet" />
     <link href="../Content/Fabric-UI/fabric.components.css" rel="stylesheet" />
     <link href="../Content/Custom/jQuery-UI-Custom.css" rel="stylesheet" />
+    <link href="../Content/Custom/PeoplePicker.css" rel="stylesheet" />
 
     <!-- Handsontable-->
     <script src="../Scripts/handsontable/handsontable.full.js"></script>
@@ -14,9 +15,11 @@
     <link href="../Content/jquery.handsontable.bootstrap.css" rel="stylesheet" />
 
     <!-- JS -->
-    <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/4.0/1/MicrosoftAjax.js"></script>
     <script src="../Scripts/Custom/RequestFormCreate.js"></script>
-    <script src="../Scripts/Custom/sppeoplepicker.min.js"></script>
+    <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/4.0/1/MicrosoftAjax.js"></script>
+    <script src="../Scripts/Custom/App.js"></script>
+    <script src="../Scripts/Custom/sppeoplepicker.js"></script>
+
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="mainContent" runat="server">
@@ -38,7 +41,7 @@
                             <li><a href="#aApprovals">Approver</a></li>
                             <li><a href="#aTravelInfo">Travel Info</a></li>
                             <li><a href="#aAttachments">Attachments</a></li>
-                            <li><a href="#aBookingProgress">Booking Progress</a></li>
+                            <li id="liBookingProgress" style="display: none;"><a href="#aBookingProgress">Booking Progress</a></li>
                         </ul>
                         <div id="aPersonalInfo">
                             <p class="control-group">
@@ -64,13 +67,37 @@
                             <p>
                                 <label>Frequent-flyer Program</label>
                                 <span class="field">
-                                    <input type="text" name="txtFFP" id="txtFFP" class="input-xlarge" />
+                                    <select name="ddlFFP" id="ddlFFP" class="ms-Dropdown">
+                                        <option value="">Choose One</option>
+                                    </select>
                                 </span>
                             </p>
                             <p>
-                                <label>Frequent-flyer Program Number</label>
+                                <label>Membership Number</label>
                                 <span class="field">
                                     <input type="text" name="txtFFPN" id="txtFFPN" class="input-xlarge" />
+                                    <input type="checkbox" id="addMore" name="addMore"/>Add More?
+                                </span>
+                            </p>
+                            <p id="ExtraProg" style="display: none;">
+                                <label>Extra Program</label>
+                                <span class="field">
+                                    <select name="ddlFFP2" id="ddlFFP2" class="ms-Dropdown">
+                                        <option value="">Choose One</option>
+                                    </select>
+                                </span>
+                            </p>
+                            <p id="ExtraNum" style="display: none;">
+                                <label>Extra Membership Number</label>
+                                <span class="field">
+                                    <input type="text" name="txtFFPN2" id="txtFFPN2" class="input-xlarge" />
+                                    <input type="checkbox" id="addMore2" name="addMore2"/>More?
+                                </span>
+                            </p>
+                            <p id="ExtraNumMul" style="display: none;">
+                                <label>Extra Memberships</label>
+                                <span class="field">
+                                    <textarea cols="80" rows="3" name="txtFFPNMul" id="txtFFPNMul" class="standardTextArea" placeholder="Emirates - 352232;BA - 3266559"></textarea>
                                 </span>
                             </p>
                             <p>
@@ -90,25 +117,30 @@
                         <div id="aApprovals" style="height: 200px;">
                             <p>
                                 <label>Request Approver</label>
-                                <span class="field">
-                                    <%--<select name="ddlRequestApprover" id="ddlRequestApprover" data-placeholder="Choose a Employee..." style="margin-right: 10px; width: 370px;" class="" tabindex="2">
+                                <div class="field">
+                                    <select name="ddlRequestApprover" id="ddlRequestApprover" data-placeholder="Choose a Employee..." style="margin-right: 10px; width: 370px;" class="" tabindex="2">
                                         <option value=""></option>
-                                    </select>--%>
-                                </span>
-                                <div id="peoplePickerDiv"></div>
+                                    </select>
+                                </div>
                             </p>
                         </div>
                         <div id="aTravelInfo">
                             <p class="control-group">
+                                <label for="txtStartDate">Departure City</label>
+                                <span class="field">
+                                    <input id="txtDeptCity" type="text" name="txtDeptCity" class="input-xlarge" /></span>
+                            </p>
+                            <p class="control-group">
                                 <label for="txtStartDate">Departure Date</label>
                                 <span class="field">
-                                    <input id="txtStartDate" type="date" name="txtTripStartDate" class="input-xlarge" /></span>
+                                    <input id="txtStartDate" type="text" name="txtTripStartDate" class="input-xlarge" />
+                                </span>
                             </p>
                             <p class="control-group">
                                 <label for="txtEndDate">Return Date</label>
                                 <span class="field">
-                                    <input id="txtEndDate" type="date" name="txtTripEndDate" class="input-xlarge" /></span>
-                                <input type="hidden" id="dateCalc"/>
+                                    <input id="txtEndDate" type="text" name="txtTripEndDate" class="input-xlarge" /></span>
+                                <input type="hidden" id="dateCalc" />
                             </p>
                             <p class="control-group">
                                 <label for="txtPurpose">Purpose of Trip</label>
@@ -126,43 +158,43 @@
                                 </span>
                                 <label>Travel Destinations</label>
                             </p>
-                            <div id="divDestinations" style="clear: both; overflow: auto; padding-top: 15px;" onclick="dateCalc();"></div>
+                            <div id="divDestinations" style="clear: both; overflow: auto; padding-top: 15px;"></div>
                         </div>
                         <div id="aAttachments" title="eg. ID's or Passports">
                             <input type="file" id="fileUpload" />
                         </div>
-                        <div id="aBookingProgress">
+                        <div id="aBookingProgress" style="display: none;">
                             <p class="control-group">
                                 <label for="chkTicket">Ticket Issued?</label>
                                 <span class="field">
-                                <input id="chkTicket" name="chkTicket" type="checkbox"/></span>
+                                    <input id="chkTicket" name="chkTicket" type="checkbox" /></span>
                             </p>
                             <p class="control-group">
                                 <label for="chkAccom">Accomodation Confirmed?</label>
                                 <span class="field">
-                                <input id="chkAccom" name="chkAccom" type="checkbox"/></span>
+                                    <input id="chkAccom" name="chkAccom" type="checkbox" /></span>
                             </p>
                             <p class="control-group">
                                 <label for="chkRental">Car Rental Booked?</label>
                                 <span class="field">
-                                <input id="chkRental" name="chkRental" type="checkbox"/></span>
+                                    <input id="chkRental" name="chkRental" type="checkbox" /></span>
                             </p>
                             <p class="control-group">
                                 <label for="chkTransfer">Airport Transfers Arranged?</label>
                                 <span class="field">
-                                <input id="chkTransfer" name="chkTransfer" type="checkbox"/></span>
+                                    <input id="chkTransfer" name="chkTransfer" type="checkbox" /></span>
                             </p>
                             <p class="control-group">
                                 <label for="chkPassport">Passport/Visa Valid?</label>
                                 <span class="field">
-                                <input id="chkPassport" name="chkPassport" type="checkbox"/></span>
+                                    <input id="chkPassport" name="chkPassport" type="checkbox" /></span>
                             </p>
                         </div>
                     </div>
                     <!--tabbedwidget-->
                     <div style="margin: 10px;">
-                        <button id="btnSubmit" class="ms-Button ms-Button--primary" type="submit"><span class="ms-Button-label"><i class="ms-Icon ms-Icon--save"></i> Save changes</span></button>
-                        <button id="btnCancel" class="ms-Button" type="button"><span class="ms-Button-label"><i class="ms-Icon ms-Icon--x"></i> Cancel</span></button>
+                        <button id="btnSubmit" class="ms-Button ms-Button--primary" type="submit"><span class="ms-Button-label"><i class="ms-Icon ms-Icon--save"></i>Save changes</span></button>
+                        <button id="btnCancel" class="ms-Button" type="button"><span class="ms-Button-label"><i class="ms-Icon ms-Icon--x"></i>Cancel</span></button>
                     </div>
                 </form>
             </div>

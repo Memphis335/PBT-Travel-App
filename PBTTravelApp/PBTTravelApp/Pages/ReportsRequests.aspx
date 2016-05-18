@@ -43,30 +43,10 @@
                     </span>
                 </p>
                 <p>
-                    <label>Department</label>
-                    <span class="field" style="margin-left: 160px; text-align: left;">
-                        <select id="chblDepartment" multiple="multiple" size="3" style="margin: 1px; padding: 0px; width: 205px; font-size: 12px;">
-                        </select>
-                    </span>
-                </p>
-                <p>
                     <label>Project</label>
                     <span class="field" style="margin-left: 160px; text-align: left;">
                         <select id="chblProject" multiple="multiple" size="3" style="margin: 1px; padding: 0px; width: 205px; font-size: 12px;">
                         </select>
-                    </span>
-                </p>
-                <p>
-                    <label>Cost Center</label>
-                    <span class="field" style="margin-left: 160px; text-align: left;">
-                        <select id="chblCostCenter" multiple="multiple" size="3" style="margin: 1px; padding: 0px; width: 205px; font-size: 12px;">
-                        </select>
-                    </span>
-                </p>
-                <p>
-                    <label>Without settlement</label>
-                    <span class="field" style="margin-left: 160px; text-align: left;">
-                        <input id="chbWithoutSettlement" type="checkbox" />
                     </span>
                 </p>
                 <span style="margin-top: 15px; display: block;">
@@ -76,12 +56,6 @@
                             <i class="ms-Icon ms-Icon--documentPDF"></i>
                         </span>
                         <span class="ms-Button-label">Export to CSV(Summary)</span>
-                    </button>
-                    <button id="btnExportExpenses" class="ms-Button" type="button">
-                        <span class="ms-Button-icon">
-                            <i class="ms-Icon ms-Icon--documentPDF"></i>
-                        </span>
-                        <span class="ms-Button-label">Export to CSV(Expenses)</span>
                     </button>
                 </span>
             </form>

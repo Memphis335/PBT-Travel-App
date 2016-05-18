@@ -16,6 +16,9 @@
             <div style="width: 900px;margin-top: 25px">
                 <div class="jtableContainer" id="PendingRequests"></div>
             </div>
+            <div style="width: 900px;margin-top: 25px">
+                <div class="jtableContainer" id="ApprovedRequests"></div>
+            </div>
         </div>
     </div>
 </asp:Content>

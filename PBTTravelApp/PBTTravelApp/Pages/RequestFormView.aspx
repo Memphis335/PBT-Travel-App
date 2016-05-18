@@ -100,6 +100,10 @@
                         </div>
                         <div id="aTravelInfo">
                             <p class="control-group">
+                                <label for="lblDeptCity">Departure City</label>
+                                <span class="field"><span id="lblDeptCity" class="sLabel"></span></span>
+                            </p>
+                            <p class="control-group">
                                 <label for="lblTripStartDate">Trip Start Date</label>
                                 <span class="field"><span id="lblTripStartDate" class="sLabel"></span></span>
                             </p>
@@ -141,29 +145,58 @@
                         <div id="aBookingProgress">
                             <p class="control-group">
                                 <label for="lblTicket">Ticket Issued?</label>
-                                <span class="field"><span id="lblTicket" class="sLabel"></span></span>
+                                <span class="fieldCustom">
+                                    <span id="lblTicket" class="sLabel" style="width: 20px;"></span>
+                                    <label class="sLabel" for="refTicket" style="width: 40px; padding: 5px;">Ref : </label>
+                                    <span id="refTicket" class="sLabel narrow"></span>
+                                    <label class="sLabel" for="lblNote1" style="width: 50px; padding: 5px;">Notes : </label>
+                                    <span id="lblNote1" class="sLabel narrow"></span>
+                                    <span style="margin: 10px;" id="noAttachTicket"></span>
+                                </span>
                             </p>
                             <p class="control-group">
                                 <label for="lblAccom">Accomodation Confirmed?</label>
-                                <span class="field"><span id="lblAccom" class="sLabel"></span></span>
+                                <span class="fieldCustom"><span id="lblAccom" class="sLabel" style="width: 20px;"></span>
+                                    <label class="sLabel" for="refAccom" style="width: 40px; padding: 5px;">Ref : </label>
+                                    <span id="refAccom" class="sLabel narrow"></span>
+                                    <label class="sLabel" for="lblNote2" style="width: 50px; padding: 5px;">Notes : </label>
+                                    <span id="lblNote2" class="sLabel narrow"></span>
+                                    <span style="margin: 10px;" id="noAttachAccom"></span>
+                                </span>
                             </p>
                             <p class="control-group">
                                 <label for="lblRental">Car Rental Booked?</label>
-                                <span class="field"><span id="lblRental" class="sLabel"></span></span>
+                                <span class="fieldCustom"><span id="lblRental" class="sLabel" style="width: 20px;"></span>
+                                    <label class="sLabel" for="refRental" style="width: 40px; padding: 5px;">Ref : </label>
+                                    <span id="refRental" class="sLabel narrow"></span>
+                                    <label class="sLabel" for="lblNote3" style="width: 50px; padding: 5px;">Notes : </label>
+                                    <span id="lblNote3" class="sLabel narrow"></span>
+                                    <span style="margin: 10px;" id="noAttachRental"></span>
+                                </span>
                             </p>
                             <p class="control-group">
                                 <label for="lblTransfer">Airport Transfers Arranged?</label>
-                                <span class="field"><span id="lblTransfer" class="sLabel"></span></span>
+                                <span class="fieldCustom"><span id="lblTransfer" class="sLabel" style="width: 20px;"></span>
+                                    <label class="sLabel" for="refTransfer" style="width: 40px; padding: 5px;">Ref : </label>
+                                    <span id="refTransfer" class="sLabel narrow"></span>
+                                    <label class="sLabel" for="lblNote4" style="width: 50px; padding: 5px;">Notes : </label>
+                                    <span id="lblNote4" class="sLabel narrow"></span>
+                                    <span style="margin: 10px;" id="noAttachTransfer"></span>
+                                </span>
                             </p>
                             <p class="control-group">
                                 <label for="lblPassport">Passport/Visa Valid?</label>
-                                <span class="field"><span id="lblPassport" class="sLabel"></span></span>
+                                <span class="fieldCustom"><span id="lblPassport" class="sLabel" style="width: 20px;"></span>
+                                    <label class="sLabel" for="lblNote5" style="width: 50px; padding: 5px;">Notes : </label>
+                                    <span id="lblNote5" class="sLabel"></span>
+                                    <span style="margin: 10px;" id="noAttachPass"></span>
+                                </span>
                             </p>
                         </div>
                     </div>
                     <div style="margin: 10px;">
-                        <button id="btnEditRequest" type="button" class="ms-Button"><span class="ms-Button-label"><i class="ms-Icon ms-Icon--editBox"></i>Edit request</span></button>
-                        <button id="btnPrint" type="button" class="ms-Button"><span class="ms-Button-label"><i class="ms-Icon ms-Icon--print"></i>Print</span></button>
+                        <button id="btnEditRequest" type="button" class="ms-Button"><span class="ms-Button-label"><i class="ms-Icon ms-Icon--editBox"></i> Edit request</span></button>
+                        <button id="btnPrint" type="button" class="ms-Button"><span class="ms-Button-label"><i class="ms-Icon ms-Icon--print"></i> Print</span></button>
                         <button id="btnSendRequestToApprove" type="button" class="ms-Button ms-Button--primary" style="display: none;"><span class="ms-Button-label"><i class="ms-Icon ms-Icon--mailSend"></i>Send to approve</span></button>
                         <button id="btnApproveRequest" type="button" class="ms-Button ms-Button--primary" style="display: none;"><span class="ms-Button-label"><i class="ms-Icon ms-Icon--check"></i>Approve</span></button>
                         <button id="btnRejectRequest" type="button" class="ms-Button" style="display: none;"><span class="ms-Button-label"><i class="ms-Icon ms-Icon--x"></i>Reject</span></button>

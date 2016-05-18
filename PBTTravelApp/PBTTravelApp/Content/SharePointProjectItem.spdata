@@ -5,7 +5,6 @@
     <ProjectItemFile Source="App.css" Target="Content\" Type="ElementFile" />
     <ProjectItemFile Source="animate.delay.css" Target="Content\" Type="ElementFile" />
     <ProjectItemFile Source="animate.min.css" Target="Content\" Type="ElementFile" />
-    <ProjectItemFile Source="bootstrap.min.css" Target="Content\" Type="ElementFile" />
     <ProjectItemFile Source="bootstrap-timepicker.min.css" Target="Content\" Type="ElementFile" />
     <ProjectItemFile Source="fullcalendar.css" Target="Content\" Type="ElementFile" />
     <ProjectItemFile Source="jquery.alerts.css" Target="Content\" Type="ElementFile" />
@@ -124,9 +123,18 @@
     <ProjectItemFile Source="sass\Fabric.Typography.Language.Overrides.Output.scss" Target="Content\sass\" Type="ElementFile" />
     <ProjectItemFile Source="sass\Fabric.Typography.Output.scss" Target="Content\sass\" Type="ElementFile" />
     <ProjectItemFile Source="sass\Fabric.Utilities.Output.scss" Target="Content\sass\" Type="ElementFile" />
-    <ProjectItemFile Source="chosen-sprite.png" Target="Content\" Type="ElementFile" />
-    <ProjectItemFile Source="chosen-sprite_alt.png" Target="Content\" Type="ElementFile" />
     <ProjectItemFile Source="themes\metro\view.png" Target="Content\themes\metro\" Type="ElementFile" />
     <ProjectItemFile Source="Custom\PrintForm.css" Target="Content\Custom\" Type="ElementFile" />
+    <ProjectItemFile Source="sass\_Fabric.Mixins.RTL.scss" Target="Content\sass\" Type="ElementFile" />
+    <ProjectItemFile Source="Custom\PeoplePicker.css" Target="Content\Custom\" Type="ElementFile" />
+    <ProjectItemFile Source="themes\metro\blue\progressindicator.gif" Target="Content\themes\metro\blue\" Type="ElementFile" />
+    <ProjectItemFile Source="jQuery.FileUpload\img\progressbar.gif" Target="Content\jQuery.FileUpload\img\" Type="ElementFile" />
+    <ProjectItemFile Source="jQuery.FileUpload\img\loading.gif" Target="Content\jQuery.FileUpload\img\" Type="ElementFile" />
+    <ProjectItemFile Source="jQuery.FileUpload\css\jquery.fileupload-ui-noscript.css" Target="Content\jQuery.FileUpload\css\" Type="ElementFile" />
+    <ProjectItemFile Source="jQuery.FileUpload\css\jquery.fileupload-ui.css" Target="Content\jQuery.FileUpload\css\" Type="ElementFile" />
+    <ProjectItemFile Source="jQuery.FileUpload\css\jquery.fileupload-noscript.css" Target="Content\jQuery.FileUpload\css\" Type="ElementFile" />
+    <ProjectItemFile Source="jQuery.FileUpload\css\jquery.fileupload.css" Target="Content\jQuery.FileUpload\css\" Type="ElementFile" />
+    <ProjectItemFile Source="bootstrap.min.css" Target="Content\" Type="ElementFile" />
+    <ProjectItemFile Source="bootstrap.css" Target="Content\" Type="ElementFile" />
   </Files>
 </ProjectItem>

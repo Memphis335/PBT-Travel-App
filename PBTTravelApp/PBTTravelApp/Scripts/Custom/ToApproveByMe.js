@@ -22,13 +22,40 @@ ToApproveByMe = function () {
     },
         c = function (g, f) {
             var i;
-            var e = "RequestApproverId eq " + CurrentUser.Id +
-                " and RequestStatus eq 'Pending Approval'";
-            var h = appweburl +
-                "/_vti_bin/ListData.svc/TravelRequests/?$filter=" + e +
+            var e = "RequestApproverId eq " + CurrentUser.Id + " and RequestStatus eq 'PendingApproval'";
+            var h = appweburl + "/_vti_bin/ListData.svc/TravelRequests/?$filter=" + e +
                 "&$inlinecount=allpages&$select=Id,RequesterName,Created,TripStartDate,TripEndDate,RequestStatus,TripPurpose&$orderby=" +
-                f.jtSorting.replace(" DESC", " desc").replace(" ASC",
-                    " asc") + "&$skip=" + f.jtStartIndex + "&$top=" + f.jtPageSize;
+                f.jtSorting.replace(" DESC", " desc").replace(" ASC", " asc") + "&$skip=" + f.jtStartIndex + "&$top=" + f.jtPageSize;
+            return $.Deferred(function (j) {
+                $.ajax({
+                    url: h,
+                    type: "GET",
+                    headers: {
+                        accept: "application/json;odata=verbose"
+                    },
+                    dataType: "json",
+                    data: g,
+                    cache: false,
+                    success: function (k) {
+                        i = {
+                            Result: "OK",
+                            Records: k.d.results,
+                            TotalRecordCount: k.d.__count
+                        };
+                        j.resolve(i);
+                    },
+                    error: function () {
+                        j.reject();
+                    }
+                });
+            });
+        },
+        b = function (g, f) {
+            var i;
+            var e = "RequestApproverId eq " + CurrentUser.Id + " and RequestStatus eq 'Approved'";
+            var h = appweburl + "/_vti_bin/ListData.svc/TravelRequests/?$filter=" + e +
+                "&$inlinecount=allpages&$select=Id,RequesterName,Created,TripStartDate,TripEndDate,RequestStatus,TripPurpose&$orderby=" +
+                f.jtSorting.replace(" DESC", " desc").replace(" ASC", " asc") + "&$skip=" + f.jtStartIndex + "&$top=" + f.jtPageSize;
             return $.Deferred(function (j) {
                 $.ajax({
                     url: h,
@@ -82,6 +109,7 @@ ToApproveByMe = function () {
         };
     return {
         getPendingRequests: c,
+        getApprovedRequests: b,
         deleteItem: a
     };
 }();
@@ -112,9 +140,7 @@ $(document).ready(function () {
                     display: function (a) {
                         var b = moment(a.record.Created);
                         if (b.isValid()) {
-                            return b.format(
-                                commonDateFormat2
-                            );
+                            return b.format(commonDateFormat2);
                         }
                     }
                 },
@@ -124,9 +150,7 @@ $(document).ready(function () {
                     display: function (a) {
                         var b = moment(a.record.TripStartDate);
                         if (b.isValid()) {
-                            return b.format(
-                                commonDateFormat2
-                            );
+                            return b.format(commonDateFormat2);
                         }
                     }
                 },
@@ -136,9 +160,7 @@ $(document).ready(function () {
                     display: function (a) {
                         var b = moment(a.record.TripEndDate);
                         if (b.isValid()) {
-                            return b.format(
-                                commonDateFormat2
-                            );
+                            return b.format(commonDateFormat2);
                         }
                     }
                 },
@@ -164,5 +186,78 @@ $(document).ready(function () {
             }
         });
         $("#PendingRequests").jtable("load");
+    });
+    $(function () {
+        $("#ApprovedRequests").jtable({
+            title: "History of Approved Requests",
+            paging: true,
+            pageSize: 10,
+            sorting: true,
+            multiSorting: true,
+            defaultSorting: "Id desc",
+            actions: {
+                listAction: ToApproveByMe.getApprovedRequests
+            },
+            fields: {
+                Id: {
+                    key: true,
+                    create: false,
+                    edit: false,
+                    list: true,
+                    title: "ID",
+                    width: "5%"
+                },
+                Created: {
+                    title: "Created",
+                    width: "10%",
+                    display: function (a) {
+                        var b = moment(a.record.Created);
+                        if (b.isValid()) {
+                            return b.format(commonDateFormat2);
+                        }
+                    }
+                },
+                TripStartDate: {
+                    title: "Trip Start",
+                    width: "10%",
+                    display: function (a) {
+                        var b = moment(a.record.TripStartDate);
+                        if (b.isValid()) {
+                            return b.format(commonDateFormat2);
+                        }
+                    }
+                },
+                TripEndDate: {
+                    title: "Trip End",
+                    width: "10%",
+                    display: function (a) {
+                        var b = moment(a.record.TripEndDate);
+                        if (b.isValid()) {
+                            return b.format(commonDateFormat2);
+                        }
+                    }
+                },
+                RequesterName: {
+                    title: "Requester Name",
+                    width: "15%"
+                },
+                TripPurpose: {
+                    title: "Trip Purpose",
+                    width: "35%",
+                    sorting: false,
+                },
+                CustomViewAction: {
+                    title: "",
+                    listClass: "jtable-command-column",
+                    sorting: false,
+                    width: "2%",
+                    display: function (a) {
+                        return "<button title='View' onclick='location.href=\"RequestFormView.aspx?requestID=" + a.record.Id +
+                        "\"' class='jtable-command-button jtable-view-command-button'><span>View</span></button>";
+                    }
+                }
+            }
+        });
+        $("#ApprovedRequests").jtable("load");
     });
 });

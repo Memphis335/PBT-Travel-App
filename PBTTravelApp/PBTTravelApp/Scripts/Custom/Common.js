@@ -22,7 +22,7 @@ var RequestStatusEnum = {
     },
     PendingApproval: {
         Name: "Pending Approval",
-        Value: "Pending Approval"
+        Value: "PendingApproval"
     },
     Rejected: {
         Name: "Rejected",

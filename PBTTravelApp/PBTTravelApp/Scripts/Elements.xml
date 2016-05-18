@@ -3,7 +3,6 @@
   <Module Name="Scripts">
     <File Path="Scripts\Custom\AppInit.js" Url="Scripts/Custom/AppInit.js" ReplaceContent="TRUE" />
     <File Path="Scripts\bootstrap.min.js" Url="Scripts/bootstrap.min.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\bootstrap-timepicker.min.js" Url="Scripts/bootstrap-timepicker.min.js" ReplaceContent="TRUE" />
     <File Path="Scripts\chosen.jquery.min.js" Url="Scripts/chosen.jquery.min.js" ReplaceContent="TRUE" />
     <File Path="Scripts\Custom\Common.js" Url="Scripts/Custom/Common.js" ReplaceContent="TRUE" />
     <File Path="Scripts\Custom\Default.js" Url="Scripts/Custom/Default.js" ReplaceContent="TRUE" />
@@ -18,15 +17,11 @@
     <File Path="Scripts\jquery-ui-1.9.2.min.js" Url="Scripts/jquery-ui-1.9.2.min.js" ReplaceContent="TRUE" />
     <File Path="Scripts\Custom\LicenseInit.js" Url="Scripts/Custom/LicenseInit.js" ReplaceContent="TRUE" />
     <File Path="Scripts\modernizr.min.js" Url="Scripts/modernizr.min.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\moment.min.js" Url="Scripts/moment.min.js" ReplaceContent="TRUE" />
     <File Path="Scripts\Custom\MyRequests.js" Url="Scripts/Custom/MyRequests.js" ReplaceContent="TRUE" />
     <File Path="Scripts\Custom\MySettlements.js" Url="Scripts/Custom/MySettlements.js" ReplaceContent="TRUE" />
     <File Path="Scripts\notify.min.js" Url="Scripts/notify.min.js" ReplaceContent="TRUE" />
     <File Path="Scripts\numeral.js" Url="Scripts/numeral.js" ReplaceContent="TRUE" />
     <File Path="Scripts\Custom\ReportsRequests.js" Url="Scripts/Custom/ReportsRequests.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\Custom\ReportsRequestsCosts.js" Url="Scripts/Custom/ReportsRequestsCosts.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\Custom\ReportsSettlements.js" Url="Scripts/Custom/ReportsSettlements.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\Custom\ReportsSettlementsCosts.js" Url="Scripts/Custom/ReportsSettlementsCosts.js" ReplaceContent="TRUE" />
     <File Path="Scripts\Custom\RequestFormCreate.js" Url="Scripts/Custom/RequestFormCreate.js" ReplaceContent="TRUE" />
     <File Path="Scripts\underscore-min.js" Url="Scripts/underscore-min.js" ReplaceContent="TRUE" />
     <File Path="Scripts\jquery-2.2.0.min.map" Url="Scripts/jquery-2.2.0.min.map" ReplaceContent="TRUE" />
@@ -157,19 +152,36 @@
     <File Path="Scripts\Prettify\lang-apollo.js" Url="Scripts/Prettify/lang-apollo.js" ReplaceContent="TRUE" />
     <File Path="Scripts\handsontable\handsontable.full.min.js.map" Url="Scripts/handsontable/handsontable.full.min.js.map" ReplaceContent="TRUE" />
     <File Path="Scripts\chosen.jquery.js" Url="Scripts/chosen.jquery.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\jquery.timepicker.min.js" Url="Scripts/jquery.timepicker.min.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\jquery.timepicker.js" Url="Scripts/jquery.timepicker.js" ReplaceContent="TRUE" />
     <File Path="Scripts\fullcalendar.min.js" Url="Scripts/fullcalendar.min.js" ReplaceContent="TRUE" />
     <File Path="Scripts\fullcalendar.js" Url="Scripts/fullcalendar.js" ReplaceContent="TRUE" />
     <File Path="Scripts\Fabric-UI\datepicker.js" Url="Scripts/Fabric-UI/datepicker.js" ReplaceContent="TRUE" />
     <File Path="Scripts\Fabric-UI\dropdown.js" Url="Scripts/Fabric-UI/dropdown.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\moment-with-locales.min.js" Url="Scripts/moment-with-locales.min.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\moment-with-locales.js" Url="Scripts/moment-with-locales.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\moment.js" Url="Scripts/moment.js" ReplaceContent="TRUE" />
     <File Path="Scripts\Custom\RequestFormView.js" Url="Scripts/Custom/RequestFormView.js" ReplaceContent="TRUE" />
     <File Path="Scripts\Custom\PrintForm.js" Url="Scripts/Custom/PrintForm.js" ReplaceContent="TRUE" />
     <File Path="Scripts\Custom\workflows.js" Url="Scripts/Custom/workflows.js" ReplaceContent="TRUE" />
     <File Path="Scripts\Custom\RequestFormEdit.js" Url="Scripts/Custom/RequestFormEdit.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\Custom\sppeoplepicker.min.js" Url="Scripts/Custom/sppeoplepicker.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Custom\sppeoplepicker.js" Url="Scripts/Custom/sppeoplepicker.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Custom\App.js" Url="Scripts/Custom/App.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\jquery.fabric.min.js" Url="Scripts/jquery.fabric.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\jquery.fabric.js" Url="Scripts/jquery.fabric.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Custom\peoplepicker.js" Url="Scripts/Custom/peoplepicker.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\Custom\Dashboard.js" Url="Scripts/Custom/Dashboard.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\jQuery.FileUpload\jquery.iframe-transport.js" Url="Scripts/jQuery.FileUpload/jquery.iframe-transport.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\jQuery.FileUpload\jquery.fileupload-video.js" Url="Scripts/jQuery.FileUpload/jquery.fileupload-video.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\jQuery.FileUpload\jquery.fileupload-validate.js" Url="Scripts/jQuery.FileUpload/jquery.fileupload-validate.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\jQuery.FileUpload\jquery.fileupload-ui.js" Url="Scripts/jQuery.FileUpload/jquery.fileupload-ui.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\jQuery.FileUpload\jquery.fileupload-process.js" Url="Scripts/jQuery.FileUpload/jquery.fileupload-process.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\jQuery.FileUpload\jquery.fileupload-jquery-ui.js" Url="Scripts/jQuery.FileUpload/jquery.fileupload-jquery-ui.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\jQuery.FileUpload\jquery.fileupload-image.js" Url="Scripts/jQuery.FileUpload/jquery.fileupload-image.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\jQuery.FileUpload\jquery.fileupload-audio.js" Url="Scripts/jQuery.FileUpload/jquery.fileupload-audio.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\jQuery.FileUpload\jquery.fileupload-angular.js" Url="Scripts/jQuery.FileUpload/jquery.fileupload-angular.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\jQuery.FileUpload\jquery.fileupload.js" Url="Scripts/jQuery.FileUpload/jquery.fileupload.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\jQuery.FileUpload\cors\jquery.xdr-transport.js" Url="Scripts/jQuery.FileUpload/cors/jquery.xdr-transport.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\jQuery.FileUpload\cors\jquery.postmessage-transport.js" Url="Scripts/jQuery.FileUpload/cors/jquery.postmessage-transport.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\moment.min.js" Url="Scripts/moment.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\moment.js" Url="Scripts/moment.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\bootstrap-timepicker.min.js" Url="Scripts/bootstrap-timepicker.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\jquery.timepicker.min.js" Url="Scripts/jquery.timepicker.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\bootstrap.js" Url="Scripts/bootstrap.js" ReplaceContent="TRUE" />
   </Module>
 </Elements>
