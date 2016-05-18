@@ -73,9 +73,31 @@
                                 </span>
                             </p>
                             <p>
-                                <label>Frequent-flyer Program Number</label>
+                                <label>Membership Number</label>
                                 <span class="field">
                                     <input type="text" name="txtFFPN" id="txtFFPN" class="input-xlarge" />
+                                    <input type="checkbox" id="addMore" name="addMore"/>Add More?
+                                </span>
+                            </p>
+                            <p id="ExtraProg" style="display: none;">
+                                <label>Extra Program</label>
+                                <span class="field">
+                                    <select name="ddlFFP2" id="ddlFFP2" class="ms-Dropdown">
+                                        <option value="">Choose One</option>
+                                    </select>
+                                </span>
+                            </p>
+                            <p id="ExtraNum" style="display: none;">
+                                <label>Extra Membership Number</label>
+                                <span class="field">
+                                    <input type="text" name="txtFFPN2" id="txtFFPN2" class="input-xlarge" />
+                                    <input type="checkbox" id="addMore2" name="addMore2"/>More?
+                                </span>
+                            </p>
+                            <p id="ExtraNumMul" style="display: none;">
+                                <label>Extra Memberships</label>
+                                <span class="field">
+                                    <textarea cols="80" rows="3" name="txtFFPNMul" id="txtFFPNMul" class="standardTextArea" placeholder="Emirates - 352232;BA - 3266559"></textarea>
                                 </span>
                             </p>
                             <p>
@@ -99,7 +121,6 @@
                                     <select name="ddlRequestApprover" id="ddlRequestApprover" data-placeholder="Choose a Employee..." style="margin-right: 10px; width: 370px;" class="" tabindex="2">
                                         <option value=""></option>
                                     </select>
-                                    <%--<div id="peoplePickerDiv" style="margin-right: 10px; width: 370px;"></div>--%>
                                 </div>
                             </p>
                         </div>
@@ -112,7 +133,7 @@
                             <p class="control-group">
                                 <label for="txtStartDate">Departure Date</label>
                                 <span class="field">
-                                        <input id="txtStartDate" type="text" name="txtTripStartDate" class="input-xlarge" />
+                                    <input id="txtStartDate" type="text" name="txtTripStartDate" class="input-xlarge" />
                                 </span>
                             </p>
                             <p class="control-group">

@@ -52,7 +52,7 @@
     <script src="../Scripts/modernizr.min.js"></script>
     <script src="../Scripts/elements.js"></script>
     <script src="../Scripts/Prettify/prettify.js"></script>
-    =
+    
     <script src="../Scripts/notify.min.js"></script>
     <script src="../Scripts/jquery.loadTemplate-1.4.4.min.js"></script>
     <script src="../Scripts/jquery.MultiFile.min.js"></script>

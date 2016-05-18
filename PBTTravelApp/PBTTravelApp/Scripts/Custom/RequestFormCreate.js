@@ -26,8 +26,7 @@ RequestFormCreate = function () {
         var k = e();
         $.ajax({
             url: appweburl +
-                "/_api/Web/lists/getbytitle('TravelRequests')/items(" + l + ")/AttachmentFiles/add(FileName='" + j +
-                "')",
+                "/_api/Web/lists/getbytitle('TravelRequests')/items(" + l + ")/AttachmentFiles/add(FileName='" + j + "')",
             type: "POST",
             async: false,
             processData: false,
@@ -71,7 +70,7 @@ RequestFormCreate = function () {
         }
         return j;
     };
-    var d = function (j,f) {
+    var d = function (j, f) {
         var i;
         $.ajax({
             url: appweburl + "/_api/Web/lists/getbytitle('" + j + "')/items?$select=" + f,
@@ -172,7 +171,7 @@ $(document).ready(function () {
     if (CurrentUser.IsAdmin) {
         $("#liBookingProgress").show();
     }
-   
+
     $("#requestFormCreate").submit(function (q) {
         if ($("#requestFormCreate").valid()) {
             q.preventDefault();
@@ -196,6 +195,9 @@ $(document).ready(function () {
             r.PassportVisaValid = $("#chkPassport").is(":checked");
             r.FrequentFlyer = $("#ddlFFP").val();
             r.FrequentflyerNumber = $("#txtFFPN").val();
+            r.FFP2 = $("#ddlFFP2").val();
+            r.FFPN2 = $("#txtFFPN2").val();
+            r.FFPNMul = $("#txtFFPNMul").val();
             r.City = $("#txtDeptCity").val();
             RequestFormCreate.createRequestForm(r);
         }
@@ -210,7 +212,7 @@ $(document).ready(function () {
         $("#divDestinations").handsontable("setDataAtCell", 0, 5, $("#txtStartDate").val());
     });
 
-    var c = RequestFormCreate.getDictionary("DictApprovers", "ID,User/Title,User/Id&$expand=User/Title,User/Id");
+    var c = RequestFormCreate.getDictionary("Approvers", "ID,User/Title,User/Id&$expand=User/Title,User/Id");
     var i = $("#ddlRequestApprover");
     $.each(c, function () {
         i.append($("<option>", {
@@ -228,6 +230,14 @@ $(document).ready(function () {
         });
     });
 
+    $("#addMore").on("click", function () {
+        $("#ExtraNum").toggle();
+        $("#ExtraProg").toggle();
+    });
+    $("#addMore2").on("click", function () {
+        $("#ExtraNumMul").toggle();
+    });
+
     var nn = RequestFormCreate.getDictionary("DictProjects", "Title, ID");
     var hh = $("#ddlProject");
     $.each(nn, function () {
@@ -240,6 +250,13 @@ $(document).ready(function () {
     var h = $("#ddlFFP");
     $.each(n, function () {
         h.append($("<option>", {
+            value: this.Title,
+            text: this.Title
+        }));
+    });
+    var hhh = $("#ddlFFP2");
+    $.each(n, function () {
+        hhh.append($("<option>", {
             value: this.Title,
             text: this.Title
         }));
@@ -267,43 +284,43 @@ $(document).ready(function () {
     $(".chzn-select").chosen({
         no_results_text: "Oops, nothing found!"
     });
-        jQuery("#requestFormCreate").validate({
-            ignore: ".ignore",
-            rules: {
-                txtRequesterName: {
-                    required: true,
-                    maxlength: 250
-                },
-                txtEmail: {
-                    required: true,
-                    email: true,
-                    maxlength: 250
-                },
-                txtTripPurpose: {
-                    required: true,
-                    maxlength: 250
-                },
-                txtEmployeeID: {
-                    maxlength: 250
-                },
-                txtPhoneNumber: {
-                    maxlength: 250
-                },
-                taNotices: {
-                    maxlength: 1000
-                },
-                txtTripStartDate: {
-                    required: true,
-                    maxlength: 250
-                },
-                txtTripEndDate: {
-                    required: true,
-                    maxlength: 250
-                },
+    jQuery("#requestFormCreate").validate({
+        ignore: ".ignore",
+        rules: {
+            txtRequesterName: {
+                required: true,
+                maxlength: 250
+            },
+            txtEmail: {
+                required: true,
+                email: true,
+                maxlength: 250
+            },
+            txtTripPurpose: {
+                required: true,
+                maxlength: 250
+            },
+            txtEmployeeID: {
+                maxlength: 250
+            },
+            txtPhoneNumber: {
+                maxlength: 250
+            },
+            taNotices: {
+                maxlength: 1000
+            },
+            txtTripStartDate: {
+                required: true,
+                maxlength: 250
+            },
+            txtTripEndDate: {
+                required: true,
+                maxlength: 250
+            },
             ddlProject: "required",
             ddlRequestApprover: "required",
             txtDestinations: "required"
-            },
+        },
         messages: {
             txtRequesterName: "Please enter your name",
             txtEmail: "Please enter a valid email address",
@@ -355,14 +372,14 @@ $(document).ready(function () {
         $("#txtDestinations").val(r.isEmptyRow(0) ? "" : "false");
     };
     $("#divDestinations").handsontable({
-            data: p,
-            minSpareRows: 1,
-            multiSelect: false,
-            contextMenu: false,
-            afterChange: a,
-            colWidths: [150, 130, 200, 160, 160, 100, 100],
-            colHeaders: ["Country", "City / Airport", "Accommodation Required",
-            "Rental Car Required","Airport Transfers","Start Date","End Date"
+        data: p,
+        minSpareRows: 1,
+        multiSelect: false,
+        contextMenu: false,
+        afterChange: a,
+        colWidths: [150, 130, 200, 160, 160, 100, 100],
+        colHeaders: ["Country", "City / Airport", "Accommodation Required",
+        "Rental Car Required", "Airport Transfers", "Start Date", "End Date"
         ],
         columns: [{
             data: "Country"

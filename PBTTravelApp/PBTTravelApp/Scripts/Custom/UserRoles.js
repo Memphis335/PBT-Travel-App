@@ -244,13 +244,13 @@ $(document).ready(function () {
         },
         actions: {
             listAction: function (b, a) {
-                return UserRoles.readAll("DictApprovers");
+                return UserRoles.readAll("Approvers");
             },
             createAction: function (a) {
-                return UserRoles.createItem($("#Edit-User").val(), $("#Edit-User option:selected").text(), "", "DictApprovers");
+                return UserRoles.createItem($("#Edit-User").val(), $("#Edit-User option:selected").text(), "", "Approvers");
             },
             deleteAction: function (a) {
-                return UserRoles.deleteItem(a.ID, "DictApprovers");
+                return UserRoles.deleteItem(a.ID, "Approvers");
             }
         },
         fields: {

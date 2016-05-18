@@ -80,29 +80,11 @@
     <Content Include="Features\Feature10\Feature10.Template.xml">
       <DependentUpon>Feature10.feature</DependentUpon>
     </Content>
-    <Content Include="Features\Feature11\Feature11.Template.xml">
-      <DependentUpon>Feature11.feature</DependentUpon>
-    </Content>
-    <Content Include="Features\Feature2\Feature2.Template.xml">
-      <DependentUpon>Feature2.feature</DependentUpon>
-    </Content>
     <Content Include="Features\Feature3\Feature3.Template.xml">
       <DependentUpon>Feature3.feature</DependentUpon>
     </Content>
-    <Content Include="Features\Feature4\Feature4.Template.xml">
-      <DependentUpon>Feature4.feature</DependentUpon>
-    </Content>
-    <Content Include="Features\Feature5\Feature5.Template.xml">
-      <DependentUpon>Feature5.feature</DependentUpon>
-    </Content>
-    <Content Include="Features\Feature6\Feature6.Template.xml">
-      <DependentUpon>Feature6.feature</DependentUpon>
-    </Content>
     <Content Include="Features\Feature7\Feature7.Template.xml">
       <DependentUpon>Feature7.feature</DependentUpon>
-    </Content>
-    <Content Include="Features\Feature8\Feature8.Template.xml">
-      <DependentUpon>Feature8.feature</DependentUpon>
     </Content>
     <Content Include="Features\Feature9\Feature9.Template.xml">
       <DependentUpon>Feature9.feature</DependentUpon>
@@ -111,9 +93,6 @@
     <Content Include="Images\GPS-Tracking-128.png">
       <OpcRelationship>manifest-icon</OpcRelationship>
     </Content>
-    <Content Include="Lists\DictApprovers\ApproversInstance\Elements.xml" />
-    <Content Include="Lists\DictApprovers\Elements.xml" />
-    <Content Include="Lists\DictApprovers\Schema.xml" />
     <Content Include="Lists\CustomUserRoles\CustomUserRolesInstance\Elements.xml" />
     <Content Include="Lists\CustomUserRoles\Elements.xml" />
     <Content Include="Lists\CustomUserRoles\Schema.xml" />
@@ -165,29 +144,11 @@
     <None Include="Features\Feature10\Feature10.feature">
       <FeatureId>{780f280d-6cb8-48c2-b71a-8efca54a4eb8}</FeatureId>
     </None>
-    <None Include="Features\Feature11\Feature11.feature">
-      <FeatureId>{64413dd8-8909-43c1-8795-1369910536ed}</FeatureId>
-    </None>
-    <None Include="Features\Feature2\Feature2.feature">
-      <FeatureId>{86006914-363c-4a68-b34c-6833cd335d5c}</FeatureId>
-    </None>
     <None Include="Features\Feature3\Feature3.feature">
       <FeatureId>{fe2cf3cc-ec9e-463c-8c97-55d4d2a8a1d4}</FeatureId>
     </None>
-    <None Include="Features\Feature4\Feature4.feature">
-      <FeatureId>{822eb185-8e64-42c6-aa22-5d211cd44f3b}</FeatureId>
-    </None>
-    <None Include="Features\Feature5\Feature5.feature">
-      <FeatureId>{58f32c98-6630-44cc-88d8-4a51957ced3d}</FeatureId>
-    </None>
-    <None Include="Features\Feature6\Feature6.feature">
-      <FeatureId>{e7a13f30-e78a-4610-95e1-834908dceb81}</FeatureId>
-    </None>
     <None Include="Features\Feature7\Feature7.feature">
       <FeatureId>{da42155e-68f4-41fe-b5a7-eeea57e49f3a}</FeatureId>
-    </None>
-    <None Include="Features\Feature8\Feature8.feature">
-      <FeatureId>{b138638b-be29-48fe-b425-ed1ca48734d1}</FeatureId>
     </None>
     <None Include="Features\Feature9\Feature9.feature">
       <FeatureId>{467ce0d6-fc5a-4bad-a07d-c37a8e018323}</FeatureId>
@@ -196,12 +157,6 @@
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
     <None Include="fonts\glyphicons-halflings-regular.woff2" />
-    <None Include="Lists\DictApprovers\ApproversInstance\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{8ef81429-e633-4b34-95ba-fbf1c6f7e09e}</SharePointProjectItemId>
-    </None>
-    <None Include="Lists\DictApprovers\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{5e05eb72-2695-44b1-945f-eb2a6009cb20}</SharePointProjectItemId>
-    </None>
     <None Include="Lists\CustomUserRoles\CustomUserRolesInstance\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{6430e28b-27ed-4d87-a6be-a34964e66b73}</SharePointProjectItemId>
     </None>
