@@ -142,6 +142,9 @@ RequestFormCreate = function () {
                     PassportVisaValid: j.PassportVisaValid,
                     FrequentFlyer: j.FrequentFlyer,
                     FrequentflyerNumber: j.FrequentflyerNumber,
+                    Frequent_x002d_Flyer2: j.Frequent_x002d_Flyer2,
+                    FrequentMemNumber2: j.FrequentMemNumber2,
+                    Memberships: j.Memberships,
                     City: j.City,
                     RequestStatus: RequestStatusEnum.Draft.Value
                 }),

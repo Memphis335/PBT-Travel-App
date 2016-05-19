@@ -69,6 +69,28 @@
                                 <label>Frequent-flyer Program Number</label>
                                 <span class="field">
                                     <input type="text" name="txtFFPN" id="txtFFPN" class="input-xlarge" />
+                                    <input type="checkbox" id="addMore" name="addMore"/>Add More?
+                                </span>
+                            </p>
+                            <p id="ExtraProg" style="display: none;">
+                                <label>Extra Program</label>
+                                <span class="field">
+                                    <select name="ddlFFP2" id="ddlFFP2" class="ms-Dropdown">
+                                        <option value="">Choose One</option>
+                                    </select>
+                                </span>
+                            </p>
+                            <p id="ExtraNum" style="display: none;">
+                                <label>Extra Membership Number</label>
+                                <span class="field">
+                                    <input type="text" name="txtFFPN2" id="txtFFPN2" class="input-xlarge" />
+                                    <input type="checkbox" id="addMore2" name="addMore2"/>More?
+                                </span>
+                            </p>
+                            <p id="ExtraNumMul" style="display: none;">
+                                <label>Extra Memberships</label>
+                                <span class="field">
+                                    <textarea cols="80" rows="3" name="txtFFPNMul" id="txtFFPNMul" class="standardTextArea" placeholder="Emirates - 352232;BA - 3266559"></textarea>
                                 </span>
                             </p>
                             <p>
@@ -214,8 +236,8 @@
                                 <label for="chkPassport">Passport/Visa Valid?</label>
                                 <span class="fieldCustom">
                                     <input id="chkPassport" name="chkPassport" type="checkbox" />
-                                    <label></label><input type="text"/>
-                                    <label for="txtPassport" style="width: 60px;">Notes : </label>
+
+                                    <label for="txtPassport" style="width: 60px; margin-left: 290px;">Notes : </label>
                                     <input id="txtPassport" name="txtPassport" type="text" />
                                     <input type="file" id="filePassport" style="margin-left: 5px;" />
                                     <span id="filePassRetrieved" class="file"></span>

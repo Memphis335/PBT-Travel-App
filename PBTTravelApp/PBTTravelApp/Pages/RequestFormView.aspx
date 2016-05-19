@@ -64,8 +64,20 @@
                                 <span class="field"><span id="lblFrequentflyer" class="sLabel"></span></span>
                             </p>
                             <p>
-                                <label>Frequent-flyer Program Number</label>
+                                <label>Membership Number</label>
                                 <span class="field"><span id="lblFrequentflyerNumber" class="sLabel"></span></span>
+                            </p>
+                            <p id="extraMem" style="display: none">
+                                <label>Other Program</label>
+                                <span class="field"><span id="lblFrequentflyer2" class="sLabel"></span></span>
+                            </p>
+                            <p id="extraMemNum" style="display: none">
+                                <label>Other Membership Number</label>
+                                <span class="field"><span id="lblFrequentflyerNumber2" class="sLabel"></span></span>
+                            </p>
+                            <p id="extraMul" style="display: none">
+                                <label>More Memberships</label>
+                                <span class="field"><span id="lblFrequentflyerMul" class="sLabel"></span></span>
                             </p>
                             <p>
                                 <label>Project</label>
@@ -187,7 +199,7 @@
                             <p class="control-group">
                                 <label for="lblPassport">Passport/Visa Valid?</label>
                                 <span class="fieldCustom"><span id="lblPassport" class="sLabel" style="width: 20px;"></span>
-                                    <label class="sLabel" for="lblNote5" style="width: 50px; padding: 5px;">Notes : </label>
+                                    <label class="sLabel" for="lblNote5" style="width: 50px; padding: 5px; margin-left: 250px;">Notes : </label>
                                     <span id="lblNote5" class="sLabel"></span>
                                     <span style="margin: 10px;" id="noAttachPass"></span>
                                 </span>

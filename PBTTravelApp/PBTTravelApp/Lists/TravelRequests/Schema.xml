@@ -2,156 +2,239 @@
 <List xmlns:ows="Microsoft SharePoint" Title="TravelRequests" FolderCreation="FALSE" Direction="$Resources:Direction;" Url="Lists/TravelRequests" BaseType="0" xmlns="http://schemas.microsoft.com/sharepoint/">
   <MetaData>
     <ContentTypes>
-      
-      
-      
-    <ContentType ID="0x0100306643106c574d66a81565b8a572079f" Name="ListFieldsContentType">
+
+
+
+      <ContentType ID="0x0100306643106c574d66a81565b8a572079f" Name="ListFieldsContentType">
         <FieldRefs>
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        <FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Name="Title" /><FieldRef ID="{d02113af-7e7c-4d35-9da7-cbd589e7c747}" Name="EmployeeID" /><FieldRef ID="{0f8779b6-601f-4ba5-849a-2c1eef0fd919}" Name="PhoneNumber" /><FieldRef ID="{564090f3-79bb-4551-a5f3-f904b9e07abf}" Name="Project" /><FieldRef ID="{386a38e6-7a2a-46eb-8177-c54a1085ce29}" Name="RequestStatus" /><FieldRef ID="{8cad7d4b-f652-4d50-85e1-14c1c5525c3f}" Name="RequestApprover" /><FieldRef ID="{79b3e14d-e4d4-4818-aefd-ce6c7ff0374b}" Name="RequestApproveDate" /><FieldRef ID="{81a68464-4ff8-4eeb-b6c5-d85527816870}" Name="TripStartDate" /><FieldRef ID="{5482ae14-e19a-4f00-96dc-3d8b39c8d0a6}" Name="TripEndDate" /><FieldRef ID="{17e8e2e6-04da-48b8-a9b2-7d25a690e23f}" Name="TripPurpose" /><FieldRef ID="{0002b4c7-9d97-473a-8f8f-e01fb9082c5c}" Name="Notices" /><FieldRef ID="{49e22a4b-27da-46fd-bb48-71b2ff85c27e}" Name="DestinationsJSON" /><FieldRef ID="{92e76c07-fc51-4359-8904-089184f01c14}" Name="Email" /><FieldRef ID="{79a78424-8d2d-40d7-93ba-5afde7557106}" Name="RequestApproveLinkURL" /><FieldRef ID="{27894e4a-5dbf-442f-ba65-d0a9cc3f40cd}" Name="IsRequestApproveEmailSent" /><FieldRef ID="{10bb07a1-76b6-42bc-97e4-e9ceef876585}" Name="PersonalR" /><FieldRef ID="{9da06699-0fef-4b9d-8345-6151d321d1ab}" Name="_ModerationComments" /><FieldRef ID="{e8151bff-5592-4c93-a1d9-ccc1aa9a433d}" Name="RequestRejectReason" /><FieldRef ID="{bb2c895c-a366-455e-867f-063b55acb89c}" Name="AccomodationConfirmed" /><FieldRef ID="{7584b63b-9e18-4953-b7a6-616f5ef2fc1f}" Name="CarRentalBooked" /><FieldRef ID="{72e976d6-911a-4d4b-93de-03c0fa73983b}" Name="TransfersArranged" /><FieldRef ID="{32aad8a1-9b8f-4436-b060-b0a1ed8360af}" Name="PassportVisaValid" /><FieldRef ID="{1fc534f9-eeec-4877-a11a-ca149b0d3114}" Name="TicketIssued" /><FieldRef ID="{38ff40f8-dcd4-4f4d-8fba-6d4867676582}" Name="FrequentFlyer" /><FieldRef ID="{0ceb7124-1a5e-4431-a60f-342eeb259b0e}" Name="FrequentflyerNumber" /><FieldRef ID="{8e3e6c31-9360-40ed-b860-012cf238b1ac}" Name="WorkflowTrigger" /><FieldRef ID="{4af9184c-93d4-4565-86d1-a9e0f37262c1}" Name="Note1" /><FieldRef ID="{83cdee33-2105-479f-b42b-beae5e8cea98}" Name="Note2" /><FieldRef ID="{c2d3fc95-52a9-490d-bd08-b47d8c000575}" Name="Note3" /><FieldRef ID="{8bbcb82a-96d0-4534-a43f-b9d644363042}" Name="Note4" /><FieldRef ID="{9a5f2e3a-9ecc-4d39-b94b-94f87fd2d70b}" Name="Note5" /><FieldRef ID="{986a4e77-4f43-464c-91dc-4e1333ac9587}" Name="City" /><FieldRef ID="{e0925fbe-2fa1-4b6a-9e2a-e39f523ea455}" Name="refTicket" /><FieldRef ID="{a2b7991c-1cd1-4997-9204-553f4b48528c}" Name="refAccom" /><FieldRef ID="{72c81f0f-535f-41d0-864e-df1b7fe046b4}" Name="refRental" /><FieldRef ID="{03026380-2036-460d-a591-0715c3c986ba}" Name="refTransfer" /><FieldRef ID="{801ae25f-eef2-4f02-956e-d1bf8b7f5fcf}" Name="FFP2" /><FieldRef ID="{46ba08dc-6506-45f8-bd61-e31db0c4abe8}" Name="FFPN2" /><FieldRef ID="{6e5f8fed-1b84-45c6-aaf1-0c1681210e79}" Name="FFPMul" /></FieldRefs>
-      </ContentType><ContentTypeRef ID="0x01">
+          <FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Name="Title" />
+          <FieldRef ID="{d02113af-7e7c-4d35-9da7-cbd589e7c747}" Name="EmployeeID" />
+          <FieldRef ID="{0f8779b6-601f-4ba5-849a-2c1eef0fd919}" Name="PhoneNumber" />
+          <FieldRef ID="{564090f3-79bb-4551-a5f3-f904b9e07abf}" Name="Project" />
+          <FieldRef ID="{386a38e6-7a2a-46eb-8177-c54a1085ce29}" Name="RequestStatus" />
+          <FieldRef ID="{8cad7d4b-f652-4d50-85e1-14c1c5525c3f}" Name="RequestApprover" />
+          <FieldRef ID="{79b3e14d-e4d4-4818-aefd-ce6c7ff0374b}" Name="RequestApproveDate" />
+          <FieldRef ID="{81a68464-4ff8-4eeb-b6c5-d85527816870}" Name="TripStartDate" />
+          <FieldRef ID="{5482ae14-e19a-4f00-96dc-3d8b39c8d0a6}" Name="TripEndDate" />
+          <FieldRef ID="{17e8e2e6-04da-48b8-a9b2-7d25a690e23f}" Name="TripPurpose" />
+          <FieldRef ID="{0002b4c7-9d97-473a-8f8f-e01fb9082c5c}" Name="Notices" />
+          <FieldRef ID="{49e22a4b-27da-46fd-bb48-71b2ff85c27e}" Name="DestinationsJSON" />
+          <FieldRef ID="{92e76c07-fc51-4359-8904-089184f01c14}" Name="Email" />
+          <FieldRef ID="{79a78424-8d2d-40d7-93ba-5afde7557106}" Name="RequestApproveLinkURL" />
+          <FieldRef ID="{27894e4a-5dbf-442f-ba65-d0a9cc3f40cd}" Name="IsRequestApproveEmailSent" />
+          <FieldRef ID="{10bb07a1-76b6-42bc-97e4-e9ceef876585}" Name="PersonalR" />
+          <FieldRef ID="{9da06699-0fef-4b9d-8345-6151d321d1ab}" Name="_ModerationComments" />
+          <FieldRef ID="{e8151bff-5592-4c93-a1d9-ccc1aa9a433d}" Name="RequestRejectReason" />
+          <FieldRef ID="{bb2c895c-a366-455e-867f-063b55acb89c}" Name="AccomodationConfirmed" />
+          <FieldRef ID="{7584b63b-9e18-4953-b7a6-616f5ef2fc1f}" Name="CarRentalBooked" />
+          <FieldRef ID="{72e976d6-911a-4d4b-93de-03c0fa73983b}" Name="TransfersArranged" />
+          <FieldRef ID="{32aad8a1-9b8f-4436-b060-b0a1ed8360af}" Name="PassportVisaValid" />
+          <FieldRef ID="{1fc534f9-eeec-4877-a11a-ca149b0d3114}" Name="TicketIssued" />
+          <FieldRef ID="{38ff40f8-dcd4-4f4d-8fba-6d4867676582}" Name="FrequentFlyer" />
+          <FieldRef ID="{0ceb7124-1a5e-4431-a60f-342eeb259b0e}" Name="FrequentflyerNumber" />
+          <FieldRef ID="{8e3e6c31-9360-40ed-b860-012cf238b1ac}" Name="WorkflowTrigger" />
+          <FieldRef ID="{4af9184c-93d4-4565-86d1-a9e0f37262c1}" Name="Note1" />
+          <FieldRef ID="{83cdee33-2105-479f-b42b-beae5e8cea98}" Name="Note2" />
+          <FieldRef ID="{c2d3fc95-52a9-490d-bd08-b47d8c000575}" Name="Note3" />
+          <FieldRef ID="{8bbcb82a-96d0-4534-a43f-b9d644363042}" Name="Note4" />
+          <FieldRef ID="{9a5f2e3a-9ecc-4d39-b94b-94f87fd2d70b}" Name="Note5" />
+          <FieldRef ID="{986a4e77-4f43-464c-91dc-4e1333ac9587}" Name="City" />
+          <FieldRef ID="{e0925fbe-2fa1-4b6a-9e2a-e39f523ea455}" Name="refTicket" />
+          <FieldRef ID="{a2b7991c-1cd1-4997-9204-553f4b48528c}" Name="refAccom" />
+          <FieldRef ID="{72c81f0f-535f-41d0-864e-df1b7fe046b4}" Name="refRental" />
+          <FieldRef ID="{03026380-2036-460d-a591-0715c3c986ba}" Name="refTransfer" />
+          <FieldRef ID="{906af00b-26e7-4964-b988-aa18e9941da6}" Name="Frequent_x002d_Flyer2" />
+          <FieldRef ID="{57ddca95-8421-4c48-81e3-8d2dc0df689f}" Name="FrequentMemNumber2" />
+          <FieldRef ID="{056802b9-3d75-4e30-80fc-b3ebd86b8e79}" Name="Memberships" />
+        </FieldRefs>
+      </ContentType>
+      <ContentTypeRef ID="0x01">
         <Folder TargetName="Item" />
-      </ContentTypeRef><ContentTypeRef ID="0x0120" /></ContentTypes>
+      </ContentTypeRef>
+      <ContentTypeRef ID="0x0120" />
+    </ContentTypes>
     <Fields>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-    <Field ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Type="Text" Name="Title" DisplayName="RequesterName" Required="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="Title" MaxLength="255" /><Field Name="EmployeeID" ID="{d02113af-7e7c-4d35-9da7-cbd589e7c747}" DisplayName="EmployeeID" Type="Text" /><Field Name="PhoneNumber" ID="{0f8779b6-601f-4ba5-849a-2c1eef0fd919}" DisplayName="PhoneNumber" Type="Text" /><Field Name="Project" ID="{564090f3-79bb-4551-a5f3-f904b9e07abf}" DisplayName="Project" Type="Text" /><Field Name="RequestStatus" ID="{386a38e6-7a2a-46eb-8177-c54a1085ce29}" DisplayName="RequestStatus" Type="Text" /><Field Name="RequestApprover" ID="{8cad7d4b-f652-4d50-85e1-14c1c5525c3f}" DisplayName="RequestApprover" Type="User" List="UserInfo" /><Field Name="RequestApproveDate" ID="{79b3e14d-e4d4-4818-aefd-ce6c7ff0374b}" DisplayName="RequestApproveDate" Type="DateTime" /><Field Name="TripStartDate" ID="{81a68464-4ff8-4eeb-b6c5-d85527816870}" DisplayName="TripStartDate" Type="DateTime" /><Field Name="TripEndDate" ID="{5482ae14-e19a-4f00-96dc-3d8b39c8d0a6}" DisplayName="TripEndDate" Type="DateTime" /><Field Name="TripPurpose" ID="{17e8e2e6-04da-48b8-a9b2-7d25a690e23f}" DisplayName="TripPurpose" Type="Text" /><Field Name="Notices" ID="{0002b4c7-9d97-473a-8f8f-e01fb9082c5c}" DisplayName="Notices" Type="Text" /><Field Name="DestinationsJSON" ID="{49e22a4b-27da-46fd-bb48-71b2ff85c27e}" DisplayName="DestinationsJSON" Type="Note" /><Field Name="Email" ID="{92e76c07-fc51-4359-8904-089184f01c14}" DisplayName="Email" Type="Text" /><Field Name="RequestApproveLinkURL" ID="{79a78424-8d2d-40d7-93ba-5afde7557106}" DisplayName="RequestApproveLinkURL" Type="Note" /><Field Name="IsRequestApproveEmailSent" ID="{27894e4a-5dbf-442f-ba65-d0a9cc3f40cd}" DisplayName="IsRequestApproveEmailSent" Type="Boolean" /><Field Name="PersonalR" ID="{10bb07a1-76b6-42bc-97e4-e9ceef876585}" DisplayName="PersonalR" Type="Note" /><Field Name="_ModerationComments" ID="{9da06699-0fef-4b9d-8345-6151d321d1ab}" DisplayName="Approver Comments" Type="Note" Hidden="TRUE" CanToggleHidden="TRUE" Filterable="False" Sortable="FALSE" StaticName="_ModerationComments" /><Field Name="RequestRejectReason" ID="{e8151bff-5592-4c93-a1d9-ccc1aa9a433d}" DisplayName="Request Reject Reason" Type="Note" /><Field Name="AccomodationConfirmed" ID="{bb2c895c-a366-455e-867f-063b55acb89c}" DisplayName="Accomodation Confirmed?" Type="Boolean" /><Field Name="CarRentalBooked" ID="{7584b63b-9e18-4953-b7a6-616f5ef2fc1f}" DisplayName="Car Rental Booked?" Type="Boolean" /><Field Name="TransfersArranged" ID="{72e976d6-911a-4d4b-93de-03c0fa73983b}" DisplayName="Transfers Arranged?" Type="Boolean" /><Field Name="PassportVisaValid" ID="{32aad8a1-9b8f-4436-b060-b0a1ed8360af}" DisplayName="Passport/Visa Valid?" Type="Boolean" /><Field Name="TicketIssued" ID="{1fc534f9-eeec-4877-a11a-ca149b0d3114}" DisplayName="Ticket Issued?" Type="Boolean" /><Field Name="FrequentFlyer" ID="{38ff40f8-dcd4-4f4d-8fba-6d4867676582}" DisplayName="Frequent Flyer" Type="Text" Required="FALSE" /><Field Name="FrequentflyerNumber" ID="{0ceb7124-1a5e-4431-a60f-342eeb259b0e}" DisplayName="Frequent flyer Number" Type="Text" /><Field Name="WorkflowTrigger" ID="{8e3e6c31-9360-40ed-b860-012cf238b1ac}" DisplayName="Workflow Trigger" Type="Text" /><Field Name="Note1" ID="{4af9184c-93d4-4565-86d1-a9e0f37262c1}" DisplayName="Note1" Type="Text" /><Field Name="Note2" ID="{83cdee33-2105-479f-b42b-beae5e8cea98}" DisplayName="Note2" Type="Text" /><Field Name="Note3" ID="{c2d3fc95-52a9-490d-bd08-b47d8c000575}" DisplayName="Note3" Type="Text" /><Field Name="Note4" ID="{8bbcb82a-96d0-4534-a43f-b9d644363042}" DisplayName="Note4" Type="Text" /><Field Name="Note5" ID="{9a5f2e3a-9ecc-4d39-b94b-94f87fd2d70b}" DisplayName="Note5" Type="Text" /><Field Name="City" ID="{986a4e77-4f43-464c-91dc-4e1333ac9587}" DisplayName="City" Type="Text" /><Field Name="refTicket" ID="{e0925fbe-2fa1-4b6a-9e2a-e39f523ea455}" DisplayName="refTicket" Type="Text" /><Field Name="refAccom" ID="{a2b7991c-1cd1-4997-9204-553f4b48528c}" DisplayName="refAccom" Type="Text" /><Field Name="refRental" ID="{72c81f0f-535f-41d0-864e-df1b7fe046b4}" DisplayName="refRental" Type="Text" /><Field Name="refTransfer" ID="{03026380-2036-460d-a591-0715c3c986ba}" DisplayName="refTransfer" Type="Text" /><Field Name="FFP2" ID="{801ae25f-eef2-4f02-956e-d1bf8b7f5fcf}" DisplayName="FFP2" Type="Text" /><Field Name="FFPN2" ID="{46ba08dc-6506-45f8-bd61-e31db0c4abe8}" DisplayName="FFPN2" Type="Text" /><Field Name="FFPMul" ID="{6e5f8fed-1b84-45c6-aaf1-0c1681210e79}" DisplayName="FFPMul" Type="Note" /></Fields>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <Field ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Type="Text" Name="Title" DisplayName="RequesterName" Required="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="Title" MaxLength="255" />
+      <Field Name="EmployeeID" ID="{d02113af-7e7c-4d35-9da7-cbd589e7c747}" DisplayName="EmployeeID" Type="Text" />
+      <Field Name="PhoneNumber" ID="{0f8779b6-601f-4ba5-849a-2c1eef0fd919}" DisplayName="PhoneNumber" Type="Text" />
+      <Field Name="Project" ID="{564090f3-79bb-4551-a5f3-f904b9e07abf}" DisplayName="Project" Type="Text" />
+      <Field Name="RequestStatus" ID="{386a38e6-7a2a-46eb-8177-c54a1085ce29}" DisplayName="RequestStatus" Type="Text" />
+      <Field Name="RequestApprover" ID="{8cad7d4b-f652-4d50-85e1-14c1c5525c3f}" DisplayName="RequestApprover" Type="User" List="UserInfo" />
+      <Field Name="RequestApproveDate" ID="{79b3e14d-e4d4-4818-aefd-ce6c7ff0374b}" DisplayName="RequestApproveDate" Type="DateTime" />
+      <Field Name="TripStartDate" ID="{81a68464-4ff8-4eeb-b6c5-d85527816870}" DisplayName="TripStartDate" Type="DateTime" />
+      <Field Name="TripEndDate" ID="{5482ae14-e19a-4f00-96dc-3d8b39c8d0a6}" DisplayName="TripEndDate" Type="DateTime" />
+      <Field Name="TripPurpose" ID="{17e8e2e6-04da-48b8-a9b2-7d25a690e23f}" DisplayName="TripPurpose" Type="Text" />
+      <Field Name="Notices" ID="{0002b4c7-9d97-473a-8f8f-e01fb9082c5c}" DisplayName="Notices" Type="Text" />
+      <Field Name="DestinationsJSON" ID="{49e22a4b-27da-46fd-bb48-71b2ff85c27e}" DisplayName="DestinationsJSON" Type="Note" />
+      <Field Name="Email" ID="{92e76c07-fc51-4359-8904-089184f01c14}" DisplayName="Email" Type="Text" />
+      <Field Name="RequestApproveLinkURL" ID="{79a78424-8d2d-40d7-93ba-5afde7557106}" DisplayName="RequestApproveLinkURL" Type="Note" />
+      <Field Name="IsRequestApproveEmailSent" ID="{27894e4a-5dbf-442f-ba65-d0a9cc3f40cd}" DisplayName="IsRequestApproveEmailSent" Type="Boolean" />
+      <Field Name="PersonalR" ID="{10bb07a1-76b6-42bc-97e4-e9ceef876585}" DisplayName="PersonalR" Type="Note" />
+      <Field Name="_ModerationComments" ID="{9da06699-0fef-4b9d-8345-6151d321d1ab}" DisplayName="Approver Comments" Type="Note" Hidden="TRUE" CanToggleHidden="TRUE" Filterable="False" Sortable="FALSE" StaticName="_ModerationComments" />
+      <Field Name="RequestRejectReason" ID="{e8151bff-5592-4c93-a1d9-ccc1aa9a433d}" DisplayName="Request Reject Reason" Type="Note" />
+      <Field Name="AccomodationConfirmed" ID="{bb2c895c-a366-455e-867f-063b55acb89c}" DisplayName="Accomodation Confirmed?" Type="Boolean" />
+      <Field Name="CarRentalBooked" ID="{7584b63b-9e18-4953-b7a6-616f5ef2fc1f}" DisplayName="Car Rental Booked?" Type="Boolean" />
+      <Field Name="TransfersArranged" ID="{72e976d6-911a-4d4b-93de-03c0fa73983b}" DisplayName="Transfers Arranged?" Type="Boolean" />
+      <Field Name="PassportVisaValid" ID="{32aad8a1-9b8f-4436-b060-b0a1ed8360af}" DisplayName="Passport/Visa Valid?" Type="Boolean" />
+      <Field Name="TicketIssued" ID="{1fc534f9-eeec-4877-a11a-ca149b0d3114}" DisplayName="Ticket Issued?" Type="Boolean" />
+      <Field Name="FrequentFlyer" ID="{38ff40f8-dcd4-4f4d-8fba-6d4867676582}" DisplayName="Frequent Flyer" Type="Text" Required="FALSE" />
+      <Field Name="FrequentflyerNumber" ID="{0ceb7124-1a5e-4431-a60f-342eeb259b0e}" DisplayName="Frequent flyer Number" Type="Text" />
+      <Field Name="WorkflowTrigger" ID="{8e3e6c31-9360-40ed-b860-012cf238b1ac}" DisplayName="Workflow Trigger" Type="Text" />
+      <Field Name="Note1" ID="{4af9184c-93d4-4565-86d1-a9e0f37262c1}" DisplayName="Note1" Type="Text" />
+      <Field Name="Note2" ID="{83cdee33-2105-479f-b42b-beae5e8cea98}" DisplayName="Note2" Type="Text" />
+      <Field Name="Note3" ID="{c2d3fc95-52a9-490d-bd08-b47d8c000575}" DisplayName="Note3" Type="Text" />
+      <Field Name="Note4" ID="{8bbcb82a-96d0-4534-a43f-b9d644363042}" DisplayName="Note4" Type="Text" />
+      <Field Name="Note5" ID="{9a5f2e3a-9ecc-4d39-b94b-94f87fd2d70b}" DisplayName="Note5" Type="Text" />
+      <Field Name="City" ID="{986a4e77-4f43-464c-91dc-4e1333ac9587}" DisplayName="City" Type="Text" />
+      <Field Name="refTicket" ID="{e0925fbe-2fa1-4b6a-9e2a-e39f523ea455}" DisplayName="refTicket" Type="Text" />
+      <Field Name="refAccom" ID="{a2b7991c-1cd1-4997-9204-553f4b48528c}" DisplayName="refAccom" Type="Text" />
+      <Field Name="refRental" ID="{72c81f0f-535f-41d0-864e-df1b7fe046b4}" DisplayName="refRental" Type="Text" />
+      <Field Name="refTransfer" ID="{03026380-2036-460d-a591-0715c3c986ba}" DisplayName="refTransfer" Type="Text" />
+      <Field Name="Frequent_x002d_Flyer2" ID="{906af00b-26e7-4964-b988-aa18e9941da6}" DisplayName="Frequent-Flyer2" Type="Text" />
+      <Field Name="FrequentMemNumber2" ID="{57ddca95-8421-4c48-81e3-8d2dc0df689f}" DisplayName="FrequentMemNumber2" Type="Text" />
+      <Field Name="Memberships" ID="{056802b9-3d75-4e30-80fc-b3ebd86b8e79}" DisplayName="Memberships" Type="Note" />
+    </Fields>
     <Views>
-      
-      
-    <View BaseViewID="0" Type="HTML" MobileView="TRUE" TabularView="FALSE">
+
+
+      <View BaseViewID="0" Type="HTML" MobileView="TRUE" TabularView="FALSE">
         <Toolbar Type="Standard" />
         <XslLink Default="TRUE">main.xsl</XslLink>
         <RowLimit Paged="TRUE">30</RowLimit>
         <ViewFields>
-          
-        <FieldRef Name="LinkTitleNoMenu"></FieldRef></ViewFields>
+
+          <FieldRef Name="LinkTitleNoMenu"></FieldRef>
+        </ViewFields>
         <Query>
           <OrderBy>
-            
-          <FieldRef Name="Modified" Ascending="FALSE"></FieldRef></OrderBy>
+
+            <FieldRef Name="Modified" Ascending="FALSE"></FieldRef>
+          </OrderBy>
         </Query>
         <ParameterBindings>
           <ParameterBinding Name="AddNewAnnouncement" Location="Resource(wss,addnewitem)" />
           <ParameterBinding Name="NoAnnouncements" Location="Resource(wss,noXinviewofY_LIST)" />
           <ParameterBinding Name="NoAnnouncementsHowTo" Location="Resource(wss,noXinviewofY_ONET_HOME)" />
         </ParameterBindings>
-      </View><View BaseViewID="1" Type="HTML" WebPartZoneID="Main" DisplayName="$Resources:core,objectiv_schema_mwsidcamlidC24;" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" SetupPath="pages\viewpage.aspx" ImageUrl="/_layouts/15/images/generic.png?rev=23" Url="AllItems.aspx">
+      </View>
+      <View BaseViewID="1" Type="HTML" WebPartZoneID="Main" DisplayName="$Resources:core,objectiv_schema_mwsidcamlidC24;" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" SetupPath="pages\viewpage.aspx" ImageUrl="/_layouts/15/images/generic.png?rev=23" Url="AllItems.aspx">
         <Toolbar Type="Standard" />
         <XslLink Default="TRUE">main.xsl</XslLink>
         <JSLink>clienttemplates.js</JSLink>
         <RowLimit Paged="TRUE">30</RowLimit>
         <ViewFields>
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-        <FieldRef Name="LinkTitle"></FieldRef><FieldRef Name="EmployeeID" /><FieldRef Name="Email" /><FieldRef Name="PhoneNumber" /><FieldRef Name="Project" /><FieldRef Name="PersonalR" /><FieldRef Name="RequestStatus" /><FieldRef Name="RequestApprover" /><FieldRef Name="RequestApproveDate" /><FieldRef Name="TripStartDate" /><FieldRef Name="TripEndDate" /><FieldRef Name="TripPurpose" /><FieldRef Name="Notices" /><FieldRef Name="DestinationsJSON" /><FieldRef Name="RequestApproveLinkURL" /><FieldRef Name="IsRequestApproveEmailSent" /><FieldRef Name="RequestRejectReason" /><FieldRef Name="FrequentFlyer" /><FieldRef Name="FrequentflyerNumber" /><FieldRef Name="WorkflowTrigger" /><FieldRef Name="Note1" /><FieldRef Name="Note2" /><FieldRef Name="Note3" /><FieldRef Name="Note4" /><FieldRef Name="Note5" /><FieldRef Name="City" /><FieldRef Name="refTicket" /><FieldRef Name="refAccom" /><FieldRef Name="refRental" /><FieldRef Name="refTransfer" /><FieldRef Name="FFP2" /><FieldRef Name="FFPN2" /><FieldRef Name="FFPMul" /></ViewFields>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <FieldRef Name="LinkTitle"></FieldRef>
+          <FieldRef Name="EmployeeID" />
+          <FieldRef Name="Email" />
+          <FieldRef Name="PhoneNumber" />
+          <FieldRef Name="Project" />
+          <FieldRef Name="PersonalR" />
+          <FieldRef Name="RequestStatus" />
+          <FieldRef Name="RequestApprover" />
+          <FieldRef Name="RequestApproveDate" />
+          <FieldRef Name="TripStartDate" />
+          <FieldRef Name="TripEndDate" />
+          <FieldRef Name="TripPurpose" />
+          <FieldRef Name="Notices" />
+          <FieldRef Name="DestinationsJSON" />
+          <FieldRef Name="RequestApproveLinkURL" />
+          <FieldRef Name="IsRequestApproveEmailSent" />
+          <FieldRef Name="RequestRejectReason" />
+          <FieldRef Name="FrequentFlyer" />
+          <FieldRef Name="FrequentflyerNumber" />
+          <FieldRef Name="WorkflowTrigger" />
+          <FieldRef Name="Note1" />
+          <FieldRef Name="Note2" />
+          <FieldRef Name="Note3" />
+          <FieldRef Name="Note4" />
+          <FieldRef Name="Note5" />
+          <FieldRef Name="City" />
+          <FieldRef Name="refTicket" />
+          <FieldRef Name="refAccom" />
+          <FieldRef Name="refRental" />
+          <FieldRef Name="refTransfer" />
+          <FieldRef Name="Frequent_x002d_Flyer2" />
+          <FieldRef Name="FrequentMemNumber2" />
+          <FieldRef Name="Memberships" />
+        </ViewFields>
         <Query>
           <OrderBy>
-            
-          <FieldRef Name="ID"></FieldRef></OrderBy>
+
+            <FieldRef Name="ID"></FieldRef>
+          </OrderBy>
         </Query>
         <ParameterBindings>
           <ParameterBinding Name="NoAnnouncements" Location="Resource(wss,noXinviewofY_LIST)" />
           <ParameterBinding Name="NoAnnouncementsHowTo" Location="Resource(wss,noXinviewofY_DEFAULT)" />
         </ParameterBindings>
-      </View></Views>
+      </View>
+    </Views>
     <Forms>
       <Form Type="DisplayForm" Url="DispForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
       <Form Type="EditForm" Url="EditForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />

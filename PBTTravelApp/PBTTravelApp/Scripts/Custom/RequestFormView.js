@@ -44,7 +44,8 @@ RequestFormView = function () {
             var k;
             var l = "$select=ID,Author/Id,Title,Email,EmployeeID,PhoneNumber,Project,RequestStatus,RequestApprover/Title,RequestApprover/Id," +
             "RequestApproveDate,TripStartDate,TripEndDate,Created,Modified,RequestApproveDate,IsRequestApproveEmailSent,RequestRejectReason,TripPurpose,Notices,DestinationsJSON," +
-            "TicketIssued,AccomodationConfirmed,CarRentalBooked,TransfersArranged,PassportVisaValid,FrequentFlyer,FrequentflyerNumber,City,Note1,Note2,Note3,Note4,Note5,refTicket,refAccom,refRental,refTransfer,WorkflowTrigger";
+            "TicketIssued,AccomodationConfirmed,CarRentalBooked,TransfersArranged,PassportVisaValid,FrequentFlyer,FrequentflyerNumber,Frequent_x002d_Flyer2,FrequentMemNumber2,Memberships," +
+            "City,Note1,Note2,Note3,Note4,Note5,refTicket,refAccom,refRental,refTransfer,WorkflowTrigger";
             $.ajax({
                 url: appweburl +
                     "/_api/Web/lists/getbytitle('TravelRequests')/items?" + l + "&$expand=Author/Id, RequestApprover/Title,RequestApprover/Id&$filter=ID eq " + j,
@@ -429,13 +430,25 @@ $(document).ready(function () {
     else {
         $("#pRejectReason").hide();
     }
+    if (l.Frequent_x002d_Flyer2 != null) {
+        $("#extraMem").show();
+        $("#lblFrequentflyer2").text(l.Frequent_x002d_Flyer2);
+    }
+    if (l.FrequentMemNumber2 != null) {
+        $("#extraMemNum").show();
+        $("#lblFrequentflyerNumber2").text(l.FrequentMemNumber2);
+    }
+    if (l.Memberships != null) {
+        $("#extraMul").show();
+        $("#lblFrequentflyerMul").text(l.Memberships);
+    }
     var q = moment(l.TripStartDate);
     if (q.isValid()) {
-        $("#lblTripStartDate").text(q.format(commonDateFormat2));
+        $("#lblTripStartDate").text(q.format(commonDateFormatWithHour));
     }
     var p = moment(l.TripEndDate);
     if (p.isValid()) {
-        $("#lblTripEndDate").text(p.format(commonDateFormat2));
+        $("#lblTripEndDate").text(p.format(commonDateFormatWithHour));
     }
     $("#lblTripPurpose").text(l.TripPurpose);
     if (l.Notices != null) {

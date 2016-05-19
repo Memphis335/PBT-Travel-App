@@ -66,7 +66,8 @@ RequestFormEdit = function () {
             var m =
                 "$select=ID,Author/Id,Title,Email,EmployeeID,PhoneNumber,Project,RequestStatus,RequestApprover/Title,RequestApprover/Id," +
                     "RequestApproveDate,PersonalR,TripStartDate,TripEndDate,Created,Modified,RequestApproveDate,RequestRejectReason,TripPurpose,Notices,DestinationsJSON," +
-                    "TicketIssued,AccomodationConfirmed,CarRentalBooked,TransfersArranged,PassportVisaValid,FrequentFlyer,FrequentflyerNumber,City,Note1,Note2,Note3,Note4,Note5,refTicket,refAccom,refRental,refTransfer,WorkflowTrigger";
+                    "TicketIssued,AccomodationConfirmed,CarRentalBooked,TransfersArranged,PassportVisaValid,FrequentFlyer,FrequentflyerNumber,City,Note1,Note2,Note3,Note4,Note5," +
+                    "Frequent_x002d_Flyer2,FrequentMemNumber2,Memberships,refTicket,refAccom,refRental,refTransfer,WorkflowTrigger";
             $.ajax({
                 url: appweburl + "/_api/Web/lists/getbytitle('TravelRequests')/items?" + m +
                     "&$expand=Author/Id,RequestApprover/Title,RequestApprover/Id&$filter=ID eq " + k,
@@ -128,6 +129,9 @@ RequestFormEdit = function () {
                     refRental: l.refRental,
                     refTransfer: l.refTransfer,
                     City: l.City,
+                    Frequent_x002d_Flyer2 : l.Frequent_x002d_Flyer2,
+                    FrequentMemNumber2 : l.FrequentMemNumber2,
+                    Memberships : l.Memberships,
                     WorkflowTrigger: "Edited"
                 }),
                 headers: {
@@ -357,6 +361,9 @@ $(document).ready(function () {
             x.refTransfer = $("#refTransfer").val();
             x.Note5 = $("#txtPassport").val();
             x.City = $("#txtDeptCity").val();
+            x.Frequent_x002d_Flyer2 = $("#ddlFFP2").val();
+            x.FrequentMemNumber2 = $("#txtFFPN2").val();
+            x.Memberships = $("#txtFFPNMul").val();
             if (CurrentUser.IsAdmin) {
                 x.RequestStatus = RequestStatusEnum.Approved.Value;
             } else x.RequestStatus = RequestStatusEnum.Draft.Value;
@@ -441,16 +448,35 @@ $(document).ready(function () {
 
     var v = moment(s.TripStartDate);
     if (v.isValid()) {
-        $("#txtStartDate").val(v.format(commonDateFormat2));
+        $("#txtStartDate").val(v.format(commonDateFormatWithHour));
     }
     var u = moment(s.TripEndDate);
     if (u.isValid()) {
-        $("#txtEndDate").val(u.format(commonDateFormat2));
+        $("#txtEndDate").val(u.format(commonDateFormatWithHour));
     }
     $("#txtPurpose").val(s.TripPurpose);
     if (s.Notices != null) {
         $("#taNotices").val(s.Notices);
     }
+    if (s.Frequent_x002d_Flyer2 != null) {
+        $("#ExtraProg").show();
+        $("#ddlFFP2").val(s.Frequent_x002d_Flyer2);
+    }
+    if (s.FrequentMemNumber2 != null) {
+        $("#ExtraNum").show();
+        $("#txtFFPN2").val(s.FrequentMemNumber2);
+    }
+    if (s.Memberships != null) {
+        $("#ExtraNumMul").show();
+        $("#txtFFPNMul").val(s.Memberships);
+    }
+    $("#addMore").on("click", function () {
+        $("#ExtraNum").toggle();
+        $("#ExtraProg").toggle();
+    });
+    $("#addMore2").on("click", function () {
+        $("#ExtraNumMul").toggle();
+    });
 
     $("#txtRequestApprover").val(s.RequestApprover.Name);
     if (s.RequestRejectReason != null) {
@@ -491,26 +517,46 @@ $(document).ready(function () {
         }));
     });
     p.val(s.FrequentFlyer);
+    var hhh = $("#ddlFFP2");
+    $.each(q, function () {
+        hhh.append($("<option>", {
+            value: this.Title,
+            text: this.Title
+        }));
+    });
+    hhh.val(s.Frequent_x002d_Flyer2);
 
     $("#lblRequestID").text(s.ID);
     $("#lblRequestStatus").text(s.RequestStatus);
     $("#lblCreatedDate").text(moment(s.Created).format(commonDateFormatWithHour));
     $("#lblModifiedDate").text(moment(s.Modified).format(commonDateFormatWithHour));
-    $("#txtStartDate").datepicker();
+    $("#txtStartDate").datetimepicker({
+        format: commonDateFormatWithHour,
+        icons: {
+            time: "ms-Icon ms-Icon--clock",
+            date: "ms-Icon ms-Icon--calendar",
+            up: "ms-Icon ms-Icon--caretUp",
+            down: "ms-Icon ms-Icon--caretDown"
+        },
+        keepOpen: true
+    });
     $("#txtStartDate").focusout(function () {
         $("#divDestinations").handsontable("setDataAtCell", 0, 5, $("#txtStartDate").val());
     });
 
-    $("#txtEndDate").datepicker();
+    $("#txtEndDate").datetimepicker({
+        format: commonDateFormatWithHour,
+        icons: {
+            time: "ms-Icon ms-Icon--clock",
+            date: "ms-Icon ms-Icon--calendar",
+            up: "ms-Icon ms-Icon--caretUp",
+            down: "ms-Icon ms-Icon--caretDown"
+        }
+    });
     $(".chzn-select").chosen({
         no_results_text: "Oops, nothing found!"
     });
-    $.datepicker.setDefaults({
-        dateFormat: commonDateFormat,
-        showButtonPanel: false,
-        changeMonth: true,
-        changeYear: false
-    });
+    
     jQuery("#requestFormEdit").validate({
         ignore: ".ignore",
         rules: {

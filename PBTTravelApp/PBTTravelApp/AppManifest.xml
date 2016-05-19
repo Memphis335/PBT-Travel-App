@@ -2,8 +2,8 @@
 <!--Created:cb85b80c-f585-40ff-8bfc-12ff4d0e34a9-->
 <App xmlns="http://schemas.microsoft.com/sharepoint/2012/app/manifest"
      Name="PBTTravelApp"
-     ProductID="{E3DA6578-E954-4AC6-AB3F-F3E01ACF6EA0}"
-     Version="1.4.1.0"
+     ProductID="{AE816D2C-7A6F-4710-8D0F-30BC2439DE24}"
+     Version="1.4.2.0"
      SharePointMinVersion="16.0.0.0"
 >
   <Properties>

@@ -2,9 +2,10 @@
 <package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="a79c699e-339f-4f80-9889-c40afc8aced7" solutionId="a79c699e-339f-4f80-9889-c40afc8aced7" resetWebServer="false" sharePointProductVersion="16.0" name="PBTTravelApp" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
   <features>
     <featureReference itemId="b9189084-d79e-45a8-9804-393230460dc1" />
-    <featureReference itemId="fe2cf3cc-ec9e-463c-8c97-55d4d2a8a1d4" />
-    <featureReference itemId="da42155e-68f4-41fe-b5a7-eeea57e49f3a" />
-    <featureReference itemId="467ce0d6-fc5a-4bad-a07d-c37a8e018323" />
-    <featureReference itemId="780f280d-6cb8-48c2-b71a-8efca54a4eb8" />
+    <featureReference itemId="784cd4c1-7aba-411b-949f-2b5e39588338" />
+    <featureReference itemId="10166c0a-18ae-454a-a34d-ad4c751721dc" />
+    <featureReference itemId="9fa45cdc-2f07-4d23-a058-8f88d34511f3" />
+    <featureReference itemId="3fee57e0-bdd9-4235-b110-3d08bb3fef1a" />
+    <featureReference itemId="9374d471-3316-47d8-8fb7-80d8e4fb7960" />
   </features>
 </package>

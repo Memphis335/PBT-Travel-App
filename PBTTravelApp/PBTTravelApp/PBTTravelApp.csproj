@@ -77,22 +77,28 @@
     <Content Include="Content\Fabric-UI\fabric.min.css" />
     <Content Include="Content\Fabric-UI\fabric.rtl.css" />
     <Content Include="Content\Fabric-UI\fabric.rtl.min.css" />
-    <Content Include="Features\Feature10\Feature10.Template.xml">
-      <DependentUpon>Feature10.feature</DependentUpon>
+    <Content Include="Features\Feature2\Feature2.Template.xml">
+      <DependentUpon>Feature2.feature</DependentUpon>
     </Content>
     <Content Include="Features\Feature3\Feature3.Template.xml">
       <DependentUpon>Feature3.feature</DependentUpon>
     </Content>
-    <Content Include="Features\Feature7\Feature7.Template.xml">
-      <DependentUpon>Feature7.feature</DependentUpon>
+    <Content Include="Features\Feature4\Feature4.Template.xml">
+      <DependentUpon>Feature4.feature</DependentUpon>
     </Content>
-    <Content Include="Features\Feature9\Feature9.Template.xml">
-      <DependentUpon>Feature9.feature</DependentUpon>
+    <Content Include="Features\Feature5\Feature5.Template.xml">
+      <DependentUpon>Feature5.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\Feature6\Feature6.Template.xml">
+      <DependentUpon>Feature6.feature</DependentUpon>
     </Content>
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Images\GPS-Tracking-128.png">
       <OpcRelationship>manifest-icon</OpcRelationship>
     </Content>
+    <Content Include="Lists\Approvers\ApproversInstance\Elements.xml" />
+    <Content Include="Lists\Approvers\Elements.xml" />
+    <Content Include="Lists\Approvers\Schema.xml" />
     <Content Include="Lists\CustomUserRoles\CustomUserRolesInstance\Elements.xml" />
     <Content Include="Lists\CustomUserRoles\Elements.xml" />
     <Content Include="Lists\CustomUserRoles\Schema.xml" />
@@ -141,22 +147,31 @@
     <Content Include="WorkflowHistoryList\Elements.xml" />
     <Content Include="WorkflowTaskList\Elements.xml" />
     <None Include="Content\sass\_Fabric.Mixins.RTL.scss" />
-    <None Include="Features\Feature10\Feature10.feature">
-      <FeatureId>{780f280d-6cb8-48c2-b71a-8efca54a4eb8}</FeatureId>
+    <None Include="Features\Feature2\Feature2.feature">
+      <FeatureId>{784cd4c1-7aba-411b-949f-2b5e39588338}</FeatureId>
     </None>
     <None Include="Features\Feature3\Feature3.feature">
-      <FeatureId>{fe2cf3cc-ec9e-463c-8c97-55d4d2a8a1d4}</FeatureId>
+      <FeatureId>{10166c0a-18ae-454a-a34d-ad4c751721dc}</FeatureId>
     </None>
-    <None Include="Features\Feature7\Feature7.feature">
-      <FeatureId>{da42155e-68f4-41fe-b5a7-eeea57e49f3a}</FeatureId>
+    <None Include="Features\Feature4\Feature4.feature">
+      <FeatureId>{9fa45cdc-2f07-4d23-a058-8f88d34511f3}</FeatureId>
     </None>
-    <None Include="Features\Feature9\Feature9.feature">
-      <FeatureId>{467ce0d6-fc5a-4bad-a07d-c37a8e018323}</FeatureId>
+    <None Include="Features\Feature5\Feature5.feature">
+      <FeatureId>{3fee57e0-bdd9-4235-b110-3d08bb3fef1a}</FeatureId>
+    </None>
+    <None Include="Features\Feature6\Feature6.feature">
+      <FeatureId>{9374d471-3316-47d8-8fb7-80d8e4fb7960}</FeatureId>
     </None>
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
     <None Include="fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Lists\Approvers\ApproversInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{f532a6f9-10d7-4283-996b-a4ebf2775ef6}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\Approvers\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{fa0629b9-c120-4da1-ba02-e2e4d0254ebe}</SharePointProjectItemId>
+    </None>
     <None Include="Lists\CustomUserRoles\CustomUserRolesInstance\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{6430e28b-27ed-4d87-a6be-a34964e66b73}</SharePointProjectItemId>
     </None>
