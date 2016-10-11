@@ -89,6 +89,37 @@ RequestFormCreate = function () {
             }
         });
         return i;
+    };
+    var x = function (j, f, y) {
+        var i;
+        $.ajax({
+            url: appweburl + "/_api/Web/lists/getbytitle('" + j + "')/items?$select=" + f + "&$filter=Client eq '" + y + "'",
+            type: "GET",
+            async: false,
+            headers: {
+                accept: "application/json;odata=verbose"
+            },
+            dataType: "json",
+            cache: false,
+            success: function (k) {
+                i = k.d.results;
+                var hp = $("#ddlPurpose");
+                $.each(i, function () {
+                    hp.append($("<option>", {
+                        value: this.Title,
+                        text: this.Title
+                    }));
+                });
+                $("#ddlPurpose").trigger("chosen:updated");
+            },
+            error: function (thrownError) {
+                alert(thrownError);
+            },
+            beforeSend: function () {
+                $("#ddlPurpose").empty();
+            }
+        });
+        return i;
     },
         c = function () {
             var i;
@@ -130,10 +161,14 @@ RequestFormCreate = function () {
                     Project: j.Project,
                     PersonalR: j.PersonalR,
                     TripStartDate: moment(j.TripStartDate).utc().format(sharepointDateFormat),
+                    depTime: j.depTime,
+                    retTime: j.retTime,
                     TripEndDate: moment(j.TripEndDate).utc().format(sharepointDateFormat),
                     TripPurpose: j.TripPurpose,
                     Notices: j.Notices,
+                    Comments1: j.Comments,
                     RequestApproverId: j.RequestApprover,
+                    ndRequestApproverId: j.ndRequestApprover,
                     DestinationsJSON: j.DestinationsJSON,
                     TicketIssued: j.TicketIssued,
                     AccomodationConfirmed: j.AccomodationConfirmed,
@@ -146,6 +181,9 @@ RequestFormCreate = function () {
                     FrequentMemNumber2: j.FrequentMemNumber2,
                     Memberships: j.Memberships,
                     City: j.City,
+                    Client: j.Client,
+                    linkedToRequest: j.linkedToRequest,
+                    WorkflowTrigger: j.WorkflowTrigger,
                     RequestStatus: RequestStatusEnum.Draft.Value
                 }),
                 headers: {
@@ -165,6 +203,7 @@ RequestFormCreate = function () {
     return {
         getAllUsers: c,
         getDictionary: d,
+        getFilteredDictionary: x,
         createRequestForm: b
     };
 }();
@@ -187,9 +226,13 @@ $(document).ready(function () {
             r.PersonalR = $("#taPersonal").val().StripTags();
             r.TripStartDate = $("#txtStartDate").val().StripTags();
             r.TripEndDate = $("#txtEndDate").val().StripTags();
-            r.TripPurpose = $("#txtPurpose").val().StripTags();
+            r.depTime = $("#depTime :selected").val();
+            r.retTime = $("#retTime :selected").val();
+            r.TripPurpose = $("#ddlPurpose").val().StripTags();
             r.Notices = $("#taNotices").val().StripTags();
+            r.Comments = $("#comments").val();
             r.RequestApprover = $("#ddlRequestApprover").val();
+            r.ndRequestApprover = $("#ddl2ndRequestApprover").val();
             r.DestinationsJSON = JSON.stringify($("#divDestinations").data("handsontable").getData());
             r.TicketIssued = $("#chkTicket").is(":checked");
             r.AccomodationConfirmed = $("#chkAccom").is(":checked");
@@ -198,10 +241,19 @@ $(document).ready(function () {
             r.PassportVisaValid = $("#chkPassport").is(":checked");
             r.FrequentFlyer = $("#ddlFFP").val();
             r.FrequentflyerNumber = $("#txtFFPN").val();
-            r.FFP2 = $("#ddlFFP2").val();
-            r.FFPN2 = $("#txtFFPN2").val();
-            r.FFPNMul = $("#txtFFPNMul").val();
+            r.Frequent_x002d_Flyer2 = $("#ddlFFP2").val();
+            r.FrequentMemNumber2 = $("#txtFFPN2").val();
+            r.Memberships = $("#txtFFPNMul").val();
             r.City = $("#txtDeptCity").val();
+            r.Client = $("#ddlClient").val();
+
+            if ($("#ddl2ndRequestApprover").val() == "0") {
+                r.WorkflowTrigger = "OneStage";
+            } else {
+                r.WorkflowTrigger = "TwoStageApproval";
+            }
+            
+            r.linkedToRequest = $("#txtRelRequest").val();
             RequestFormCreate.createRequestForm(r);
         }
     });
@@ -211,8 +263,24 @@ $(document).ready(function () {
     $("#txtRequesterName").val(CurrentUser.Name);
     $("#txtEmail").val(CurrentUser.Email);
 
+    $("#cb2ndApprover")
+        .on("click",
+            function () {
+                var isChecked = $("#cb2ndApprover").is(":checked");
+                if (isChecked) {
+                    $("#requireApproval").show();
+                } else {
+                    $("#requireApproval").hide();
+                }
+            });
     $("#txtStartDate").focusout(function () {
         $("#divDestinations").handsontable("setDataAtCell", 0, 5, $("#txtStartDate").val());
+    });
+    $("#txtEndDate").focusout(function () {
+        $("#divDestinations").handsontable("setDataAtCell", 0, 6, $("#txtEndDate").val());
+    });
+    $("#txtEndDate").on("change", function () {
+        $("#divDestinations").handsontable("setDataAtCell", 0, 6, $("#txtEndDate").val());
     });
 
     var c = RequestFormCreate.getDictionary("Approvers", "ID,User/Title,User/Id&$expand=User/Title,User/Id");
@@ -223,6 +291,15 @@ $(document).ready(function () {
             text: this.User.Title
         }));
     });
+    var cc = RequestFormCreate.getDictionary("2ndApprovers", "ID,User/Title,User/Id&$expand=User/Title,User/Id");
+    var ii = $("#ddl2ndRequestApprover");
+    $.each(cc, function () {
+        ii.append($("<option>", {
+            value: this.User.Id,
+            text: this.User.Title
+        }));
+    });
+
     $(function () {
         $("#fileUpload").MultiFile({
             max: 5,
@@ -265,28 +342,33 @@ $(document).ready(function () {
         }));
     });
 
-    $("#txtStartDate").datetimepicker({
-        format: commonDateFormatWithHour,
-        icons: {
-            time: "ms-Icon ms-Icon--clock",
-            date: "ms-Icon ms-Icon--calendar",
-            up: "ms-Icon ms-Icon--caretUp",
-            down: "ms-Icon ms-Icon--caretDown"
-        },
-        keepOpen: true
+
+    var dc = RequestFormCreate.getDictionary("DictClients", "Title, ID");
+    var dcp = $("#ddlClient");
+    $.each(dc, function () {
+        dcp.append($("<option>", {
+            value: this.Title,
+            text: this.Title
+        }));
     });
-    $("#txtEndDate").datetimepicker({
-        format: commonDateFormatWithHour,
-        icons: {
-            time: "ms-Icon ms-Icon--clock",
-            date: "ms-Icon ms-Icon--calendar",
-            up: "ms-Icon ms-Icon--caretUp",
-            down: "ms-Icon ms-Icon--caretDown"
-        }
+    $("#ddlClient").change(function () {
+        var filterBy = dcp.val();
+        RequestFormCreate.getFilteredDictionary("DictPONumbers", "Title, ID, Client", filterBy);
     });
-    $(".chzn-select").chosen({
-        no_results_text: "Oops, nothing found!"
+
+    $("#txtStartDate").datepicker();
+    $("#txtEndDate").datepicker();
+    $.datepicker.setDefaults({
+        dateFormat: commonDateFormat,
+        showButtonPanel: false,
+        changeMonth: false,
+        changeYear: false
     });
+    $(".chosen-select")
+        .chosen({
+            no_results_text: "Oops, nothing found!",
+            width: "370px"
+        });
     jQuery("#requestFormCreate").validate({
         ignore: ".ignore",
         rules: {
@@ -304,6 +386,7 @@ $(document).ready(function () {
                 maxlength: 250
             },
             txtEmployeeID: {
+                required: true,
                 maxlength: 250
             },
             txtPhoneNumber: {
@@ -327,12 +410,13 @@ $(document).ready(function () {
         messages: {
             txtRequesterName: "Please enter your name",
             txtEmail: "Please enter a valid email address",
-            ddlProject: "Please select a valid project",
+            ddlProject: "Please select a project",
             txtTripStartDate: "Please enter departure date",
             txtTripEndDate: "Please enter return date",
-            txtTripPurpose: "Please enter trip purpose",
-            ddlRequestApprover: "Please enter request approver",
-            txtDestinations: "Please fill travel destinations"
+            txtTripPurpose: "Please enter Project/ PO Number",
+            ddlRequestApprover: "Please select approver",
+            txtDestinations: "Please fill travel destinations",
+            txtEmployeeID: "Please enter your ID number or Passport number"
         },
         invalidHandler: function (q, s) {
             var r = s.numberOfInvalids();

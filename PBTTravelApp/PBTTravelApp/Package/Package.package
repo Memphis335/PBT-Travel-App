@@ -7,5 +7,8 @@
     <featureReference itemId="9fa45cdc-2f07-4d23-a058-8f88d34511f3" />
     <featureReference itemId="3fee57e0-bdd9-4235-b110-3d08bb3fef1a" />
     <featureReference itemId="9374d471-3316-47d8-8fb7-80d8e4fb7960" />
+    <featureReference itemId="37b5c0c7-9dad-4103-80eb-318e61a014e4" />
+    <featureReference itemId="853efe4b-50f2-4093-b54b-8747143ba638" />
+    <featureReference itemId="cad16ecc-eb6a-4ab6-882f-d4e240de6b3f" />
   </features>
 </package>

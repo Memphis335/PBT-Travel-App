@@ -2,8 +2,13 @@
 <List xmlns:ows="Microsoft SharePoint" Title="Approvers" FolderCreation="FALSE" Direction="$Resources:Direction;" Url="Lists/Approvers" BaseType="0" xmlns="http://schemas.microsoft.com/sharepoint/">
   <MetaData>
     <ContentTypes>
+
+
+
       <ContentType ID="0x0100fd736787f4fe44549f50168b9bcc953e" Name="ListFieldsContentType">
         <FieldRefs>
+
+
           <FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Name="Title" />
           <FieldRef ID="{11806e59-5f85-488c-be2c-9a207313f7a4}" Name="User" />
         </FieldRefs>
@@ -14,19 +19,26 @@
       <ContentTypeRef ID="0x0120" />
     </ContentTypes>
     <Fields>
-      <Field ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Type="Text" Name="Title" DisplayName="$Resources:core,Title;" Required="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="Title" MaxLength="255" />
-      <Field Name="User" ID="{11806e59-5f85-488c-be2c-9a207313f7a4}" DisplayName="Approver" Type="User" List="UserInfo" />
+
+
+      <Field ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Type="Text" Name="Title" DisplayName="$Resources:core,Title;" Required="FALSE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="Title" MaxLength="255" />
+      <Field Name="User" ID="{11806e59-5f85-488c-be2c-9a207313f7a4}" DisplayName="Approver" Type="User" List="UserInfo" Required="TRUE" />
     </Fields>
     <Views>
+
+
+
       <View BaseViewID="0" Type="HTML" MobileView="TRUE" TabularView="FALSE">
         <Toolbar Type="Standard" />
         <XslLink Default="TRUE">main.xsl</XslLink>
         <RowLimit Paged="TRUE">30</RowLimit>
         <ViewFields>
+
           <FieldRef Name="LinkTitleNoMenu"></FieldRef>
         </ViewFields>
         <Query>
           <OrderBy>
+
             <FieldRef Name="Modified" Ascending="FALSE"></FieldRef>
           </OrderBy>
         </Query>
@@ -42,11 +54,14 @@
         <JSLink>clienttemplates.js</JSLink>
         <RowLimit Paged="TRUE">30</RowLimit>
         <ViewFields>
+
+
           <FieldRef Name="LinkTitle"></FieldRef>
           <FieldRef Name="User" />
         </ViewFields>
         <Query>
           <OrderBy>
+
             <FieldRef Name="ID"></FieldRef>
           </OrderBy>
         </Query>
@@ -57,6 +72,8 @@
       </View>
       <View BaseViewID="2" Name="23f93c50-d1c2-4528-93e7-8bb9bd75acc5" DisplayName="All Items123" Type="HTML" WebPartZoneID="Main" SetupPath="pages\viewpage.aspx" Url="All Items123.aspx">
         <ViewFields>
+
+
           <FieldRef Name="LinkTitle" />
           <FieldRef Name="User" />
         </ViewFields>

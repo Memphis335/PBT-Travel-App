@@ -52,8 +52,7 @@ Settings = function () {
             return $.Deferred(function (i) {
                 $.ajax({
                     url: appweburl +
-                        "/_api/Web/lists/getbytitle('" + f +
-                        "')/getItemByStringId('" + e + "')",
+                        "/_api/Web/lists/getbytitle('" + f + "')/getItemByStringId('" + e + "')",
                     type: "POST",
                     async: true,
                     contentType: "application/json;odata=verbose",

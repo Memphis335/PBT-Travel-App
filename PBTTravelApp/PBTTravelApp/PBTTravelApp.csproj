@@ -10,11 +10,11 @@
     <RootNamespace>PBTTravelApp</RootNamespace>
     <AssemblyName>PBTTravelApp</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <TargetOfficeVersion>16.0</TargetOfficeVersion>
+    <TargetOfficeVersion>16.1</TargetOfficeVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{C1CDDADD-2546-481F-9697-4EA41081F2FC};{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
-    <MinimumOfficeToolsVersion>12.1</MinimumOfficeToolsVersion>
+    <MinimumOfficeToolsVersion>12.2</MinimumOfficeToolsVersion>
     <IncludeAssemblyInPackage>False</IncludeAssemblyInPackage>
     <ProjectMode>SharePointApp</ProjectMode>
     <AppFeaturePartId>{6f4cde0e-3ff4-476b-92f1-0c1c4c8af747}</AppFeaturePartId>
@@ -22,7 +22,12 @@
     <WorkflowPartId>{b06e06b4-0b2f-41a9-b0b6-06c05b9751ca}</WorkflowPartId>
     <CspkgPartId>{148e75d3-ca38-4f8e-ab14-5e7b219defea}</CspkgPartId>
     <SqlPackagePartId>{8c232c65-3ca7-4b57-a3cf-243de48cd47d}</SqlPackagePartId>
-    <ActiveDeploymentConfiguration>Debug</ActiveDeploymentConfiguration>
+    <ActiveDeploymentConfiguration>Attach to debug session</ActiveDeploymentConfiguration>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>12.0</OldToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -44,6 +49,20 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="Content\chosen-sprite2x.png" />
+    <Content Include="Content\chosen-sprite.png" />
+    <Content Include="Content\chosen.css" />
+    <Content Include="Content\chosen.min.css" />
+    <Content Include="Content\themes\metro\blue\pbtLoading.gif" />
+    <Content Include="Features\Feature8\Feature8.Template.xml">
+      <DependentUpon>Feature8.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\Feature9\Feature9.Template.xml">
+      <DependentUpon>Feature9.feature</DependentUpon>
+    </Content>
+    <Content Include="Lists\2ndApprovers\2ndApproversInstance\Elements.xml" />
+    <Content Include="Lists\2ndApprovers\Elements.xml" />
+    <Content Include="Lists\2ndApprovers\Schema.xml" />
     <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -66,7 +85,6 @@
     <Content Include="Content\Prettify\Themes\sons-of-obsidian.css" />
     <Content Include="Content\Prettify\Themes\sunburst.css" />
     <Content Include="Content\themes\metro\blue\jquery-ui.css" />
-    <Content Include="Content\themes\metro\blue\progressindicator.gif" />
     <Content Include="Content\themes\metro\view.png" />
     <Content Include="Content\validationEngine.jquery.css" />
     <Content Include="Content\Fabric-UI\fabric.components.css" />
@@ -92,7 +110,11 @@
     <Content Include="Features\Feature6\Feature6.Template.xml">
       <DependentUpon>Feature6.feature</DependentUpon>
     </Content>
+    <Content Include="Features\Feature7\Feature7.Template.xml">
+      <DependentUpon>Feature7.feature</DependentUpon>
+    </Content>
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Images\403.png" />
     <Content Include="Images\GPS-Tracking-128.png">
       <OpcRelationship>manifest-icon</OpcRelationship>
     </Content>
@@ -102,6 +124,12 @@
     <Content Include="Lists\CustomUserRoles\CustomUserRolesInstance\Elements.xml" />
     <Content Include="Lists\CustomUserRoles\Elements.xml" />
     <Content Include="Lists\CustomUserRoles\Schema.xml" />
+    <Content Include="Lists\DictClients\DictClientsInstance\Elements.xml" />
+    <Content Include="Lists\DictClients\Elements.xml" />
+    <Content Include="Lists\DictClients\Schema.xml" />
+    <Content Include="Lists\DictPONumbers\DictPONumbersInstance\Elements.xml" />
+    <Content Include="Lists\DictPONumbers\Elements.xml" />
+    <Content Include="Lists\DictPONumbers\Schema.xml" />
     <Content Include="Lists\DictPrograms\DictProgramsInstance\Elements.xml" />
     <Content Include="Lists\DictPrograms\Elements.xml" />
     <Content Include="Lists\DictPrograms\Schema.xml" />
@@ -113,6 +141,7 @@
     <Content Include="Lists\Settings\Elements.xml" />
     <Content Include="Lists\Settings\Schema.xml" />
     <Content Include="Lists\Settings\SettingsInstance\Elements.xml" />
+    <Content Include="Pages\AccessDenied.aspx" />
     <Content Include="Pages\AuthError.aspx" />
     <Content Include="Pages\Dashboard.aspx" />
     <Content Include="Pages\NotFound.aspx" />
@@ -120,6 +149,10 @@
     <Content Include="Pages\RequestFormEdit.aspx" />
     <Content Include="Scripts\bootstrap-timepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\chosen.jquery.js" />
+    <Content Include="Scripts\chosen.jquery.min.js" />
+    <Content Include="Scripts\chosen.proto.js" />
+    <Content Include="Scripts\chosen.proto.min.js" />
     <Content Include="Scripts\Custom\App.js" />
     <Content Include="Scripts\Custom\Dashboard.js" />
     <Content Include="Scripts\Custom\peoplepicker.js" />
@@ -127,6 +160,7 @@
     <Content Include="Scripts\Custom\RequestFormEdit.js" />
     <Content Include="Scripts\Custom\sppeoplepicker.js" />
     <Content Include="Scripts\Custom\workflows.js" />
+    <Content Include="Scripts\jquery.cookie-1.4.1.min.js" />
     <Content Include="Scripts\jquery.fabric.js" />
     <Content Include="Scripts\jquery.fabric.min.js" />
     <Content Include="Scripts\jQuery.FileUpload\cors\jquery.postmessage-transport.js" />
@@ -144,8 +178,21 @@
     <Content Include="Scripts\jquery.timepicker.min.js" />
     <Content Include="Scripts\Moment.js" />
     <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\prototype.js" />
     <Content Include="WorkflowHistoryList\Elements.xml" />
     <Content Include="WorkflowTaskList\Elements.xml" />
+    <None Include="Features\Feature8\Feature8.feature">
+      <FeatureId>{853efe4b-50f2-4093-b54b-8747143ba638}</FeatureId>
+    </None>
+    <None Include="Features\Feature9\Feature9.feature">
+      <FeatureId>{cad16ecc-eb6a-4ab6-882f-d4e240de6b3f}</FeatureId>
+    </None>
+    <None Include="Lists\2ndApprovers\2ndApproversInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{2af8ca4a-3b76-461a-866f-85862ba4e454}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\2ndApprovers\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{c23c09e0-9162-4644-8489-d406ff5e227a}</SharePointProjectItemId>
+    </None>
     <None Include="Content\sass\_Fabric.Mixins.RTL.scss" />
     <None Include="Features\Feature2\Feature2.feature">
       <FeatureId>{784cd4c1-7aba-411b-949f-2b5e39588338}</FeatureId>
@@ -162,6 +209,9 @@
     <None Include="Features\Feature6\Feature6.feature">
       <FeatureId>{9374d471-3316-47d8-8fb7-80d8e4fb7960}</FeatureId>
     </None>
+    <None Include="Features\Feature7\Feature7.feature">
+      <FeatureId>{37b5c0c7-9dad-4103-80eb-318e61a014e4}</FeatureId>
+    </None>
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
@@ -177,6 +227,18 @@
     </None>
     <None Include="Lists\CustomUserRoles\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{ed28405c-a55e-434b-8516-1facc86cf376}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\DictClients\DictClientsInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{92306528-adc1-413f-acc2-fe8252366756}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\DictClients\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{b0ffeb30-356b-4e1e-9acd-86f6bde921d6}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\DictPONumbers\DictPONumbersInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{d73794c3-7afc-44b1-bd2e-67c3fea9706b}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\DictPONumbers\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{e2161a88-ae0e-400f-8efa-d933a197b6e7}</SharePointProjectItemId>
     </None>
     <None Include="Lists\DictPrograms\DictProgramsInstance\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{462ea222-0c1a-4c85-bd29-f30fcd96ab02}</SharePointProjectItemId>
@@ -197,7 +259,9 @@
       <SharePointProjectItemId>{26a3c836-618d-40d6-9efc-7429ca2ad3a1}</SharePointProjectItemId>
     </None>
     <None Include="Master Page\travel.master" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Pages\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{8411b792-7eeb-4a46-bb56-abc1487542ee}</SharePointProjectItemId>
     </None>
@@ -266,7 +330,9 @@
     <Content Include="Images\tile-learn.png" />
     <Content Include="Images\view.png" />
     <Content Include="Lists\TravelRequests\Elements.xml" />
-    <Content Include="Lists\TravelRequests\Schema.xml" />
+    <Content Include="Lists\TravelRequests\Schema.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Lists\TravelRequests\TravelRequestsInstance\Elements.xml" />
     <Content Include="Pages\DictionaryList.aspx" />
     <Content Include="Pages\Elements.xml" />
@@ -350,10 +416,8 @@
     <Content Include="Pages\Settings.aspx" />
     <Content Include="Pages\ToApproveByMe.aspx" />
     <Content Include="Pages\UserRolesList.aspx" />
-    <Content Include="Scripts\chosen.jquery.js" />
     <Content Include="Scripts\Custom\AppInit.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\chosen.jquery.min.js" />
     <Content Include="Scripts\Custom\Common.js" />
     <Content Include="Scripts\Custom\Default.js" />
     <Content Include="Scripts\Custom\Dictionaries.js" />
@@ -547,12 +611,14 @@
     <XamlAppDef Include="SubmitForApproval\Workflow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </XamlAppDef>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Activities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Activities.Design, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.SharePoint.DesignTime.Activities.16.0, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SharePoint.DesignTime.Activities.16.0, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Activities" />
@@ -577,8 +643,12 @@
       <FlavorProperties GUID="{C1CDDADD-2546-481F-9697-4EA41081F2FC}">
         <DeploymentConfigurations>
           <DeploymentConfiguration Name="Debug">
-            <DeploymentSteps>Microsoft.VisualStudio.SharePoint.Apps.UninstallAppForSharePoint;Microsoft.VisualStudio.SharePoint.Apps.InstallAppForSharePoint</DeploymentSteps>
+            <DeploymentSteps>Microsoft.VisualStudio.SharePoint.PreDeploymentCommand;Microsoft.VisualStudio.SharePoint.Apps.UninstallAppForSharePoint;Microsoft.VisualStudio.SharePoint.Apps.InstallAppForSharePoint</DeploymentSteps>
             <RetractionSteps>Microsoft.VisualStudio.SharePoint.Apps.UninstallAppForSharePoint</RetractionSteps>
+          </DeploymentConfiguration>
+          <DeploymentConfiguration Name="Attach to debug session">
+            <DeploymentSteps>Microsoft.VisualStudio.SharePoint.PreDeploymentCommand;Microsoft.VisualStudio.SharePoint.Apps.InstallAppForSharePoint</DeploymentSteps>
+            <RetractionSteps>Microsoft.VisualStudio.SharePoint.PostDeploymentCommand;Microsoft.VisualStudio.SharePoint.RetractSolution</RetractionSteps>
           </DeploymentConfiguration>
         </DeploymentConfigurations>
       </FlavorProperties>

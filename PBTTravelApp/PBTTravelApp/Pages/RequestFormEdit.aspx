@@ -69,7 +69,7 @@
                                 <label>Frequent-flyer Program Number</label>
                                 <span class="field">
                                     <input type="text" name="txtFFPN" id="txtFFPN" class="input-xlarge" />
-                                    <input type="checkbox" id="addMore" name="addMore"/>Add More?
+                                    <input type="checkbox" id="addMore" name="addMore" />Add More?
                                 </span>
                             </p>
                             <p id="ExtraProg" style="display: none;">
@@ -84,7 +84,7 @@
                                 <label>Extra Membership Number</label>
                                 <span class="field">
                                     <input type="text" name="txtFFPN2" id="txtFFPN2" class="input-xlarge" />
-                                    <input type="checkbox" id="addMore2" name="addMore2"/>More?
+                                    <input type="checkbox" id="addMore2" name="addMore2" />More?
                                 </span>
                             </p>
                             <p id="ExtraNumMul" style="display: none;">
@@ -94,7 +94,7 @@
                                 </span>
                             </p>
                             <p>
-                                <label>Project</label>
+                                <label>Division</label>
                                 <span class="field">
                                     <select name="ddlProject" id="ddlProject" class="ms-Dropdown">
                                         <option value="">Choose One</option>
@@ -133,17 +133,36 @@
                             <p>
                                 <label>Request Approver</label>
                                 <span class="field">
-                                    <select name="ddlRequestApprover" id="ddlRequestApprover" data-placeholder="Choose a Employee..." style="margin-right: 10px; width: 370px;" tabindex="2">
+                                    <select name="ddlRequestApprover" id="ddlRequestApprover" data-placeholder="Choose a Employee..." class="chosen-select" style="margin-right: 10px; width: 370px;" tabindex="2">
                                         <option value=""></option>
                                     </select>
                                 </span>
                             </p>
-                            <p>
+                            <p id="pRequestApproveDate">
                                 <label>Request Approve Date</label>
                                 <span class="field"><span id="lblRequestApproveDate" class="sLabel"></span></span>
                             </p>
+                            <div id="2ndApprover" style="display: none; border-top: 1px solid #ddd;">
+                                <p>
+                                    <label>2nd Request Approver</label>
+                                    <span class="field">
+                                        <select name="ddl2ndRequestApprover" id="ddl2ndRequestApprover" data-placeholder="Choose a Employee..." class="chosen-select" style="margin-right: 10px; width: 370px;" tabindex="2">
+                                            <option selected="selected" value="0">Not applicable</option>
+                                        </select>
+                                    </span>
+                                </p>
+                                <p id="ndRequestDate" style="display: none">
+                                    <label>Request Approve Date</label>
+                                    <span class="field"><span id="lbl2ndRequestApproveDate" class="sLabel"></span></span>
+                                </p>
+                            </div>
                         </div>
                         <div id="aTravelInfo">
+                            <p id="linked" style="display: none" class="control-group">
+                                <label for="txtRelRequest">Linked to Request</label>
+                                <span class="field">
+                                    <input id="txtRelRequest" type="text" name="txtRelRequest" class="input-xlarge" /></span>
+                            </p>
                             <p class="control-group">
                                 <label for="txtDeptCity">Departure City</label>
                                 <span class="field">
@@ -152,23 +171,52 @@
                             <p class="control-group">
                                 <label for="txtStartDate">Departure Date</label>
                                 <span class="field">
-                                    <input id="txtStartDate" type="text" name="txtTripStartDate" class="input-xlarge" /></span>
+                                    <input id="txtStartDate" type="text" name="txtTripStartDate" class="input-xlarge" />
+                                    <select id="depTime">
+                                        <option>Choose travel time</option>
+                                        <option>Doesn't Matter</option>
+                                        <option>AM</option>
+                                        <option>PM</option>
+                                    </select>
+                                </span>
                             </p>
                             <p class="control-group">
                                 <label for="txtEndDate">Return Date</label>
                                 <span class="field">
-                                    <input id="txtEndDate" type="text" name="txtTripEndDate" class="input-xlarge" /></span>
-                                <input type="hidden" id="dateCalc" />
+                                    <input id="txtEndDate" type="text" name="txtTripEndDate" class="input-xlarge" />
+                                    <select id="retTime">
+                                        <option>Choose travel time</option>
+                                        <option>Doesn't Matter</option>
+                                        <option>AM</option>
+                                        <option>PM</option>
+                                    </select>
+                                </span>
                             </p>
-                            <p class="control-group">
-                                <label for="txtPurpose">Purpose of Trip</label>
+                            <p>
+                                <label>Client</label>
                                 <span class="field">
-                                    <input id="txtPurpose" type="text" name="txtTripPurpose" class="input-xlarge" /></span>
+                                    <select name="ddlClient" id="ddlClient" class="chosen-select">
+                                        <option value="">Choose One</option>
+                                    </select>
+                                </span>
+                            </p>
+                            <p>
+                                <label>Project/PO Number</label>
+                                <span class="field">
+                                    <select name="ddlPurpose" id="ddlPurpose" class="chosen-select">
+                                        <option value="">Choose One</option>
+                                    </select>
+                                </span>
                             </p>
                             <p>
                                 <label>Deliverable</label>
                                 <span class="field">
                                     <textarea cols="80" rows="3" id="taNotices" class="standardTextArea"></textarea></span>
+                            </p>
+                            <p>
+                                <label>Travel Comments</label>
+                                <span class="field">
+                                    <textarea cols="80" rows="3" id="comments" class="standardTextArea"></textarea></span>
                             </p>
                             <p class="control-group">
                                 <span style="display: block; clear: both;">
@@ -192,7 +240,7 @@
                                     <input type="text" id="refTicket" name="refTicket" />
                                     <label for="txtTicket" style="width: 60px;">Notes : </label>
                                     <input id="txtTicket" name="txtTicket" type="text" />
-                                    <input type="file" id="fileTicket" style="margin-left: 5px;"/>
+                                    <input type="file" id="fileTicket" style="margin-left: 5px;" />
                                     <span id="fileTicketRetrieved" class="file"></span>
                                 </span>
                             </p>

@@ -86,8 +86,8 @@ THE SOFTWARE.
             //Localization
             messages: {
                 serverCommunicationError: 'An error occured while communicating to the server.',
-                loadingMessage: 'Loading records...',
-                noDataAvailable: 'No data available!',
+                loadingMessage: 'Loading data...',
+                noDataAvailable: 'Nothing found!',
                 areYouSure: 'Are you sure?',
                 save: 'Save',
                 saving: 'Saving',

@@ -2,9 +2,6 @@
 <List xmlns:ows="Microsoft SharePoint" Title="TravelRequests" FolderCreation="FALSE" Direction="$Resources:Direction;" Url="Lists/TravelRequests" BaseType="0" xmlns="http://schemas.microsoft.com/sharepoint/">
   <MetaData>
     <ContentTypes>
-
-
-
       <ContentType ID="0x0100306643106c574d66a81565b8a572079f" Name="ListFieldsContentType">
         <FieldRefs>
           <FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Name="Title" />
@@ -46,6 +43,15 @@
           <FieldRef ID="{906af00b-26e7-4964-b988-aa18e9941da6}" Name="Frequent_x002d_Flyer2" />
           <FieldRef ID="{57ddca95-8421-4c48-81e3-8d2dc0df689f}" Name="FrequentMemNumber2" />
           <FieldRef ID="{056802b9-3d75-4e30-80fc-b3ebd86b8e79}" Name="Memberships" />
+          <FieldRef ID="{e54661f8-af78-437c-85dd-8eb6ef07eaf7}" Name="Comments1" />
+          <FieldRef ID="{4a941130-1128-4ad2-9a9a-cf1215986625}" Name="depTime" />
+          <FieldRef ID="{c3af73d4-53b1-48be-828f-f1385f760806}" Name="retTime" />
+          <FieldRef ID="{1a26df40-fe6d-482e-98bd-53d4c128453d}" Name="linkedToRequest" />
+          <FieldRef ID="{17b24420-7e3a-4810-a956-2cf2b0d0ecd6}" Name="ndRequestApprover" />
+          <FieldRef ID="{deb7bb8c-392a-441a-89e9-a99ac312f583}" Name="ndRequestApproveDate" />
+          <FieldRef ID="{b2ef40ac-69da-42a0-80d4-e0efef6d6089}" Name="Client" />
+          <FieldRef ID="{1fb36c93-932b-4fc2-bccd-a08948aadecb}" Name="RequestStatusSecApp" />
+          <FieldRef ID="{4347a5f3-a73d-4f66-aa90-d55c192caeec}" Name="RequestRejectReason2" />
         </FieldRefs>
       </ContentType>
       <ContentTypeRef ID="0x01">
@@ -54,42 +60,6 @@
       <ContentTypeRef ID="0x0120" />
     </ContentTypes>
     <Fields>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       <Field ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Type="Text" Name="Title" DisplayName="RequesterName" Required="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="Title" MaxLength="255" />
       <Field Name="EmployeeID" ID="{d02113af-7e7c-4d35-9da7-cbd589e7c747}" DisplayName="EmployeeID" Type="Text" />
       <Field Name="PhoneNumber" ID="{0f8779b6-601f-4ba5-849a-2c1eef0fd919}" DisplayName="PhoneNumber" Type="Text" />
@@ -129,20 +99,31 @@
       <Field Name="Frequent_x002d_Flyer2" ID="{906af00b-26e7-4964-b988-aa18e9941da6}" DisplayName="Frequent-Flyer2" Type="Text" />
       <Field Name="FrequentMemNumber2" ID="{57ddca95-8421-4c48-81e3-8d2dc0df689f}" DisplayName="FrequentMemNumber2" Type="Text" />
       <Field Name="Memberships" ID="{056802b9-3d75-4e30-80fc-b3ebd86b8e79}" DisplayName="Memberships" Type="Note" />
+      <Field Name="Comments1" ID="{e54661f8-af78-437c-85dd-8eb6ef07eaf7}" DisplayName="Comments" Type="Note" />
+      <Field Name="depTime" ID="{4a941130-1128-4ad2-9a9a-cf1215986625}" DisplayName="depTime" Type="Text" />
+      <Field Name="retTime" ID="{c3af73d4-53b1-48be-828f-f1385f760806}" DisplayName="retTime" Type="Text" />
+      <Field Name="linkedToRequest" ID="{1a26df40-fe6d-482e-98bd-53d4c128453d}" DisplayName="Linked to Request" Type="Text" />
+      <Field Name="ndRequestApprover" ID="{17b24420-7e3a-4810-a956-2cf2b0d0ecd6}" DisplayName="ndRequestApprover" Type="User" List="UserInfo" />
+      <Field Name="ndRequestApproveDate" ID="{deb7bb8c-392a-441a-89e9-a99ac312f583}" DisplayName="ndRequestApproveDate" Type="DateTime" />
+      <Field Name="Client" ID="{b2ef40ac-69da-42a0-80d4-e0efef6d6089}" DisplayName="Client" Type="Text" />
+      <Field Name="RequestStatusSecApp" ID="{1fb36c93-932b-4fc2-bccd-a08948aadecb}" DisplayName="RequestStatusSecApp" Type="Text" />
+      <Field Name="RequestRejectReason2" ID="{4347a5f3-a73d-4f66-aa90-d55c192caeec}" DisplayName="RequestRejectReason2" Type="Text" />
     </Fields>
     <Views>
-
-
       <View BaseViewID="0" Type="HTML" MobileView="TRUE" TabularView="FALSE">
         <Toolbar Type="Standard" />
         <XslLink Default="TRUE">main.xsl</XslLink>
         <RowLimit Paged="TRUE">30</RowLimit>
         <ViewFields>
 
+
+
           <FieldRef Name="LinkTitleNoMenu"></FieldRef>
         </ViewFields>
         <Query>
           <OrderBy>
+
+
 
             <FieldRef Name="Modified" Ascending="FALSE"></FieldRef>
           </OrderBy>
@@ -159,6 +140,90 @@
         <JSLink>clienttemplates.js</JSLink>
         <RowLimit Paged="TRUE">30</RowLimit>
         <ViewFields>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -222,9 +287,20 @@
           <FieldRef Name="Frequent_x002d_Flyer2" />
           <FieldRef Name="FrequentMemNumber2" />
           <FieldRef Name="Memberships" />
+          <FieldRef Name="Comments1" />
+          <FieldRef Name="depTime" />
+          <FieldRef Name="retTime" />
+          <FieldRef Name="linkedToRequest" />
+          <FieldRef Name="ndRequestApprover" />
+          <FieldRef Name="client" />
+          <FieldRef Name="RequestStatusSecApp" />
+          <FieldRef Name="RequestRejectReason2" />
         </ViewFields>
         <Query>
           <OrderBy>
+
+
+
 
             <FieldRef Name="ID"></FieldRef>
           </OrderBy>

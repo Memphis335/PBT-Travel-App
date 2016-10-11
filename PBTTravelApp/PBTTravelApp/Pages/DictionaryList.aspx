@@ -8,18 +8,16 @@
     <link href="../Content/jquery.tagsinput.css" rel="stylesheet" />
     <link href="../Content/fullcalendar.css" rel="stylesheet" />
 
-    <script src="../Scripts/jquery.validate.min.js"></script>
-    <script src="../Scripts/jquery.tagsinput.min.js"></script>
-    <script src="../Scripts/jquery.autogrow-textarea.js"></script>
-    <script src="../Scripts/chosen.jquery.min.js"></script>
-    <script src="../Scripts/jquery.cookie.js"></script>
-
-    <script src="../Scripts/jquery.validationEngine.js"></script>
-    <script src="../Scripts/jquery.validationEngine-en.js"></script>
-    <script src="../Scripts/jquery.validate.min.js"></script>
-
-    <script src="../Scripts/Custom/Dictionaries.js"></script>
-    <script src="../Scripts/Custom/UserRoles.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.tagsinput.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.autogrow-textarea.js"></script>
+    <script type="text/javascript" src="../Scripts/chosen.jquery.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.validationEngine.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.validationEngine-en.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="../Scripts/Custom/Dictionaries.js"></script>
+    <script type="text/javascript" src="../Scripts/Custom/UserRoles.js"></script>
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="mainContent" runat="server">
@@ -35,8 +33,21 @@
                 <div class="jtableContainer" id="DictPrograms"></div>
             </div>
             <div style="width: 500px; margin-top: 15px">
+                <div class="jtableContainer" id="DictClients" title="Clients listed here have to correspond to Clients listed in Project/ PO Numbers"></div>
+            </div>
+            <div style="width: 500px; margin-top: 15px">
+                <div class="jtableContainer" id="DictPONumbers"></div>
+            </div>
+            <div style="width: 500px; margin-top: 15px">
                 <div class="jtableContainer" id="DictApprovers"></div>
             </div>
+            <div style="width: 500px; margin-top: 15px">
+                <div class="jtableContainer" id="Dict2ndApprovers"></div>
+            </div>
+            <div style="display: none">
+                <button type="submit" id="tempBtn">Populate PO Numbers</button>
+            </div>
+            <div style="padding-bottom: 20px;"></div>
         </div>
     </div>
 </asp:Content>

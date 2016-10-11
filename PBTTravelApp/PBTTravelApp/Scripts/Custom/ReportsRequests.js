@@ -98,7 +98,7 @@ ReportsRequests = function () {
             if ($("#chblProject").val() != null) {
                 l = " and (" + f($("#chblProject").val(), "Project") + ") ";
             }
-            var k = h + o + q + i + l + g + r;
+            var k = h + o + q + l;
             var m = appweburl +
                 "/_vti_bin/ListData.svc/TravelRequests/?$filter=" + k +
                 "&$inlinecount=allpages&$select=Id,RequesterName,Created,TripStartDate,TripEndDate,RequestStatus,TripPurpose, Project";
@@ -142,7 +142,7 @@ ReportsRequests = function () {
             if ($("#chblProject").val() != null) {
                 n = " and (" + f($("#chblProject").val(), "Project") + ") ";
             }
-            var k = h + p + s + i + n + g + t;
+            var k = h + p + s + n;
             var o = appweburl +
                 "/_vti_bin/ListData.svc/TravelRequests/?$filter=" + k +
                 "&$inlinecount=allpages&$select=Id,RequesterName,Created,TripStartDate,TripEndDate,RequestStatus,TripPurpose, Project&$orderby=" + l.jtSorting.replace(" DESC", " desc").replace(" ASC",
@@ -193,7 +193,7 @@ $(document).ready(function () {
         dateFormat: commonDateFormat,
         showButtonPanel: false,
         changeMonth: false,
-        changeYear: false,
+        changeYear: false
     });
     var a = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
     var i = a.getMonth() + 1 < 10 ? "0" + (a.getMonth() + 1) : a.getMonth() +
@@ -206,8 +206,8 @@ $(document).ready(function () {
     var e = $("#chblProject");
     $.each(h, function () {
         e.append($("<option>", {
-            value: this.Name,
-            text: this.Name
+            value: this.Title,
+            text: this.Title
         }));
     });
     var j = function () {
@@ -235,7 +235,7 @@ $(document).ready(function () {
             q.document.close();
             q.focus();
             q.document.execCommand("SaveAs", true,
-                "export-summary.csv");
+                "Travel-Report.csv");
         } else {
             var n = "data:application/csv;charset=utf-8," +
                 encodeURIComponent(m);

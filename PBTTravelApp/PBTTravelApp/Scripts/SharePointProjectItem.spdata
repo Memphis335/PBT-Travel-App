@@ -4,7 +4,6 @@
     <ProjectItemFile Source="Elements.xml" Target="Scripts\" Type="ElementManifest" />
     <ProjectItemFile Source="Custom\AppInit.js" Target="Scripts\Custom\" Type="ElementFile" />
     <ProjectItemFile Source="bootstrap.min.js" Target="Scripts\" Type="ElementFile" />
-    <ProjectItemFile Source="chosen.jquery.min.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="Custom\Common.js" Target="Scripts\Custom\" Type="ElementFile" />
     <ProjectItemFile Source="Custom\Default.js" Target="Scripts\Custom\" Type="ElementFile" />
     <ProjectItemFile Source="elements.js" Target="Scripts\" Type="ElementFile" />
@@ -152,7 +151,6 @@
     <ProjectItemFile Source="Prettify\lang-basic.js" Target="Scripts\Prettify\" Type="ElementFile" />
     <ProjectItemFile Source="Prettify\lang-apollo.js" Target="Scripts\Prettify\" Type="ElementFile" />
     <ProjectItemFile Source="handsontable\handsontable.full.min.js.map" Target="Scripts\handsontable\" Type="ElementFile" />
-    <ProjectItemFile Source="chosen.jquery.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="fullcalendar.min.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="fullcalendar.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="Fabric-UI\datepicker.js" Target="Scripts\Fabric-UI\" Type="ElementFile" />
@@ -184,5 +182,11 @@
     <ProjectItemFile Source="bootstrap-timepicker.min.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="jquery.timepicker.min.js" Target="Scripts\" Type="ElementFile" />
     <ProjectItemFile Source="bootstrap.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="jquery.cookie-1.4.1.min.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="prototype.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="chosen.proto.min.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="chosen.proto.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="chosen.jquery.min.js" Target="Scripts\" Type="ElementFile" />
+    <ProjectItemFile Source="chosen.jquery.js" Target="Scripts\" Type="ElementFile" />
   </Files>
 </ProjectItem>

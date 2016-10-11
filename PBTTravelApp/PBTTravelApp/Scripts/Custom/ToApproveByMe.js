@@ -22,7 +22,7 @@ ToApproveByMe = function () {
     },
         c = function (g, f) {
             var i;
-            var e = "RequestApproverId eq " + CurrentUser.Id + " and RequestStatus eq 'PendingApproval'";
+            var e = "(RequestApproverId eq " + CurrentUser.Id + " or NdRequestApproverId  eq " + CurrentUser.Id + ") and RequestStatus eq 'PendingApproval'";
             var h = appweburl + "/_vti_bin/ListData.svc/TravelRequests/?$filter=" + e +
                 "&$inlinecount=allpages&$select=Id,RequesterName,Created,TripStartDate,TripEndDate,RequestStatus,TripPurpose&$orderby=" +
                 f.jtSorting.replace(" DESC", " desc").replace(" ASC", " asc") + "&$skip=" + f.jtStartIndex + "&$top=" + f.jtPageSize;
@@ -50,9 +50,9 @@ ToApproveByMe = function () {
                 });
             });
         },
-        b = function (g, f) {
+        d = function (g, f) {
             var i;
-            var e = "RequestApproverId eq " + CurrentUser.Id + " and RequestStatus eq 'Approved'";
+            var e = "(RequestApproverId eq " + CurrentUser.Id + " or NdRequestApproverId  eq " + CurrentUser.Id + ") and RequestStatus eq 'Approved'";
             var h = appweburl + "/_vti_bin/ListData.svc/TravelRequests/?$filter=" + e +
                 "&$inlinecount=allpages&$select=Id,RequesterName,Created,TripStartDate,TripEndDate,RequestStatus,TripPurpose&$orderby=" +
                 f.jtSorting.replace(" DESC", " desc").replace(" ASC", " asc") + "&$skip=" + f.jtStartIndex + "&$top=" + f.jtPageSize;
@@ -109,7 +109,7 @@ ToApproveByMe = function () {
         };
     return {
         getPendingRequests: c,
-        getApprovedRequests: b,
+        getApprovedRequests: d,
         deleteItem: a
     };
 }();

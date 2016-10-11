@@ -3,7 +3,6 @@
   <Module Name="Scripts">
     <File Path="Scripts\Custom\AppInit.js" Url="Scripts/Custom/AppInit.js" ReplaceContent="TRUE" />
     <File Path="Scripts\bootstrap.min.js" Url="Scripts/bootstrap.min.js" ReplaceContent="TRUE" />
-    <File Path="Scripts\chosen.jquery.min.js" Url="Scripts/chosen.jquery.min.js" ReplaceContent="TRUE" />
     <File Path="Scripts\Custom\Common.js" Url="Scripts/Custom/Common.js" ReplaceContent="TRUE" />
     <File Path="Scripts\Custom\Default.js" Url="Scripts/Custom/Default.js" ReplaceContent="TRUE" />
     <File Path="Scripts\elements.js" Url="Scripts/elements.js" ReplaceContent="TRUE" />
@@ -151,7 +150,6 @@
     <File Path="Scripts\Prettify\lang-basic.js" Url="Scripts/Prettify/lang-basic.js" ReplaceContent="TRUE" />
     <File Path="Scripts\Prettify\lang-apollo.js" Url="Scripts/Prettify/lang-apollo.js" ReplaceContent="TRUE" />
     <File Path="Scripts\handsontable\handsontable.full.min.js.map" Url="Scripts/handsontable/handsontable.full.min.js.map" ReplaceContent="TRUE" />
-    <File Path="Scripts\chosen.jquery.js" Url="Scripts/chosen.jquery.js" ReplaceContent="TRUE" />
     <File Path="Scripts\fullcalendar.min.js" Url="Scripts/fullcalendar.min.js" ReplaceContent="TRUE" />
     <File Path="Scripts\fullcalendar.js" Url="Scripts/fullcalendar.js" ReplaceContent="TRUE" />
     <File Path="Scripts\Fabric-UI\datepicker.js" Url="Scripts/Fabric-UI/datepicker.js" ReplaceContent="TRUE" />
@@ -183,5 +181,11 @@
     <File Path="Scripts\bootstrap-timepicker.min.js" Url="Scripts/bootstrap-timepicker.min.js" ReplaceContent="TRUE" />
     <File Path="Scripts\jquery.timepicker.min.js" Url="Scripts/jquery.timepicker.min.js" ReplaceContent="TRUE" />
     <File Path="Scripts\bootstrap.js" Url="Scripts/bootstrap.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\jquery.cookie-1.4.1.min.js" Url="Scripts/jquery.cookie-1.4.1.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\prototype.js" Url="Scripts/prototype.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\chosen.proto.min.js" Url="Scripts/chosen.proto.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\chosen.proto.js" Url="Scripts/chosen.proto.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\chosen.jquery.min.js" Url="Scripts/chosen.jquery.min.js" ReplaceContent="TRUE" />
+    <File Path="Scripts\chosen.jquery.js" Url="Scripts/chosen.jquery.js" ReplaceContent="TRUE" />
   </Module>
 </Elements>

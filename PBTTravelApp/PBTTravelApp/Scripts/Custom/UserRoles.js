@@ -305,6 +305,76 @@ $(document).ready(function () {
         }
     });
     $("#DictApprovers").jtable("load");
+    $("#Dict2ndApprovers").jtable({
+        title: "Travel 2nd Level Approvers",
+        paging: false,
+        defaultSorting: "Title asc",
+        messages: {
+            addNewRecord: "Add new"
+        },
+        actions: {
+            listAction: function (b, a) {
+                return UserRoles.readAll("2ndApprovers");
+            },
+            createAction: function (a) {
+                return UserRoles.createItem($("#Edit-User").val(), $("#Edit-User option:selected").text(), "", "2ndApprovers");
+            },
+            deleteAction: function (a) {
+                return UserRoles.deleteItem(a.ID, "2ndApprovers");
+            }
+        },
+        fields: {
+            ID: {
+                key: true,
+                create: false,
+                edit: false,
+                list: false
+            },
+            User: {
+                title: "User",
+                width: "100%",
+                options: function (b) {
+                    b.clearCache();
+                    var a = UserRoles.getAllUsers();
+                    var c = new Array();
+                    c.push({
+                        Value: "",
+                        DisplayText: "Select user..."
+                    });
+                    $.each(a, function () {
+                        c.push({
+                            Value: this.Id,
+                            DisplayText: this.Title
+                        });
+                    });
+                    return c;
+                },
+                display: function (a) {
+                    if (typeof a.record.User != "undefined" &&
+                        a.record.User != null) {
+                        return a.record.User.Title;
+                    } else {
+                        if (a.record.Title != null) {
+                            return a.record.Title;
+                        }
+                    }
+                },
+                sorting: false
+            }
+        },
+        formCreated: function (b, a) {
+            a.form.find('select[name="User"]').addClass("validate[required]");
+            a.form.validationEngine();
+        },
+        formSubmitting: function (b, a) {
+            return a.form.validationEngine("validate");
+        },
+        formClosed: function (b, a) {
+            a.form.validationEngine("hide");
+            a.form.validationEngine("detach");
+        }
+    });
+    $("#Dict2ndApprovers").jtable("load");
     $("div").remove(".ui-widget-overlay .ui-front");
     $(".ui-dialog-buttonpane").find('button:contains("Save")').addClass("btn btn-primary");
     $(".ui-dialog-buttonpane").find('button:contains("Delete")').addClass("btn btn-primary");

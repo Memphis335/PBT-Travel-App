@@ -24,7 +24,7 @@
     <link href="../Content/jquery.alerts.css" rel="stylesheet" />
     <link href="../Content/jquery.tagsinput.css" rel="stylesheet" />
     <link href="../Content/themes/base/spinner.css" rel="stylesheet" />
-    <link href="../Content/jquery.chosen.css" rel="stylesheet" />
+    <link href="../Content/chosen.css" rel="stylesheet" />
     <link href="../Content/fullcalendar.css" rel="stylesheet" />
     <link href="../Content/lato.css" rel="stylesheet" />
     <link href="../Content/style.default.css" rel="stylesheet" />
@@ -32,30 +32,31 @@
     <link href="../Content/themes/metro/blue/jquery-ui.css" rel="stylesheet" />
     <link href="../Content/themes/metro/blue/jtable.css" rel="stylesheet" />
 
-    <script src="../Scripts/jquery-2.2.0.min.js"></script>
-    <script src="../Scripts/jquery-ui-1.9.2.min.js"></script>
-    <script src="../Scripts/jquery-ui-1.11.4.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery-2.2.0.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery-ui-1.9.2.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery-ui-1.11.4.js"></script>
 
-    <script src="../Scripts/jtable/jquery.jtable.js"></script>
+    <script type="text/javascript" src="../Scripts/jtable/jquery.jtable.js"></script>
 
-    <script src="../Scripts/bootstrap.min.js"></script>
-    <script src="../Scripts/bootstrap.js"></script>
-    <script src="../Scripts/Moment.js"></script>
-    <script src="../Scripts/bootstrap-timepicker.min.js"></script>
-    <script src="../Scripts/jquery.timepicker.min.js"></script>
-    <script src="../Scripts/fullcalendar.min.js"></script>
-    <script src="../Scripts/jquery.validate.min.js"></script>
-    <script src="../Scripts/jquery.tagsinput.min.js"></script>
-    <script src="../Scripts/jquery.autogrow-textarea.js"></script>
-    <script src="../Scripts/chosen.jquery.js"></script>
-    <script src="../Scripts/jquery.cookie.js"></script>
-    <script src="../Scripts/modernizr.min.js"></script>
-    <script src="../Scripts/elements.js"></script>
-    <script src="../Scripts/Prettify/prettify.js"></script>
+    <script type="text/javascript" src="../Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../Scripts/bootstrap.js"></script>
+    <script type="text/javascript" src="../Scripts/Moment.js"></script>
+    <script type="text/javascript" src="../Scripts/bootstrap-timepicker.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.timepicker.min.js"></script>
+    <script type="text/javascript" src="../Scripts/chosen.jquery.js"></script>
+    <script type="text/javascript" src="../Scripts/fullcalendar.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.tagsinput.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.autogrow-textarea.js"></script>
+    <script type="text/javascript" src="../Scripts/chosen.jquery.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../Scripts/modernizr.min.js"></script>
+    <script type="text/javascript" src="../Scripts/elements.js"></script>
+    <script type="text/javascript" src="../Scripts/Prettify/prettify.js"></script>
     
-    <script src="../Scripts/notify.min.js"></script>
-    <script src="../Scripts/jquery.loadTemplate-1.4.4.min.js"></script>
-    <script src="../Scripts/jquery.MultiFile.min.js"></script>
+    <script type="text/javascript" src="../Scripts/notify.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.loadTemplate-1.4.4.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.MultiFile.min.js"></script>
 
     <script src="../Scripts/Custom/Common.js"></script>
     <!-- Custom Scripts -->

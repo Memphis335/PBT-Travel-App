@@ -10,16 +10,8 @@
     <link href="../Content/Custom/PeoplePicker.css" rel="stylesheet" />
 
     <!-- Handsontable-->
-    <script src="../Scripts/handsontable/handsontable.full.js"></script>
     <link media="screen" href="../Content/handsontable/handsontable.full.css" rel="stylesheet" />
     <link href="../Content/jquery.handsontable.bootstrap.css" rel="stylesheet" />
-
-    <!-- JS -->
-    <script src="../Scripts/Custom/RequestFormCreate.js"></script>
-    <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/4.0/1/MicrosoftAjax.js"></script>
-    <script src="../Scripts/Custom/App.js"></script>
-    <script src="../Scripts/Custom/sppeoplepicker.js"></script>
-
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="mainContent" runat="server">
@@ -76,7 +68,7 @@
                                 <label>Membership Number</label>
                                 <span class="field">
                                     <input type="text" name="txtFFPN" id="txtFFPN" class="input-xlarge" />
-                                    <input type="checkbox" id="addMore" name="addMore"/>Add More?
+                                    <input type="checkbox" id="addMore" name="addMore" />Add More?
                                 </span>
                             </p>
                             <p id="ExtraProg" style="display: none;">
@@ -91,7 +83,7 @@
                                 <label>Extra Membership Number</label>
                                 <span class="field">
                                     <input type="text" name="txtFFPN2" id="txtFFPN2" class="input-xlarge" />
-                                    <input type="checkbox" id="addMore2" name="addMore2"/>More?
+                                    <input type="checkbox" id="addMore2" name="addMore2" />More?
                                 </span>
                             </p>
                             <p id="ExtraNumMul" style="display: none;">
@@ -101,7 +93,7 @@
                                 </span>
                             </p>
                             <p>
-                                <label>Project</label>
+                                <label>Division</label>
                                 <span class="field">
                                     <select name="ddlProject" id="ddlProject" class="ms-Dropdown">
                                         <option value="">Choose One</option>
@@ -116,15 +108,36 @@
                         </div>
                         <div id="aApprovals" style="height: 200px;">
                             <p>
+                                <label>Require 2nd Level Approval?</label>
+                                <div class="field">
+                                    <input type="checkbox" id="cb2ndApprover" checked="" />
+                                </div>
+                            </p>
+                            <p>
                                 <label>Request Approver</label>
                                 <div class="field">
-                                    <select name="ddlRequestApprover" id="ddlRequestApprover" data-placeholder="Choose a Employee..." style="margin-right: 10px; width: 370px;" class="" tabindex="2">
+                                    <select name="ddlRequestApprover" id="ddlRequestApprover" data-placeholder="Choose a Employee..." style="width: 370px;" class="chosen-select" tabindex="-1">
                                         <option value=""></option>
                                     </select>
                                 </div>
                             </p>
+                            <div id="requireApproval" style="display: none">
+                                <p>
+                                    <label>2nd Level Request Approver</label>
+                                    <div class="field">
+                                        <select name="ddl2ndRequestApprover" id="ddl2ndRequestApprover" data-placeholder="Choose a Employee..." style="margin-right: 10px; width: 370px;" class="chosen-select" tabindex="2">
+                                            <option selected="selected" value="0">Not applicable</option>
+                                        </select>
+                                    </div>
+                                </p>
+                            </div>
                         </div>
                         <div id="aTravelInfo">
+                            <p class="control-group">
+                                <label for="txtStartDate">Linked to Request:(if applicable)</label>
+                                <span class="field">
+                                    <input id="txtRelRequest" type="text" name="txtRelRequest" class="input-xlarge" /></span>
+                            </p>
                             <p class="control-group">
                                 <label for="txtStartDate">Departure City</label>
                                 <span class="field">
@@ -134,23 +147,51 @@
                                 <label for="txtStartDate">Departure Date</label>
                                 <span class="field">
                                     <input id="txtStartDate" type="text" name="txtTripStartDate" class="input-xlarge" />
+                                    <select id="depTime">
+                                        <option>Choose travel time</option>
+                                        <option>Doesn't Matter</option>
+                                        <option>AM</option>
+                                        <option>PM</option>
+                                    </select>
                                 </span>
                             </p>
                             <p class="control-group">
                                 <label for="txtEndDate">Return Date</label>
                                 <span class="field">
-                                    <input id="txtEndDate" type="text" name="txtTripEndDate" class="input-xlarge" /></span>
-                                <input type="hidden" id="dateCalc" />
+                                    <input id="txtEndDate" type="text" name="txtTripEndDate" class="input-xlarge" />
+                                    <select id="retTime">
+                                        <option>Choose travel time</option>
+                                        <option>Doesn't Matter</option>
+                                        <option>AM</option>
+                                        <option>PM</option>
+                                    </select>
+                                </span>
                             </p>
-                            <p class="control-group">
-                                <label for="txtPurpose">Purpose of Trip</label>
+                            <p>
+                                <label>Client</label>
                                 <span class="field">
-                                    <input id="txtPurpose" type="text" name="txtTripPurpose" class="input-xlarge" /></span>
+                                    <select name="ddlClient" id="ddlClient" class="chosen-select">
+                                        <option value="">Choose One</option>
+                                    </select>
+                                </span>
+                            </p>
+                            <p>
+                                <label>Project/PO Number</label>
+                                <span class="field">
+                                    <select name="ddlPurpose" id="ddlPurpose" class="chosen-select">
+                                        <option value="">Choose One</option>
+                                    </select>
+                                </span>
                             </p>
                             <p>
                                 <label>Deliverable</label>
                                 <span class="field">
                                     <textarea cols="80" rows="3" id="taNotices" class="standardTextArea"></textarea></span>
+                            </p>
+                            <p>
+                                <label>Travel Comments</label>
+                                <span class="field">
+                                    <textarea cols="80" rows="3" id="comments" class="standardTextArea"></textarea></span>
                             </p>
                             <p class="control-group">
                                 <span style="display: block; clear: both;">
@@ -200,4 +241,10 @@
             </div>
         </div>
     </div>
+    <!-- JS -->
+    <script src="../Scripts/Custom/RequestFormCreate.js" type="text/javascript"></script>
+    <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/4.0/1/MicrosoftAjax.js"></script>
+    <script type="text/javascript" src="../Scripts/Custom/App.js"></script>
+    <script src="../Scripts/Custom/sppeoplepicker.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../Scripts/handsontable/handsontable.full.js"></script>
 </asp:Content>

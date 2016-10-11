@@ -25,7 +25,7 @@
             <br /><br />
           <h2> What are the possible causes of this error? </h2>
          <ul>
-             <li> You don't have access to this system (please contact with Administrator).</li>
+             <li> You don't have access to this system (please contact the Administrator).</li>
              <li> You are using the wrong application url. Please don't enter this system from the address stored in browser "Favourites" (might change after app update),  use main application link in Sharepoint. </li>
              <li> Your Microsoft Sharepoint Online session has expired - please login again to Sharepoint.</li>
              <li> Your browser has cookies disabled.</li>

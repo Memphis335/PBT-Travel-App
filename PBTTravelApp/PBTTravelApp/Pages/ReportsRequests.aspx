@@ -55,7 +55,7 @@
                         <span class="ms-Button-icon">
                             <i class="ms-Icon ms-Icon--documentPDF"></i>
                         </span>
-                        <span class="ms-Button-label">Export to CSV(Summary)</span>
+                        <span class="ms-Button-label">Export to CSV</span>
                     </button>
                 </span>
             </form>
@@ -64,4 +64,5 @@
             </div>
         </div>
     </div>
+    <iframe id="csvDownloadFrame" style="display:none" ></iframe>
 </asp:Content>

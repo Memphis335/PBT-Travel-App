@@ -18,5 +18,6 @@
     <ProjectItemFile Source="AuthError.aspx" Target="Pages\" Type="ElementFile" />
     <ProjectItemFile Source="NotFound.aspx" Target="Pages\" Type="ElementFile" />
     <ProjectItemFile Source="Dashboard.aspx" Target="Pages\" Type="ElementFile" />
+    <ProjectItemFile Source="AccessDenied.aspx" Target="Pages\" Type="ElementFile" />
   </Files>
 </ProjectItem>

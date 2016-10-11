@@ -281,7 +281,7 @@ h2 {
     display: inline-block;
     height: 20px;
     line-height: 20px;
-    width: 270px;
+    width: auto;
     padding: 5px;
     margin: 0px;
     font-family: "Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
@@ -325,7 +325,7 @@ h2 {
     background-image: url('../../Images/logo.png');
 }
 
-.chzn-container .chzn-results {
+.chosen-container .chosen-results {
     height: 120px;
 }
 
@@ -380,9 +380,9 @@ h2 {
     font-size: 6em;
 }
 
-    .tileText:hover {
-        margin-top: 91px;
-    }
+.tileText:hover {
+    margin-top: 91px;
+}
 
 .tileAdd {
     background-image: url('../../Images/tile-learn.png');
@@ -563,10 +563,11 @@ input[type="file"] {
 }
 
 .ui-dialog .ui-dialog-titlebar-close {
-    width: 24px;
+    display: none;
+    /*width: 24px;
     height: 24px;
     margin: -13px 0px 0px 0px;
-    padding: 0;
+    padding: 0;*/
 }
 
 .ui-dialog-titlebar-close > .ui-icon {
@@ -576,18 +577,18 @@ input[type="file"] {
 
 /* Dialog states */
 .ui-dialog {
-    border-color: #0072c6;
+    border-color: #012538 !important;
     background-color: #ffffff !important;
 }
 
 .ui-dialog-titlebar {
-    border-color: #0072c6;
+    border-color: #012538;
     color: #ffffff;
-    background-color: #0072c6;
+    background-color: #012538 !important;
 }
 
 .ui-dialog-buttonpane {
-    border-color: #0072c6 !important;
+    border-color: #012538 !important;
     background-color: #ffffff;
 }
 
@@ -611,7 +612,7 @@ input[type="file"] {
     border-top-width: 2px;
     border-right-width: 2px;
     border-left-width: 2px;
-    border-color: #0072c6;
+    border-color: #012538;
 }
 
 .ui-dialog-titlebar {
@@ -621,7 +622,7 @@ input[type="file"] {
 
 .ui-dialog-buttonpane {
     border-top-style: solid;
-    border-top-color: #0072c6;
+    border-top-color: #012538;
     border-top-width: 2px;
 }
 
@@ -632,4 +633,33 @@ a.ui-dialog-titlebar-close {
 /* Fix dialog and validation engine */
 .ui-dialog, .ui-dialog .ui-dialog-content {
     overflow: visible;
+}
+
+.inputError {
+    border: 2px solid;
+    border-color: red;
+}
+
+#bar {
+    float: left;
+    background: green;
+    height: 15px;
+}
+
+.Edit-TitleformError.parentFormjtable-create-form.formError {
+    opacity: 0.5 !important;
+    position: absolute !important;
+    top: 33.15px !important;
+    left: 68.3px !important;
+    margin-top: -21px !important;
+    color: red;
+}
+
+.Edit-ClientformError.parentFormjtable-create-form.formError {
+    opacity: 0.5 !important;
+    position: absolute !important;
+    top: 106.15px !important;
+    left: 68.3px !important;
+    margin-top: -21px !important;
+    color: red;
 }

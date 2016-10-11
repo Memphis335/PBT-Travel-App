@@ -126,7 +126,6 @@
     <File Path="Content\Custom\PrintForm.css" Url="Content/Custom/PrintForm.css" ReplaceContent="TRUE" />
     <File Path="Content\sass\_Fabric.Mixins.RTL.scss" Url="Content/sass/_Fabric.Mixins.RTL.scss" ReplaceContent="TRUE" />
     <File Path="Content\Custom\PeoplePicker.css" Url="Content/Custom/PeoplePicker.css" ReplaceContent="TRUE" />
-    <File Path="Content\themes\metro\blue\progressindicator.gif" Url="Content/themes/metro/blue/progressindicator.gif" ReplaceContent="TRUE" />
     <File Path="Content\jQuery.FileUpload\img\progressbar.gif" Url="Content/jQuery.FileUpload/img/progressbar.gif" ReplaceContent="TRUE" />
     <File Path="Content\jQuery.FileUpload\img\loading.gif" Url="Content/jQuery.FileUpload/img/loading.gif" ReplaceContent="TRUE" />
     <File Path="Content\jQuery.FileUpload\css\jquery.fileupload-ui-noscript.css" Url="Content/jQuery.FileUpload/css/jquery.fileupload-ui-noscript.css" ReplaceContent="TRUE" />
@@ -135,5 +134,10 @@
     <File Path="Content\jQuery.FileUpload\css\jquery.fileupload.css" Url="Content/jQuery.FileUpload/css/jquery.fileupload.css" ReplaceContent="TRUE" />
     <File Path="Content\bootstrap.min.css" Url="Content/bootstrap.min.css" ReplaceContent="TRUE" />
     <File Path="Content\bootstrap.css" Url="Content/bootstrap.css" ReplaceContent="TRUE" />
+    <File Path="Content\chosen.min.css" Url="Content/chosen.min.css" ReplaceContent="TRUE" />
+    <File Path="Content\chosen.css" Url="Content/chosen.css" ReplaceContent="TRUE" />
+    <File Path="Content\chosen-sprite2x.png" Url="Content/chosen-sprite2x.png" ReplaceContent="TRUE" />
+    <File Path="Content\chosen-sprite.png" Url="Content/chosen-sprite.png" ReplaceContent="TRUE" />
+    <File Path="Content\themes\metro\blue\pbtLoading.gif" Url="Content/themes/metro/blue/pbtLoading.gif" ReplaceContent="TRUE" />
   </Module>
 </Elements>

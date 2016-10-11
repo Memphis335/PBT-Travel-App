@@ -11,6 +11,7 @@
  xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
  xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
  xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sn="clr-namespace:System.Net;assembly=System"
  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -20,6 +21,7 @@
       <x:String>System.Text</x:String>
       <x:String>System.Collections.ObjectModel</x:String>
       <x:String>Microsoft.Activities</x:String>
+      <x:String>System.Net</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -67,13 +69,27 @@
       <Variable x:TypeArguments="x:String" Name="initiator" />
       <Variable x:TypeArguments="x:String" Name="Id" />
       <Variable x:TypeArguments="x:String" Name="RequestRejectReason" />
-      <Variable x:TypeArguments="x:String" Name="RequestRejectReason1" />
       <Variable x:TypeArguments="p:DynamicValue" Name="dv_4" />
       <Variable x:TypeArguments="p:DynamicValue" Name="dv_5" />
       <Variable x:TypeArguments="x:String" Name="RequestStatus1" />
       <Variable x:TypeArguments="p:DynamicValue" Name="dv_6" />
       <Variable x:TypeArguments="x:String" Name="RequestStatus2" />
       <Variable x:TypeArguments="p:DynamicValue" Name="dv_7" />
+      <Variable x:TypeArguments="p:DynamicValue" Name="adminUserDV" />
+      <Variable x:TypeArguments="sco:Collection(x:String)" Name="adminMail" />
+      <Variable x:TypeArguments="x:String" Name="adminTitle" />
+      <Variable x:TypeArguments="x:String" Name="adminUser" />
+      <Variable x:TypeArguments="p:DynamicValue" Name="allAdminsDV" />
+      <Variable x:TypeArguments="x:String" Name="Title" />
+      <Variable x:TypeArguments="x:Int32" Name="adminId" />
+      <Variable x:TypeArguments="x:Int32" Name="RequestApprover2" />
+      <Variable x:TypeArguments="p:DynamicValue" Name="requestApprover2DV" />
+      <Variable x:TypeArguments="x:String" Name="approverName2" />
+      <Variable x:TypeArguments="x:Int32" Name="approverId2" />
+      <Variable x:TypeArguments="x:String" Name="approverEmail2" />
+      <Variable x:TypeArguments="sco:Collection(x:String)" Name="apprEmail2" />
+      <Variable x:TypeArguments="x:String" Name="WorkflowTrigger" />
+      <Variable x:TypeArguments="p:DynamicValue" Name="requestStatus2stage" />
     </Sequence.Variables>
     <Sequence DisplayName="Init" sap2010:WorkflowViewState.IdRef="Sequence_1">
       <p1:LookupSPListItem ItemGuid="{x:Null}" Properties="{x:Null}" sap2010:WorkflowViewState.IdRef="LookupSPListItem_1">
@@ -127,6 +143,12 @@
           </OutArgument>
           <OutArgument x:TypeArguments="x:String" x:Key="RequestRejectReason">
             <mca:CSharpReference x:TypeArguments="x:String">RequestRejectReason</mca:CSharpReference>
+          </OutArgument>
+          <OutArgument x:TypeArguments="x:Int32" x:Key="ndRequestApproverId">
+            <mca:CSharpReference x:TypeArguments="x:Int32">RequestApprover2</mca:CSharpReference>
+          </OutArgument>
+          <OutArgument x:TypeArguments="x:String" x:Key="WorkflowTrigger">
+            <mca:CSharpReference x:TypeArguments="x:String">WorkflowTrigger</mca:CSharpReference>
           </OutArgument>
         </scg:Dictionary>
       </p:GetODataProperties>
@@ -268,7 +290,7 @@
       <p1:WriteToHistory sap2010:WorkflowViewState.IdRef="WriteToHistory_1">
         <p1:WriteToHistory.Message>
           <InArgument x:TypeArguments="x:String">
-            <mca:CSharpValue x:TypeArguments="x:String">"Mailing " + crtRequestor</mca:CSharpValue>
+            <mca:CSharpValue x:TypeArguments="x:String">"Mailing requestor : " + crtRequestor</mca:CSharpValue>
           </InArgument>
         </p1:WriteToHistory.Message>
       </p1:WriteToHistory>
@@ -282,7 +304,7 @@
 "@font-face	{font-family:'Cambria Math';panose-1:2 4 5 3 5 4 6 3 2 4;}" +
 "@font-face	{font-family:'Century Gothic';	panose-1:2 11 5 2 2 2 2 2 2 4;}" +
 "/* Style Definitions */" +
-"p.MsoNormal, li.MsoNormal, div.MsoNormal	{margin:0in;	margin-bottom:.0001pt;	font-size:11.0pt;	font-family:'Century Gothic',sans-serif;}" +
+"p.MsoNormal, li.MsoNormal,div.MsoNormal{margin:0in;margin-bottom:.0001pt;font-size:11.0pt;font-family:'Century Gothic',sans-serif;},MsoNormalSmall{font-style: italic; margin:0in;margin-bottom:.0001pt;font-size:6.0pt;font-family:'Century Gothic',sans-serif;}" +
 "a:link, span.MsoHyperlink	{mso-style-priority:99;	color:#FB4A18;	text-decoration:underline;}a:visited, span.MsoHyperlinkFollowed	{mso-style-priority:99;	color:#FB9318;	text-decoration:underline;}" +
 "span.EmailStyle17	{mso-style-type:personal-compose;	font-family:'entury Gothic',sans-serif;	color:windowtext;}" +
 ".MsoChpDefault	{mso-style-type:export-only;	font-family:'Century Gothic',sans-serif;}@page WordSection1	{size:8.5in 11.0in;	margin:1.0in 1.0in 1.0in 1.0in;}" +
@@ -293,11 +315,13 @@
 "&lt;o:idmap v:ext='edit' data='1' /&gt;" +
 "&lt;/o:shapelayout&gt;&lt;/xml&gt;&lt;![endif]--&gt;&lt;/head&gt;&lt;body lang=EN-US link='#FB4A18' vlink='#FB9318'&gt;&lt;div class=WordSection1&gt; " + 
 "&lt;p class=MsoNormal&gt;Hi " + crtRequestor +
-"&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt; " + 
-"We have received your travel request, it is waiting for approval from " + approverName +
+"&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt; " +
+"We have received your travel request - it is now awaiting for approval from " + approverName +
 ". &lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt; " +
-"You can track the progress &lt;a href=" + webUrl + "Pages/RequestFormView.aspx?requestID=" + Id + "#aBookingProgress&amp;SPHostUrl=" + HostURL + "&amp;SPAppWebUrl=" + webUrl + "&gt;here&lt;/a&gt;&lt;o:p&gt;&lt;/o:p&gt; " + 
-"&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;Regards&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"</mca:CSharpValue>
+"You can track the progress &lt;a href=" + webUrl + "Pages/RequestFormView.aspx?requestID=" + Id + "#aBookingProgress&amp;SPHostUrl=" + HostURL + "&amp;SPAppWebUrl=" + webUrl + "&gt;here&lt;/a&gt;&lt;o:p&gt;&lt;/o:p&gt; " +
+"&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;Regards&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;" +
+"&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;PBT Travel&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;" +
+"&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormalSmall&gt;(this is an automatic reply – please do not reply to this email, for more information or help contact IT Support)&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"</mca:CSharpValue>
           </InArgument>
         </p1:Email.Body>
         <p1:Email.To>
@@ -307,41 +331,49 @@
         </p1:Email.To>
       </p1:Email>
     </Sequence>
-    <Sequence DisplayName="Manager Approval" sap2010:WorkflowViewState.IdRef="Sequence_10">
-      <Sequence.Variables>
-        <Variable x:TypeArguments="sco:Collection(x:String)" Name="recipient" />
-        <Variable x:TypeArguments="x:String" Name="initiator" />
-      </Sequence.Variables>
-      <p:BuildCollection x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="BuildCollection`1_3">
-        <p:BuildCollection.Result>
-          <OutArgument x:TypeArguments="sco:Collection(x:String)">
-            <mca:CSharpReference x:TypeArguments="sco:Collection(x:String)">apprEmail</mca:CSharpReference>
-          </OutArgument>
-        </p:BuildCollection.Result>
-        <p:BuildCollection.Values>
-          <InArgument x:TypeArguments="x:String">
-            <mca:CSharpValue x:TypeArguments="x:String">approverEmail</mca:CSharpValue>
-          </InArgument>
-        </p:BuildCollection.Values>
-      </p:BuildCollection>
-      <p1:WriteToHistory sap2010:WorkflowViewState.IdRef="WriteToHistory_2">
-        <p1:WriteToHistory.Message>
-          <InArgument x:TypeArguments="x:String">
-            <mca:CSharpValue x:TypeArguments="x:String">"Mailing " + approverName</mca:CSharpValue>
-          </InArgument>
-        </p1:WriteToHistory.Message>
-      </p1:WriteToHistory>
-      <p1:Email AdditionalHeaders="{x:Null}" BCC="{x:Null}" CC="{x:Null}" sap2010:WorkflowViewState.IdRef="Email_2" Subject="New Travel Request">
-        <p1:Email.Body>
-          <InArgument x:TypeArguments="x:String">
-            <mca:CSharpValue x:TypeArguments="x:String" xml:space="preserve">"&lt;html xmlns:v='urn:schemas-microsoft-com:vml' xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word'" +
+    <If DisplayName="Check One or two Stage" sap2010:WorkflowViewState.IdRef="If_3">
+      <If.Condition>
+        <InArgument x:TypeArguments="x:Boolean">
+          <mca:CSharpValue x:TypeArguments="x:Boolean">WorkflowTrigger == "OneStage"</mca:CSharpValue>
+        </InArgument>
+      </If.Condition>
+      <If.Then>
+        <Sequence DisplayName="One Stage Approval">
+          <Sequence DisplayName="1 Stage Approval" sap2010:WorkflowViewState.IdRef="Sequence_10">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="sco:Collection(x:String)" Name="recipient" />
+              <Variable x:TypeArguments="x:String" Name="initiator" />
+            </Sequence.Variables>
+            <p:BuildCollection x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="BuildCollection`1_3">
+              <p:BuildCollection.Result>
+                <OutArgument x:TypeArguments="sco:Collection(x:String)">
+                  <mca:CSharpReference x:TypeArguments="sco:Collection(x:String)">apprEmail</mca:CSharpReference>
+                </OutArgument>
+              </p:BuildCollection.Result>
+              <p:BuildCollection.Values>
+                <InArgument x:TypeArguments="x:String">
+                  <mca:CSharpValue x:TypeArguments="x:String">approverEmail</mca:CSharpValue>
+                </InArgument>
+              </p:BuildCollection.Values>
+            </p:BuildCollection>
+            <p1:WriteToHistory sap2010:WorkflowViewState.IdRef="WriteToHistory_2">
+              <p1:WriteToHistory.Message>
+                <InArgument x:TypeArguments="x:String">
+                  <mca:CSharpValue x:TypeArguments="x:String">"Mailing approver : " + approverName</mca:CSharpValue>
+                </InArgument>
+              </p1:WriteToHistory.Message>
+            </p1:WriteToHistory>
+            <p1:Email AdditionalHeaders="{x:Null}" BCC="{x:Null}" CC="{x:Null}" sap2010:WorkflowViewState.IdRef="Email_2" Subject="New Travel Request">
+              <p1:Email.Body>
+                <InArgument x:TypeArguments="x:String">
+                  <mca:CSharpValue x:TypeArguments="x:String" xml:space="preserve">"&lt;html xmlns:v='urn:schemas-microsoft-com:vml' xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word'" +
 "xmlns:m='http://schemas.microsoft.com/office/2004/12/omml' xmlns='http://www.w3.org/TR/REC-html40'&gt;&lt;head&gt;&lt;META HTTP-EQUIV='Content-Type' CONTENT='text/html; charset=us-ascii'&gt;" + 
 "&lt;meta name=Generator content='Microsoft Word 15 (filtered medium)'&gt;&lt;style&gt;&lt;!-- " +
 "/* Font Definitions */" +
 "@font-face	{font-family:'Cambria Math';panose-1:2 4 5 3 5 4 6 3 2 4;}" +
 "@font-face	{font-family:'Century Gothic';	panose-1:2 11 5 2 2 2 2 2 2 4;}" +
 "/* Style Definitions */" +
-"p.MsoNormal, li.MsoNormal, div.MsoNormal	{margin:0in;	margin-bottom:.0001pt;	font-size:11.0pt;	font-family:'Century Gothic',sans-serif;}" +
+"p.MsoNormal, li.MsoNormal, div.MsoNormal	{margin:0in;	margin-bottom:.0001pt;	font-size:11.0pt;	font-family:'Century Gothic',sans-serif;},MsoNormalSmall{font-style: italic; margin:0in;margin-bottom:.0001pt;font-size:6.0pt;font-family:'Century Gothic',sans-serif;}" +
 "a:link, span.MsoHyperlink	{mso-style-priority:99;	color:#FB4A18;	text-decoration:underline;}a:visited, span.MsoHyperlinkFollowed	{mso-style-priority:99;	color:#FB9318;	text-decoration:underline;}" +
 "span.EmailStyle17	{mso-style-type:personal-compose;	font-family:'entury Gothic',sans-serif;	color:windowtext;}" +
 ".MsoChpDefault	{mso-style-type:export-only;	font-family:'Century Gothic',sans-serif;}@page WordSection1	{size:8.5in 11.0in;	margin:1.0in 1.0in 1.0in 1.0in;}" +
@@ -352,185 +384,99 @@
 "&lt;o:idmap v:ext='edit' data='1' /&gt;" +
 "&lt;/o:shapelayout&gt;&lt;/xml&gt;&lt;![endif]--&gt;&lt;/head&gt;&lt;body lang=EN-US link='#FB4A18' vlink='#FB9318'&gt;&lt;div class=WordSection1&gt; " +
 "&lt;p class=MsoNormal&gt;Hi " + approverName +
-"&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt; " + 
-crtRequestor + " has logged a new travel request, it is waiting for approval from you" +
+"&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt; " +
+crtRequestor + " has logged a new travel request, it is waiting for your approval. Please attend to it when you have time." +
 ". &lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt; " +
-"You can review the request &lt;a href=" + webUrl + "/Pages/RequestFormView.aspx?requestID=" + Id + "&amp;sphosturl=" + HostURL + "&amp;spappweburl=" + webUrl + "&gt;here&lt;/a&gt;&lt;o:p&gt;&lt;/o:p&gt; " + 
-"&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;Regards&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"</mca:CSharpValue>
-          </InArgument>
-        </p1:Email.Body>
-        <p1:Email.To>
-          <InArgument x:TypeArguments="sco:Collection(x:String)">
-            <mca:CSharpValue x:TypeArguments="sco:Collection(x:String)">apprEmail</mca:CSharpValue>
-          </InArgument>
-        </p1:Email.To>
-      </p1:Email>
-    </Sequence>
-    <Sequence DisplayName="Notify Travel Admins" sap2010:WorkflowViewState.IdRef="Sequence_5">
-      <Sequence.Variables>
-        <Variable x:TypeArguments="p:DynamicValue" Name="CURAdminEmail" />
-        <Variable x:TypeArguments="x:Int32" Name="CURListItemId" />
-        <Variable x:TypeArguments="p:DynamicValue" Name="dv_4" />
-        <Variable x:TypeArguments="x:Int32" Name="User" />
-        <Variable x:TypeArguments="x:String" Name="Email" />
-        <Variable x:TypeArguments="x:Int32" Default="1" Name="Id2" />
-        <Variable x:TypeArguments="p:DynamicValue" Name="dv_5" />
-        <Variable x:TypeArguments="x:Int32" Name="ItemCount" />
-        <Variable x:TypeArguments="sco:Collection(x:Int32)" Name="ItemCountCollection" />
-      </Sequence.Variables>
-      <p1:LookupSPList sap2010:WorkflowViewState.IdRef="LookupSPList_1">
-        <p1:LookupSPList.ListId>
-          <InArgument x:TypeArguments="s:Guid">
-            <mca:CSharpValue x:TypeArguments="s:Guid">System.Guid.Parse("{$ListId:Lists/CustomUserRoles;}")</mca:CSharpValue>
-          </InArgument>
-        </p1:LookupSPList.ListId>
-        <p1:LookupSPList.Result>
-          <OutArgument x:TypeArguments="p:DynamicValue">
-            <mca:CSharpReference x:TypeArguments="p:DynamicValue">dv_5</mca:CSharpReference>
-          </OutArgument>
-        </p1:LookupSPList.Result>
-      </p1:LookupSPList>
-      <p:GetODataProperties DisplayName="GetDynamicValueProperties" sap2010:WorkflowViewState.IdRef="GetODataProperties_8">
-        <p:GetODataProperties.Source>
-          <InArgument x:TypeArguments="p:DynamicValue">
-            <mca:CSharpValue x:TypeArguments="p:DynamicValue">dv_5</mca:CSharpValue>
-          </InArgument>
-        </p:GetODataProperties.Source>
-        <scg:Dictionary x:TypeArguments="x:String, OutArgument">
-          <OutArgument x:TypeArguments="x:Int32" x:Key="ItemCount">
-            <mca:CSharpReference x:TypeArguments="x:Int32">ItemCount</mca:CSharpReference>
-          </OutArgument>
-        </scg:Dictionary>
-      </p:GetODataProperties>
-      <DoWhile sap2010:WorkflowViewState.IdRef="DoWhile_1">
-        <DoWhile.Condition>
-          <mca:CSharpValue x:TypeArguments="x:Boolean">ItemCount &lt; ItemCount</mca:CSharpValue>
-        </DoWhile.Condition>
-        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_14">
-          <p1:LookupSPListItem ItemGuid="{x:Null}" Properties="{x:Null}" sap2010:WorkflowViewState.IdRef="LookupSPListItem_3">
-            <p1:LookupSPListItem.ItemId>
-              <InArgument x:TypeArguments="x:Int32">
-                <mca:CSharpValue x:TypeArguments="x:Int32">Id2</mca:CSharpValue>
-              </InArgument>
-            </p1:LookupSPListItem.ItemId>
-            <p1:LookupSPListItem.ListId>
-              <InArgument x:TypeArguments="s:Guid">
-                <mca:CSharpValue x:TypeArguments="s:Guid">System.Guid.Parse("{$ListId:Lists/CustomUserRoles;}")</mca:CSharpValue>
-              </InArgument>
-            </p1:LookupSPListItem.ListId>
-            <p1:LookupSPListItem.Result>
-              <OutArgument x:TypeArguments="p:DynamicValue">
-                <mca:CSharpReference x:TypeArguments="p:DynamicValue">dv_4</mca:CSharpReference>
-              </OutArgument>
-            </p1:LookupSPListItem.Result>
-          </p1:LookupSPListItem>
-          <p:GetODataProperties DisplayName="GetDynamicValueProperties" sap2010:WorkflowViewState.IdRef="GetODataProperties_6">
-            <p:GetODataProperties.Source>
-              <InArgument x:TypeArguments="p:DynamicValue">
-                <mca:CSharpValue x:TypeArguments="p:DynamicValue">dv_4</mca:CSharpValue>
-              </InArgument>
-            </p:GetODataProperties.Source>
-            <scg:Dictionary x:TypeArguments="x:String, OutArgument">
-              <OutArgument x:TypeArguments="x:Int32" x:Key="UserId">
-                <mca:CSharpReference x:TypeArguments="x:Int32">User</mca:CSharpReference>
-              </OutArgument>
-            </scg:Dictionary>
-          </p:GetODataProperties>
-          <p1:WriteToHistory sap2010:WorkflowViewState.IdRef="WriteToHistory_3">
-            <p1:WriteToHistory.Message>
-              <InArgument x:TypeArguments="x:String">
-                <mca:CSharpValue x:TypeArguments="x:String">"LookupSPListItem :" + Id2 + User</mca:CSharpValue>
-              </InArgument>
-            </p1:WriteToHistory.Message>
-          </p1:WriteToHistory>
-          <Assign sap2010:WorkflowViewState.IdRef="Assign_2">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:Int32">
-                <mca:CSharpReference x:TypeArguments="x:Int32">Id2</mca:CSharpReference>
-              </OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:Int32">
-                <mca:CSharpValue x:TypeArguments="x:Int32">Id2 + 1</mca:CSharpValue>
-              </InArgument>
-            </Assign.Value>
-          </Assign>
-          <p1:LookupSPUser sap2010:WorkflowViewState.IdRef="LookupSPUser_4">
-            <p1:LookupSPUser.PrincipalId>
-              <InArgument x:TypeArguments="x:Int32">
-                <mca:CSharpValue x:TypeArguments="x:Int32">User</mca:CSharpValue>
-              </InArgument>
-            </p1:LookupSPUser.PrincipalId>
-            <p1:LookupSPUser.Result>
-              <OutArgument x:TypeArguments="p:DynamicValue">
-                <mca:CSharpReference x:TypeArguments="p:DynamicValue">CURAdminEmail</mca:CSharpReference>
-              </OutArgument>
-            </p1:LookupSPUser.Result>
-          </p1:LookupSPUser>
-          <p:GetODataProperties DisplayName="GetDynamicValueProperties" sap2010:WorkflowViewState.IdRef="GetODataProperties_7">
-            <p:GetODataProperties.Source>
-              <InArgument x:TypeArguments="p:DynamicValue">
-                <mca:CSharpValue x:TypeArguments="p:DynamicValue">CURAdminEmail</mca:CSharpValue>
-              </InArgument>
-            </p:GetODataProperties.Source>
-            <scg:Dictionary x:TypeArguments="x:String, OutArgument">
-              <OutArgument x:TypeArguments="x:String" x:Key="Email">
-                <mca:CSharpReference x:TypeArguments="x:String">Email</mca:CSharpReference>
-              </OutArgument>
-            </scg:Dictionary>
-          </p:GetODataProperties>
-          <p1:WriteToHistory sap2010:WorkflowViewState.IdRef="WriteToHistory_4">
-            <p1:WriteToHistory.Message>
-              <InArgument x:TypeArguments="x:String">
-                <mca:CSharpValue x:TypeArguments="x:String">"Email : " + Email</mca:CSharpValue>
-              </InArgument>
-            </p1:WriteToHistory.Message>
-          </p1:WriteToHistory>
-          <p:BuildCollection x:TypeArguments="x:String" DisplayName="Initialize Email Collection" sap2010:WorkflowViewState.IdRef="BuildCollection`1_5">
-            <p:BuildCollection.Result>
-              <OutArgument x:TypeArguments="sco:Collection(x:String)">
-                <mca:CSharpReference x:TypeArguments="sco:Collection(x:String)">apprEmail</mca:CSharpReference>
-              </OutArgument>
-            </p:BuildCollection.Result>
-            <p:BuildCollection.Values>
-              <InArgument x:TypeArguments="x:String">
-                <mca:CSharpValue x:TypeArguments="x:String">Email</mca:CSharpValue>
-              </InArgument>
-            </p:BuildCollection.Values>
-          </p:BuildCollection>
-          <Assign sap2010:WorkflowViewState.IdRef="Assign_3">
-            <Assign.To>
-              <OutArgument x:TypeArguments="x:Int32">
-                <mca:CSharpReference x:TypeArguments="x:Int32">ItemCount</mca:CSharpReference>
-              </OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="x:Int32">
-                <mca:CSharpValue x:TypeArguments="x:Int32">ItemCount + 1</mca:CSharpValue>
-              </InArgument>
-            </Assign.Value>
-          </Assign>
+"You can track the progress &lt;a href=" + webUrl + "Pages/RequestFormView.aspx?requestID=" + Id + "&amp;SPHostUrl=" + HostURL + "&amp;SPAppWebUrl=" + webUrl + "&gt;here &lt;/a&gt;and also suggest changes if necessary&lt;o:p&gt;&lt;/o:p&gt; " +
+"&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;Regards&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;" +
+"&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;PBT Travel&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;" +
+"&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormalSmall&gt;(this is an automatic reply – please do not reply to this email, for more information or help contact IT Support)&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"</mca:CSharpValue>
+                </InArgument>
+              </p1:Email.Body>
+              <p1:Email.To>
+                <InArgument x:TypeArguments="sco:Collection(x:String)">
+                  <mca:CSharpValue x:TypeArguments="sco:Collection(x:String)">apprEmail</mca:CSharpValue>
+                </InArgument>
+              </p1:Email.To>
+            </p1:Email>
+          </Sequence>
+          <sap2010:WorkflowViewState.IdRef>Sequence_25</sap2010:WorkflowViewState.IdRef>
         </Sequence>
-      </DoWhile>
-      <p1:WriteToHistory sap2010:WorkflowViewState.IdRef="WriteToHistory_5">
-        <p1:WriteToHistory.Message>
-          <InArgument x:TypeArguments="x:String">
-            <mca:CSharpValue x:TypeArguments="x:String" xml:space="preserve">"All good up till here. Email not sending however..." + 
-                "Here is the collection : "</mca:CSharpValue>
-          </InArgument>
-        </p1:WriteToHistory.Message>
-      </p1:WriteToHistory>
-      <p1:Email AdditionalHeaders="{x:Null}" BCC="{x:Null}" CC="{x:Null}" sap2010:WorkflowViewState.IdRef="Email_5" Subject="**New Travel Request Submitted**">
-        <p1:Email.Body>
-          <InArgument x:TypeArguments="x:String">
-            <mca:CSharpValue x:TypeArguments="x:String" xml:space="preserve">"&lt;html xmlns:v='urn:schemas-microsoft-com:vml' xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word'" +
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="2 Stage Approval" sap2010:WorkflowViewState.IdRef="Sequence_24">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:String" Name="RequestStatusSecApp" />
+            <Variable x:TypeArguments="x:String" Name="RequestRejectReason2" />
+          </Sequence.Variables>
+          <p1:WriteToHistory sap2010:WorkflowViewState.IdRef="WriteToHistory_10" Message="Two Stage Approval Started" />
+          <Sequence DisplayName="2nd Line Approval" sap2010:WorkflowViewState.IdRef="Sequence_23">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="sco:Collection(x:String)" Name="recipient" />
+              <Variable x:TypeArguments="x:String" Name="initiator" />
+            </Sequence.Variables>
+            <Sequence DisplayName="get 2nd Approver Details" sap2010:WorkflowViewState.IdRef="Sequence_22">
+              <p1:LookupSPUser sap2010:WorkflowViewState.IdRef="LookupSPUser_5">
+                <p1:LookupSPUser.PrincipalId>
+                  <InArgument x:TypeArguments="x:Int32">
+                    <mca:CSharpValue x:TypeArguments="x:Int32">RequestApprover2</mca:CSharpValue>
+                  </InArgument>
+                </p1:LookupSPUser.PrincipalId>
+                <p1:LookupSPUser.Result>
+                  <OutArgument x:TypeArguments="p:DynamicValue">
+                    <mca:CSharpReference x:TypeArguments="p:DynamicValue">requestApprover2DV</mca:CSharpReference>
+                  </OutArgument>
+                </p1:LookupSPUser.Result>
+              </p1:LookupSPUser>
+              <p:GetODataProperties DisplayName="GetDynamicValueProperties" sap2010:WorkflowViewState.IdRef="GetODataProperties_21">
+                <p:GetODataProperties.Source>
+                  <InArgument x:TypeArguments="p:DynamicValue">
+                    <mca:CSharpValue x:TypeArguments="p:DynamicValue">requestApprover2DV</mca:CSharpValue>
+                  </InArgument>
+                </p:GetODataProperties.Source>
+                <scg:Dictionary x:TypeArguments="x:String, OutArgument">
+                  <OutArgument x:TypeArguments="x:String" x:Key="Title">
+                    <mca:CSharpReference x:TypeArguments="x:String">approverName2</mca:CSharpReference>
+                  </OutArgument>
+                  <OutArgument x:TypeArguments="x:Int32" x:Key="Id">
+                    <mca:CSharpReference x:TypeArguments="x:Int32">approverId2</mca:CSharpReference>
+                  </OutArgument>
+                  <OutArgument x:TypeArguments="x:String" x:Key="Email">
+                    <mca:CSharpReference x:TypeArguments="x:String">approverEmail2</mca:CSharpReference>
+                  </OutArgument>
+                </scg:Dictionary>
+              </p:GetODataProperties>
+            </Sequence>
+            <p:BuildCollection x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="BuildCollection`1_7">
+              <p:BuildCollection.Result>
+                <OutArgument x:TypeArguments="sco:Collection(x:String)">
+                  <mca:CSharpReference x:TypeArguments="sco:Collection(x:String)">apprEmail2</mca:CSharpReference>
+                </OutArgument>
+              </p:BuildCollection.Result>
+              <p:BuildCollection.Values>
+                <InArgument x:TypeArguments="x:String">
+                  <mca:CSharpValue x:TypeArguments="x:String">approverEmail2</mca:CSharpValue>
+                </InArgument>
+              </p:BuildCollection.Values>
+            </p:BuildCollection>
+            <p1:WriteToHistory sap2010:WorkflowViewState.IdRef="WriteToHistory_9">
+              <p1:WriteToHistory.Message>
+                <InArgument x:TypeArguments="x:String">
+                  <mca:CSharpValue x:TypeArguments="x:String">"Mailing 2nd approver : " + approverName2</mca:CSharpValue>
+                </InArgument>
+              </p1:WriteToHistory.Message>
+            </p1:WriteToHistory>
+            <p1:Email AdditionalHeaders="{x:Null}" BCC="{x:Null}" CC="{x:Null}" DisplayName="Email 2nd Approver" sap2010:WorkflowViewState.IdRef="Email_13" Subject="New Travel Request">
+              <p1:Email.Body>
+                <InArgument x:TypeArguments="x:String">
+                  <mca:CSharpValue x:TypeArguments="x:String" xml:space="preserve">"&lt;html xmlns:v='urn:schemas-microsoft-com:vml' xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word'" +
 "xmlns:m='http://schemas.microsoft.com/office/2004/12/omml' xmlns='http://www.w3.org/TR/REC-html40'&gt;&lt;head&gt;&lt;META HTTP-EQUIV='Content-Type' CONTENT='text/html; charset=us-ascii'&gt;" + 
 "&lt;meta name=Generator content='Microsoft Word 15 (filtered medium)'&gt;&lt;style&gt;&lt;!-- " +
 "/* Font Definitions */" +
 "@font-face	{font-family:'Cambria Math';panose-1:2 4 5 3 5 4 6 3 2 4;}" +
 "@font-face	{font-family:'Century Gothic';	panose-1:2 11 5 2 2 2 2 2 2 4;}" +
 "/* Style Definitions */" +
-"p.MsoNormal, li.MsoNormal, div.MsoNormal	{margin:0in;	margin-bottom:.0001pt;	font-size:11.0pt;	font-family:'Century Gothic',sans-serif;}" +
+"p.MsoNormal, li.MsoNormal, div.MsoNormal	{margin:0in;	margin-bottom:.0001pt;	font-size:11.0pt;	font-family:'Century Gothic',sans-serif;},MsoNormalSmall{font-style: italic; margin:0in;margin-bottom:.0001pt;font-size:6.0pt;font-family:'Century Gothic',sans-serif;}" +
 "a:link, span.MsoHyperlink	{mso-style-priority:99;	color:#FB4A18;	text-decoration:underline;}a:visited, span.MsoHyperlinkFollowed	{mso-style-priority:99;	color:#FB9318;	text-decoration:underline;}" +
 "span.EmailStyle17	{mso-style-type:personal-compose;	font-family:'entury Gothic',sans-serif;	color:windowtext;}" +
 ".MsoChpDefault	{mso-style-type:export-only;	font-family:'Century Gothic',sans-serif;}@page WordSection1	{size:8.5in 11.0in;	margin:1.0in 1.0in 1.0in 1.0in;}" +
@@ -540,21 +486,398 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
 "&lt;o:shapelayout v:ext='edit'&gt;" +
 "&lt;o:idmap v:ext='edit' data='1' /&gt;" +
 "&lt;/o:shapelayout&gt;&lt;/xml&gt;&lt;![endif]--&gt;&lt;/head&gt;&lt;body lang=EN-US link='#FB4A18' vlink='#FB9318'&gt;&lt;div class=WordSection1&gt; " +
-"&lt;p class=MsoNormal&gt;Hi Admin" +
-"&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt; " + 
-crtRequestor + " has logged a new travel request, it is waiting for approval from " + approverName +
+"&lt;p class=MsoNormal&gt;Hi " + approverName2 +
+"&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt; " +
+crtRequestor + " has logged a new travel request, it is waiting for your approval. Please attend to it when you have time." +
 ". &lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt; " +
-"You can review the request &lt;a href=" + webUrl + "/Pages/RequestFormView.aspx?requestID=" + Id + "&amp;sphosturl=" + HostURL + "&amp;spappweburl=" + webUrl + "&gt;here&lt;/a&gt;. &lt;o:p&gt;&lt;/o:p&gt; " +
-"&amp;nbsp;Do not action this request yet!" +
-"&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;Regards&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"</mca:CSharpValue>
+"You can track the progress &lt;a href=" + webUrl + "Pages/RequestFormView.aspx?requestID=" + Id + "&amp;SPHostUrl=" + HostURL + "&amp;SPAppWebUrl=" + webUrl + "&gt;here &lt;/a&gt;and also suggest changes if necessary&lt;o:p&gt;&lt;/o:p&gt; " +
+"&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;Regards&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;" +
+"&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;PBT Travel&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;" +
+"&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormalSmall&gt;(this is an automatic reply – please do not reply to this email, for more information or help contact IT Support)&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"</mca:CSharpValue>
+                </InArgument>
+              </p1:Email.Body>
+              <p1:Email.To>
+                <InArgument x:TypeArguments="sco:Collection(x:String)">
+                  <mca:CSharpValue x:TypeArguments="sco:Collection(x:String)">apprEmail2</mca:CSharpValue>
+                </InArgument>
+              </p1:Email.To>
+            </p1:Email>
+          </Sequence>
+          <p1:WriteToHistory sap2010:WorkflowViewState.IdRef="WriteToHistory_11" Message="Waiting for First approval" />
+          <p1:WaitForFieldChange EventPayload="{x:Null}" ItemGuid="{x:Null}" FieldValue="FirstDone" sap2010:WorkflowViewState.IdRef="WaitForFieldChange_3">
+            <p1:WaitForFieldChange.FieldName>
+              <InArgument x:TypeArguments="x:String">
+                <mca:CSharpValue x:TypeArguments="x:String">"WorkflowTrigger"</mca:CSharpValue>
+              </InArgument>
+            </p1:WaitForFieldChange.FieldName>
+            <p1:WaitForFieldChange.ItemId>
+              <InArgument x:TypeArguments="x:Int32">
+                <p:ExpressionContainerValue x:TypeArguments="x:Int32">
+                  <p1:GetCurrentItemId />
+                </p:ExpressionContainerValue>
+              </InArgument>
+            </p1:WaitForFieldChange.ItemId>
+            <p1:WaitForFieldChange.ListId>
+              <InArgument x:TypeArguments="s:Guid">
+                <p:ExpressionContainerValue x:TypeArguments="s:Guid">
+                  <p1:GetCurrentListId />
+                </p:ExpressionContainerValue>
+              </InArgument>
+            </p1:WaitForFieldChange.ListId>
+          </p1:WaitForFieldChange>
+          <p1:LookupSPListItem ItemGuid="{x:Null}" Properties="{x:Null}">
+            <p1:LookupSPListItem.ItemId>
+              <InArgument x:TypeArguments="x:Int32">
+                <p:ExpressionContainerValue x:TypeArguments="x:Int32">
+                  <p1:GetCurrentItemId />
+                </p:ExpressionContainerValue>
+              </InArgument>
+            </p1:LookupSPListItem.ItemId>
+            <p1:LookupSPListItem.ListId>
+              <InArgument x:TypeArguments="s:Guid">
+                <p:ExpressionContainerValue x:TypeArguments="s:Guid">
+                  <p1:GetCurrentListId />
+                </p:ExpressionContainerValue>
+              </InArgument>
+            </p1:LookupSPListItem.ListId>
+            <p1:LookupSPListItem.Result>
+              <OutArgument x:TypeArguments="p:DynamicValue">
+                <mca:CSharpReference x:TypeArguments="p:DynamicValue">requestStatus2stage</mca:CSharpReference>
+              </OutArgument>
+            </p1:LookupSPListItem.Result>
+            <sap2010:WorkflowViewState.IdRef>LookupSPListItem_5</sap2010:WorkflowViewState.IdRef>
+          </p1:LookupSPListItem>
+          <p:GetODataProperties DisplayName="GetDynamicValueProperties">
+            <p:GetODataProperties.Source>
+              <InArgument x:TypeArguments="p:DynamicValue">
+                <mca:CSharpValue x:TypeArguments="p:DynamicValue">requestStatus2stage</mca:CSharpValue>
+              </InArgument>
+            </p:GetODataProperties.Source>
+            <scg:Dictionary x:TypeArguments="x:String, OutArgument">
+              <OutArgument x:TypeArguments="x:String" x:Key="RequestStatusSecApp">
+                <mca:CSharpReference x:TypeArguments="x:String">RequestStatusSecApp</mca:CSharpReference>
+              </OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="RequestRejectReason2">
+                <mca:CSharpReference x:TypeArguments="x:String">RequestRejectReason2</mca:CSharpReference>
+              </OutArgument>
+            </scg:Dictionary>
+            <sap2010:WorkflowViewState.IdRef>GetODataProperties_22</sap2010:WorkflowViewState.IdRef>
+          </p:GetODataProperties>
+          <If DisplayName="If Second Approver Approves">
+            <If.Condition>
+              <InArgument x:TypeArguments="x:Boolean">
+                <mca:CSharpValue x:TypeArguments="x:Boolean">RequestStatusSecApp == "Approved"</mca:CSharpValue>
+              </InArgument>
+            </If.Condition>
+            <If.Then>
+              <Sequence DisplayName="Manager Approval" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="sco:Collection(x:String)" Name="recipient" />
+                  <Variable x:TypeArguments="x:String" Name="initiator" />
+                </Sequence.Variables>
+                <p:BuildCollection x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="BuildCollection`1_6">
+                  <p:BuildCollection.Result>
+                    <OutArgument x:TypeArguments="sco:Collection(x:String)">
+                      <mca:CSharpReference x:TypeArguments="sco:Collection(x:String)">apprEmail</mca:CSharpReference>
+                    </OutArgument>
+                  </p:BuildCollection.Result>
+                  <p:BuildCollection.Values>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String">approverEmail</mca:CSharpValue>
+                    </InArgument>
+                  </p:BuildCollection.Values>
+                </p:BuildCollection>
+                <p1:WriteToHistory sap2010:WorkflowViewState.IdRef="WriteToHistory_8">
+                  <p1:WriteToHistory.Message>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String">"Mailing approver : " + approverName</mca:CSharpValue>
+                    </InArgument>
+                  </p1:WriteToHistory.Message>
+                </p1:WriteToHistory>
+                <p1:Email AdditionalHeaders="{x:Null}" BCC="{x:Null}" CC="{x:Null}" sap2010:WorkflowViewState.IdRef="Email_12" Subject="New Travel Request">
+                  <p1:Email.Body>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String" xml:space="preserve">"&lt;html xmlns:v='urn:schemas-microsoft-com:vml' xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word'" +
+"xmlns:m='http://schemas.microsoft.com/office/2004/12/omml' xmlns='http://www.w3.org/TR/REC-html40'&gt;&lt;head&gt;&lt;META HTTP-EQUIV='Content-Type' CONTENT='text/html; charset=us-ascii'&gt;" + 
+"&lt;meta name=Generator content='Microsoft Word 15 (filtered medium)'&gt;&lt;style&gt;&lt;!-- " +
+"/* Font Definitions */" +
+"@font-face	{font-family:'Cambria Math';panose-1:2 4 5 3 5 4 6 3 2 4;}" +
+"@font-face	{font-family:'Century Gothic';	panose-1:2 11 5 2 2 2 2 2 2 4;}" +
+"/* Style Definitions */" +
+"p.MsoNormal, li.MsoNormal, div.MsoNormal	{margin:0in;	margin-bottom:.0001pt;	font-size:11.0pt;	font-family:'Century Gothic',sans-serif;},MsoNormalSmall{font-style: italic; margin:0in;margin-bottom:.0001pt;font-size:6.0pt;font-family:'Century Gothic',sans-serif;}" +
+"a:link, span.MsoHyperlink	{mso-style-priority:99;	color:#FB4A18;	text-decoration:underline;}a:visited, span.MsoHyperlinkFollowed	{mso-style-priority:99;	color:#FB9318;	text-decoration:underline;}" +
+"span.EmailStyle17	{mso-style-type:personal-compose;	font-family:'entury Gothic',sans-serif;	color:windowtext;}" +
+".MsoChpDefault	{mso-style-type:export-only;	font-family:'Century Gothic',sans-serif;}@page WordSection1	{size:8.5in 11.0in;	margin:1.0in 1.0in 1.0in 1.0in;}" +
+"div.WordSection1	{page:WordSection1;}--&gt;&lt;/style&gt;&lt;!--[if gte mso 9]&gt;&lt;xml&gt;" +
+"&lt;o:shapedefaults v:ext='edit' spidmax='1026' /&gt; " +
+"&lt;/xml&gt;&lt;![endif]--&gt;&lt;!--[if gte mso 9]&gt;&lt;xml&gt;" +
+"&lt;o:shapelayout v:ext='edit'&gt;" +
+"&lt;o:idmap v:ext='edit' data='1' /&gt;" +
+"&lt;/o:shapelayout&gt;&lt;/xml&gt;&lt;![endif]--&gt;&lt;/head&gt;&lt;body lang=EN-US link='#FB4A18' vlink='#FB9318'&gt;&lt;div class=WordSection1&gt; " +
+"&lt;p class=MsoNormal&gt;Hi " + approverName +
+"&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt; " +
+crtRequestor + " has logged a new travel request, it is waiting for your approval. Please attend to it when you have time." +
+". &lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt; " +
+"You can track the progress &lt;a href=" + webUrl + "Pages/RequestFormView.aspx?requestID=" + Id + "&amp;SPHostUrl=" + HostURL + "&amp;SPAppWebUrl=" + webUrl + "&gt;here &lt;/a&gt;and also suggest changes if necessary&lt;o:p&gt;&lt;/o:p&gt; " +
+"&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;Regards&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;" +
+"&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;PBT Travel&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;" +
+"&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormalSmall&gt;(this is an automatic reply – please do not reply to this email, for more information or help contact IT Support)&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"</mca:CSharpValue>
+                    </InArgument>
+                  </p1:Email.Body>
+                  <p1:Email.To>
+                    <InArgument x:TypeArguments="sco:Collection(x:String)">
+                      <mca:CSharpValue x:TypeArguments="sco:Collection(x:String)">apprEmail</mca:CSharpValue>
+                    </InArgument>
+                  </p1:Email.To>
+                </p1:Email>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence>
+                <p1:Email AdditionalHeaders="{x:Null}" BCC="{x:Null}" CC="{x:Null}" Subject="Travel Request Denied">
+                  <p1:Email.Body>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String" xml:space="preserve">"&lt;html xmlns:v='urn:schemas-microsoft-com:vml' xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word'" +
+"xmlns:m='http://schemas.microsoft.com/office/2004/12/omml' xmlns='http://www.w3.org/TR/REC-html40'&gt;&lt;head&gt;&lt;META HTTP-EQUIV='Content-Type' CONTENT='text/html; charset=us-ascii'&gt;" + 
+"&lt;meta name=Generator content='Microsoft Word 15 (filtered medium)'&gt;&lt;style&gt;&lt;!-- " +
+"/* Font Definitions */" +
+"@font-face	{font-family:'Cambria Math';panose-1:2 4 5 3 5 4 6 3 2 4;}" +
+"@font-face	{font-family:'Century Gothic';	panose-1:2 11 5 2 2 2 2 2 2 4;}" +
+"/* Style Definitions */" +
+"p.MsoNormal, li.MsoNormal, div.MsoNormal	{margin:0in;	margin-bottom:.0001pt;	font-size:11.0pt;	font-family:'Century Gothic',sans-serif;}" +
+"a:link, span.MsoHyperlink	{mso-style-priority:99;	color:#FB4A18;	text-decoration:underline;}a:visited, span.MsoHyperlinkFollowed	{mso-style-priority:99;	color:#FB9318;	text-decoration:underline;}" +
+"span.EmailStyle17	{mso-style-type:personal-compose;	font-family:'entury Gothic',sans-serif;	color:windowtext;},MsoNormalSmall{font-style: italic; margin:0in;margin-bottom:.0001pt;font-size:6.0pt;font-family:'Century Gothic',sans-serif;}" +
+".MsoChpDefault	{mso-style-type:export-only;	font-family:'Century Gothic',sans-serif;}@page WordSection1	{size:8.5in 11.0in;	margin:1.0in 1.0in 1.0in 1.0in;}" +
+"div.WordSection1	{page:WordSection1;}--&gt;&lt;/style&gt;&lt;!--[if gte mso 9]&gt;&lt;xml&gt;" +
+"&lt;o:shapedefaults v:ext='edit' spidmax='1026' /&gt; " +
+"&lt;/xml&gt;&lt;![endif]--&gt;&lt;!--[if gte mso 9]&gt;&lt;xml&gt;" +
+"&lt;o:shapelayout v:ext='edit'&gt;" +
+"&lt;o:idmap v:ext='edit' data='1' /&gt;" +
+"&lt;/o:shapelayout&gt;&lt;/xml&gt;&lt;![endif]--&gt;&lt;/head&gt;&lt;body lang=EN-US link='#FB4A18' vlink='#FB9318'&gt;&lt;div class=WordSection1&gt; " + 
+"&lt;p class=MsoNormal&gt;Hi " + crtRequestor +
+"&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt; " +
+"Sorry unfortunately your travel request was declined by  " + approverName2 +
+". &lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt; " +
+"Reason: " + RequestRejectReason2 +
+"&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt; " +
+"You can rectify/edit your requests   &lt;a href=" + webUrl + "Pages/RequestFormEdit.aspx?requestID=" + Id + "#aBookingProgress&amp;SPHostUrl=" + HostURL + "&amp;SPAppWebUrl=" + webUrl + "&gt;here &lt;/a&gt;&lt;o:p&gt;&lt;/o:p&gt; " +
+"&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;Regards&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;" +
+"&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;PBT Travel&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;" +
+"&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormalSmall&gt;(this is an automatic reply – please do not reply to this email, for more information or help contact IT Support)&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"</mca:CSharpValue>
+                    </InArgument>
+                  </p1:Email.Body>
+                  <p1:Email.To>
+                    <InArgument x:TypeArguments="sco:Collection(x:String)">
+                      <mca:CSharpValue x:TypeArguments="sco:Collection(x:String)">recipient</mca:CSharpValue>
+                    </InArgument>
+                  </p1:Email.To>
+                  <sap2010:WorkflowViewState.IdRef>Email_14</sap2010:WorkflowViewState.IdRef>
+                </p1:Email>
+                <sap2010:WorkflowViewState.IdRef>Sequence_26</sap2010:WorkflowViewState.IdRef>
+              </Sequence>
+            </If.Else>
+            <sap2010:WorkflowViewState.IdRef>If_4</sap2010:WorkflowViewState.IdRef>
+          </If>
+        </Sequence>
+      </If.Else>
+    </If>
+    <p1:WriteToHistory sap2010:WorkflowViewState.IdRef="WriteToHistory_12" Message="Approvals Done" />
+    <Sequence DisplayName="Notify Travel Admins" sap2010:WorkflowViewState.IdRef="Sequence_5">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:String" Name="appUrl" />
+        <Variable x:TypeArguments="x:String" Name="restUrl" />
+        <Variable x:TypeArguments="p:DynamicValue" Name="getListItems" />
+        <Variable x:TypeArguments="x:Int32" Name="listitemId" />
+        <Variable x:TypeArguments="x:Object" Name="listItemObject" />
+        <Variable x:TypeArguments="p:DynamicValue" Name="jsonDataDV" />
+        <Variable x:TypeArguments="sn:HttpStatusCode" Name="code" />
+        <Variable x:TypeArguments="x:String" Name="jsonData" />
+        <Variable x:TypeArguments="x:Boolean" Name="isEmpty" />
+      </Sequence.Variables>
+      <p1:WebUri sap2010:WorkflowViewState.IdRef="WebUri_2">
+        <p1:WebUri.Result>
+          <OutArgument x:TypeArguments="x:String">
+            <mca:CSharpReference x:TypeArguments="x:String">appUrl</mca:CSharpReference>
+          </OutArgument>
+        </p1:WebUri.Result>
+      </p1:WebUri>
+      <Assign sap2010:WorkflowViewState.IdRef="Assign_2">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">
+            <mca:CSharpReference x:TypeArguments="x:String">restUrl</mca:CSharpReference>
+          </OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">
+            <mca:CSharpValue x:TypeArguments="x:String">appUrl + "_api/Web/lists/getbytitle('CustomUserRoles')/items"</mca:CSharpValue>
           </InArgument>
-        </p1:Email.Body>
-        <p1:Email.To>
-          <InArgument x:TypeArguments="sco:Collection(x:String)">
-            <mca:CSharpValue x:TypeArguments="sco:Collection(x:String)">apprEmail</mca:CSharpValue>
+        </Assign.Value>
+      </Assign>
+      <p:HttpSend sap2010:WorkflowViewState.IdRef="HttpSend_2" Method="GET">
+        <p:HttpSend.RequestHeaders>
+          <InArgument x:TypeArguments="p:DynamicValue">
+            <p:SetDynamicValueProperties>
+              <scg:Dictionary x:TypeArguments="x:String, InArgument">
+                <InArgument x:TypeArguments="x:String" x:Key="Accept">application/json;odata=verbose</InArgument>
+              </scg:Dictionary>
+            </p:SetDynamicValueProperties>
           </InArgument>
-        </p1:Email.To>
-      </p1:Email>
+        </p:HttpSend.RequestHeaders>
+        <p:HttpSend.ResponseContent>
+          <OutArgument x:TypeArguments="p:DynamicValue">
+            <mca:CSharpReference x:TypeArguments="p:DynamicValue">getListItems</mca:CSharpReference>
+          </OutArgument>
+        </p:HttpSend.ResponseContent>
+        <p:HttpSend.ResponseStatusCode>
+          <OutArgument x:TypeArguments="sn:HttpStatusCode">
+            <mca:CSharpReference x:TypeArguments="sn:HttpStatusCode">code</mca:CSharpReference>
+          </OutArgument>
+        </p:HttpSend.ResponseStatusCode>
+        <p:HttpSend.Uri>
+          <InArgument x:TypeArguments="x:String">
+            <mca:CSharpValue x:TypeArguments="x:String">restUrl</mca:CSharpValue>
+          </InArgument>
+        </p:HttpSend.Uri>
+      </p:HttpSend>
+      <p:GetODataProperties DisplayName="GetDynamicValueProperties" sap2010:WorkflowViewState.IdRef="GetODataProperties_17">
+        <p:GetODataProperties.Source>
+          <InArgument x:TypeArguments="p:DynamicValue">
+            <mca:CSharpValue x:TypeArguments="p:DynamicValue">getListItems</mca:CSharpValue>
+          </InArgument>
+        </p:GetODataProperties.Source>
+        <scg:Dictionary x:TypeArguments="x:String, OutArgument">
+          <OutArgument x:TypeArguments="p:DynamicValue" x:Key="d/results">
+            <mca:CSharpReference x:TypeArguments="p:DynamicValue">allAdminsDV</mca:CSharpReference>
+          </OutArgument>
+        </scg:Dictionary>
+      </p:GetODataProperties>
+      <p:IsEmptyDynamicValue sap2010:WorkflowViewState.IdRef="IsEmptyDynamicValue_1">
+        <p:IsEmptyDynamicValue.Input>
+          <InArgument x:TypeArguments="p:DynamicValue">
+            <mca:CSharpValue x:TypeArguments="p:DynamicValue">allAdminsDV</mca:CSharpValue>
+          </InArgument>
+        </p:IsEmptyDynamicValue.Input>
+        <p:IsEmptyDynamicValue.Result>
+          <OutArgument x:TypeArguments="x:Boolean">
+            <mca:CSharpReference x:TypeArguments="x:Boolean">isEmpty</mca:CSharpReference>
+          </OutArgument>
+        </p:IsEmptyDynamicValue.Result>
+      </p:IsEmptyDynamicValue>
+      <If sap2010:WorkflowViewState.IdRef="If_2">
+        <If.Condition>
+          <InArgument x:TypeArguments="x:Boolean">
+            <mca:CSharpValue x:TypeArguments="x:Boolean">isEmpty == false</mca:CSharpValue>
+          </InArgument>
+        </If.Condition>
+        <If.Then>
+          <ForEach x:TypeArguments="p:DynamicValue" DisplayName="Loop Through Admins" sap2010:WorkflowViewState.IdRef="ForEach`1_1">
+            <ForEach.Values>
+              <InArgument x:TypeArguments="scg:IEnumerable(p:DynamicValue)">
+                <mca:CSharpValue x:TypeArguments="scg:IEnumerable(p:DynamicValue)">allAdminsDV</mca:CSharpValue>
+              </InArgument>
+            </ForEach.Values>
+            <ActivityAction x:TypeArguments="p:DynamicValue">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="p:DynamicValue" Name="item" />
+              </ActivityAction.Argument>
+              <Sequence sap2010:WorkflowViewState.IdRef="Sequence_19">
+                <p:GetODataProperties DisplayName="GetDynamicValueProperties" sap2010:WorkflowViewState.IdRef="GetODataProperties_16">
+                  <p:GetODataProperties.Source>
+                    <InArgument x:TypeArguments="p:DynamicValue">
+                      <mca:CSharpValue x:TypeArguments="p:DynamicValue">item</mca:CSharpValue>
+                    </InArgument>
+                  </p:GetODataProperties.Source>
+                  <scg:Dictionary x:TypeArguments="x:String, OutArgument">
+                    <OutArgument x:TypeArguments="x:Int32" x:Key="Id">
+                      <mca:CSharpReference x:TypeArguments="x:Int32">adminId</mca:CSharpReference>
+                    </OutArgument>
+                    <OutArgument x:TypeArguments="x:String" x:Key="Title">
+                      <mca:CSharpReference x:TypeArguments="x:String">Title</mca:CSharpReference>
+                    </OutArgument>
+                    <OutArgument x:TypeArguments="x:String" x:Key="UserId">
+                      <mca:CSharpReference x:TypeArguments="x:String">adminUser</mca:CSharpReference>
+                    </OutArgument>
+                  </scg:Dictionary>
+                </p:GetODataProperties>
+                <p1:LookupSPUser sap2010:WorkflowViewState.IdRef="LookupSPUser_3">
+                  <p1:LookupSPUser.PrincipalId>
+                    <InArgument x:TypeArguments="x:Int32">
+                      <mca:CSharpValue x:TypeArguments="x:Int32">Convert.ToInt32(adminUser)</mca:CSharpValue>
+                    </InArgument>
+                  </p1:LookupSPUser.PrincipalId>
+                  <p1:LookupSPUser.Result>
+                    <OutArgument x:TypeArguments="p:DynamicValue">
+                      <mca:CSharpReference x:TypeArguments="p:DynamicValue">adminUserDV</mca:CSharpReference>
+                    </OutArgument>
+                  </p1:LookupSPUser.Result>
+                </p1:LookupSPUser>
+                <p:GetODataProperties DisplayName="GetDynamicValueProperties" sap2010:WorkflowViewState.IdRef="GetODataProperties_18">
+                  <p:GetODataProperties.Source>
+                    <InArgument x:TypeArguments="p:DynamicValue">
+                      <mca:CSharpValue x:TypeArguments="p:DynamicValue">adminUserDV</mca:CSharpValue>
+                    </InArgument>
+                  </p:GetODataProperties.Source>
+                  <scg:Dictionary x:TypeArguments="x:String, OutArgument">
+                    <OutArgument x:TypeArguments="x:String" x:Key="Title">
+                      <mca:CSharpReference x:TypeArguments="x:String">adminTitle</mca:CSharpReference>
+                    </OutArgument>
+                  </scg:Dictionary>
+                </p:GetODataProperties>
+                <p:BuildCollection x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="BuildCollection`1_4">
+                  <p:BuildCollection.Result>
+                    <OutArgument x:TypeArguments="sco:Collection(x:String)">
+                      <mca:CSharpReference x:TypeArguments="sco:Collection(x:String)">adminMail</mca:CSharpReference>
+                    </OutArgument>
+                  </p:BuildCollection.Result>
+                  <p:BuildCollection.Values>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String">adminUser</mca:CSharpValue>
+                    </InArgument>
+                  </p:BuildCollection.Values>
+                </p:BuildCollection>
+                <p1:Email AdditionalHeaders="{x:Null}" BCC="{x:Null}" CC="{x:Null}" sap2010:WorkflowViewState.IdRef="Email_11" Subject="**New Travel Request Submitted**">
+                  <p1:Email.Body>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String" xml:space="preserve">"&lt;html xmlns:v='urn:schemas-microsoft-com:vml' xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word'" +
+"xmlns:m='http://schemas.microsoft.com/office/2004/12/omml' xmlns='http://www.w3.org/TR/REC-html40'&gt;&lt;head&gt;" +
+"&lt;meta http-equiv='Content-Type' content='text/html; charset=utf-8'&gt;&lt;meta name='Generator' content='Microsoft" +
+"Word 15 (filtered medium)'&gt;&lt;style&gt;&lt;!-- /* Font Definitions */@font-face {font-family:'Cambria Math';panose-1:2 " +
+"4 5 3 5 4 6 3 2 4;}@font-face {font-family:'Century Gothic'; panose-1:2 11 5 2 2 2 2 2 2 4;}/* Style Definitions " +
+"*/p.MsoNormal, li.MsoNormal, div.MsoNormal {margin:0in; margin-bottom:.0001pt; font-size:11.0pt; font-family:'Ce" +
+"ntury Gothic',sans-serif;}a:link, span.MsoHyperlink {mso-style-priority:99; color:#FB4A18; text-decoration:under" +
+"line;}a:visited, span.MsoHyperlinkFollowed {mso-style-priority:99; color:#FB9318; text-decoration:underline;}spa" +
+"n.EmailStyle17 {mso-style-type:personal-compose; font-family:'entury Gothic',sans-serif; color:windowtext;}.MsoC" +
+"hpDefault {mso-style-type:export-only; font-family:'Century Gothic',sans-serif;}@page WordSection1 {size:8.5in 1" +
+"1.0in; margin:1.0in 1.0in 1.0in 1.0in;}div.WordSection1 {page:WordSection1;}--&gt;&lt;/style&gt;" +
+"&lt;/head&gt;&lt;body lang='EN-US' link='#FB4A18' vlink='#FB9318'&gt;&lt;div class='WordSection1'&gt;" +
+"&lt;p class='MsoNormal'&gt;Hi " + adminTitle + "&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;p class='MsoNormal'&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;" +
+"&lt;p class='MsoNormal'&gt; " + crtRequestor + " has logged a new travel request, it is waiting for approval from " + approverName + ". &lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;" +
+"&lt;p class='MsoNormal'&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class='MsoNormal'&gt;You can review the request " +
+"&lt;a href='" + webUrl + "Pages/RequestFormView.aspx?requestID=" + ID1 + "&amp;SPHostUrl=" + HostURL + "&amp;SPAppWebUrl=" + webUrl + "'&gt;here&lt;/a&gt;." +
+"&lt;o:p&gt;&lt;/o:p&gt; &amp;nbsp;Do not action this request yet!&lt;/p&gt;&lt;p class='MsoNormal'&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class='MsoNormal'&gt;Regards&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"</mca:CSharpValue>
+                    </InArgument>
+                  </p1:Email.Body>
+                  <p1:Email.To>
+                    <InArgument x:TypeArguments="sco:Collection(x:String)">
+                      <mca:CSharpValue x:TypeArguments="sco:Collection(x:String)">adminMail</mca:CSharpValue>
+                    </InArgument>
+                  </p1:Email.To>
+                </p1:Email>
+                <p1:WriteToHistory sap2010:WorkflowViewState.IdRef="WriteToHistory_6">
+                  <p1:WriteToHistory.Message>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String">"Mailing Admin : " + adminTitle</mca:CSharpValue>
+                    </InArgument>
+                  </p1:WriteToHistory.Message>
+                </p1:WriteToHistory>
+              </Sequence>
+            </ActivityAction>
+          </ForEach>
+        </If.Then>
+        <If.Else>
+          <TerminateWorkflow sap2010:WorkflowViewState.IdRef="TerminateWorkflow_3" Reason="The value is empty" />
+        </If.Else>
+      </If>
     </Sequence>
     <Sequence DisplayName="Check Request status" sap2010:WorkflowViewState.IdRef="Sequence_13">
       <p1:WaitForFieldChange EventPayload="{x:Null}" ItemGuid="{x:Null}" FieldValue="Decided" sap2010:WorkflowViewState.IdRef="WaitForFieldChange_2">
@@ -609,6 +932,9 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
           <OutArgument x:TypeArguments="x:String" x:Key="RequestStatus">
             <mca:CSharpReference x:TypeArguments="x:String">RequestStatus2</mca:CSharpReference>
           </OutArgument>
+          <OutArgument x:TypeArguments="x:String" x:Key="RequestRejectReason">
+            <mca:CSharpReference x:TypeArguments="x:String">RequestRejectReason</mca:CSharpReference>
+          </OutArgument>
         </scg:Dictionary>
       </p:GetODataProperties>
       <If sap2010:WorkflowViewState.IdRef="If_1">
@@ -618,7 +944,7 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
           </InArgument>
         </If.Condition>
         <If.Then>
-          <p1:Email AdditionalHeaders="{x:Null}" BCC="{x:Null}" CC="{x:Null}" sap2010:WorkflowViewState.IdRef="Email_4" Subject="Pack your bags....">
+          <p1:Email AdditionalHeaders="{x:Null}" BCC="{x:Null}" CC="{x:Null}" sap2010:WorkflowViewState.IdRef="Email_4" Subject="Travel Request Approved">
             <p1:Email.Body>
               <InArgument x:TypeArguments="x:String">
                 <mca:CSharpValue x:TypeArguments="x:String" xml:space="preserve">"&lt;html xmlns:v='urn:schemas-microsoft-com:vml' xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word'" +
@@ -630,7 +956,7 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
 "/* Style Definitions */" +
 "p.MsoNormal, li.MsoNormal, div.MsoNormal	{margin:0in;	margin-bottom:.0001pt;	font-size:11.0pt;	font-family:'Century Gothic',sans-serif;}" +
 "a:link, span.MsoHyperlink	{mso-style-priority:99;	color:#FB4A18;	text-decoration:underline;}a:visited, span.MsoHyperlinkFollowed	{mso-style-priority:99;	color:#FB9318;	text-decoration:underline;}" +
-"span.EmailStyle17	{mso-style-type:personal-compose;	font-family:'entury Gothic',sans-serif;	color:windowtext;}" +
+"span.EmailStyle17	{mso-style-type:personal-compose;	font-family:'entury Gothic',sans-serif;	color:windowtext;},MsoNormalSmall{font-style: italic; margin:0in;margin-bottom:.0001pt;font-size:6.0pt;font-family:'Century Gothic',sans-serif;}" +
 ".MsoChpDefault	{mso-style-type:export-only;	font-family:'Century Gothic',sans-serif;}@page WordSection1	{size:8.5in 11.0in;	margin:1.0in 1.0in 1.0in 1.0in;}" +
 "div.WordSection1	{page:WordSection1;}--&gt;&lt;/style&gt;&lt;!--[if gte mso 9]&gt;&lt;xml&gt;" +
 "&lt;o:shapedefaults v:ext='edit' spidmax='1026' /&gt; " +
@@ -640,10 +966,12 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
 "&lt;/o:shapelayout&gt;&lt;/xml&gt;&lt;![endif]--&gt;&lt;/head&gt;&lt;body lang=EN-US link='#FB4A18' vlink='#FB9318'&gt;&lt;div class=WordSection1&gt; " + 
 "&lt;p class=MsoNormal&gt;Hi " + crtRequestor +
 "&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt; " +
-"Good news! Your travel request was approved by " + approverName +
+"Good news! Your travel request has been approved by " + approverName +
 ". &lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt; " +
-"You can track the progress of all arrangments &lt;a href=" + webUrl + "/Pages/RequestFormView.aspx?requestID=" + Id + "#aBookingProgress&amp;sphosturl=" + HostURL + "&amp;spappweburl="+ webUrl +"&gt;here&lt;/a&gt;&lt;o:p&gt;&lt;/o:p&gt; " + 
-"&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;Regards&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"</mca:CSharpValue>
+"You can track the progress of all arrangements  &lt;a href=" + webUrl + "Pages/RequestFormView.aspx?requestID=" + Id + "#aBookingProgress&amp;SPHostUrl=" + HostURL + "&amp;SPAppWebUrl=" + webUrl + "&gt;here &lt;/a&gt;– Travel team will also send you a confirmation email once all arrangements have been made/booked.&lt;o:p&gt;&lt;/o:p&gt; " +
+"&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;Regards&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;" +
+"&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;PBT Travel&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;" +
+"&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormalSmall&gt;(this is an automatic reply – please do not reply to this email, for more information or help contact IT Support)&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"</mca:CSharpValue>
               </InArgument>
             </p1:Email.Body>
             <p1:Email.To>
@@ -655,48 +983,7 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
         </If.Then>
         <If.Else>
           <Sequence sap2010:WorkflowViewState.IdRef="Sequence_18">
-            <p1:LookupSPListItem ItemGuid="{x:Null}" Properties="{x:Null}" sap2010:WorkflowViewState.IdRef="LookupSPListItem_6">
-              <p1:LookupSPListItem.ItemId>
-                <InArgument x:TypeArguments="x:Int32">
-                  <p:ExpressionContainerValue x:TypeArguments="x:Int32">
-                    <p1:GetCurrentItemId />
-                  </p:ExpressionContainerValue>
-                </InArgument>
-              </p1:LookupSPListItem.ItemId>
-              <p1:LookupSPListItem.ListId>
-                <InArgument x:TypeArguments="s:Guid">
-                  <p:ExpressionContainerValue x:TypeArguments="s:Guid">
-                    <p1:GetCurrentListId />
-                  </p:ExpressionContainerValue>
-                </InArgument>
-              </p1:LookupSPListItem.ListId>
-              <p1:LookupSPListItem.Result>
-                <OutArgument x:TypeArguments="p:DynamicValue">
-                  <mca:CSharpReference x:TypeArguments="p:DynamicValue">dv_7</mca:CSharpReference>
-                </OutArgument>
-              </p1:LookupSPListItem.Result>
-            </p1:LookupSPListItem>
-            <p:GetODataProperties DisplayName="GetDynamicValueProperties" sap2010:WorkflowViewState.IdRef="GetODataProperties_11">
-              <p:GetODataProperties.Source>
-                <InArgument x:TypeArguments="p:DynamicValue">
-                  <mca:CSharpValue x:TypeArguments="p:DynamicValue">dv_7</mca:CSharpValue>
-                </InArgument>
-              </p:GetODataProperties.Source>
-              <scg:Dictionary x:TypeArguments="x:String, OutArgument" />
-            </p:GetODataProperties>
-            <p:GetODataProperties DisplayName="GetDynamicValueProperties" sap2010:WorkflowViewState.IdRef="GetODataProperties_12">
-              <p:GetODataProperties.Source>
-                <InArgument x:TypeArguments="p:DynamicValue">
-                  <mca:CSharpValue x:TypeArguments="p:DynamicValue">dv_7</mca:CSharpValue>
-                </InArgument>
-              </p:GetODataProperties.Source>
-              <scg:Dictionary x:TypeArguments="x:String, OutArgument">
-                <OutArgument x:TypeArguments="x:String" x:Key="RequestRejectReason">
-                  <mca:CSharpReference x:TypeArguments="x:String">RequestRejectReason1</mca:CSharpReference>
-                </OutArgument>
-              </scg:Dictionary>
-            </p:GetODataProperties>
-            <p1:Email AdditionalHeaders="{x:Null}" BCC="{x:Null}" CC="{x:Null}" sap2010:WorkflowViewState.IdRef="Email_10" Subject="Travel Denied">
+            <p1:Email AdditionalHeaders="{x:Null}" BCC="{x:Null}" CC="{x:Null}" sap2010:WorkflowViewState.IdRef="Email_10" Subject="Travel Request Denied">
               <p1:Email.Body>
                 <InArgument x:TypeArguments="x:String">
                   <mca:CSharpValue x:TypeArguments="x:String" xml:space="preserve">"&lt;html xmlns:v='urn:schemas-microsoft-com:vml' xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word'" +
@@ -708,7 +995,7 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
 "/* Style Definitions */" +
 "p.MsoNormal, li.MsoNormal, div.MsoNormal	{margin:0in;	margin-bottom:.0001pt;	font-size:11.0pt;	font-family:'Century Gothic',sans-serif;}" +
 "a:link, span.MsoHyperlink	{mso-style-priority:99;	color:#FB4A18;	text-decoration:underline;}a:visited, span.MsoHyperlinkFollowed	{mso-style-priority:99;	color:#FB9318;	text-decoration:underline;}" +
-"span.EmailStyle17	{mso-style-type:personal-compose;	font-family:'entury Gothic',sans-serif;	color:windowtext;}" +
+"span.EmailStyle17	{mso-style-type:personal-compose;	font-family:'entury Gothic',sans-serif;	color:windowtext;},MsoNormalSmall{font-style: italic; margin:0in;margin-bottom:.0001pt;font-size:6.0pt;font-family:'Century Gothic',sans-serif;}" +
 ".MsoChpDefault	{mso-style-type:export-only;	font-family:'Century Gothic',sans-serif;}@page WordSection1	{size:8.5in 11.0in;	margin:1.0in 1.0in 1.0in 1.0in;}" +
 "div.WordSection1	{page:WordSection1;}--&gt;&lt;/style&gt;&lt;!--[if gte mso 9]&gt;&lt;xml&gt;" +
 "&lt;o:shapedefaults v:ext='edit' spidmax='1026' /&gt; " +
@@ -718,12 +1005,14 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
 "&lt;/o:shapelayout&gt;&lt;/xml&gt;&lt;![endif]--&gt;&lt;/head&gt;&lt;body lang=EN-US link='#FB4A18' vlink='#FB9318'&gt;&lt;div class=WordSection1&gt; " + 
 "&lt;p class=MsoNormal&gt;Hi " + crtRequestor +
 "&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt; " +
-"Bad news! Your travel request was declined by " + approverName +
+"Sorry unfortunately your travel request was declined by  " + approverName +
 ". &lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt; " +
-"Reason for the decision : " + RequestRejectReason1 +
-". &lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt; " +
-"You can rectify/edit your requests &lt;a href=" + webUrl + "/Pages/RequestFormView.aspx?requestID=" + Id + "#aBookingProgress&amp;sphosturl=" + HostURL + "&amp;spappweburl="+ webUrl +"&gt;here&lt;/a&gt;&lt;o:p&gt;&lt;/o:p&gt; " + 
-"&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;Regards&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"</mca:CSharpValue>
+"Reason: " + RequestRejectReason +
+"&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt; " +
+"You can rectify/edit your requests   &lt;a href=" + webUrl + "Pages/RequestFormEdit.aspx?requestID=" + Id + "#aBookingProgress&amp;SPHostUrl=" + HostURL + "&amp;SPAppWebUrl=" + webUrl + "&gt;here &lt;/a&gt;&lt;o:p&gt;&lt;/o:p&gt; " +
+"&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;Regards&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;" +
+"&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;PBT Travel&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;" +
+"&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormalSmall&gt;(this is an automatic reply – please do not reply to this email, for more information or help contact IT Support)&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"</mca:CSharpValue>
                 </InArgument>
               </p1:Email.Body>
               <p1:Email.To>
@@ -735,10 +1024,75 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
           </Sequence>
         </If.Else>
       </If>
-      <p1:Email AdditionalHeaders="{x:Null}" BCC="{x:Null}" CC="{x:Null}" sap2010:WorkflowViewState.IdRef="Email_7">
-        <p1:Email.Body>
-          <InArgument x:TypeArguments="x:String">
-            <mca:CSharpValue x:TypeArguments="x:String" xml:space="preserve">"&lt;html xmlns:v='urn:schemas-microsoft-com:vml' xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word'" +
+      <ForEach x:TypeArguments="p:DynamicValue" DisplayName="Loop Through Admins" sap2010:WorkflowViewState.IdRef="ForEach`1_2">
+        <ForEach.Values>
+          <InArgument x:TypeArguments="scg:IEnumerable(p:DynamicValue)">
+            <mca:CSharpValue x:TypeArguments="scg:IEnumerable(p:DynamicValue)">allAdminsDV</mca:CSharpValue>
+          </InArgument>
+        </ForEach.Values>
+        <ActivityAction x:TypeArguments="p:DynamicValue">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="p:DynamicValue" Name="item" />
+          </ActivityAction.Argument>
+          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_20">
+            <p:GetODataProperties DisplayName="GetDynamicValueProperties" sap2010:WorkflowViewState.IdRef="GetODataProperties_19">
+              <p:GetODataProperties.Source>
+                <InArgument x:TypeArguments="p:DynamicValue">
+                  <mca:CSharpValue x:TypeArguments="p:DynamicValue">item</mca:CSharpValue>
+                </InArgument>
+              </p:GetODataProperties.Source>
+              <scg:Dictionary x:TypeArguments="x:String, OutArgument">
+                <OutArgument x:TypeArguments="x:Int32" x:Key="Id">
+                  <mca:CSharpReference x:TypeArguments="x:Int32">adminId</mca:CSharpReference>
+                </OutArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="Title">
+                  <mca:CSharpReference x:TypeArguments="x:String">Title</mca:CSharpReference>
+                </OutArgument>
+                <OutArgument x:TypeArguments="x:String" x:Key="UserId">
+                  <mca:CSharpReference x:TypeArguments="x:String">adminUser</mca:CSharpReference>
+                </OutArgument>
+              </scg:Dictionary>
+            </p:GetODataProperties>
+            <p1:LookupSPUser sap2010:WorkflowViewState.IdRef="LookupSPUser_4">
+              <p1:LookupSPUser.PrincipalId>
+                <InArgument x:TypeArguments="x:Int32">
+                  <mca:CSharpValue x:TypeArguments="x:Int32">Convert.ToInt32(adminUser)</mca:CSharpValue>
+                </InArgument>
+              </p1:LookupSPUser.PrincipalId>
+              <p1:LookupSPUser.Result>
+                <OutArgument x:TypeArguments="p:DynamicValue">
+                  <mca:CSharpReference x:TypeArguments="p:DynamicValue">adminUserDV</mca:CSharpReference>
+                </OutArgument>
+              </p1:LookupSPUser.Result>
+            </p1:LookupSPUser>
+            <p:GetODataProperties DisplayName="GetDynamicValueProperties" sap2010:WorkflowViewState.IdRef="GetODataProperties_20">
+              <p:GetODataProperties.Source>
+                <InArgument x:TypeArguments="p:DynamicValue">
+                  <mca:CSharpValue x:TypeArguments="p:DynamicValue">adminUserDV</mca:CSharpValue>
+                </InArgument>
+              </p:GetODataProperties.Source>
+              <scg:Dictionary x:TypeArguments="x:String, OutArgument">
+                <OutArgument x:TypeArguments="x:String" x:Key="Title">
+                  <mca:CSharpReference x:TypeArguments="x:String">adminTitle</mca:CSharpReference>
+                </OutArgument>
+              </scg:Dictionary>
+            </p:GetODataProperties>
+            <p:BuildCollection x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="BuildCollection`1_5">
+              <p:BuildCollection.Result>
+                <OutArgument x:TypeArguments="sco:Collection(x:String)">
+                  <mca:CSharpReference x:TypeArguments="sco:Collection(x:String)">adminMail</mca:CSharpReference>
+                </OutArgument>
+              </p:BuildCollection.Result>
+              <p:BuildCollection.Values>
+                <InArgument x:TypeArguments="x:String">
+                  <mca:CSharpValue x:TypeArguments="x:String">adminUser</mca:CSharpValue>
+                </InArgument>
+              </p:BuildCollection.Values>
+            </p:BuildCollection>
+            <p1:Email AdditionalHeaders="{x:Null}" BCC="{x:Null}" CC="{x:Null}" sap2010:WorkflowViewState.IdRef="Email_7">
+              <p1:Email.Body>
+                <InArgument x:TypeArguments="x:String">
+                  <mca:CSharpValue x:TypeArguments="x:String" xml:space="preserve">"&lt;html xmlns:v='urn:schemas-microsoft-com:vml' xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word'" +
 "xmlns:m='http://schemas.microsoft.com/office/2004/12/omml' xmlns='http://www.w3.org/TR/REC-html40'&gt;&lt;head&gt;&lt;META HTTP-EQUIV='Content-Type' CONTENT='text/html; charset=us-ascii'&gt;" + 
 "&lt;meta name=Generator content='Microsoft Word 15 (filtered medium)'&gt;&lt;style&gt;&lt;!-- " +
 "/* Font Definitions */" +
@@ -761,22 +1115,32 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
 ". &lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt; " +
 "Please action the request accordingly. Link to the request &lt;a href=" + webUrl + "/Pages/RequestFormView.aspx?requestID=" + Id + "&amp;sphosturl=" + HostURL + "&amp;spappweburl=" + webUrl + "&gt; click here&lt;/a&gt;&lt;o:p&gt;&lt;/o:p&gt; " + 
 "&lt;/p&gt;&lt;p class=MsoNormal&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/p&gt;&lt;p class=MsoNormal&gt;Regards&lt;o:p&gt;&lt;/o:p&gt;&lt;/p&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"</mca:CSharpValue>
-          </InArgument>
-        </p1:Email.Body>
-        <p1:Email.Subject>
-          <InArgument x:TypeArguments="x:String">
-            <mca:CSharpValue x:TypeArguments="x:String">"Travel Request " + RequestStatus2</mca:CSharpValue>
-          </InArgument>
-        </p1:Email.Subject>
-        <p1:Email.To>
-          <InArgument x:TypeArguments="sco:Collection(x:String)">
-            <mca:CSharpValue x:TypeArguments="sco:Collection(x:String)">apprEmail</mca:CSharpValue>
-          </InArgument>
-        </p1:Email.To>
-      </p1:Email>
+                </InArgument>
+              </p1:Email.Body>
+              <p1:Email.Subject>
+                <InArgument x:TypeArguments="x:String">
+                  <mca:CSharpValue x:TypeArguments="x:String">"Travel Request Completed : " + RequestStatus2</mca:CSharpValue>
+                </InArgument>
+              </p1:Email.Subject>
+              <p1:Email.To>
+                <InArgument x:TypeArguments="sco:Collection(x:String)">
+                  <mca:CSharpValue x:TypeArguments="sco:Collection(x:String)">apprEmail</mca:CSharpValue>
+                </InArgument>
+              </p1:Email.To>
+            </p1:Email>
+            <p1:WriteToHistory sap2010:WorkflowViewState.IdRef="WriteToHistory_7">
+              <p1:WriteToHistory.Message>
+                <InArgument x:TypeArguments="x:String">
+                  <mca:CSharpValue x:TypeArguments="x:String" xml:space="preserve">"Mailing final status to Admin  : " + adminTitle</mca:CSharpValue>
+                </InArgument>
+              </p1:WriteToHistory.Message>
+            </p1:WriteToHistory>
+          </Sequence>
+        </ActivityAction>
+      </ForEach>
       <TerminateWorkflow sap2010:WorkflowViewState.IdRef="TerminateWorkflow_2" Reason="Completed" />
     </Sequence>
-    <sads:DebugSymbol.Symbol>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</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>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</sads:DebugSymbol.Symbol>
   </Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -797,7 +1161,7 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="516,51">
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="716,51">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -823,7 +1187,7 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="247,62" />
-      <sap2010:ViewStateData Id="Sequence_7" sap:VirtualizedContainerService.HintSize="516,51">
+      <sap2010:ViewStateData Id="Sequence_7" sap:VirtualizedContainerService.HintSize="716,51">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -832,7 +1196,7 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="WebUri_1" sap:VirtualizedContainerService.HintSize="200,68" />
-      <sap2010:ViewStateData Id="Sequence_11" sap:VirtualizedContainerService.HintSize="516,51">
+      <sap2010:ViewStateData Id="Sequence_11" sap:VirtualizedContainerService.HintSize="716,51">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -848,7 +1212,7 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Sequence_8" sap:VirtualizedContainerService.HintSize="516,51">
+      <sap2010:ViewStateData Id="Sequence_8" sap:VirtualizedContainerService.HintSize="716,51">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -864,7 +1228,7 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Sequence_9" sap:VirtualizedContainerService.HintSize="516,51">
+      <sap2010:ViewStateData Id="Sequence_9" sap:VirtualizedContainerService.HintSize="716,51">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -884,7 +1248,7 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
       <sap2010:ViewStateData Id="BuildCollection`1_2" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="WriteToHistory_1" sap:VirtualizedContainerService.HintSize="200,68" />
       <sap2010:ViewStateData Id="Email_1" sap:VirtualizedContainerService.HintSize="200,68" />
-      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="516,51">
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="716,51">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -895,7 +1259,15 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
       <sap2010:ViewStateData Id="BuildCollection`1_3" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="WriteToHistory_2" sap:VirtualizedContainerService.HintSize="200,68" />
       <sap2010:ViewStateData Id="Email_2" sap:VirtualizedContainerService.HintSize="200,68" />
-      <sap2010:ViewStateData Id="Sequence_10" sap:VirtualizedContainerService.HintSize="516,51">
+      <sap2010:ViewStateData Id="Sequence_10" sap:VirtualizedContainerService.HintSize="222,362">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_25" sap:VirtualizedContainerService.HintSize="200,51">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -903,53 +1275,16 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="LookupSPList_1" sap:VirtualizedContainerService.HintSize="247,89">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <scg:Dictionary x:TypeArguments="x:String, msdad:ViewStateNameValue" x:Key="SPLocalizedDisplayNames">
-              <msdad:ViewStateNameValue x:Key="ListId" DisplayName="CustomUserRoles" Value="Lists/CustomUserRoles" />
-            </scg:Dictionary>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="GetODataProperties_8" sap:VirtualizedContainerService.HintSize="247,92">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:String x:Key="Properties.SelectedEntityType">SharePoint_List</x:String>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="LookupSPListItem_3" sap:VirtualizedContainerService.HintSize="247,89">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <scg:Dictionary x:TypeArguments="x:String, msdad:ViewStateNameValue" x:Key="SPLocalizedDisplayNames">
-              <msdad:ViewStateNameValue x:Key="ListId" DisplayName="CustomUserRoles" Value="Lists/CustomUserRoles" />
-              <msdad:ViewStateNameValue x:Key="ItemId" DisplayName="(current item)" Value="$CurrentItemId" />
-            </scg:Dictionary>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="GetODataProperties_6" sap:VirtualizedContainerService.HintSize="247,92">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:String x:Key="Properties.SelectedEntityType">Lists/CustomUserRoles</x:String>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="WriteToHistory_3" sap:VirtualizedContainerService.HintSize="247,68" />
-      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="247,62" />
-      <sap2010:ViewStateData Id="LookupSPUser_4" sap:VirtualizedContainerService.HintSize="247,89" />
-      <sap2010:ViewStateData Id="GetODataProperties_7" sap:VirtualizedContainerService.HintSize="247,92">
+      <sap2010:ViewStateData Id="WriteToHistory_10" sap:VirtualizedContainerService.HintSize="469,68" />
+      <sap2010:ViewStateData Id="LookupSPUser_5" sap:VirtualizedContainerService.HintSize="247,89" />
+      <sap2010:ViewStateData Id="GetODataProperties_21" sap:VirtualizedContainerService.HintSize="247,92">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:String x:Key="Properties.SelectedEntityType">SharePoint_User</x:String>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="WriteToHistory_4" sap:VirtualizedContainerService.HintSize="247,68" />
-      <sap2010:ViewStateData Id="BuildCollection`1_5" sap:VirtualizedContainerService.HintSize="247,22" />
-      <sap2010:ViewStateData Id="Assign_3" sap:VirtualizedContainerService.HintSize="247,62" />
-      <sap2010:ViewStateData Id="Sequence_14" sap:VirtualizedContainerService.HintSize="200,51">
+      <sap2010:ViewStateData Id="Sequence_22" sap:VirtualizedContainerService.HintSize="200,51">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -957,7 +1292,10 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="DoWhile_1" sap:VirtualizedContainerService.HintSize="247,51">
+      <sap2010:ViewStateData Id="BuildCollection`1_7" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="WriteToHistory_9" sap:VirtualizedContainerService.HintSize="200,68" />
+      <sap2010:ViewStateData Id="Email_13" sap:VirtualizedContainerService.HintSize="200,68" />
+      <sap2010:ViewStateData Id="Sequence_23" sap:VirtualizedContainerService.HintSize="469,51">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -965,17 +1303,8 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="WriteToHistory_5" sap:VirtualizedContainerService.HintSize="247,68" />
-      <sap2010:ViewStateData Id="Email_5" sap:VirtualizedContainerService.HintSize="247,68" />
-      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="516,51">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="WaitForFieldChange_2" sap:VirtualizedContainerService.HintSize="494,68">
+      <sap2010:ViewStateData Id="WriteToHistory_11" sap:VirtualizedContainerService.HintSize="469,68" />
+      <sap2010:ViewStateData Id="WaitForFieldChange_3" sap:VirtualizedContainerService.HintSize="469,68">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <scg:Dictionary x:TypeArguments="x:String, msdad:ViewStateNameValue" x:Key="SPLocalizedDisplayNames">
@@ -986,7 +1315,7 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="LookupSPListItem_4" sap:VirtualizedContainerService.HintSize="494,89">
+      <sap2010:ViewStateData Id="LookupSPListItem_5" sap:VirtualizedContainerService.HintSize="469,89">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <scg:Dictionary x:TypeArguments="x:String, msdad:ViewStateNameValue" x:Key="SPLocalizedDisplayNames">
@@ -996,7 +1325,128 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="GetODataProperties_9" sap:VirtualizedContainerService.HintSize="494,92">
+      <sap2010:ViewStateData Id="GetODataProperties_22" sap:VirtualizedContainerService.HintSize="469,92">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:String x:Key="Properties.SelectedEntityType">Lists/TravelRequests</x:String>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="BuildCollection`1_6" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="WriteToHistory_8" sap:VirtualizedContainerService.HintSize="200,68" />
+      <sap2010:ViewStateData Id="Email_12" sap:VirtualizedContainerService.HintSize="200,68" />
+      <sap2010:ViewStateData Id="Sequence_21" sap:VirtualizedContainerService.HintSize="222,362">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Email_14" sap:VirtualizedContainerService.HintSize="200,68" />
+      <sap2010:ViewStateData Id="Sequence_26" sap:VirtualizedContainerService.HintSize="222,192">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_4" sap:VirtualizedContainerService.HintSize="469,512">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_24" sap:VirtualizedContainerService.HintSize="491,1312">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_3" sap:VirtualizedContainerService.HintSize="716,1462">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WriteToHistory_12" sap:VirtualizedContainerService.HintSize="716,68" />
+      <sap2010:ViewStateData Id="WebUri_2" sap:VirtualizedContainerService.HintSize="247,68" />
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="247,62" />
+      <sap2010:ViewStateData Id="HttpSend_2" sap:VirtualizedContainerService.HintSize="247,62" />
+      <sap2010:ViewStateData Id="GetODataProperties_17" sap:VirtualizedContainerService.HintSize="247,92" />
+      <sap2010:ViewStateData Id="IsEmptyDynamicValue_1" sap:VirtualizedContainerService.HintSize="247,22" />
+      <sap2010:ViewStateData Id="GetODataProperties_16" sap:VirtualizedContainerService.HintSize="247,92" />
+      <sap2010:ViewStateData Id="LookupSPUser_3" sap:VirtualizedContainerService.HintSize="247,89" />
+      <sap2010:ViewStateData Id="GetODataProperties_18" sap:VirtualizedContainerService.HintSize="247,92">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:String x:Key="Properties.SelectedEntityType">SharePoint_User</x:String>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="BuildCollection`1_4" sap:VirtualizedContainerService.HintSize="247,22" />
+      <sap2010:ViewStateData Id="Email_11" sap:VirtualizedContainerService.HintSize="247,68" />
+      <sap2010:ViewStateData Id="WriteToHistory_6" sap:VirtualizedContainerService.HintSize="247,68" />
+      <sap2010:ViewStateData Id="Sequence_19" sap:VirtualizedContainerService.HintSize="269,755">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEach`1_1" sap:VirtualizedContainerService.HintSize="299,905">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="TerminateWorkflow_3" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="If_2" sap:VirtualizedContainerService.HintSize="247,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="716,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WaitForFieldChange_2" sap:VirtualizedContainerService.HintSize="247,68">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <scg:Dictionary x:TypeArguments="x:String, msdad:ViewStateNameValue" x:Key="SPLocalizedDisplayNames">
+              <msdad:ViewStateNameValue x:Key="FieldName" DisplayName="Workflow Trigger" Value="WorkflowTrigger" />
+              <msdad:ViewStateNameValue x:Key="ItemId" DisplayName="(current item)" Value="$CurrentItemId" />
+              <msdad:ViewStateNameValue x:Key="ListId" DisplayName="(current list)" Value="$CurrentListId" />
+            </scg:Dictionary>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="LookupSPListItem_4" sap:VirtualizedContainerService.HintSize="247,89">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <scg:Dictionary x:TypeArguments="x:String, msdad:ViewStateNameValue" x:Key="SPLocalizedDisplayNames">
+              <msdad:ViewStateNameValue x:Key="ItemId" DisplayName="(current item)" Value="$CurrentItemId" />
+              <msdad:ViewStateNameValue x:Key="ListId" DisplayName="(current list)" Value="$CurrentListId" />
+            </scg:Dictionary>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="GetODataProperties_9" sap:VirtualizedContainerService.HintSize="247,92">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:String x:Key="Properties.SelectedEntityType">Lists/TravelRequests</x:String>
@@ -1004,64 +1454,66 @@ crtRequestor + " has logged a new travel request, it is waiting for approval fro
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="Email_4" sap:VirtualizedContainerService.HintSize="200,68" />
-      <sap2010:ViewStateData Id="LookupSPListItem_6" sap:VirtualizedContainerService.HintSize="247,89">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <scg:Dictionary x:TypeArguments="x:String, msdad:ViewStateNameValue" x:Key="SPLocalizedDisplayNames">
-              <msdad:ViewStateNameValue x:Key="ItemId" DisplayName="(current item)" Value="$CurrentItemId" />
-              <msdad:ViewStateNameValue x:Key="ListId" DisplayName="(current list)" Value="$CurrentListId" />
-            </scg:Dictionary>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="GetODataProperties_11" sap:VirtualizedContainerService.HintSize="247,92">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:String x:Key="Properties.SelectedEntityType">SharePoint_ListItem</x:String>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="GetODataProperties_12" sap:VirtualizedContainerService.HintSize="247,92">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:String x:Key="Properties.SelectedEntityType">Lists/TravelRequests</x:String>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-      </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Email_10" sap:VirtualizedContainerService.HintSize="247,68" />
-      <sap2010:ViewStateData Id="Sequence_18" sap:VirtualizedContainerService.HintSize="269,585">
+      <sap2010:ViewStateData Id="Email_10" sap:VirtualizedContainerService.HintSize="200,68" />
+      <sap2010:ViewStateData Id="Sequence_18" sap:VirtualizedContainerService.HintSize="222,192">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="494,735">
+      <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="247,51">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Email_7" sap:VirtualizedContainerService.HintSize="494,68" />
-      <sap2010:ViewStateData Id="TerminateWorkflow_2" sap:VirtualizedContainerService.HintSize="494,22" />
-      <sap2010:ViewStateData Id="Sequence_13" sap:VirtualizedContainerService.HintSize="516,1398">
+      <sap2010:ViewStateData Id="GetODataProperties_19" sap:VirtualizedContainerService.HintSize="247,92" />
+      <sap2010:ViewStateData Id="LookupSPUser_4" sap:VirtualizedContainerService.HintSize="247,89" />
+      <sap2010:ViewStateData Id="GetODataProperties_20" sap:VirtualizedContainerService.HintSize="247,92">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:String x:Key="Properties.SelectedEntityType">SharePoint_User</x:String>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="BuildCollection`1_5" sap:VirtualizedContainerService.HintSize="247,22" />
+      <sap2010:ViewStateData Id="Email_7" sap:VirtualizedContainerService.HintSize="247,68" />
+      <sap2010:ViewStateData Id="WriteToHistory_7" sap:VirtualizedContainerService.HintSize="247,68" />
+      <sap2010:ViewStateData Id="Sequence_20" sap:VirtualizedContainerService.HintSize="269,755">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEach`1_2" sap:VirtualizedContainerService.HintSize="247,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Sequence_6" sap:VirtualizedContainerService.HintSize="538,2250">
+      <sap2010:ViewStateData Id="TerminateWorkflow_2" sap:VirtualizedContainerService.HintSize="247,22" />
+      <sap2010:ViewStateData Id="Sequence_13" sap:VirtualizedContainerService.HintSize="716,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_6" sap:VirtualizedContainerService.HintSize="738,2422">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="PBTTravelApp.SubmitForApproval.Workflow_1" sap:VirtualizedContainerService.HintSize="578,2330" />
+      <sap2010:ViewStateData Id="PBTTravelApp.SubmitForApproval.Workflow_1" sap:VirtualizedContainerService.HintSize="778,2502" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </Activity>

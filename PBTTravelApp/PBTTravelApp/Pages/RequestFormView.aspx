@@ -80,7 +80,7 @@
                                 <span class="field"><span id="lblFrequentflyerMul" class="sLabel"></span></span>
                             </p>
                             <p>
-                                <label>Project</label>
+                                <label>Division</label>
                                 <span class="field"><span id="lblProject" class="sLabel"></span></span>
                             </p>
                             <p>
@@ -111,25 +111,42 @@
                             </p>
                         </div>
                         <div id="aTravelInfo">
+                            <p id="linked" class="control-group" style="display: none">
+                                <label for="lblRelRequest">Linked to Request</label>
+                                <span class="field"><span id="lblRelRequest" class="sLabel"></span></span>
+                            </p>
                             <p class="control-group">
                                 <label for="lblDeptCity">Departure City</label>
                                 <span class="field"><span id="lblDeptCity" class="sLabel"></span></span>
                             </p>
                             <p class="control-group">
                                 <label for="lblTripStartDate">Trip Start Date</label>
-                                <span class="field"><span id="lblTripStartDate" class="sLabel"></span></span>
+                                <span class="field">
+                                    <span id="lblTripStartDate" class="sLabel"></span>
+                                    <span id="lbldepTime" class="sLabel"></span>
+                                </span>
                             </p>
                             <p class="control-group">
                                 <label for="lblTripEndDate">Trip End Date</label>
-                                <span class="field"><span id="lblTripEndDate" class="sLabel"></span></span>
+                                <span class="field"><span id="lblTripEndDate" class="sLabel"></span>
+                                    <span id="lblRetTime" class="sLabel"></span>
+                                </span>
                             </p>
                             <p class="control-group">
-                                <label for="lblTripPurpose">Trip Purpose</label>
+                                <label for="lblTripPurpose">Client</label>
+                                <span class="field"><span id="lblclient" class="sLabel"></span></span>
+                            </p>
+                            <p class="control-group">
+                                <label for="lblTripPurpose">Project/PO Number</label>
                                 <span class="field"><span id="lblTripPurpose" class="sLabel"></span></span>
                             </p>
                             <p>
                                 <label>Notices</label>
-                                <span class="field"><span id="lblNotices" class="sLabel"></span></span>
+                                <span class="field"><span id="lblNoticesTI" class="sLabel"></span></span>
+                            </p>
+                            <p>
+                                <label>Travel Comments</label>
+                                <span class="field"><span id="lblComments" class="sLabel"></span></span>
                             </p>
                             <p class="control-group">
                                 <span style="display: block; clear: both;">
@@ -148,6 +165,16 @@
                                 <label>Request Approve Date</label>
                                 <span class="field"><span id="lblRequestApproveDate" class="sLabel"></span></span>
                             </p>
+                            <div id="2ndApprover" style="display: none; border-top: 1px solid #ddd;">
+                                <p>
+                                    <label>2nd Request Approver</label>
+                                    <span class="field"><span id="lbl2ndRequestApprover" class="sLabel"></span></span>
+                                </p>
+                                <p>
+                                    <label>2nd Request Approve Date</label>
+                                    <span class="field"><span id="lbl2ndRequestApproveDate" class="sLabel"></span></span>
+                                </p>
+                            </div>
                         </div>
                         <div id="aAttachments">
                             <div style="display: none; margin: 10px;" id="noAttachments">
@@ -207,11 +234,13 @@
                         </div>
                     </div>
                     <div style="margin: 10px;">
-                        <button id="btnEditRequest" type="button" class="ms-Button"><span class="ms-Button-label"><i class="ms-Icon ms-Icon--editBox"></i> Edit request</span></button>
-                        <button id="btnPrint" type="button" class="ms-Button"><span class="ms-Button-label"><i class="ms-Icon ms-Icon--print"></i> Print</span></button>
+                        <button id="btnEditRequest" type="button" class="ms-Button"><span class="ms-Button-label"><i class="ms-Icon ms-Icon--editBox"></i>Edit request</span></button>
+                        <button id="btnPrint" type="button" class="ms-Button"><span class="ms-Button-label"><i class="ms-Icon ms-Icon--print"></i>Print</span></button>
                         <button id="btnSendRequestToApprove" type="button" class="ms-Button ms-Button--primary" style="display: none;"><span class="ms-Button-label"><i class="ms-Icon ms-Icon--mailSend"></i>Send to approve</span></button>
                         <button id="btnApproveRequest" type="button" class="ms-Button ms-Button--primary" style="display: none;"><span class="ms-Button-label"><i class="ms-Icon ms-Icon--check"></i>Approve</span></button>
                         <button id="btnRejectRequest" type="button" class="ms-Button" style="display: none;"><span class="ms-Button-label"><i class="ms-Icon ms-Icon--x"></i>Reject</span></button>
+                        <button id="btnSecApproveRequest" type="button" class="ms-Button ms-Button--primary" style="display: none;"><span class="ms-Button-label"><i class="ms-Icon ms-Icon--check"></i>Approve</span></button>
+                        <button id="btnSecRejectRequest" type="button" class="ms-Button" style="display: none;"><span class="ms-Button-label"><i class="ms-Icon ms-Icon--x"></i>Reject</span></button>
                         <div id="divValidationSummary" style="margin: 5px; display: none;">
                             <label id="lblValidationSummary" class="error">Please fix the validation errors</label>
                         </div>
@@ -231,6 +260,11 @@
             This request will be approved. Are you sure?                                                                                   
         </p>
     </div>
+    <div id="dialog-confirm-approve-second" title="Are you sure?" style="display: none;">
+        <p>
+            This request will be approved. Are you sure?                                                                                   
+        </p>
+    </div>
     <div id="dialog-confirm-reject" title="Are you sure?" style="display: none;">
         <form id="rejectForm" action="#">
             <p>
@@ -240,7 +274,15 @@
             </p>
         </form>
     </div>
-
+    <div id="dialog-confirm-reject-second" title="Are you sure?" style="display: none;">
+        <form id="rejectForm2" action="#">
+            <p>
+                This request will be rejected.<br />
+                Please enter reject reason.<br />
+                <input id="txtRejectReason-second" type="text" name="txtRejectReason" class="input-xlarge" />
+            </p>
+        </form>
+    </div>
     <div id="dialog-print">
     </div>
 

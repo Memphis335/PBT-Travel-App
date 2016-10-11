@@ -2682,15 +2682,15 @@ table td.center, table th.center {
         width: 38%;
     }
 
-    .chzn-container {
+    .chosen-container {
         width: 270px !important;
     }
 
-    .chzn-drop {
+    .chosen-drop {
         width: 268px !important;
     }
 
-    .chzn-search input {
+    .chosen-search input {
         width: 220px !important;
     }
 

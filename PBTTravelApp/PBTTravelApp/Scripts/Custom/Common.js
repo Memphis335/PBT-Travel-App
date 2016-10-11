@@ -8,7 +8,9 @@ var CurrentUser = {
     Name: "",
     Id: 0,
     Email: "",
-    IsAdmin: false
+    IsAdmin: false,
+    IsFirstApprover: false,
+    IsSecondApprover: false
 };
 var SystemSettings = {
     DefaultCurrencyNameName: "",
@@ -31,7 +33,25 @@ var RequestStatusEnum = {
     Approved: {
         Name: "Approved",
         Value: "Approved"
+    }
+};
+var SecRequestStatusEnum = {
+    Draft: {
+        Name: "Draft",
+        Value: "Draft"
     },
+    PendingApproval: {
+        Name: "Pending Approval",
+        Value: "PendingApproval"
+    },
+    Rejected: {
+        Name: "Rejected",
+        Value: "Rejected"
+    },
+    Approved: {
+        Name: "Approved",
+        Value: "Approved"
+    }
 };
 
 function getQueryStringParameter(c) {
@@ -47,7 +67,7 @@ function getQueryStringParameter(c) {
 
 function addMessage(a, b) {
     $.notify(a, {
-        globalPosition: "top left",
+        globalPosition: "top center",
         className: b + " notifyjsCustom",
         clickToHide: true,
         autoHideDelay: 10000
@@ -68,7 +88,7 @@ function getSettingValue(a, b) {
     return c;
 }
 
-function HasAccessToRequest(b, a, c, d, f, e) {
+function HasAccessToRequest(b, a, j, c, d, f, e) {
     if (d) {
         return true;
     }
@@ -79,6 +99,9 @@ function HasAccessToRequest(b, a, c, d, f, e) {
         return true;
     }
     if (a != null && a == c) {
+        return true;
+    }
+    if (j != null && j == c) {
         return true;
     }
     return false;
@@ -109,12 +132,16 @@ var appweburl = getQueryStringParameter("SPAppWebUrl");
 if (typeof hostweburl != "undefined" && appweburl != "undefined") {
     hostweburl = decodeURIComponent(hostweburl);
     appweburl = decodeURIComponent(appweburl);
-    $.cookie("hostweburl", hostweburl, {
-        expires: 365
-    });
-    $.cookie("appweburl", appweburl, {
-        expires: 365
-    });
+    $.cookie("hostweburl",
+        hostweburl,
+        {
+            expires: 365
+        });
+    $.cookie("appweburl",
+        appweburl,
+        {
+            expires: 365
+        });
 } else {
     hostweburl = $.cookie("hostweburl");
     appweburl = $.cookie("appweburl");
@@ -169,17 +196,11 @@ $(document).ready(function () {
         dataType: "json",
         cache: false,
         success: function (a) {
-            SystemSettings.DefaultCurrencyName =
-                getSettingValue(a.d.results,
-                    "DefaultCurrencyName");
-            SystemSettings.OrganizationName =
-                getSettingValue(a.d.results,
-                    "OrganizationName");
-            SystemSettings.AppInitExecuted =
-                getSettingValue(a.d.results,
-                    "AppInitExecuted");
+            SystemSettings.DefaultCurrencyName = getSettingValue(a.d.results, "DefaultCurrencyName");
+            SystemSettings.OrganizationName = getSettingValue(a.d.results, "OrganizationName");
+            SystemSettings.AppInitExecuted = getSettingValue(a.d.results, "AppInitExecuted");
             if (SystemSettings.AppInitExecuted == "") {
-                SystemSettings.AppInitExecuted = "false";
+                SystemSettings.AppInitExecuted = "false"; 
                 CurrentUser.IsAdmin = true;
             }
         },
