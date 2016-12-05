@@ -22,7 +22,7 @@
     <WorkflowPartId>{b06e06b4-0b2f-41a9-b0b6-06c05b9751ca}</WorkflowPartId>
     <CspkgPartId>{148e75d3-ca38-4f8e-ab14-5e7b219defea}</CspkgPartId>
     <SqlPackagePartId>{8c232c65-3ca7-4b57-a3cf-243de48cd47d}</SqlPackagePartId>
-    <ActiveDeploymentConfiguration>Attach to debug session</ActiveDeploymentConfiguration>
+    <ActiveDeploymentConfiguration>Debug</ActiveDeploymentConfiguration>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>

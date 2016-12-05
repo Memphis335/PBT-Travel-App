@@ -3,7 +3,7 @@
 <App xmlns="http://schemas.microsoft.com/sharepoint/2012/app/manifest"
      Name="PBTTravelApp"
      ProductID="{8411B792-7EEB-4A46-BB56-ABC1487542EE}"
-     Version="1.5.0.20"
+     Version="1.5.0.22"
      SharePointMinVersion="16.0.0.0"
 >
   <Properties>

@@ -212,9 +212,9 @@ RequestFormView = function () {
                 "IF-MATCH": "*"
             },
             success: function (l) {
-                i(k, "RequestApproveDate");
-                $("#btnApproveRequest").hide();
-                $("#btnRejectRequest").hide();
+                i(k, "ndRequestApproveDate");
+                $("#btnSecApproveRequest").hide();
+                $("#btnSecRejectRequest").hide();
                 $("#lblRequestStatus").text("Approved");
                 addMessage("Request successfully approved", "success");
             },
@@ -482,22 +482,22 @@ $(document).ready(function () {
             if (CurrentUser.IsFirstApprover) {
                 $("#btnApproveRequest").show();
                 $("#btnRejectRequest").show();
+                $("#btnApproveRequest").click(function () {
+                    h.dialog("open");
+                });
+                $("#btnRejectRequest").click(function () {
+                    i.dialog("open");
+                });
             } else if (CurrentUser.IsSecondApprover) {
                 $("#btnSecApproveRequest").show();
                 $("#btnSecRejectRequest").show();
+                $("#btnSecApproveRequest").click(function () {
+                    hSec.dialog("open");
+                });
+                $("#btnSecRejectRequest").click(function () {
+                    iSec.dialog("open");
+                });
             }
-            $("#btnApproveRequest").click(function () {
-                h.dialog("open");
-            });
-            $("#btnRejectRequest").click(function () {
-                i.dialog("open");
-            });
-            $("#btnSecApproveRequest").click(function () {
-                hSec.dialog("open");
-            });
-            $("#btnSecRejectRequest").click(function () {
-                iSec.dialog("open");
-            });
         }
         else {
             if (l.RequestStatus == "Approved") {

@@ -73,7 +73,7 @@ UserRoles = function () {
                 var l = false;
                 $.ajax({
                     url: appweburl +
-                        "/_api/Web/lists/getbytitle('" + x + "')/items?$select=ID, User/Id&$expand=User/Id&$filter=User/Id eq " + i,
+                        "/_api/Web/lists/getbytitle('" + x + "')/items?$select=ID,User/Id&$expand=User/Id&$filter=User/Id eq " + i,
                     type: "GET",
                     async: false,
                     headers: {
@@ -115,7 +115,7 @@ UserRoles = function () {
                         g = {
                             Result: "OK",
                             Record: {
-                                Id: m.d.Id,
+                                ID: m.d.Id,
                                 Title: j
                             }
                         };
@@ -236,7 +236,7 @@ $(document).ready(function () {
     });
     $("#Administrators").jtable("load");
     $("#DictApprovers").jtable({
-        title: "Travel Approvers",
+        title: "Approvers",
         paging: false,
         defaultSorting: "Title asc",
         messages: {
@@ -247,7 +247,7 @@ $(document).ready(function () {
                 return UserRoles.readAll("Approvers");
             },
             createAction: function (a) {
-                return UserRoles.createItem($("#Edit-User").val(), $("#Edit-User option:selected").text(), "", "Approvers");
+                return UserRoles.createItem($("#Edit-User").val(), $("#Edit-User option:selected").text(), "Travel Approver", "Approvers");
             },
             deleteAction: function (a) {
                 return UserRoles.deleteItem(a.ID, "Approvers");
@@ -306,7 +306,7 @@ $(document).ready(function () {
     });
     $("#DictApprovers").jtable("load");
     $("#Dict2ndApprovers").jtable({
-        title: "Travel 2nd Level Approvers",
+        title: "Secondary Approvers",
         paging: false,
         defaultSorting: "Title asc",
         messages: {
@@ -317,7 +317,7 @@ $(document).ready(function () {
                 return UserRoles.readAll("2ndApprovers");
             },
             createAction: function (a) {
-                return UserRoles.createItem($("#Edit-User").val(), $("#Edit-User option:selected").text(), "", "2ndApprovers");
+                return UserRoles.createItem($("#Edit-User").val(), $("#Edit-User option:selected").text(), "2nd Travel Approver", "2ndApprovers");
             },
             deleteAction: function (a) {
                 return UserRoles.deleteItem(a.ID, "2ndApprovers");
