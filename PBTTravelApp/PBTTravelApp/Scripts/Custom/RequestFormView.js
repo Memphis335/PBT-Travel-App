@@ -94,6 +94,13 @@ RequestFormView = function () {
                 },
                 RequestApproveDate: l
             });
+        } else if (j == "ndRequestApproveDate") {
+            n = JSON.stringify({
+                __metadata: {
+                    type: "SP.Data.TravelRequestsListItem"
+                },
+                ndRequestApproveDate: l
+            });
         }
 
         var k = e();

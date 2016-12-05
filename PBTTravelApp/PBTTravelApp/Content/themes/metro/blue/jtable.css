@@ -268,12 +268,13 @@ form.jtable-dialog-form span.jtable-option-text-clickable {
     cursor: pointer;
 }
 
+
 div.jtable-busy-panel-background {
     /*opacity: 0.1;*/
     filter: alpha(opacity=50);
     z-index: 998;
     position: absolute;
-    background-color: #f2ebeb;
+    background-color: rgba(252,252,252,1);
     margin-top: 34px;
 }
 
@@ -536,7 +537,7 @@ div.jtable-busy-message {
     font-family: 'Segoe UI Semilight', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
     font-size: 16px;
     /*border: 1px solid #fff;*/
-    padding: 5px 5px 5px 58px;
+    padding: 17px 5px 5px 58px;
     /*color: #ccc;*/
     background: url('../../metro/blue/pbtLoading.gif') no-repeat;
     background-position: 8px;

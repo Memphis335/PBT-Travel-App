@@ -194,18 +194,20 @@ SpecialDictionary = function () {
                         Result: "OK",
                         Record: {
                             ID: k.d.ID,
-                            Title: i
+                            Title: k.d.Title,
+                            Client: k.d.Client
                         }
                     };
                     j.resolve(h);
                 },
                 error: function (m, k, l) {
                     j.reject();
+                    
                 }
             });
         });
     },
-    d = function (e) {
+    d = function (r , e) {
         var g;
         var z = appweburl +
             "/_vti_bin/ListData.svc/DictPONumbers/?$inlinecount=allpages&$select=Id,Title,Client&$orderby=" +
@@ -383,20 +385,20 @@ $(document).ready(function () {
             },
             actions: {
                 listAction: function (g, f) {
-                    return SpecialDictionary.readAll();
+                    return SpecialDictionary.readAll(g, f);
                 },
                 updateAction: function (f) {
-                    return SpecialDictionary.updateItem("Dict" + e, a(f, "ID"), c(a(f, "Title")), c(a(f, "Client")));
+                    return SpecialDictionary.updateItem("Dict" + e, a(f, "Id"), c(a(f, "Title")), c(a(f, "Client")));
                 },
                 createAction: function (f) {
                     return SpecialDictionary.createItem("Dict" + e, c(a(f, "Title")), c(a(f, "Client")));
                 },
                 deleteAction: function (f) {
-                    return SpecialDictionary.deleteItem("Dict" + e, f.ID);
+                    return SpecialDictionary.deleteItem("Dict" + e, f.Id);
                 }
             },
             fields: {
-                ID: {
+                Id: {
                     key: true,
                     create: false,
                     edit: false,
